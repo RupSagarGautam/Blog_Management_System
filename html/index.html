@@ -3,81 +3,78 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Blog Home - Sandhya Timsina</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Sandhya's Blog</title>
+  <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
 
-  <header class="main-header">
-    <div class="logo">Sandhya's Blog</div>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Write Blog</a>
-      <a href="#">Dashboard</a>
-      <a href="#">Logout</a>
-    </nav>
-  </header>
-
   <div class="container">
+
+    <!-- Sidebar -->
     <aside class="sidebar">
-      <h2>Categories</h2>
-      <ul>
-        <li><a href="#">Technology</a></li>
-        <li><a href="#">Travel</a></li>
-        <li><a href="#">Education</a></li>
-        <li><a href="#">Health</a></li>
-      </ul>
+      <div class="dropdown">
+        <button class="dropdown-button">Categories ▼</button>
+        <ul class="dropdown-menu">
+          <li style="animation-delay: 0.1s"><a href="#">Technology</a></li>
+          <li style="animation-delay: 0.2s"><a href="#">Travel</a></li>
+          <li style="animation-delay: 0.3s"><a href="#">Education</a></li>
+          <li style="animation-delay: 0.4s"><a href="#">Health</a></li>
+        </ul>
+      </div>
     </aside>
 
+    <!-- Main Content -->
     <main class="content">
       <h1>Welcome, Sandhya Timsina</h1>
 
+      <!-- Top Blogs -->
       <div class="section-wrapper">
         <h2>Top Blogs</h2>
         <div class="blog-row-scroll">
           <div class="blog-card">
-            <img src="images/blog1.png" alt="Top Blog 1" />
+            <img src="../assets/blog1.png" alt="Top Blog 1" />
             <h3>Top Blog 1</h3>
             <p>Explore the latest trends in AI and web development.</p>
           </div>
           <div class="blog-card">
-            <img src="images/blog2.png" alt="Top Blog 2" />
+            <img src="../assets/blog2.png" alt="Top Blog 2" />
             <h3>Top Blog 2</h3>
             <p>How to build a blogging site using HTML and CSS.</p>
           </div>
           <div class="blog-card">
-            <img src="images/blog3.png" alt="Top Blog 3" />
+            <img src="../assets/blog3.png" alt="Top Blog 3" />
             <h3>Top Blog 3</h3>
             <p>Tips for maintaining consistency and creativity in writing.</p>
           </div>
           <div class="blog-card">
-            <img src="images/blog4.png" alt="Top Blog 4" />
+            <img src="../assets/blog4.png" alt="Top Blog 4" />
             <h3>Top Blog 4</h3>
             <p>The tools every blogger should know about in 2025.</p>
           </div>
         </div>
       </div>
 
+      <!-- Recent Blogs -->
       <div class="section-wrapper">
         <h2>Recent Blogs</h2>
         <div class="blog-row-scroll">
           <div class="blog-card">
-            <img src="images/recent1.png" alt="Recent Blog 1" />
+            <img src="../assets/recent1.png" alt="Recent Blog 1" />
             <h3>Recent Blog 1</h3>
             <p>My personal journey into frontend development.</p>
           </div>
           <div class="blog-card">
-            <img src="images/recent2.png" alt="Recent Blog 2" />
+            <img src="../assets/recent2.png" alt="Recent Blog 2" />
             <h3>Recent Blog 2</h3>
             <p>Best platforms for beginner bloggers in 2025.</p>
           </div>
           <div class="blog-card">
-            <img src="images/recent3.png" alt="Recent Blog 3" />
+            <img src="../assets/recent3.png" alt="Recent Blog 3" />
             <h3>Recent Blog 3</h3>
             <p>Exploring Nepal: A blog from the mountains.</p>
           </div>
           <div class="blog-card">
-            <img src="images/recent4.png" alt="Recent Blog 4" />
+            <img src="../assets/recent4.png" alt="Recent Blog 4" />
             <h3>Recent Blog 4</h3>
             <p>Writing for self-growth and emotional clarity.</p>
           </div>
@@ -85,10 +82,6 @@
       </div>
     </main>
   </div>
-
-  <footer class="main-footer">
-    <p>&copy; 2025 Sandhya Timsina. All rights reserved.</p>
-  </footer>
 
 </body>
 </html>

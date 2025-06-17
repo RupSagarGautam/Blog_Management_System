@@ -98,14 +98,15 @@ a:hover:after {
 
 .getstarted-btn {
     padding: 0.5rem 1rem;
-    background-color: #626161;
+    background-color: #447100;
     color: white !important;
     border-radius: 4px;
 }
 
 .getstarted-btn:hover {
-    background-color: #245509 !important;
+    background-color: #32e67e !important;
     transform: scale(20px);
+    color: #3a3a3a !important;
 }
 
 @media screen and (max-height: 300px) {
@@ -122,7 +123,7 @@ a:hover:after {
 }
 
 .textheading {
-    background-color: #b3d99f72;
+    background-color: #94ff5c72;
     display: flex;
     align-items: center;
     justify-content: space-between;

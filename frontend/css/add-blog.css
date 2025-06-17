@@ -27,7 +27,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 5%;
-    background-color: white;
+    background-color: #d9fde366;
     box-shadow: 0 2px 10px var(--shadow-color);
     position: fixed;
     width: 100%;
@@ -129,15 +129,29 @@ a:hover:after {
 .body {
     margin-top: 120px;
     padding: 2rem 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
 }
-
+.topaddsection{
+    flex: 40%;
+}
+.topaddsection img{
+    margin-top: -180px;
+    width: 80vh;
+    height: 100%;
+    transform: scale(1.1);
+}
 .addsection {
-    max-width: 1200px;
+    max-width: 800px;
+    min-width: 800px;
     margin: 0 auto;
     background: white;
     border-radius: 12px;
     box-shadow: 0 4px 6px var(--shadow-color);
     padding: 2rem;
+    flex: 60%;
 }
 
 .innersection h1 {
@@ -214,6 +228,16 @@ a:hover:after {
     margin-bottom: 1rem;
     border-radius: 8px;
     overflow: hidden;
+    margin: 5px;
+    border: none;
+    transition: 0.3s linear;
+    
+}
+#editor:focus{
+    outline: none;
+    margin: 10px;
+    font-style: italic;
+    transition: 0.5s;
 }
 
 .ql-toolbar {
@@ -287,86 +311,9 @@ a:hover:after {
     box-shadow: 0 2px 4px var(--shadow-color);
 }
 
-.editor-toolbar {
-    display: flex;
-    gap: 0.5rem;
-    padding: 0.5rem;
-    background: var(--toolbar-bg);
-    border-bottom: 1px solid var(--border-color);
-    flex-wrap: wrap;
-}
-
-.toolbar-btn {
-    padding: 0.4rem 0.8rem;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    background: white;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: all 0.2s ease;
-    min-width: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.toolbar-btn:hover {
-    background: var(--primary-color);
-    color: white;
-    border-color: var(--primary-color);
-}
-
-.toolbar-btn.active {
-    background: var(--primary-color);
-    color: white;
-    border-color: var(--primary-color);
-}
-
-.editor-content {
-    min-height: 300px;
-    padding: 1rem;
-    outline: none;
-    overflow-y: auto;
-    font-size: 1rem;
-    line-height: 1.6;
-}
-
-.editor-content:focus {
+.editor-container input:focus{
     outline: none;
 }
 
-.editor-content h1 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
 
-.editor-content h2 {
-    font-size: 1.5rem;
-    margin-bottom: 0.8rem;
-}
-
-.editor-content ul, 
-.editor-content ol {
-    margin-left: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-.editor-content p {
-    margin-bottom: 1rem;
-}
-
-.editor-content a {
-    color: var(--primary-color);
-    text-decoration: none;
-}
-
-.editor-content a:hover {
-    text-decoration: underline;
-}
-
-/* Remove Quill.js specific styles */
-.ql-toolbar,
-.ql-container {
-    display: none;
-}
 

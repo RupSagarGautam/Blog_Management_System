@@ -32,7 +32,7 @@ body {
 }
 
 .logo img {
-    height: 40px;
+    height: 70px;
     width: auto;
 }
 
@@ -126,7 +126,7 @@ a:hover:after {
     display: flex;
     align-items: center;
     justify-content: space-between;
-   
+    margin-top: 110px;
     
 }
 

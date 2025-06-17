@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog Details - Digital Pathshala</title>
-    <link rel="stylesheet" href="add-blog-styles-fixed.css">
+    <link rel="stylesheet" href="blog-details-simple-styles.css">
     <link href="/css/blogdetails.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -38,128 +38,111 @@
         </div>
     </header>
 
+  
 
     <!-- Main Content -->
     <main class="main-content">
         <div class="container">
             <div class="content-grid">
-                <!-- Left Side - Add New Blog Post Form -->
-                <div class="blog-form-section">
-                    <div class="form-card">
-                        <div class="form-header">
-                            <h1>Create New Blog Post</h1>
-                            <p>Share your thoughts, news, or ethical insights with our community</p>
-                        </div>
-
-                        <form class="blog-form">
-                            <!-- Title Field -->
-                            <div class="form-group">
-                                <label for="blog-title" class="form-label">TITLE</label>
-                                <input 
-                                    type="text" 
-                                    id="blog-title" 
-                                    name="title" 
-                                    class="form-input" 
-                                    placeholder="Enter your blog title"
-                                    required
-                                >
+                <!-- Left Side - Blog Details -->
+                <article class="blog-details-section">
+                    <div class="blog-card">
+                        <!-- Blog Header -->
+                        <div class="blog-header">
+                            <div class="blog-meta">
+                                <span class="blog-category education">Education</span>
+                                <span class="blog-date">
+                                    <i class="fas fa-calendar"></i>
+                                    January 18, 2024
+                                </span>
                             </div>
-
-                            <!-- Category Field -->
-                            <div class="form-group">
-                                <label for="blog-category" class="form-label">CATEGORY</label>
-                                <select id="blog-category" name="category" class="form-select" required>
-                                    <option value="">Select a category</option>
-                                    <option value="news">News & Updates</option>
-                                    <option value="ethics">Ethics & Values</option>
-                                    <option value="education">Education</option>
-                                    <option value="technology">Technology</option>
-                                    <option value="society">Society & Culture</option>
-                                    <option value="environment">Environment</option>
-                                    <option value="health">Health & Wellness</option>
-                                </select>
-                            </div>
-
-                            <!-- Featured Image Field -->
-                            <div class="form-group">
-                                <label for="featured-image" class="form-label">FEATURED IMAGE</label>
-                                <div class="file-upload-area">
-                                    <input type="file" id="featured-image" name="featured_image" class="file-input" accept="image/*">
-                                    <div class="file-upload-content">
-                                        <i class="fas fa-cloud-upload-alt"></i>
-                                        <p>Choose File</p>
-                                        <span class="file-status">No file chosen</span>
-                                    </div>
+                            <h1 class="blog-title">Empowering Digital Education in Nepal</h1>
+                            <p class="blog-description">
+                                Digital Pathshala is committed to transforming education in Nepal through innovative digital learning solutions. 
+                                We provide quality educational content, modern teaching methodologies, and accessible learning platforms to 
+                                empower students and educators across the country. Our mission is to bridge the digital divide and create 
+                                equal opportunities for all learners in Nepal's educational landscape.
+                            </p>
+                            <div class="author-info">
+                                <div class="author-details">
+                                    <span class="author-name">By Digital Pathshala Team</span>
+                                    <span class="reading-time">
+                                        <i class="fas fa-clock"></i>
+                                        2 min read
+                                    </span>
                                 </div>
                             </div>
+                        </div>
 
-                            <!-- Content Field -->
-                            <div class="form-group">
-                                <label for="blog-content" class="form-label">CONTENT</label>
-                                <textarea 
-                                    id="blog-content" 
-                                    name="content" 
-                                    class="form-textarea" 
-                                    placeholder="Write your blog content here... Share your insights, news, or ethical perspectives."
-                                    rows="12"
-                                    required
-                                ></textarea>
+                        <!-- Featured Image -->
+                        <div class="blog-image">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Education-Y7anZk11FvLaJTsAjcCz3R0kfYWdnM.jpeg" alt="Digital Education Workshop" class="featured-image">
+                            <div class="image-caption">
+                                <p>Modern educational workshop demonstrating digital learning methodologies and collaborative learning environments</p>
                             </div>
+                        </div>
 
-                            <!-- Tags Field -->
-                            <div class="form-group">
-                                <label for="blog-tags" class="form-label">TAGS</label>
-                                <input 
-                                    type="text" 
-                                    id="blog-tags" 
-                                    name="tags" 
-                                    class="form-input" 
-                                    placeholder="Enter tags separated by commas"
-                                >
-                                <small class="form-help">Example: ethics, society, news, education</small>
+                        <!-- Contact Information Section -->
+                        <div class="contact-section">
+                            <div class="contact-header">
+                                <h2><i class="fas fa-info-circle"></i> About Digital Pathshala</h2>
                             </div>
+                            <div class="contact-content">
+                                <div class="contact-grid">
+                                    <div class="contact-item">
+                                        <div class="contact-icon">
+                                            <i class="fas fa-envelope"></i>
+                                        </div>
+                                        <div class="contact-details">
+                                            <h3>Email Address</h3>
+                                            <p>digitalpathshala@gmail.com</p>
+                                        </div>
+                                    </div>
 
-                            <!-- Author Information -->
-                            <div class="form-group">
-                                <label for="author-name" class="form-label">AUTHOR NAME</label>
-                                <input 
-                                    type="text" 
-                                    id="author-name" 
-                                    name="author" 
-                                    class="form-input" 
-                                    placeholder="Enter author name"
-                                    required
-                                >
-                            </div>
+                                    <div class="contact-item">
+                                        <div class="contact-icon">
+                                            <i class="fas fa-phone"></i>
+                                        </div>
+                                        <div class="contact-details">
+                                            <h3>Contact Number</h3>
+                                            <p>+977 9820305703</p>
+                                        </div>
+                                    </div>
 
-                            <!-- Publication Date -->
-                            <div class="form-group">
-                                <label for="publish-date" class="form-label">PUBLICATION DATE</label>
-                                <input 
-                                    type="date" 
-                                    id="publish-date" 
-                                    name="publish_date" 
-                                    class="form-input"
-                                    required
-                                >
-                            </div>
+                                    <div class="contact-item">
+                                        <div class="contact-icon">
+                                            <i class="fas fa-map-marker-alt"></i>
+                                        </div>
+                                        <div class="contact-details">
+                                            <h3>Location</h3>
+                                            <p>Itahari-9, Sunsari, Nepal</p>
+                                        </div>
+                                    </div>
 
-                            <!-- Form Actions -->
-                            <div class="form-actions">
-                                <button type="button" class="btn btn-draft">
-                                    <i class="fas fa-save"></i>
-                                    Save as Draft
-                                </button>
-                                <button type="submit" class="btn btn-publish">
-                                    <i class="fas fa-paper-plane"></i>
-                                    Publish Post
-                                </button>
+                                    <div class="contact-item">
+                                        <div class="contact-icon">
+                                            <i class="fas fa-graduation-cap"></i>
+                                        </div>
+                                        <div class="contact-details">
+                                            <h3>Our Mission</h3>
+                                            <p>Learn • Grow • Excel</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="additional-info">
+                                    <p>
+                                        We are dedicated to providing high-quality digital education resources and fostering 
+                                        a community of lifelong learners. Connect with us to learn more about our programs 
+                                        and educational initiatives.
+                                    </p>
+                                </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
-                </div>
+                </article>
 
-                <!-- Right Side - Related Posts -->
+                <!-- Right Side - Related Posts (Unchanged) -->
                 <aside class="sidebar">
                     <!-- Recent Posts -->
                     <div class="sidebar-card">
@@ -262,31 +245,31 @@
                         </div>
                     </div>
 
-                    <!-- Writing Tips -->
+                    <!-- Reading Tips -->
                     <div class="sidebar-card tips-card">
                         <div class="card-header">
-                            <h3><i class="fas fa-lightbulb"></i> Writing Tips</h3>
+                            <h3><i class="fas fa-lightbulb"></i> Reading Tips</h3>
                         </div>
                         <div class="tips-content">
                             <div class="tip-item">
                                 <i class="fas fa-check-circle"></i>
-                                <span>Write clear and engaging headlines</span>
+                                <span>Take notes while reading for better retention</span>
                             </div>
                             <div class="tip-item">
                                 <i class="fas fa-check-circle"></i>
-                                <span>Use relevant tags for better discoverability</span>
+                                <span>Share interesting articles with friends</span>
                             </div>
                             <div class="tip-item">
                                 <i class="fas fa-check-circle"></i>
-                                <span>Include credible sources and references</span>
+                                <span>Follow up with related resources</span>
                             </div>
                             <div class="tip-item">
                                 <i class="fas fa-check-circle"></i>
-                                <span>Keep paragraphs concise and readable</span>
+                                <span>Join discussions in the comments</span>
                             </div>
                             <div class="tip-item">
                                 <i class="fas fa-check-circle"></i>
-                                <span>Proofread before publishing</span>
+                                <span>Subscribe for regular updates</span>
                             </div>
                         </div>
                     </div>

@@ -1,4 +1,4 @@
-/* Add New Blog Post Styles */
+/* Blog Details Simple Styles */
 * {
     margin: 0;
     padding: 0;
@@ -39,9 +39,6 @@ body {
     display: flex;
     align-items: center;
     gap: 1rem;
-    /* width: 0px; */
-    /* height: 0px; */
-    object-fit: cover;
 }
 
 .logo-img {
@@ -56,13 +53,6 @@ body {
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: -2px;
-}
-
-.tagline {
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 0.75rem;
-    font-weight: 400;
-    letter-spacing: 0.5px;
 }
 
 .nav-menu {
@@ -139,8 +129,8 @@ body {
     align-items: start;
 }
 
-/* Blog Form Section */
-.blog-form-section {
+/* Blog Details Section */
+.blog-details-section {
     background: white;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
@@ -148,167 +138,190 @@ body {
     overflow: hidden;
 }
 
-.form-header {
-    padding: 2rem 2rem 1rem;
+.blog-card {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Blog Header */
+.blog-header {
+    padding: 2rem 2rem 2rem;
     border-bottom: 1px solid #e2e8f0;
-    background: #f8fafc;
 }
 
-.form-header h1 {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #1a202c;
-    margin-bottom: 0.5rem;
+.blog-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
 }
 
-.form-header p {
-    color: #718096;
-    font-size: 1rem;
-}
-
-/* Form Styles */
-.blog-form {
-    padding: 2rem;
-}
-
-.form-group {
-    margin-bottom: 2rem;
-}
-
-.form-label {
-    display: block;
-    font-size: 0.85rem;
+.blog-category {
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
     font-weight: 600;
-    color: #4a5568;
-    margin-bottom: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
-.form-input,
-.form-select,
-.form-textarea {
-    width: 100%;
-    padding: 0.875rem 1rem;
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-family: inherit;
-    transition: all 0.3s ease;
-    background: white;
+.blog-category.education {
+    background: #e3f2fd;
+    color: #1565c0;
 }
 
-.form-input:focus,
-.form-select:focus,
-.form-textarea:focus {
-    outline: none;
-    border-color: #00C851;
-    box-shadow: 0 0 0 3px rgba(0, 200, 81, 0.1);
-}
-
-.form-textarea {
-    resize: vertical;
-    min-height: 200px;
-    line-height: 1.6;
-}
-
-.form-select {
-    cursor: pointer;
-}
-
-.form-help {
-    display: block;
-    margin-top: 0.5rem;
-    font-size: 0.85rem;
-    color: #718096;
-}
-
-/* File Upload Area */
-.file-upload-area {
-    position: relative;
-    border: 2px dashed #e2e8f0;
-    border-radius: 8px;
-    padding: 2rem;
-    text-align: center;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.file-upload-area:hover {
-    border-color: #00C851;
-    background: #f0fff4;
-}
-
-.file-input {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    cursor: pointer;
-}
-
-.file-upload-content i {
-    font-size: 2rem;
-    color: #00C851;
-    margin-bottom: 1rem;
-}
-
-.file-upload-content p {
-    font-weight: 600;
-    color: #4a5568;
-    margin-bottom: 0.5rem;
-}
-
-.file-status {
+.blog-date {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     color: #718096;
     font-size: 0.9rem;
 }
 
-/* Form Actions */
-.form-actions {
-    display: flex;
-    gap: 1rem;
-    padding-top: 2rem;
+.blog-date i {
+    color: #00C851;
+}
+
+.blog-title {
+    font-size: 2.25rem;
+    font-weight: 800;
+    line-height: 1.2;
+    color: #1a202c;
+    margin-bottom: 1.5rem;
+}
+
+.blog-description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #4a5568;
+    margin-bottom: 2rem;
+}
+
+.author-info {
+    padding-top: 1.5rem;
     border-top: 1px solid #e2e8f0;
 }
 
-.btn {
-    padding: 0.875rem 2rem;
-    border: none;
-    border-radius: 8px;
+.author-details {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.author-name {
     font-weight: 600;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    color: #1a202c;
+}
+
+.reading-time {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    text-decoration: none;
+    color: #718096;
+    font-size: 0.9rem;
 }
 
-.btn-draft {
-    background: #6c757d;
+.reading-time i {
+    color: #00C851;
+}
+
+/* Contact Section */
+.contact-section {
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+}
+
+.contact-header {
+    padding: 2rem 2rem 1rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.contact-header h2 {
+    color: #1a202c;
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0;
+}
+
+.contact-header h2 i {
+    color: #00C851;
+}
+
+.contact-content {
+    padding: 2rem;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.contact-icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #00C851, #00a843);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-icon i {
     color: white;
+    font-size: 1.1rem;
 }
 
-.btn-draft:hover {
-    background: #5a6268;
-    transform: translateY(-1px);
+.contact-details h3 {
+    color: #1a202c;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
 }
 
-.btn-publish {
-    background: #00C851;
-    color: white;
+.contact-details p {
+    color: #4a5568;
+    font-size: 0.95rem;
+    margin: 0;
 }
 
-.btn-publish:hover {
-    background: #00a843;
-    transform: translateY(-1px);
+.additional-info {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #00C851;
 }
 
-/* Sidebar Styles */
+.additional-info p {
+    color: #4a5568;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Sidebar Styles (Unchanged) */
 .sidebar {
     display: flex;
     flex-direction: column;
@@ -343,7 +356,6 @@ body {
     color: #00C851;
 }
 
-/* Posts List */
 .posts-list {
     padding: 1rem;
 }
@@ -432,7 +444,6 @@ body {
     color: #a0aec0;
 }
 
-/* Categories List */
 .categories-list {
     padding: 1rem;
 }
@@ -463,7 +474,6 @@ body {
     font-weight: 500;
 }
 
-/* Tips Card */
 .tips-card {
     background: linear-gradient(135deg, #f0fff4, #e6fffa);
     border: 1px solid #b2f5ea;
@@ -584,6 +594,10 @@ body {
     .sidebar {
         order: -1;
     }
+    
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 768px) {
@@ -595,21 +609,23 @@ body {
         display: block;
     }
     
-    .form-header,
-    .blog-form {
+    .blog-header,
+    .contact-content {
         padding: 1.5rem;
     }
     
-    .form-header h1 {
-        font-size: 1.75rem;
+    .contact-header {
+        padding: 1.5rem 1.5rem 1rem;
     }
     
-    .form-actions {
+    .blog-title {
+        font-size: 1.8rem;
+    }
+    
+    .author-details {
         flex-direction: column;
-    }
-    
-    .btn {
-        justify-content: center;
+        gap: 0.5rem;
+        align-items: flex-start;
     }
     
     .footer-content {
@@ -623,16 +639,26 @@ body {
         padding: 0 0.75rem;
     }
     
-    .form-header h1 {
+    .blog-title {
         font-size: 1.5rem;
     }
     
-    .form-header,
-    .blog-form {
+    .blog-header,
+    .contact-content {
         padding: 1rem;
     }
     
-    .file-upload-area {
-        padding: 1.5rem;
+    .contact-header {
+        padding: 1rem 1rem 0.5rem;
+    }
+    
+    .blog-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
+    }
+    
+    .contact-item {
+        padding: 1rem;
     }
 }

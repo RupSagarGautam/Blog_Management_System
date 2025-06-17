@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Details - Digital Pathshala</title>
+    <link rel="stylesheet" href="add-blog-styles-fixed.css">
+    <link href="/css/blogdetails.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Simple Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Logo -->
+                <div class="logo-section">
+                    <img src="/Assets/logo.jpeg" alt="Digital Pathshala Logo" class="logo-img">
+                    <div class="logo-text">
+                        <h1>Digital Pathshala</h1>
+                    </div>
+                </div>
+
+                <!-- Simple Navigation -->
+                <nav class="nav-menu">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/blogs" class="nav-link active">Blogs</a>
+                    <a href="/courses" class="nav-link">Courses</a>
+                    <a href="/about" class="nav-link">About</a>
+                    <a href="/contact" class="nav-link">Contact</a>
+                </nav>
+
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="content-grid">
+                <!-- Left Side - Add New Blog Post Form -->
+                <div class="blog-form-section">
+                    <div class="form-card">
+                        <div class="form-header">
+                            <h1>Create New Blog Post</h1>
+                            <p>Share your thoughts, news, or ethical insights with our community</p>
+                        </div>
+
+                        <form class="blog-form">
+                            <!-- Title Field -->
+                            <div class="form-group">
+                                <label for="blog-title" class="form-label">TITLE</label>
+                                <input 
+                                    type="text" 
+                                    id="blog-title" 
+                                    name="title" 
+                                    class="form-input" 
+                                    placeholder="Enter your blog title"
+                                    required
+                                >
+                            </div>
+
+                            <!-- Category Field -->
+                            <div class="form-group">
+                                <label for="blog-category" class="form-label">CATEGORY</label>
+                                <select id="blog-category" name="category" class="form-select" required>
+                                    <option value="">Select a category</option>
+                                    <option value="news">News & Updates</option>
+                                    <option value="ethics">Ethics & Values</option>
+                                    <option value="education">Education</option>
+                                    <option value="technology">Technology</option>
+                                    <option value="society">Society & Culture</option>
+                                    <option value="environment">Environment</option>
+                                    <option value="health">Health & Wellness</option>
+                                </select>
+                            </div>
+
+                            <!-- Featured Image Field -->
+                            <div class="form-group">
+                                <label for="featured-image" class="form-label">FEATURED IMAGE</label>
+                                <div class="file-upload-area">
+                                    <input type="file" id="featured-image" name="featured_image" class="file-input" accept="image/*">
+                                    <div class="file-upload-content">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <p>Choose File</p>
+                                        <span class="file-status">No file chosen</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Content Field -->
+                            <div class="form-group">
+                                <label for="blog-content" class="form-label">CONTENT</label>
+                                <textarea 
+                                    id="blog-content" 
+                                    name="content" 
+                                    class="form-textarea" 
+                                    placeholder="Write your blog content here... Share your insights, news, or ethical perspectives."
+                                    rows="12"
+                                    required
+                                ></textarea>
+                            </div>
+
+                            <!-- Tags Field -->
+                            <div class="form-group">
+                                <label for="blog-tags" class="form-label">TAGS</label>
+                                <input 
+                                    type="text" 
+                                    id="blog-tags" 
+                                    name="tags" 
+                                    class="form-input" 
+                                    placeholder="Enter tags separated by commas"
+                                >
+                                <small class="form-help">Example: ethics, society, news, education</small>
+                            </div>
+
+                            <!-- Author Information -->
+                            <div class="form-group">
+                                <label for="author-name" class="form-label">AUTHOR NAME</label>
+                                <input 
+                                    type="text" 
+                                    id="author-name" 
+                                    name="author" 
+                                    class="form-input" 
+                                    placeholder="Enter author name"
+                                    required
+                                >
+                            </div>
+
+                            <!-- Publication Date -->
+                            <div class="form-group">
+                                <label for="publish-date" class="form-label">PUBLICATION DATE</label>
+                                <input 
+                                    type="date" 
+                                    id="publish-date" 
+                                    name="publish_date" 
+                                    class="form-input"
+                                    required
+                                >
+                            </div>
+
+                            <!-- Form Actions -->
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-draft">
+                                    <i class="fas fa-save"></i>
+                                    Save as Draft
+                                </button>
+                                <button type="submit" class="btn btn-publish">
+                                    <i class="fas fa-paper-plane"></i>
+                                    Publish Post
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Right Side - Related Posts -->
+                <aside class="sidebar">
+                    <!-- Recent Posts -->
+                    <div class="sidebar-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-newspaper"></i> Recent Posts</h3>
+                        </div>
+                        <div class="posts-list">
+                            <article class="post-item">
+                                <div class="post-content">
+                                    <div class="post-category ethics">Ethics</div>
+                                    <h4><a href="#">The Importance of Digital Ethics in Modern Education</a></h4>
+                                    <p class="post-excerpt">Exploring how ethical considerations shape our digital learning environments and the responsibility we have...</p>
+                                    <div class="post-meta">
+                                        <span class="author">By Dr. Rajesh Sharma</span>
+                                        <span class="date">Jan 15, 2024</span>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="post-item">
+                                <div class="post-content">
+                                    <div class="post-category news">News</div>
+                                    <h4><a href="#">New Educational Policies Announced for Digital Learning</a></h4>
+                                    <p class="post-excerpt">Government introduces comprehensive guidelines for online education platforms and digital literacy programs...</p>
+                                    <div class="post-meta">
+                                        <span class="author">By Priya Patel</span>
+                                        <span class="date">Jan 12, 2024</span>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="post-item">
+                                <div class="post-content">
+                                    <div class="post-category society">Society</div>
+                                    <h4><a href="#">Building Inclusive Communities Through Education</a></h4>
+                                    <p class="post-excerpt">How educational initiatives can bridge social gaps and create more inclusive communities for everyone...</p>
+                                    <div class="post-meta">
+                                        <span class="author">By Amit Kumar</span>
+                                        <span class="date">Jan 10, 2024</span>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="post-item">
+                                <div class="post-content">
+                                    <div class="post-category environment">Environment</div>
+                                    <h4><a href="#">Sustainable Practices in Educational Institutions</a></h4>
+                                    <p class="post-excerpt">Implementing eco-friendly practices in schools and colleges to create environmentally conscious learners...</p>
+                                    <div class="post-meta">
+                                        <span class="author">By Sunita Thapa</span>
+                                        <span class="date">Jan 8, 2024</span>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="post-item">
+                                <div class="post-content">
+                                    <div class="post-category technology">Technology</div>
+                                    <h4><a href="#">AI in Education: Opportunities and Challenges</a></h4>
+                                    <p class="post-excerpt">Examining the role of artificial intelligence in transforming educational experiences and addressing concerns...</p>
+                                    <div class="post-meta">
+                                        <span class="author">By Tech Team</span>
+                                        <span class="date">Jan 5, 2024</span>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+
+                    <!-- Categories -->
+                    <div class="sidebar-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-folder"></i> Categories</h3>
+                        </div>
+                        <div class="categories-list">
+                            <a href="#" class="category-item">
+                                <span class="category-name">Ethics & Values</span>
+                                <span class="category-count">18</span>
+                            </a>
+                            <a href="#" class="category-item">
+                                <span class="category-name">News & Updates</span>
+                                <span class="category-count">24</span>
+                            </a>
+                            <a href="#" class="category-item">
+                                <span class="category-name">Education</span>
+                                <span class="category-count">32</span>
+                            </a>
+                            <a href="#" class="category-item">
+                                <span class="category-name">Technology</span>
+                                <span class="category-count">15</span>
+                            </a>
+                            <a href="#" class="category-item">
+                                <span class="category-name">Society & Culture</span>
+                                <span class="category-count">12</span>
+                            </a>
+                            <a href="#" class="category-item">
+                                <span class="category-name">Environment</span>
+                                <span class="category-count">9</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Writing Tips -->
+                    <div class="sidebar-card tips-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-lightbulb"></i> Writing Tips</h3>
+                        </div>
+                        <div class="tips-content">
+                            <div class="tip-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Write clear and engaging headlines</span>
+                            </div>
+                            <div class="tip-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Use relevant tags for better discoverability</span>
+                            </div>
+                            <div class="tip-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Include credible sources and references</span>
+                            </div>
+                            <div class="tip-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Keep paragraphs concise and readable</span>
+                            </div>
+                            <div class="tip-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Proofread before publishing</span>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="/Assets/logo.jpeg" alt="Digital Pathshala Logo" class="footer-logo-img">
+                        <span>Digital Pathshala</span>
+                    </div>
+                    <p>Empowering digital education in Nepal through quality content and innovative learning experiences.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/blogs">Blogs</a></li>
+                        <li><a href="/courses">Courses</a></li>
+                        <li><a href="/about">About Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="#">Ethics & Values</a></li>
+                        <li><a href="#">News & Updates</a></li>
+                        <li><a href="#">Education</a></li>
+                        <li><a href="#">Technology</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> Itahari-9, Sunsari, Nepal</p>
+                        <p><i class="fas fa-phone"></i> +977 9820305703</p>
+                        <p><i class="fas fa-envelope"></i> digitalpathshala@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Digital Pathshala. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -78,7 +78,7 @@ a:after {
     width: 0;
 }
 
-a:hover:after {
+ul li a:hover:after {
     width: 100%;
     left: 0;
 }

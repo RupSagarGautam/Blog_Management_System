@@ -2,12 +2,23 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Neo sans, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'Neo Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+:root {
+    --primary-color: #32e67e;
+    --secondary-color: #626161;
+    --text-color: #3a3a3a;
+    --background-color: #f0fff4;
+    --border-color: #e9ecef;
+    --shadow-color: rgba(0, 0, 0, 0.435);
+    --editor-bg: #ffffff;
+    --toolbar-bg: #f8f9fa;
 }
 
 body {
-    background-color: #d9fde32b;
-    color: #2d3436;
+    background-color: var(--background-color);
+    color: var(--text-color);
     line-height: 1.6;
 }
 
@@ -15,14 +26,13 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 5%;
-    background-color: #d9fde366;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 1rem 5%;
+    background-color: #e0fde8;
+    box-shadow: 0 2px 10px var(--shadow-color);
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    filter: blur(0.2px);
 }
 
 .leftsection {
@@ -68,7 +78,7 @@ a:after {
     width: 0;
 }
 
-a:hover:after {
+ul li a:hover:after {
     width: 100%;
     left: 0;
 }
@@ -98,15 +108,222 @@ a:hover:after {
 
 .getstarted-btn {
     padding: 0.5rem 1rem;
-    background-color: #447100;
+    background-color: #626161;
     color: white !important;
     border-radius: 4px;
 }
 
 .getstarted-btn:hover {
     background-color: #32e67e !important;
-    transform: scale(20px);
     color: #3a3a3a !important;
+    transform: scale(20px);
+}
+
+/* Hamburger Menu Styles */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color);
+    margin: 5px 0;
+    transition: all 0.3s ease;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100vh;
+    background-color: var(--background-color);
+    box-shadow: -2px 0 10px var(--shadow-color);
+    z-index: 1002;
+    transition: right 0.3s ease;
+    padding: 20px;
+}
+
+.sidebar.active {
+    right: 0;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.sidebar-header .logo img {
+    height: 25px;
+}
+
+.close-btn {
+    font-size: 30px;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.sidebar-nav {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-nav li {
+    margin: 15px 0;
+}
+
+.sidebar-nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+    padding: 10px 0;
+    transition: color 0.3s ease;
+}
+
+.sidebar-nav a:hover {
+    color: var(--primary-color);
+}
+
+.sidebar-nav .getstarted-btn {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.sidebar-nav .getstarted-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+/* Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+    display: none;
+}
+
+.overlay.active {
+    display: block;
+}
+
+
+/* Update existing media queries */
+@media screen and (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    .rightsection {
+        display: none;
+    }
+
+    .header {
+        padding: 0.8rem 2%;
+    }
+    
+    .logo img {
+        height: 50px;
+    }
+    
+    .leftsection .text {
+        font-size: 1.2rem;
+    }
+    
+    .textheading {
+        flex-direction: column;
+        text-align: center;
+        margin-top: 80px;
+    }
+    
+    .textheading h3 {
+        font-size: 3rem;
+        text-align: center;
+    }
+    
+    .secondsection {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .textparagraph p {
+        margin-top: 30px;
+        font-size: 20px;
+    }
+    
+    .secondimg img, .secondfirstimg img {
+        height: 200px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .sidebar {
+        width: 250px;
+    }
+
+    .header {
+        padding: 0.5rem 1%;
+    }
+    
+    .logo img {
+        height: 40px;
+    }
+    
+    .leftsection .text {
+        font-size: 1rem;
+    }
+    
+    .textheading {
+        margin-top: 60px;
+    }
+    
+    .textheading h3 {
+        font-size: 2rem;
+        line-height: 35px;
+    }
+    
+    .image img {
+        height: 180px;
+    }
+    
+    .search-btn input {
+        height: 5vh;
+        font-size: 16px;
+        background-size: 16px;
+    }
+    
+    ::placeholder {
+        font-size: 16px;
+    }
+    
+    .textparagraph p {
+        font-size: 18px;
+        margin-top: 20px;
+    }
+    
+    .secondimg img, .secondfirstimg img {
+        height: 150px;
+    }
+    
+    .getstarted-btn {
+        padding: 0.3rem 0.6rem;
+    }
 }
 
 @media screen and (max-height: 300px) {
@@ -117,8 +334,7 @@ a:hover:after {
 
 /* Main Content Styles */
 .body {
-    margin-top: 80px;
-    
+    margin-top: 90px;
     background-color: #b3d99f10;
 }
 
@@ -127,7 +343,7 @@ a:hover:after {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 140px;
+    margin-top: 100px;
     
 }
 
@@ -139,7 +355,7 @@ a:hover:after {
     color: #3a3a3a;
     flex: 1;
     text-transform: capitalize;
-    text-align: center;
+    text-align: left;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -245,5 +461,187 @@ a:hover:after {
     .secondsection {
         flex-direction: column;
         text-align: center;
+    }
+}
+
+/* Responsive Design Styles */
+/* Large Screens (TVs and Large Monitors) */
+@media screen and (min-width: 1921px) {
+    .body {
+        max-width: 1800px;
+        margin: 90px auto 0;
+    }
+    
+    .textheading h3 {
+        font-size: 6rem;
+    }
+    
+    .search-btn input {
+        width: 80vw;
+        max-width: 1200px;
+    }
+}
+
+/* Medium Screens (Laptops and Desktops) */
+@media screen and (max-width: 1366px) {
+    .textheading h3 {
+        font-size: 4rem;
+    }
+    
+    .search-btn input {
+        width: 80vw;
+    }
+}
+
+/* Small Screens (Tablets and Small Laptops) */
+@media screen and (max-width: 1024px) {
+    .header {
+        padding: 1rem 3%;
+    }
+    
+    .textheading h3 {
+        font-size: 3.5rem;
+        line-height: 45px;
+    }
+    
+    .image img {
+        height: 250px;
+    }
+    
+    .secondsection {
+        gap: 5vh;
+        padding: 1rem;
+    }
+}
+
+/* Tablets */
+@media screen and (max-width: 768px) {
+    .header {
+        padding: 0.8rem 2%;
+    }
+    
+    .logo img {
+        height: 50px;
+    }
+    
+    .leftsection .text {
+        font-size: 1.2rem;
+    }
+    
+    .textheading {
+        flex-direction: column;
+        text-align: center;
+        margin-top: 80px;
+    }
+    
+    .textheading h3 {
+        font-size: 3rem;
+        text-align: center;
+    }
+    
+    .nav ul {
+        gap: 0.8rem;
+    }
+    
+    .nav ul li a {
+        font-size: 11px;
+        padding: 0.4rem 0.8rem;
+    }
+    
+    .secondsection {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .textparagraph p {
+        margin-top: 30px;
+        font-size: 20px;
+    }
+    
+    .secondimg img, .secondfirstimg img {
+        height: 200px;
+    }
+}
+
+/* Mobile Devices */
+@media screen and (max-width: 480px) {
+    .header {
+        padding: 0.5rem 1%;
+    }
+    
+    .logo img {
+        height: 40px;
+    }
+    
+    .leftsection .text {
+        font-size: 1rem;
+    }
+    
+    .rightsection .nav ul {
+        gap: 0.5rem;
+    }
+    
+    .nav ul li a {
+        font-size: 10px;
+        padding: 0.3rem 0.6rem;
+    }
+    
+    .textheading {
+        margin-top: 60px;
+    }
+    
+    .textheading h3 {
+        font-size: 2rem;
+        line-height: 35px;
+    }
+    
+    .image img {
+        height: 180px;
+    }
+    
+    .search-btn input {
+        height: 5vh;
+        font-size: 16px;
+        background-size: 16px;
+    }
+    
+    ::placeholder {
+        font-size: 16px;
+    }
+    
+    .textparagraph p {
+        font-size: 18px;
+        margin-top: 20px;
+    }
+    
+    .secondimg img, .secondfirstimg img {
+        height: 150px;
+    }
+    
+    .getstarted-btn {
+        padding: 0.3rem 0.6rem;
+    }
+}
+
+/* Small Mobile Devices */
+@media screen and (max-width: 320px) {
+    .header {
+        flex-direction: column;
+        padding: 0.5rem;
+    }
+    
+    .rightsection .nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .textheading h3 {
+        font-size: 1.8rem;
+        line-height: 30px;
+    }
+    
+    .image img {
+        height: 150px;
     }
 }

@@ -8,8 +8,8 @@
 :root {
     --primary-color: #32e67e;
     --secondary-color: #626161;
-    --text-color: #2d3436;
-    --background-color: #f8f9fa;
+    --text-color: #3a3a3a;
+    --background-color: #f0fff4;
     --border-color: #e9ecef;
     --shadow-color: rgba(0, 0, 0, 0.435);
     --editor-bg: #ffffff;
@@ -27,7 +27,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 5%;
-    background-color: #d9fde366;
+    background-color: #e0fde8;
     box-shadow: 0 2px 10px var(--shadow-color);
     position: fixed;
     width: 100%;

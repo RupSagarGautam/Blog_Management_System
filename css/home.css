@@ -6,22 +6,22 @@
 }
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: #f0fff4; /* Very light green */
-  color: #2d3748; /* Slate gray */
+  background-color: #faf9f6; /* Page background */
+  color: #3a3a3a; /* Text color */
 }
 
 /* Layout */
 .container {
   display: flex;
   flex-wrap: wrap;
-  border-left: 2px solid #38a169; /* Continued green line */
+  border-left: 2px solid #38a169;
   min-height: 100vh;
 }
 
 /* Sidebar */
 .sidebar {
   width: 230px;
-  background-color: #ffffff;
+  background-color: #d3ffdf66; /* Nav-bar Color */
   padding: 20px;
   border-right: 2px solid #38a169;
 }
@@ -31,8 +31,8 @@ body {
   position: relative;
 }
 .dropdown-button {
-  background-color: #38a169;
-  color: white;
+  background-color: #32e67e; /* Button Background Color */
+  color: #faf9f6; /* Button Text Color */
   border: none;
   padding: 10px 15px;
   font-size: 16px;
@@ -46,7 +46,7 @@ body {
   margin-top: 10px;
   background-color: #ffffff;
   border-radius: 4px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(128, 128, 128, 0.2);
   list-style: none;
 }
 .dropdown-menu li {
@@ -77,6 +77,7 @@ body {
   flex: 1;
   padding: 30px;
   min-width: 300px;
+  background-color: #f0fff4; /* div background color */
 }
 .content h1 {
   font-size: 28px;
@@ -93,7 +94,7 @@ body {
   border-radius: 10px;
   max-width: 960px;
   width: 100%;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 12px rgba(128, 128, 128, 0.15);
 }
 .section-wrapper h2 {
   margin-bottom: 25px;
@@ -122,7 +123,7 @@ body {
   scroll-snap-align: start;
   background-color: #ffffff;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 12px rgba(128, 128, 128, 0.2);
   overflow: hidden;
 }
 .blog-card img {
@@ -138,7 +139,7 @@ body {
 }
 .blog-card p {
   font-size: 14px;
-  color: #2d3748;
+  color: #3a3a3a;
   margin: 0 15px 15px;
 }
 
@@ -146,7 +147,10 @@ body {
 .about-company {
   background-color: #f0fff4;
   padding: 60px 20px;
-  margin-left: 230px; /* Align with main content */
+  margin-left: 230px;
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
 }
 .about-container {
   max-width: 960px;
@@ -154,7 +158,7 @@ body {
 }
 .about-container h2 {
   font-size: 28px;
-  color: #2d3748;
+  color: #3a3a3a;
   margin-bottom: 40px;
 }
 .about-cards {
@@ -166,7 +170,7 @@ body {
 .about-card {
   background-color: #ffffff;
   border-radius: 10px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 6px 12px rgba(128, 128, 128, 0.2);
   padding: 25px 20px;
   flex: 1 1 30%;
   min-width: 260px;
@@ -185,7 +189,7 @@ body {
 .about-card .number {
   font-size: 20px;
   font-weight: bold;
-  color: #2d3748;
+  color: #3a3a3a;
   margin-bottom: 10px;
 }
 .about-card h3 {
@@ -196,12 +200,12 @@ body {
 }
 .about-card p {
   font-size: 14px;
-  color: #2d3748;
+  color: #3a3a3a;
   margin-bottom: 20px;
 }
 .read-more-btn {
-  background-color: #38a169;
-  color: #ffffff;
+  background-color: #32e67e; /* Button Background Color */
+  color: #faf9f6; /* Button Text Color */
   text-decoration: none;
   padding: 8px 16px;
   border-radius: 6px;
@@ -234,9 +238,10 @@ body {
   }
 
   .about-company {
-    margin-left: 0;
+    margin-left: 60;
   }
 }
+
 /* Our Vision Section */
 .our-vision {
   background-color: #f0fff4;
@@ -251,7 +256,7 @@ body {
 
 .vision-container h2 {
   font-size: 28px;
-  color: #2d3748;
+  color: #3a3a3a;
   margin-bottom: 40px;
 }
 
@@ -265,7 +270,7 @@ body {
 .vision-card {
   background-color: #ffffff;
   border-radius: 10px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 6px 12px rgba(128, 128, 128, 0.2);
   padding: 25px 20px;
   flex: 1 1 30%;
   min-width: 260px;
@@ -289,7 +294,7 @@ body {
 
 .vision-card p {
   font-size: 14px;
-  color: #2d3748;
+  color: #3a3a3a;
   line-height: 1.5;
 }
 

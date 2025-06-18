@@ -12,7 +12,7 @@ body {
     }
     .bubble {
       position: absolute;
-      background: #A3B18A;
+      background: #7ba238;
       opacity: 0.18;
       border-radius: 50%;
       z-index: 0;
@@ -188,7 +188,7 @@ body {
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #32e67e;
+      background: #e9fbe1;
       border: solid 1px #6b8361;
       border-radius: 16px;
       padding: 12px 0;

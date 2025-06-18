@@ -1,5 +1,5 @@
   body {
-      background: #fff;
+      background:#faf9f6;
       font-family: 'Montserrat', Arial, sans-serif;
       margin: 0;
       padding: 0;
@@ -62,7 +62,7 @@
     }
     .container {
       width: 600px;
-      background: #fff;
+      background: #f0fff4;
       border-radius: 32px;
       box-shadow: 0 6px 32px rgba(0,0,0,0.09);
       padding: 56px 38px 38px 38px;
@@ -139,7 +139,11 @@
       transition: background 0.2s;
     }
     .signup-btn:hover {
-      background: #e9fbe1;
+      background:  #faf9f6;
+      transform: translateY(-2px);
+      transition: 0.5s linear ;
+      border: solid 2px #111b15;
+      box-shadow: 2px 4px 12px var #3a3a3a;
     }
     .link-row {
       width: 100%;

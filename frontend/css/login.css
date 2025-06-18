@@ -1,5 +1,5 @@
 body {
-      background: #fff;
+      background: #faf9f6;
       font-family: 'Montserrat', Arial, sans-serif;
       margin: 0;
       padding: 0;
@@ -61,8 +61,7 @@ body {
     }
     .container {
       width: 500px;
-
-      background: #fff;
+      background: #f0fff4;
       border-radius: 32px;
       box-shadow: 0 6px 32px rgba(0,0,0,0.09);
       padding: 56px 38px 38px 38px;
@@ -144,8 +143,10 @@ body {
       transition: 0.2s ease-out;
     }
     .login-btn:hover {
-      background: #e9fbe1;
-      box-shadow: 2px 2px 9px #333;
+      background:  #faf9f6;
+      transform: translateY(-2px);
+      border: solid 2px #111b15;
+      box-shadow: 2px 4px 12px var #3a3a3a;
       transition: 0.5s linear ;
     }
     .forgot-row {

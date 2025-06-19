@@ -26,14 +26,14 @@ h1 {
 .logo {
   text-align: left;
   position: absolute;
-  left: 170px;
-  top: 50%;
-  transform: translateY(-50%);
+  left: 200px;
+  top: 350px;
+  transform: none;
 }
 
 .logo img {
-  width: 600px;
-  height: 600px;
+  width: 500px;
+  height: 500px;
   object-fit: contain;
 }
 
@@ -124,4 +124,70 @@ h1 {
   background-color: #27ae60;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(46, 204, 113, 0.2);
+}
+
+.company-info {
+    position: absolute;
+    left: 100px;
+    top: 50px;
+    width: 300px;
+    background-color: transparent;
+    padding: 20px;
+}
+
+.info-item {
+    padding: 10px 0;
+    font-size: 1.1rem;
+    color: #3a3a3a;
+    background-color: transparent;
+}
+
+.company-info h2.info-item {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #2ecc71;
+    margin-bottom: 10px;
+    padding-bottom: 15px;
+    white-space: nowrap;
+    width: auto;
+}
+
+.info-title {
+    font-weight: bold;
+    font-size: 1.45em;
+}
+
+.contact-details {
+    display: inline-block;
+    margin-top: 5px;
+    font-size: 1em;
+    letter-spacing: 1px;
+    word-spacing: 20px;
+}
+
+.support-main-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+    white-space: nowrap;
+}
+.support-title {
+    font-weight: bold;
+    margin-top: 10px;
+    display: block;
+}
+.support-line {
+    margin-left: 20px;
+    margin-bottom: 4px;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+}
+.support-section {
+    margin-bottom: 10px;
+}
+
+.email-line {
+    white-space: nowrap;
 }

@@ -304,3 +304,113 @@ button {
 button:hover {
   background-color: var(--sage-green-dark);
 }
+
+/* ----------------------- */
+/* 🌐 Responsive Design */
+/* ----------------------- */
+
+@media (max-width: 1024px) {
+  .nav-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .logo {
+    font-size: 1.6rem;
+  }
+
+  .page-header h1 {
+    font-size: 2.4rem;
+  }
+
+  .team-intro {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-content {
+    padding: 1rem;
+  }
+
+  .team {
+    grid-template-columns: 1fr;
+  }
+
+  .member img {
+    width: 180px;
+    height: 180px;
+  }
+
+  .member h3 {
+    font-size: 1.3rem;
+  }
+
+  .member p,
+  .member-bio {
+    font-size: 0.95rem;
+  }
+
+  .quote-section blockquote {
+    font-size: 1.4rem;
+    padding: 0 1rem;
+  }
+
+  .company-says h2 {
+    font-size: 1.8rem;
+  }
+
+  .mission h3, .vision h3, .values h3 {
+    font-size: 1.2rem;
+  }
+
+  .mission, .vision, .values {
+    padding: 2rem;
+  }
+
+  .container {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-header h1 {
+    font-size: 2rem;
+  }
+
+  .member img {
+    width: 140px;
+    height: 140px;
+  }
+
+  .nav-links a {
+    margin-left: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .quote-section {
+    padding: 2rem;
+  }
+
+  .quote-section blockquote {
+    font-size: 1.2rem;
+  }
+
+  .values ul {
+    padding-left: 0;
+  }
+
+  .values li {
+    font-size: 0.95rem;
+  }
+}

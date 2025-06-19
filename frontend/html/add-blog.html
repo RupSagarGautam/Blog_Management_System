@@ -7,6 +7,7 @@
     <title>Add Blog Page</title>
     <link rel="stylesheet" href="/frontend/css/add-blog.css" />
     <link rel="shortcut icon" href="/frontend/Assets/favicon.ico" type="image/x-icon">
+    <script defer src="/frontend/js/script.js"></script>
 </head>
 
 <body>
@@ -23,21 +24,36 @@
         </a>
         <div class="rightsection">
             <div class="nav">
-                <ul>
-                   <li><a href="#about">About Us</a></li> |
-                    <li><a href="#blogs">Blogs</a></li> |
-<<<<<<< HEAD
-                    <li><a href="#write">Write</a></li> |
-=======
-                    <li><a href="/frontend/html/add-blog.html">Write</a></li> |
->>>>>>> 0848b6a55390ab057a3ad96f08ca48983922eec0
-                    <li><a href="/frontend/html/login.html">Log In</a></li> |
+                <ul class="nav-list">
+                   <li><a href="#about">About Us</a></li>
+                    <li><a href="#blogs">Blogs</a></li>
+                    <li><a href="/frontend/html/add-blog.html">Write</a></li>
+                    <li><a href="/frontend/html/login.html">Log In</a></li>
                     <li><a href="#getstarted" class="getstarted-btn">Get Started</a></li>
-                    
                 </ul>
+            </div>
+            <div class="hamburger" aria-label="Open navigation" tabindex="0">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
     </div>
+
+    <!-- Sidebar for mobile/tablet navigation -->
+    <div class="sidebar">
+        <button class="close-btn" aria-label="Close navigation">&times;</button>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#blogs">Blogs</a></li>
+                <li><a href="/frontend/html/add-blog.html">Write</a></li>
+                <li><a href="/frontend/html/login.html">Log In</a></li>
+                <li><a href="#getstarted" class="getstarted-btn">Get Started</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="overlay"></div>
 
     <div class="body">
         <div class="topaddsection">

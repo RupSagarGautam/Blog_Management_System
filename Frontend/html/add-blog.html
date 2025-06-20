@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Blog Page</title>
+    <link rel="stylesheet" href="/frontend/css/add-blog.css" />
+    <link rel="shortcut icon" href="/frontend/Assets/favicon.ico" type="image/x-icon">
+    <script defer src="/frontend/js/script.js"></script>
+</head>
+
+<body>
+     <div class="header">
+        <a href="/frontend/html/"> 
+        <div class="leftsection">
+            <div class="logo">
+                <img src="/frontend/Assets/favicon.ico" alt="BMS Logo" />
+            </div>
+            <div class="text">
+                Digital Pathshala
+            </div>
+        </div>
+        </a>
+        <div class="rightsection">
+            <div class="nav">
+                <ul class="nav-list">
+                   <li><a href="#about">About Us</a></li> |
+                    <li><a href="#blogs">Blogs</a></li> |
+                    <li><a href="/frontend/html/add-blog.html">Write</a></li> |
+                    <li><a href="/frontend/html/login.html">Log-In</a></li> |
+                    <li><a href="#getstarted" class="getstarted-btn">Get Started</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="hamburger" aria-label="Open navigation" tabindex="0">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <!-- Sidebar for mobile/tablet navigation -->
+     <!-- Sidebar Navigation -->
+     <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <img src="/frontend/Assets/sidebar_img.jpg" alt="BMS Logo" />
+            </div>
+            <div class="close-btn">&times;</div>
+        </div>
+        <ul class="sidebar-nav">
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#blogs">Blogs</a></li>
+            <li><a href="/frontend/html/add-blog.html">Write</a></li>
+            <li><a href="/frontend/html/login.html">Log In</a></li>
+            <li><a href="#getstarted" class="getstarted-btn">Get Started</a></li>
+        </ul>
+    </div>
+    <div class="overlay"></div>
+    <!-- End for Header -->
+
+    <div class="body">
+        <div class="topaddsection">
+            <img src="/frontend/Assets/working_boy.png" alt="Hello World"/>
+            </div>
+        <div class="addsection">
+            <div class="innersection">
+                <h1>Create New Blog Post</h1>
+                <form id="blogForm" class="blog-form">
+                    <div class="form-group">
+                        <label for="blogTitle">Title</label>
+                        <input type="text" id="blogTitle" name="title" placeholder="Enter your blog title" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="imageInput">Featured Image</label>
+                        <div class="image-upload-container">
+                            <input type="file" id="imageInput" name="image" accept="image/*" />
+                            <div class="image-preview" id="imagePreview"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="blogContent">Content</label>
+                        <div class="editor-container">
+                            
+                            <div id="editor" class="editor-content" contenteditable="true"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="blogTags">Tags</label>
+                        <input type="text" id="blogTags" name="tags" placeholder="Enter tags separated by commas" />
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Publish Post</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Image preview functionality
+        document.getElementById('imageInput').addEventListener('change', function(e) {
+            const preview = document.getElementById('imagePreview');
+            const file = e.target.files[0];
+            
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.innerHTML = `<img src="${e.target.result}" alt="Preview" />`;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Rich text editor functionality
+        const editor = document.getElementById('editor');
+        const toolbarButtons = document.querySelectorAll('.toolbar-btn');
+
+        toolbarButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const command = this.dataset.command;
+                document.execCommand(command, false, null);
+                editor.focus();
+            });
+        });
+    </script>
+</body>
+
+</html>

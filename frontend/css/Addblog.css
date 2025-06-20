@@ -1,5 +1,5 @@
 body {
-    background: #faf9f6;
+    background: #f0fff4;
     font-family: 'Segoe UI', Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -56,7 +56,7 @@ body {
 .add-blog-container {
     max-width: 900px;
     margin: 40px auto;
-    background: #f0fff4;
+    background: #faf9f6;
     border-radius: 16px;
     border: solid 2px #111b15;
     box-shadow: 0 4px 24px rgba(0,0,0,0.08);

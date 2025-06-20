@@ -158,9 +158,9 @@ body {
   text-align: center;
 }
 .about-container h2 {
-  font-size: 28px;
+  font-size: 24px;
   color: #3a3a3a;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
 }
 .about-cards {
   display: flex;
@@ -223,6 +223,7 @@ body {
 }
 
 
+/* Our Vision Section */
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -250,7 +251,6 @@ body {
   }
 }
 
-/* Our Vision Section */
 .our-vision {
   background-color: #f0fff4;
   padding: 60px 20px;
@@ -263,9 +263,9 @@ body {
 }
 
 .vision-container h2 {
-  font-size: 28px;
+  font-size: 24px;
   color: #3a3a3a;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
 }
 
 .vision-cards {

@@ -1,64 +1,15 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Blog Management System</title>
-    <link rel="stylesheet" href="/frontend/css/aboutus.css">
+    <link rel="stylesheet" href="/static/css/aboutus.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-      <div class="header">
-        <a href="/frontend/html/"> 
-        <div class="leftsection">
-            <div class="logo">
-                <img src="/frontend/Assets/favicon.ico" alt="BMS Logo" />
-            </div>
-            <div class="text">
-                Digital Pathshala
-            </div>
-        </div>
-        </a>
-        <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div class="rightsection">
-            <div class="nav">
-                <ul>
-                    <li><a href="#about">About Us</a></li> |
-                    <li><a href="#blogs">Blogs</a></li> |
-                   <li><a href="/frontend/html/add-blog.html">Write</a></li> |
-                    <li><a href="/frontend/html/login.html">Log-In</a></li> |
-                    <li><a href="#getstarted" class="getstarted-btn">Get Started</a></li>
-                </ul>
-            </div>
-        </div>
-    
-     </div>
-     
-    <!-- Sidebar Navigation -->
-    <div class="sidebar">
-        <div class="sidebar-header">
-            <div class="logo">
-                <img src="/frontend/Assets/sidebar_img.jpg" alt="BMS Logo" />
-            </div>
-            <div class="close-btn">&times;</div>
-        </div>
-        <ul class="sidebar-nav">
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#blogs">Blogs</a></li>
-            <li><a href="/frontend/html/add-blog.html">Write</a></li>
-            <li><a href="/frontend/html/login.html">Log In</a></li>
-            <li><a href="#getstarted" class="getstarted-btn">Get Started</a></li>
-        </ul>
-    </div>
-    <div class="overlay"></div>
-    <!-- End for Header -->
-
-<script src="/frontend/js/script.js"></script>
-
+    {% include "header.html" %}
     <div class="container">
         <div class="page-header">
             <h1>About Our Team</h1>

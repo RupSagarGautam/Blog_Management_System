@@ -1,3 +1,4 @@
+ {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,64 +6,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Blog Page</title>
-    <link rel="stylesheet" href="/frontend/css/add-blog.css" />
-    <link rel="shortcut icon" href="/frontend/Assets/favicon.ico" type="image/x-icon">
-    <script defer src="/frontend/js/script.js"></script>
+    <link rel="stylesheet" href="/static/css/add-blog.css" />
+    <link rel="shortcut icon" href="/static/Assets/favicon.ico" type="image/x-icon">
+    <script defer src="/static/js/script.js"></script>
 </head>
 
 <body>
-     <div class="header">
-        <a href="/frontend/html/"> 
-        <div class="leftsection">
-            <div class="logo">
-                <img src="/frontend/Assets/favicon.ico" alt="BMS Logo" />
-            </div>
-            <div class="text">
-                Digital Pathshala
-            </div>
-        </div>
-        </a>
-        <div class="rightsection">
-            <div class="nav">
-                <ul class="nav-list">
-                   <li><a href="#about">About Us</a></li> |
-                    <li><a href="#blogs">Blogs</a></li> |
-                    <li><a href="/frontend/html/add-blog.html">Write</a></li> |
-                    <li><a href="/frontend/html/login.html">Log-In</a></li> |
-                    <li><a href="#getstarted" class="getstarted-btn">Get Started</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="hamburger" aria-label="Open navigation" tabindex="0">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </div>
-
-    <!-- Sidebar for mobile/tablet navigation -->
-     <!-- Sidebar Navigation -->
-     <div class="sidebar">
-        <div class="sidebar-header">
-            <div class="logo">
-                <img src="/frontend/Assets/sidebar_img.jpg" alt="BMS Logo" />
-            </div>
-            <div class="close-btn">&times;</div>
-        </div>
-        <ul class="sidebar-nav">
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#blogs">Blogs</a></li>
-            <li><a href="/frontend/html/add-blog.html">Write</a></li>
-            <li><a href="/frontend/html/login.html">Log In</a></li>
-            <li><a href="#getstarted" class="getstarted-btn">Get Started</a></li>
-        </ul>
-    </div>
-    <div class="overlay"></div>
-    <!-- End for Header -->
+    {% include "header.html" %}
 
     <div class="body">
         <div class="topaddsection">
-            <img src="/frontend/Assets/working_boy.png" alt="Hello World"/>
+            <img src="/static/Assets/working_boy.png" alt="Hello World"/>
             </div>
         <div class="addsection">
             <div class="innersection">

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile Overview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/profile.css">
+</head>
+<body>
+    <div class="profile-main-container">
+        <h1 class="profile-title">User Profile Overview</h1>
+        <div class="profile-flex">
+            <div class="profile-left">
+                <div class="profile-pic-summary">
+                    <label for="profile-pic-upload" class="profile-pic-label">
+                        <div class="profile-pic-wrapper">
+                            <img src="https://i.pravatar.cc/180?img=7" alt="User Picture" class="user-pic" id="profile-pic-preview">
+                            <span class="camera-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="13" r="3.2" stroke="#fff" stroke-width="2"/>
+                                    <rect x="2.5" y="6.5" width="19" height="13" rx="3.5" stroke="#fff" stroke-width="2"/>
+                                    <rect x="8" y="2" width="8" height="4" rx="2" fill="#fff"/>
+                                </svg>
+                            </span>
+                            <input type="file" id="profile-pic-upload" name="profile-pic-upload" accept="image/*" style="display:none;">
+                        </div>
+                    </label>
+                    <div class="profile-summary-details">
+                        <div class="profile-summary-name">Nabin Regmi</div>
+                        <div class="profile-summary-email">user@account.com</div>
+                        <div class="profile-summary-phone">+977-9804373219</div>
+                        <div class="profile-summary-address">Budhiganga-01, Biratnagar</div>
+                        <div class="profile-summary-country">Nepal</div>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-right">
+                <form class="user-form" enctype="multipart/form-data">
+                    <!-- Hidden checkbox to toggle edit mode -->
+                    <input type="checkbox" id="edit-toggle" class="edit-toggle-checkbox" style="display:none;">
+                    <div class="form-title">User Details Customization</div>
+                    <div class="user-info">
+                        <div class="info-group">
+                            <label class="label">Full Name</label>
+                            <span class="value view-mode">Nabin Regmi</span>
+                            <input type="text" class="value-input edit-mode" placeholder="Nabin Regmi" value="User Account" name="name" readonly>
+                        </div>
+                        <div class="info-group">
+                            <label class="label">Email Address</label>
+                            <span class="value view-mode">reg332@gmail.com</span>
+                            <input type="email" class="value-input edit-mode" value="user@account.com" name="email" readonly>
+                        </div>
+                        <div class="info-group">
+                            <label class="label">Phone Number</label>
+                            <span class="value view-mode">(977) 9804373219</span>
+                            <input type="tel" class="value-input edit-mode" value="(977) 981321-7654" name="phone" readonly>
+                        </div>
+                        <div class="info-group">
+                            <label class="label">Address</label>
+                            <span class="value view-mode">Budhiganga- 01, Biratnagar</span>
+                            <input type="text" class="value-input edit-mode" value="Dharan-08, Bargachii" name="address1" readonly>
+                        </div>
+                        <div class="info-group">
+                            <label class="label">City</label>
+                            <span class="value view-mode">Biratnagar</span>
+                            <input type="text" class="value-input edit-mode" value="Dharan" name="city" readonly>
+                        </div>
+                        <div class="info-group">
+                            <label class="label">State / Province / Region</label>
+                            <span class="value view-mode">Province 1</span>
+                            <input type="text" class="value-input edit-mode" value="Province 1" name="state" readonly>
+                        </div>
+                        <div class="info-group">
+                            <label class="label">Zip / Postal Code</label>
+                            <span class="value view-mode">57700</span>
+                            <input type="text" class="value-input edit-mode" value="56700" name="zip" readonly>
+                        </div>
+                        <div class="info-group">
+                            <label class="label">Country / Nationality</label>
+                            <span class="value view-mode">Nepalese</span>
+                            <input type="text" class="value-input edit-mode" value="Nepalese" name="country" readonly>
+                        </div>
+                    </div>
+                    <label for="edit-toggle" class="update-btn view-mode">Update</label>
+                    <button type="submit" class="update-btn edit-mode">Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const editToggle = document.getElementById('edit-toggle');
+            const inputs = document.querySelectorAll('.user-form .value-input.edit-mode');
+
+            editToggle.addEventListener('change', function() {
+                const isEditMode = this.checked;
+                inputs.forEach(input => {
+                    input.readOnly = !isEditMode;
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

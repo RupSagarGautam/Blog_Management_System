@@ -27,6 +27,7 @@ urlpatterns = [
     path('home/', views.home),
     path('log-in/',views.login),
     path('sign-up/',views.signup),
+    path('user-profile/',views.profile),
     path('add-blog-admin/',views.addBlogAdmin),
     path('update-blog-admin/',views.updateBlogAdmin),
     path('view-blog-list/',views.blogListAdmin)

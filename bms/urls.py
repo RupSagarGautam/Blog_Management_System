@@ -19,6 +19,7 @@ from django.urls import path
 from bms import views
 
 urlpatterns = [
+    
     path('',views.landingPage),
     path('admin/', admin.site.urls),
     path('about-us/',views.aboutUS ),
@@ -30,5 +31,4 @@ urlpatterns = [
     path('add-blog-admin/',views.addBlogAdmin),
     path('update-blog-admin/',views.updateBlogAdmin),
     path('view-blog-list/',views.blogListAdmin)
-    
 ]

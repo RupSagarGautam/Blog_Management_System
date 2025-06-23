@@ -15,7 +15,7 @@ def home(request):
     return render(request, 'home.html')
 
 def landingPage(request):
-    return render(request, 'index.html')
+    return render(request, 'pages/index.html')
 
 def login(request):
     return render(request, 'login.html')
@@ -31,4 +31,4 @@ def updateBlogAdmin(request):
     return render(request, 'updateblog.html')
 
 def blogListAdmin(request):
-    return render(request, 'blog-list.html')
+    return render(request, 'bloglist.html')

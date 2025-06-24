@@ -1,17 +1,20 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog List</title>
-    <link rel="stylesheet" href="/frontend/css/bloglist.css" />
+    <link rel="stylesheet" href="/static/css/bloglist.css" />
 </head>
+
+{% include 'header.html' %}
 <body>
     <div class="navbar">
         <ul>
-            <li><a href="Addblog.html">Add Blog</a></li>
-            <li><a href="UpdateBlog.html">Update Blog</a></li>
-            <li><a href="bloglist.html" class="active">Blog List</a></li>
+            <li><a href="/add-blog-admin">Add Blog</a></li>
+            <li><a href="/update-blog-admin">Update Blog</a></li>
+            <li><a href="/view-blog-list" class="active" >Blog List</a></li>
         </ul>
     </div>
     <div class="blog-list-container">
@@ -19,6 +22,6 @@
         <hr />
         <div id="blogList"></div>
     </div>
-    <script src="bloglist.js"></script>
+    <script src="/static/js/bloglist.js"></script>
 </body>
 </html>

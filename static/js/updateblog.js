@@ -51,7 +51,7 @@ function updateBlog(updatedBlog) {
     if (idx !== -1) {
         blogs[idx] = updatedBlog;
         localStorage.setItem('blogs', JSON.stringify(blogs));
-        window.location.href = 'bloglist.html';
+        window.location.href = 'view-blog-list/';
     } else {
         alert('No blog found with this title to update.');
     }

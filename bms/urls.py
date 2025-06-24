@@ -16,7 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from bms import views
 
 urlpatterns = [
+    path('',views.landingPage),
     path('admin/', admin.site.urls),
+    path('about-us/',views.aboutUS ),
+    path('add-blog/', views.addBlogUser),
+    path('blogs/', views.blog),
+    path('home/', views.home),
+    path('log-in/',views.login),
+    path('sign-up/',views.signup),
+    path('add-blog-admin/',views.addBlogAdmin),
+    path('update-blog-admin/',views.updateBlogAdmin),
+    path('view-blog-list/',views.blogListAdmin)
+    
 ]

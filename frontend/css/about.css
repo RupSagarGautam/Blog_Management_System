@@ -28,7 +28,7 @@ body {
   line-height: 1.6;
 }
 
-.nav {
+/* .nav {
   background-color: var(--navbar-background);
   box-shadow: var(--shadow);
   position: fixed;
@@ -87,7 +87,7 @@ body {
 
 .nav-links a:hover::after {
   width: 100%;
-}
+}*/
 
 .container {
   max-width: 1200px;
@@ -103,7 +103,7 @@ body {
 .page-header h1 {
   font-size: 2.8rem;
   color: var(--sage-green-dark);
-}
+} 
 
 .team-intro {
   font-family: 'Georgia', serif;
@@ -378,9 +378,24 @@ button:hover {
     padding: 2rem;
   }
 
-  .container {
-    padding: 1.5rem;
-  }
+ .container {
+  max-width: 1200px;
+  margin: 120px auto 2rem; /* Push down from fixed header */
+  padding: 2rem 5%;
+  background-color: var(--div-background);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+[id] {
+  scroll-margin-top: 100px;
+}
+
+body {
+  padding-bottom: 3rem;
+}
+
+
+
 }
 
 @media (max-width: 480px) {

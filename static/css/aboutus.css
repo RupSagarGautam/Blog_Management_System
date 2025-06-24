@@ -28,67 +28,6 @@ body {
   line-height: 1.6;
 }
 
-/* .nav {
-  background-color: var(--navbar-background);
-  box-shadow: var(--shadow);
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1000;
-  transition: all 0.3s ease;
-}
-
-.nav:hover {
-  box-shadow: var(--shadow-hover);
-}
-
-.nav-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1.2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: var(--sage-green);
-  text-decoration: none;
-}
-
-.logo:hover {
-  color: var(--sage-green-dark);
-}
-
-.nav-links a {
-  color: var(--text-color);
-  text-decoration: none;
-  margin-left: 2rem;
-  font-weight: 500;
-  position: relative;
-}
-
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: var(--sage-green);
-  transition: width 0.3s ease;
-}
-
-.nav-links a:hover {
-  color: var(--sage-green);
-}
-
-.nav-links a:hover::after {
-  width: 100%;
-}*/
-
 .container {
   max-width: 1200px;
   margin: 100px auto 0;

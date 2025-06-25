@@ -6,12 +6,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Blog Page</title>
+<<<<<<< HEAD:frontend/html/add-blog.html
+    <link rel="stylesheet" href="/frontend/css/add-blog.css" />
+    <link rel="shortcut icon" href="/frontend/Assets/favicon.ico" type="image/x-icon">
+    <script defer src="/frontend/js/script.js"></script>
+</head>
+
+<body>
+     <div class="header">
+        <a href="/frontend/html/"> 
+        <div class="leftsection">
+            <div class="logo">
+                <img src="/frontend/Assets/favicon.ico" alt="BMS Logo" />
+            </div>
+            <div class="text">
+                Digital Pathshala
+            </div>
+        </div>
+        </a>
+        <div class="rightsection">
+            <div class="nav">
+                <ul class="nav-list">
+                   <li><a href="#about">About Us</a></li>
+                    <li><a href="#blogs">Blogs</a></li>
+                    <li><a href="/frontend/html/add-blog.html">Write</a></li>
+                    <li><a href="/frontend/html/login.html">Log-In</a></li>
+                    <li><a href="#getstarted" class="getstarted-btn">Get Started</a></li>
+                </ul>
+            </div>
+            <div class="hamburger" aria-label="Open navigation" tabindex="0">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+=======
     <link rel="stylesheet" href="/static/css/add-blog.css" />
     <link rel="shortcut icon" href="/static/Assets/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
     {% include "layout/header.html" %}
+>>>>>>> 0c09b32a214c140a16e10232b60017e4b71dbd04:templates/add-blog.html
+
+    <!-- Sidebar for mobile/tablet navigation -->
+    <div class="sidebar">
+        <button class="close-btn" aria-label="Close navigation">&times;</button>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#blogs">Blogs</a></li>
+                <li><a href="/frontend/html/add-blog.html">Write</a></li>
+                <li><a href="/frontend/html/login.html">Log In</a></li>
+                <li><a href="#getstarted" class="getstarted-btn">Get Started</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="overlay"></div>
 
     <div class="body">
         <div class="topaddsection">

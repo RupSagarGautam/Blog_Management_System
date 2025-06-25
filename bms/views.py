@@ -15,12 +15,12 @@ def home(request):
     return render(request, 'home.html')
 
 def landingPage(request):
-    return render(request, 'index.html')
+    return render(request, 'pages/index.html')
 
-def login(request):
+def loginPage(request):
     return render(request, 'login.html')
 
-def signup(request):
+def signupPage(request):
     return render(request, 'signup.html')
 
 # Admin Side Views
@@ -32,3 +32,4 @@ def updateBlogAdmin(request):
 
 def blogListAdmin(request):
     return render(request, 'bloglist.html')
+

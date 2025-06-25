@@ -1,0 +1,370 @@
+:root {
+  --text-color: #3a3a3a;
+  --div-background: #f0fff4;
+  --page-background: #faf9f6;
+  --navbar-background: #d3ffdf66;
+  --button-background: #32e67e;
+  --button-text: #faf9f6;
+
+  --sage-green: #7A8B6D;
+  --sage-green-light: #9CAF88;
+  --sage-green-dark: #5A6B4D;
+  --sage-green-accent: #B8C4A3;
+
+  --shadow: 0 4px 6px rgba(122, 139, 109, 0.1);
+  --shadow-hover: 0 8px 15px rgba(122, 139, 109, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--page-background);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 100px auto 0;
+  padding: 2rem;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.page-header h1 {
+  font-size: 2.8rem;
+  color: var(--sage-green-dark);
+} 
+
+.team-intro {
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  max-width: 800px;
+  margin: 0 auto;
+  color: var(--text-color);
+  padding: 0 2rem;
+  line-height: 1.8;
+  position: relative;
+}
+
+.team-intro::before,
+.team-intro::after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--sage-green-light), transparent);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.team-intro::before {
+  top: -20px;
+}
+.team-intro::after {
+  bottom: -20px;
+}
+
+.team {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 5rem;
+}
+
+.member {
+  background-color: var(--div-background);
+  padding: 2.5rem 2rem;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.member:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-hover);
+}
+
+.member::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, var(--sage-green), var(--sage-green-light));
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.member:hover::before {
+  transform: scaleX(1);
+}
+
+.member img {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--sage-green-accent);
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.member:hover img {
+  transform: scale(1.05);
+  border-color: var(--sage-green);
+}
+
+.member h3 {
+  font-size: 1.5rem;
+  color: var(--sage-green-dark);
+}
+
+.member p {
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+.member-bio {
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
+.quote-section {
+  background: linear-gradient(135deg, var(--sage-green) 0%, var(--sage-green-dark) 100%);
+  padding: 3rem;
+  margin: 5rem 0;
+  border-radius: 15px;
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+.quote-section::before {
+  content: '"';
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  font-size: 150px;
+  color: rgba(255, 255, 255, 0.1);
+  font-family: Georgia, serif;
+}
+
+.quote-section blockquote {
+  font-size: 1.8rem;
+  max-width: 800px;
+  margin: 0 auto;
+  font-style: italic;
+  position: relative;
+  z-index: 1;
+}
+
+.company-says {
+  background-color: var(--div-background);
+  padding: 4rem;
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+  margin-bottom: 4rem;
+}
+
+.company-says h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  color: var(--sage-green-dark);
+  margin-bottom: 3rem;
+}
+
+.mission-vision {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.mission, .vision, .values {
+  background-color: var(--page-background);
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease;
+}
+
+.mission:hover, .vision:hover, .values:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.mission h3, .vision h3, .values h3 {
+  color: var(--sage-green);
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+
+.values ul {
+  list-style-position: inside;
+}
+
+.values li {
+  padding-left: 1.2rem;
+  margin-bottom: 0.8rem;
+  position: relative;
+}
+
+.values li::before {
+  content: '•';
+  color: var(--sage-green);
+  position: absolute;
+  left: 0;
+  font-size: 1.2rem;
+}
+
+button {
+  background-color: var(--button-background);
+  color: var(--button-text);
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--sage-green-dark);
+}
+
+/* ----------------------- */
+/* 🌐 Responsive Design */
+/* ----------------------- */
+
+@media (max-width: 1024px) {
+  .nav-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .logo {
+    font-size: 1.6rem;
+  }
+
+  .page-header h1 {
+    font-size: 2.4rem;
+  }
+
+  .team-intro {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-content {
+    padding: 1rem;
+  }
+
+  .team {
+    grid-template-columns: 1fr;
+  }
+
+  .member img {
+    width: 200px;
+    height: 200px;
+  }
+
+  .member h3 {
+    font-size: 1.3rem;
+  }
+
+  .member p,
+  .member-bio {
+    font-size: 0.95rem;
+  }
+
+  .quote-section blockquote {
+    font-size: 1.4rem;
+    padding: 0 1rem;
+  }
+
+  .company-says h2 {
+    font-size: 1.8rem;
+  }
+
+  .mission h3, .vision h3, .values h3 {
+    font-size: 1.2rem;
+  }
+
+  .mission, .vision, .values {
+    padding: 2rem;
+  }
+
+ .container {
+  max-width: 1200px;
+  margin: 120px auto 2rem; /* Push down from fixed header */
+  padding: 2rem 5%;
+  background-color: var(--div-background);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+[id] {
+  scroll-margin-top: 100px;
+}
+
+body {
+  padding-bottom: 3rem;
+}
+
+
+
+}
+
+@media (max-width: 480px) {
+  .page-header h1 {
+    font-size: 2rem;
+  }
+
+  .member img {
+    width: 140px;
+    height: 140px;
+  }
+
+  .nav-links a {
+    margin-left: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .quote-section {
+    padding: 2rem;
+  }
+
+  .quote-section blockquote {
+    font-size: 1.2rem;
+  }
+
+  .values ul {
+    padding-left: 0;
+  }
+
+  .values li {
+    font-size: 0.95rem;
+  }
+}

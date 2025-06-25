@@ -1,3 +1,4 @@
+ {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Blog Page</title>
+<<<<<<< HEAD:frontend/html/add-blog.html
     <link rel="stylesheet" href="/frontend/css/add-blog.css" />
     <link rel="shortcut icon" href="/frontend/Assets/favicon.ico" type="image/x-icon">
     <script defer src="/frontend/js/script.js"></script>
@@ -39,6 +41,14 @@
             </div>
         </div>
     </div>
+=======
+    <link rel="stylesheet" href="/static/css/add-blog.css" />
+    <link rel="shortcut icon" href="/static/Assets/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    {% include "layout/header.html" %}
+>>>>>>> 0c09b32a214c140a16e10232b60017e4b71dbd04:templates/add-blog.html
 
     <!-- Sidebar for mobile/tablet navigation -->
     <div class="sidebar">
@@ -57,7 +67,7 @@
 
     <div class="body">
         <div class="topaddsection">
-            <img src="/frontend/Assets/working_boy.png" alt="Hello World"/>
+            <img src="/static/Assets/working_boy.png" alt="Hello World"/>
             </div>
         <div class="addsection">
             <div class="innersection">

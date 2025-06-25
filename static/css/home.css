@@ -1,0 +1,346 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #faf9f6; /* Page background */
+  color: #3a3a3a; /* Text color */
+}
+
+/* Layout */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  border-left: 2px solid #38a169;
+  min-height: 100vh;
+  margin-top: 160px;
+}
+
+/* Sidebar */
+.sidebarbody {
+  width: 230px;
+  background-color: #d3ffdf66; /* Nav-bar Color */
+  padding: 20px;
+  border-right: 2px solid #38a169;
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+.dropdown-button {
+  background-color: #32e67e; /* Button Background Color */
+  color: #faf9f6; /* Button Text Color */
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  width: 100%;
+  text-align: left;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.dropdown-menu {
+  display: none;
+  margin-top: 10px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(128, 128, 128, 0.2);
+  list-style: none;
+}
+.dropdown-menu li {
+  opacity: 0;
+  padding: 8px 15px;
+  animation: fadeInItem 0.3s ease forwards;
+}
+.dropdown-menu li:nth-child(1) { animation-delay: 0.1s; }
+.dropdown-menu li:nth-child(2) { animation-delay: 0.2s; }
+.dropdown-menu li:nth-child(3) { animation-delay: 0.3s; }
+.dropdown-menu li:nth-child(4) { animation-delay: 0.4s; }
+.dropdown-menu li a {
+  color: #2d3748;
+  text-decoration: none;
+  font-size: 15px;
+  display: block;
+}
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+@keyframes fadeInItem {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Content */
+.content {
+  flex: 1;
+  padding: 30px;
+  min-width: 300px;
+  background-color: #f0fff4; /* div background color */
+  
+}
+.content h1 {
+  font-size: 28px;
+  margin-bottom: 30px;
+  color:  #3a3a3a
+;
+  text-align: center;
+}
+
+/* Section Wrapper */
+.section-wrapper {
+  background-color: #f1f5f2;
+  padding: 30px;
+  margin: 30px auto;
+  border-radius: 10px;
+  max-width: 960px;
+  width: 100%;
+  box-shadow: 0px 2px 6px #33333380;
+}
+.section-wrapper h2 {
+  margin-bottom: 25px;
+  font-size: 24px;
+  color:  #3a3a3a;
+  text-align: center;
+}
+
+/* Horizontal Scroll for Blogs */
+.blog-row-scroll {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 10px;
+  scroll-padding: 0 10px;
+  gap: 20px;
+  scroll-behavior: smooth;
+}
+.blog-row-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Blog Card */
+.blog-card {
+  flex: 0 0 calc(50% - 10px);
+  scroll-snap-align: start;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(128, 128, 128, 0.2);
+  overflow: hidden;
+}
+.blog-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-bottom: 1px solid #edf6f0;
+}
+.blog-card h3 {
+  font-size: 18px;
+  margin: 10px 15px 5px;
+  color:  #3a3a3a;
+}
+.blog-card p {
+  font-size: 14px;
+  color: #3a3a3a;
+  margin: 0 15px 15px;
+}
+
+/* About Company Section */
+.about-company {
+  background-color: #f0fff4;
+  padding: 60px 20px;
+  margin-left: 230px;
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+}
+.about-container {
+  max-width: 960px;
+  text-align: center;
+}
+.about-container h2 {
+  font-size: 24px;
+  color: #3a3a3a;
+  margin-bottom: 32px;
+}
+.about-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+.about-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(128, 128, 128, 0.2);
+  padding: 25px 20px;
+  flex: 1 1 30%;
+  min-width: 260px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.about-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+.about-card .number {
+  font-size: 20px;
+  font-weight: bold;
+  color: #3a3a3a;
+  margin-bottom: 10px;
+}
+.about-card h3 {
+  font-size: 18px;
+  color: #38a169;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.about-card p {
+  font-size: 14px;
+  color: #3a3a3a;
+  margin-bottom: 20px;
+}
+.read-more-btn {
+  background-color: #32e67e; /* Button Background Color */
+  color: #faf9f6; /* Button Text Color */
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 15px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  
+  
+}
+.read-more-btn:hover {
+  background-color: #d3ffdf66; /* navbar color or any hover background */
+  color: #32e67e; /* black text */
+  box-shadow: 2px 3px 9px  #333;
+  transform : translateY(-2px);
+}
+
+
+/* Our Vision Section */
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sidebarbody {
+    width: 100%;
+    border-right: none;
+    border-bottom: 2px solid #2f855a;
+  }
+
+  .blog-card {
+    flex: 0 0 80%;
+  }
+
+  .about-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about-card {
+    width: 90%;
+  }
+
+  .about-company {
+    margin-left: 60;
+  }
+}
+
+.our-vision {
+  background-color: #f0fff4;
+  padding: 60px 20px;
+}
+
+.vision-container {
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.vision-container h2 {
+  font-size: 24px;
+  color: #3a3a3a;
+  margin-bottom: 32px;
+}
+
+.vision-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.vision-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(128, 128, 128, 0.2);
+  padding: 25px 20px;
+  flex: 1 1 30%;
+  min-width: 260px;
+  text-align: center;
+}
+
+.vision-card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.vision-card h3 {
+  font-size: 18px;
+  color: #38a169;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.vision-card p {
+  font-size: 14px;
+  color: #3a3a3a;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebarbody {
+    width: 100%;
+    border-right: none;
+    border-bottom: 2px solid #2f855a;
+    text-align: center;
+  }
+
+  .content {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .about-company {
+    margin-left: 0 !important;
+    padding: 40px 15px;
+  }
+
+  .about-card,
+  .vision-card,
+  .blog-card {
+    width: 90%;
+    flex: 0 0 90%;
+    margin: 0 auto;
+  }
+
+  .about-cards,
+  .vision-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+}

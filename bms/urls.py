@@ -40,6 +40,7 @@ urlpatterns = [
     path('update-blog-admin/',views.updateBlogAdmin),
     path('view-blog-list/',views.blogListAdmin),
     path('auth/', include(auth_urlpatterns)),
+    path('user-profile/', views.profilePage)
 
 ]
 

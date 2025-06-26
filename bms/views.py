@@ -25,6 +25,7 @@ def signupPage(request):
 
 def profile(request):
     return render(request, 'profile.html')
+
 # Admin Side Views
 def addBlogAdmin(request):
     return render(request, 'Addblog.html')
@@ -34,7 +35,4 @@ def updateBlogAdmin(request):
 
 def blogListAdmin(request):
     return render(request, 'bloglist.html')
-<<<<<<< HEAD
-=======
 
->>>>>>> 4ad22636081f7ba141a19d5a6c0dc9f89544354c

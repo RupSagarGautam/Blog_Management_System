@@ -36,12 +36,11 @@ urlpatterns = [
     path('add-blog/', views.addBlogUser),
     path('blogs/', views.blog),
     path('home/', views.home),
-<<<<<<< HEAD
-    path('log-in/',views.login),
-    path('sign-up/',views.signup),
+
+    path('log-in/',views.loginPage),
+    path('sign-up/',views.signupPage),
     path('user-profile/', views.profile),
-=======
->>>>>>> 4ad22636081f7ba141a19d5a6c0dc9f89544354c
+
     path('add-blog-admin/',views.addBlogAdmin),
     path('update-blog-admin/',views.updateBlogAdmin),
     path('view-blog-list/',views.blogListAdmin),

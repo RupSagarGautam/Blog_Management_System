@@ -1,51 +1,58 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Login Page</title>
-    <link rel="stylesheet" href="/static/css/login.css" />
+    <!-- Tailwind CDN for demo; for production, use PostCSS build -->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <div class="bubble bubble1"></div>
-    <div class="bubble bubble2"></div>
-    <div class="bubble bubble3"></div>
-    <div class="bubble bubble4"></div>
-    <div class="bubble bubble5"></div>
-    <div class="bubble bubble6"></div>
-    <div class="bubble bubble7"></div>
-    <div class="container">
-        <div class="logo">
-            <img src="/static/Assets/Digital Pathshala logo.jpg" alt="Blog Website Logo" style="width:130px; height:130px; object-fit:contain; display:block; margin:0 auto;" />
+<body class="min-h-screen flex items-center justify-center bg-[#faf9f6] relative overflow-hidden font-sans">
+    <!-- Bubble Backgrounds -->
+    <div class="absolute bg-[#7ba238] opacity-15 rounded-full w-40 h-40 top-8 -left-16 z-0"></div>
+    <div class="absolute bg-[#7ba238] opacity-15 rounded-full w-16 h-16 bottom-20 right-10 z-0"></div>
+    <div class="absolute bg-[#7ba238] opacity-15 rounded-full w-8 h-8 top-[70%] left-[18%] z-0"></div>
+    <div class="absolute bg-[#7ba238] opacity-15 rounded-full w-24 h-24 top-[20%] right-[10%] z-0"></div>
+    <div class="absolute bg-[#7ba238] opacity-15 rounded-full w-12 h-12 bottom-[150px] left-[25%] z-0"></div>
+    <div class="absolute bg-[#7ba238] opacity-15 rounded-full w-20 h-20 top-[60%] right-[25%] z-0"></div>
+    <div class="absolute bg-[#7ba238] opacity-15 rounded-full w-10 h-10 bottom-10 left-[10%] z-0"></div>
+
+    <div class="z-10 w-full max-w-md flex flex-col items-center bg-green-50 rounded-2xl shadow-xl p-10 border border-black">
+        <div class="w-28 h-28 bg-white rounded-full flex items-center justify-center mb-4 shadow border-4 border-green-200 mx-auto">
+            <img src="{% static 'assets/Digital Pathshala logo.jpg' %}" alt="Blog Website Logo" class="w-24 h-24 object-contain rounded-full" />
         </div>
-        <h1>Sign in to BMS</h1>
-        <div class="subtitle">Access your account and manage your blogs!</div>
-        <form>
-            <div class="input-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="you@email.com" required />
+        <h1 class="text-2xl font-bold text-center text-[#222] mb-2">Sign in to BMS</h1>
+        <div class="text-gray-500 text-base text-center mb-6">Access your account and manage your blogs!</div>
+        <form class="w-full flex flex-col items-center">
+            <div class="w-full mb-4">
+                <label for="email" class="block text-base text-[#444] mb-1">Email</label>
+                <input type="email" id="email" name="email" placeholder="you@email.com" required
+                    class="w-full px-4 py-3 rounded-lg bg-white border border-gray-400 text-base outline-none focus:ring-2 focus:ring-[#32e67e]" />
             </div>
-            <div class="input-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Password" required />
+            <div class="w-full mb-4">
+                <label for="password" class="block text-base text-[#444] mb-1">Password</label>
+                <input type="password" id="password" name="password" placeholder="Password" required
+                    class="w-full px-4 py-3 rounded-lg bg-white border border-gray-400 text-base outline-none focus:ring-2 focus:ring-[#32e67e]" />
             </div>
-            <button class="login-btn" type="submit">Sign in</button>
+            <button type="submit"
+                class="w-full py-3 rounded-lg bg-[#32e67e] text-[#222] font-bold text-lg shadow border border-[#32e67e] hover:bg-[#28c76f] transition mb-4">Sign in</button>
         </form>
-        <div class="forgot-row" style="justify-content:center; margin: 0 0 18px 0;">
-            <a href="#">Forgot password?</a>
+        <div class="w-full flex justify-center mb-2">
+            <a href="#" class="text-[#222] text-sm font-medium hover:text-blue-600 transition">Forgot password?</a>
         </div>
-        <div class="divider">
-            <div class="divider-line"></div>
-            <div class="divider-text">Or continue</div>
-            <div class="divider-line"></div>
+        <div class="flex items-center w-full mb-4">
+            <div class="flex-1 h-px bg-gray-300"></div>
+            <div class="mx-3 text-gray-400 text-sm font-medium whitespace-nowrap">Or continue</div>
+            <div class="flex-1 h-px bg-gray-300"></div>
         </div>
-        <button class="google-btn" type="button">
-            <img src="/static/Assets/Google logo.png" alt="Google logo" class="google-icon" />
+        <button type="button" class="w-full flex items-center justify-center bg-white border border-gray-400 rounded-lg py-3 text-base font-semibold text-[#222] mb-4 hover:bg-gray-100 transition">
+            <img src="{% static 'assets/Google logo.png' %}" alt="Google logo" class="w-6 h-6 mr-2" />
             Log in with Google
         </button>
-        <div class="footer">
+        <div class="text-center text-base text-gray-600">
             Don't have an account?
-            <a href="signup.html" class="signup-link">Sign Up</a>
+            <a href="signup.html" class="text-[#32e67e] font-semibold hover:underline ml-1">Sign Up</a>
         </div>
     </div>
 </body>

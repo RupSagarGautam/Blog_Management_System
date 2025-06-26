@@ -1,14 +1,16 @@
 body {
     min-height: 100vh;
     background:  #faf9f6; 
-    margin: 0;
+    margin-bottom: 160px;
     font-family: 'Poppins', sans-serif;
+    
 }
 
 .profile-main-container {
     max-width: 1300px;
     margin: 40px auto 0;
     padding: 0 16px;
+    margin-top: 12%;
 }
 
 .profile-title {

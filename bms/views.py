@@ -25,6 +25,9 @@ def signupPage(request):
 
 def profilePage(request):
     return render(request, 'profile.html')
+
+def contactUs(request):
+    return render(request, 'contacts.html')
 # Admin Side Views
 def addBlogAdmin(request):
     return render(request, 'Addblog.html')

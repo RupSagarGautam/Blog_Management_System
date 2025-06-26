@@ -39,7 +39,8 @@ urlpatterns = [
     path('add-blog-admin/',views.addBlogAdmin),
     path('update-blog-admin/',views.updateBlogAdmin),
     path('view-blog-list/',views.blogListAdmin),
-    path('auth/', include(auth_urlpatterns))
+    path('auth/', include(auth_urlpatterns)),
+
 ]
 
 if settings.DEBUG:

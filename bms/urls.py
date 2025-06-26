@@ -25,6 +25,7 @@ from bms import media
 auth_urlpatterns = [
     path('log-in/', views.loginPage),
     path('sign-up/', views.signupPage),
+    path('auth/log-in/', views.loginPage)
 ]
 
 # Static files (CSS, JavaScript, Images)

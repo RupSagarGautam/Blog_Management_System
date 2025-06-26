@@ -16,10 +16,11 @@ body {
   flex-wrap: wrap;
   border-left: 2px solid #38a169;
   min-height: 100vh;
+  margin-top: 160px;
 }
 
 /* Sidebar */
-.sidebar {
+.sidebarbody {
   width: 230px;
   background-color: #d3ffdf66; /* Nav-bar Color */
   padding: 20px;
@@ -78,6 +79,7 @@ body {
   padding: 30px;
   min-width: 300px;
   background-color: #f0fff4; /* div background color */
+  
 }
 .content h1 {
   font-size: 28px;
@@ -89,13 +91,13 @@ body {
 
 /* Section Wrapper */
 .section-wrapper {
-  background-color: white;
+  background-color: #f1f5f2;
   padding: 30px;
   margin: 30px auto;
   border-radius: 10px;
   max-width: 960px;
   width: 100%;
-  box-shadow: 0 4px 12px rgba(128, 128, 128, 0.15);
+  box-shadow: 0px 2px 6px #33333380;
 }
 .section-wrapper h2 {
   margin-bottom: 25px;
@@ -227,7 +229,7 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .sidebar {
+  .sidebarbody {
     width: 100%;
     border-right: none;
     border-bottom: 2px solid #2f855a;
@@ -311,7 +313,7 @@ body {
     flex-direction: column;
   }
 
-  .sidebar {
+  .sidebarbody {
     width: 100%;
     border-right: none;
     border-bottom: 2px solid #2f855a;
@@ -342,5 +344,3 @@ body {
     align-items: center;
   }
 }
-
- 

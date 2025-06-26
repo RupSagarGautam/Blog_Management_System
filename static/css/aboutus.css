@@ -28,67 +28,6 @@ body {
   line-height: 1.6;
 }
 
-.nav {
-  background-color: var(--navbar-background);
-  box-shadow: var(--shadow);
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1000;
-  transition: all 0.3s ease;
-}
-
-.nav:hover {
-  box-shadow: var(--shadow-hover);
-}
-
-.nav-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1.2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: var(--sage-green);
-  text-decoration: none;
-}
-
-.logo:hover {
-  color: var(--sage-green-dark);
-}
-
-.nav-links a {
-  color: var(--text-color);
-  text-decoration: none;
-  margin-left: 2rem;
-  font-weight: 500;
-  position: relative;
-}
-
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: var(--sage-green);
-  transition: width 0.3s ease;
-}
-
-.nav-links a:hover {
-  color: var(--sage-green);
-}
-
-.nav-links a:hover::after {
-  width: 100%;
-}
-
 .container {
   max-width: 1200px;
   margin: 100px auto 0;
@@ -103,7 +42,7 @@ body {
 .page-header h1 {
   font-size: 2.8rem;
   color: var(--sage-green-dark);
-}
+} 
 
 .team-intro {
   font-family: 'Georgia', serif;
@@ -303,4 +242,129 @@ button {
 
 button:hover {
   background-color: var(--sage-green-dark);
+}
+
+/* ----------------------- */
+/* 🌐 Responsive Design */
+/* ----------------------- */
+
+@media (max-width: 1024px) {
+  .nav-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .logo {
+    font-size: 1.6rem;
+  }
+
+  .page-header h1 {
+    font-size: 2.4rem;
+  }
+
+  .team-intro {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-content {
+    padding: 1rem;
+  }
+
+  .team {
+    grid-template-columns: 1fr;
+  }
+
+  .member img {
+    width: 200px;
+    height: 200px;
+  }
+
+  .member h3 {
+    font-size: 1.3rem;
+  }
+
+  .member p,
+  .member-bio {
+    font-size: 0.95rem;
+  }
+
+  .quote-section blockquote {
+    font-size: 1.4rem;
+    padding: 0 1rem;
+  }
+
+  .company-says h2 {
+    font-size: 1.8rem;
+  }
+
+  .mission h3, .vision h3, .values h3 {
+    font-size: 1.2rem;
+  }
+
+  .mission, .vision, .values {
+    padding: 2rem;
+  }
+
+ .container {
+  max-width: 1200px;
+  margin: 120px auto 2rem; /* Push down from fixed header */
+  padding: 2rem 5%;
+  background-color: var(--div-background);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+[id] {
+  scroll-margin-top: 100px;
+}
+
+body {
+  padding-bottom: 3rem;
+}
+
+
+
+}
+
+@media (max-width: 480px) {
+  .page-header h1 {
+    font-size: 2rem;
+  }
+
+  .member img {
+    width: 140px;
+    height: 140px;
+  }
+
+  .nav-links a {
+    margin-left: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .quote-section {
+    padding: 2rem;
+  }
+
+  .quote-section blockquote {
+    font-size: 1.2rem;
+  }
+
+  .values ul {
+    padding-left: 0;
+  }
+
+  .values li {
+    font-size: 0.95rem;
+  }
 }

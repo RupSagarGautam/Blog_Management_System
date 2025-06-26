@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header</title>
+    <link rel="stylesheet" href="/static/css/header.css" />
+    
+</head>
+<body>
+         <div class="header">
+        <a href="/">   
+        <div class="leftsection">
+            <div class="logo">
+                <img src="/static/Assets/favicon.ico" alt="BMS Logo" />
+            </div>
+            <div class="text">
+                Digital Pathshala
+            </div>
+        </div>
+        </a>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="rightsection">
+            <div class="nav">
+                <ul>
+                    <li><a href="/about-us">About Us</a></li> |
+                    <li><a href="/blogs">Blogs</a></li> |
+                   <li><a href="/add-blog">Write</a></li> |
+                    <li><a href="/auth/log-in">Log-In</a></li> |
+                    <li><a href="/auth/sign-up" class="getstarted-btn">Get Started</a></li>
+                </ul>
+            </div>
+        </div>
+    
+     </div>
+     
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <img src="/static/Assets/sidebar_img.jpg" alt="BMS Logo" />
+            </div>
+            <div class="close-btn">&times;</div>
+        </div>
+        <ul class="sidebar-nav">
+            <li><a href="/about-us">About Us</a></li>
+            <li><a href="/blogs">Blogs</a></li>
+            <li><a href="/add-blog">Write</a></li>
+            <li><a href="/log-in">Log In</a></li>
+            <li><a href="/sign-up" class="getstarted-btn">Get Started</a></li>
+        </ul>
+    </div>
+    <div class="overlay"></div>
+    <!-- End for Header -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const sidebar = document.querySelector('.sidebar');
+    const overlay = document.querySelector('.overlay');
+    const closeBtn = document.querySelector('.close-btn');
+
+    // Function to open sidebar
+    function openSidebar() {
+        sidebar.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling when sidebar is open
+    }
+
+    // Function to close sidebar
+    function closeSidebar() {
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+    }
+
+    // Event listeners
+    hamburger.addEventListener('click', openSidebar);
+    closeBtn.addEventListener('click', closeSidebar);
+    overlay.addEventListener('click', closeSidebar);
+
+    // Close sidebar when clicking on a link
+    const sidebarLinks = document.querySelectorAll('.sidebar-nav a');
+    sidebarLinks.forEach(link => {
+        link.addEventListener('click', closeSidebar);
+    });
+
+    // Close sidebar on window resize if screen becomes larger than mobile breakpoint
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            closeSidebar();
+        }
+    });
+}); 
+</script>
+</body>
+</html>

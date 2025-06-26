@@ -3,13 +3,20 @@ body {
     background:  #faf9f6; 
     margin: 0;
     font-family: 'Poppins', sans-serif;
+<<<<<<< HEAD
     margin-top: 160px;
+=======
+>>>>>>> 8f82146db009aa3f9c825e7e4373d33479c0fff5
 }
 
 .profile-main-container {
     max-width: 1300px;
     margin: 40px auto 0;
     padding: 0 16px;
+<<<<<<< HEAD
+=======
+    margin-top: 12%;
+>>>>>>> 8f82146db009aa3f9c825e7e4373d33479c0fff5
 }
 
 .profile-title {
@@ -36,7 +43,11 @@ body {
 }
 
 .profile-pic-summary {
+<<<<<<< HEAD
     background: #dcedc8;
+=======
+    background: #d4fdd2;
+>>>>>>> 8f82146db009aa3f9c825e7e4373d33479c0fff5
     border-radius: 24px;
     padding: 70px 50px;
     box-shadow: 0 6px 32px rgba(0,0,0,0.10);
@@ -212,7 +223,11 @@ textarea.value-input {
 .update-btn {
     display: inline-block;
     width: 100px;
+<<<<<<< HEAD
     padding: 12px 30px;
+=======
+    padding: 10px;
+>>>>>>> 8f82146db009aa3f9c825e7e4373d33479c0fff5
     background: #28e27c;
     color: #fff;
     border: 1px solid transparent;
@@ -220,6 +235,10 @@ textarea.value-input {
     font-family: 'Poppins', sans-serif;
     font-size: 0.9rem;
     font-weight: 600;
+<<<<<<< HEAD
+=======
+    text-align: center;
+>>>>>>> 8f82146db009aa3f9c825e7e4373d33479c0fff5
     cursor: pointer;
     margin-top: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.10);
@@ -249,4 +268,8 @@ textarea.value-input {
     .profile-right {
         padding: 28px 10px 24px 10px;
     }
+<<<<<<< HEAD
 } 
+=======
+}
+>>>>>>> 8f82146db009aa3f9c825e7e4373d33479c0fff5

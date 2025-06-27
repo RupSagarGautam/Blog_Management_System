@@ -149,10 +149,12 @@ ul li a:hover:after {
     z-index: 1002;
     transition: right 0.3s ease;
     padding: 20px;
+    visibility: hidden;
 }
 
 .sidebar.active {
     right: 0;
+    visibility: visible;
 }
 
 .sidebar-header {

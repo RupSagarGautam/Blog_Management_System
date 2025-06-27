@@ -8,19 +8,12 @@
     <!-- Tailwind CDN for demo; for production, use PostCSS build -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="min-h-screen flex items-center justify-center bg-[#faf9f6] relative overflow-hidden font-sans">
-    <!-- Bubble Backgrounds -->
-    <div class="absolute bg-[#7ba238] opacity-15 rounded-full w-40 h-40 top-8 -left-16 z-0"></div>
-    <div class="absolute bg-[#7ba238] opacity-15 rounded-full w-16 h-16 bottom-20 right-10 z-0"></div>
-    <div class="absolute bg-[#7ba238] opacity-15 rounded-full w-8 h-8 top-[70%] left-[18%] z-0"></div>
-    <div class="absolute bg-[#7ba238] opacity-15 rounded-full w-24 h-24 top-[20%] right-[10%] z-0"></div>
-    <div class="absolute bg-[#7ba238] opacity-15 rounded-full w-12 h-12 bottom-[150px] left-[25%] z-0"></div>
-    <div class="absolute bg-[#7ba238] opacity-15 rounded-full w-20 h-20 top-[60%] right-[25%] z-0"></div>
-    <div class="absolute bg-[#7ba238] opacity-15 rounded-full w-10 h-10 bottom-10 left-[10%] z-0"></div>
 
-    <div class="z-10 w-full max-w-md flex flex-col items-center bg-green-50 rounded-2xl shadow-xl p-10 border border-black">
-        <div class="w-28 h-28 bg-white rounded-full flex items-center justify-center mb-4 shadow border-4 border-green-200 mx-auto">
-            <img src="{% static 'assets/Digital Pathshala logo.jpg' %}" alt="Blog Website Logo" class="w-24 h-24 object-contain rounded-full" />
+{% include "layout/header.html" %}
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="/static/Assets/Digital Pathshala logo.jpg" alt="Blog Website Logo" style="width:130px; height:130px; object-fit:contain; display:block; margin:0 auto;" />
         </div>
         <h1 class="text-2xl font-bold text-center text-[#222] mb-2">Sign in to BMS</h1>
         <div class="text-gray-500 text-base text-center mb-6">Access your account and manage your blogs!</div>

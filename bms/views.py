@@ -23,6 +23,8 @@ def loginPage(request):
 def signupPage(request):
     return render(request, 'signup.html')
 
+def profilePage(request):
+    return render(request, 'profile.html')
 # Admin Side Views
 def addBlogAdmin(request):
     return render(request, 'Addblog.html')

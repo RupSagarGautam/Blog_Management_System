@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile Overview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="\static\css\Profile.css">
+</head>
+{% include "layout/header.html" %}
+<body>
+    <div class="profile-main-container">
+        <h1 class="profile-title">User Profile Overview</h1>
+        <div class="profile-flex">
+            <div class="profile-left">
+                <div class="profile-pic-summary">
+                    <label for="profile-pic-upload" class="profile-pic-label">
+                        <div class="profile-pic-wrapper">
+                            <img src="https://i.pravatar.cc/180?img=7" alt="User Picture" class="user-pic" id="profile-pic-preview">
+                            <span class="camera-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="13" r="3.2" stroke="#fff" stroke-width="2"/>
+                                    <rect x="2.5" y="6.5" width="19" height="13" rx="3.5" stroke="#fff" stroke-width="2"/>
+                                    <rect x="8" y="2" width="8" height="4" rx="2" fill="#fff"/>
+                                </svg>
+                            </span>
+                            <input type="file" id="profile-pic-upload" name="profile-pic-upload" accept="image/*" style="display:none;">
+                        </div>
+                    </label>
+                    <div class="profile-summary-details">
+                        <div class="profile-summary-name">Nabin Regmi</div>
+                        <div class="profile-summary-email">user@account.com</div>
+                        <div class="profile-summary-phone">+977-9804373219</div>
+                        <div class="profile-summary-address">Budhiganga-01, Biratnagar</div>
+                        <div class="profile-summary-country">Nepal</div>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-right">
+                <form class="user-form" enctype="multipart/form-data">
+                    <!-- Hidden checkbox to toggle edit mode -->
+                    <input type="checkbox" id="edit-toggle" class="edit-toggle-checkbox" style="display:none;">
+                    <div class="form-title">User Details Customization</div>
+                    <div class="user-info">
+                        <div class="info-group">
+                            <div class="info-group">
+                                <label class="label">Full Name</label>
+                                <input type="text" class="value-input" placeholder="Nabin Regmi" name="name">
+                            </div>
+                            <div class="info-group">
+                                <label class="label">Email Address</label>
+                                <input type="email" class="value-input" placeholder="reg332@gmail.com" name="email">
+                            </div>
+                            <div class="info-group">
+                                <label class="label">Phone Number</label>
+                                <input type="tel" class="value-input" placeholder="(977) 9804373219" name="phone">
+                            </div>
+                            <div class="info-group">
+                                <label class="label">Address</label>
+                                <input type="text" class="value-input" placeholder="Budhiganga- 01, Biratnagar" name="address1">
+                            </div>
+                            <div class="info-group">
+                                <label class="label">City</label>
+                                <input type="text" class="value-input" placeholder="Biratnagar" name="city">
+                            </div>
+                            <div class="info-group">
+                                <label class="label">State / Province / Region</label>
+                                <input type="text" class="value-input" placeholder="Province 1" name="state">
+                            </div>
+                            <div class="info-group">
+                                <label class="label">Zip / Postal Code</label>
+                                <input type="text" class="value-input" placeholder="57700" name="zip">
+                            </div>
+                            <div class="info-group">
+                                <label class="label">Country / Nationality</label>
+                                <input type="text" class="value-input" placeholder="Nepalese" name="country">
+                            </div>
+                        </div>
+                    </div>
+                    <label for="edit-toggle" class="update-btn view-mode">Update</label>
+                    <button type="submit" class="update-btn edit-mode">Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const editToggle = document.getElementById('edit-toggle');
+            const inputs = document.querySelectorAll('.user-form .value-input.edit-mode');
+
+            editToggle.addEventListener('change', function() {
+                const isEditMode = this.checked;
+                inputs.forEach(input => {
+                    input.readOnly = !isEditMode;
+                });
+            });
+        });
+    </script>
+</body>
+</html>

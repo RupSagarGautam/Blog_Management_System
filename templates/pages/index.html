@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="Stylesheet" href=" {% static 'static/css/styles.css' %}"  />
+    <link rel="shortcut icon" href="/static/Assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+</head>
+
+<body>
+    {% include "layout/header.html" %}
+    <!-- Start Body -->
+    <div class="body">
+        <div class="firstsection">
+          
+            <div class="textheading">
+                  <div class="image">
+                <img src="/static/Assets/Learning Icon.png"/>
+            </div>
+                <h3>Read Stories & <br>
+                    Share Your Ideas,
+                </h3>
+            </div>
+            <div class="search-btn">
+                <input type="search" placeholder="Search" />
+            </div>
+        </div>
+        <div class="secondsection">
+            <div class="secondfirstimg">
+                <img src="/static/Assets/index_background.jpg" alt="notebook"/>
+            </div>
+            <div class="textparagraph">
+               <p> A place to read, write, and deepen your understanding.</p>
+            </div>
+            <div class="secondimg">
+                <img src="/static/Assets/thinking_boy.png" alt="thinking_boy"/>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html></body>
+
+</html>

@@ -6,6 +6,8 @@
     <title>Login Page</title>
     <link rel="stylesheet" href="/static/css/login.css" />
 </head>
+
+{% include "layout/header.html" %}
 <body>
     <div class="container">
         <div class="logo">
@@ -13,10 +15,11 @@
         </div>
         <h1>Sign in to BMS</h1>
         <div class="subtitle">Access your account and manage your blogs!</div>
-        <form>
+        <form action="/auth/log-in" method="POST">
+            {% csrf_token %}
             <div class="input-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="you@email.com" required />
+                <input type="text" id="email" name="email" placeholder="you@email.com" required />
             </div>
             <div class="input-group">
                 <label for="password">Password</label>

@@ -119,11 +119,13 @@ body {
       font-size: 1.01rem;
       color: #0d0c0c;
     }
+
     .footer a {
       color: #A3B18A;
       text-decoration: none;
       font-weight: 500;
     }
+
     @media (max-width: 500px) {
       .container {
         width: 98vw;
@@ -134,3 +136,4 @@ body {
         height: 60px;
       }
     }
+    

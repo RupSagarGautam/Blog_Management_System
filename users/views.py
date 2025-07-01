@@ -20,3 +20,4 @@ def loginUser(request):
                 return render(request, 'login.html')
         else:
             messages.error(request, 'User does not exist. Please sign up.')
+            

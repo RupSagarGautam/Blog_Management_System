@@ -8,7 +8,7 @@ body {
       align-items: center;
       min-height: 100vh;
       position: relative;
-      overflow: auto;
+      overflow-y: auto;
     }
     .container {
       width: 500px;
@@ -22,6 +22,7 @@ body {
       z-index: 1;
       position: relative;
       border: solid 2px #111b15;
+      margin-top: 220px;
       
     }
     .logo {
@@ -51,13 +52,13 @@ body {
     .subtitle {
       color: #7a7a7a;
       font-size: 1.08rem;
-      margin-bottom: 32px;
+      margin-bottom: 16px;
       text-align: center;
     }
     .input-group {
       width: 300px;
       
-      margin-bottom: 24px;
+      margin-bottom: 15px;
     }
     .input-group label {
       display: block;
@@ -85,8 +86,8 @@ body {
       font-weight: 700;
       font-size: 1.15rem;
       border-radius: 22px;
-      margin-top: 12px;
-      margin-bottom: 28px;
+      margin-top: 4px;
+      margin-bottom: px;
       cursor: pointer;
       transition: background 0.2s;
       box-shadow: 0 2px 8px rgba(163,177,138,0.10);
@@ -104,7 +105,8 @@ body {
       width: 100%;
       display: flex;
       justify-content: flex-end;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
+      
     }
     .forgot-row a {
       color: #222;
@@ -112,6 +114,7 @@ body {
       font-size: 1.01rem;
       font-weight: 500;
       transition: color 0.2s;
+      margin-top: 2px;
     }
     .forgot-row a:hover {
       color: #3B47F5;
@@ -121,6 +124,7 @@ body {
       display: flex;
       align-items: center;
       margin: 10px 0 18px 0;
+      
     }
     .divider-line {
       flex: 1;
@@ -148,11 +152,12 @@ body {
       font-weight: 600;
       color: #222;
       cursor: pointer;
-      margin-bottom: 18px;
+      margin-bottom: 6px;
       transition: background 0.2s;
       box-shadow: 0 2px 8px rgba(163,177,138,0.10);
       gap: 8px;
     }
+    
     .google-btn:hover {
       background: #e9fbe1;
       transition: 0.5s linear ;
@@ -170,7 +175,7 @@ body {
       display: inline-block;
     }
     .footer {
-      margin-top: 18px;
+      margin-top: 8px;
       text-align: center;
       font-size: 1.01rem;
       color: #0c0b0b;
@@ -178,6 +183,7 @@ body {
       flex-direction: column;
       gap: 4px;
       align-items: center;
+      
     }
     .footer a {
       color: #A3B18A;

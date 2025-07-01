@@ -28,6 +28,9 @@ def profilePage(request):
 
 def contactUs(request):
     return render(request, 'pages/contacts.html')
+
+def blogDetails(request):
+    return render(request, 'pages/blogdetails.html')
 # Admin Side Views
 def addBlogAdmin(request):
     return render(request, 'pages/Addblog.html')

@@ -1,91 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/css/signup.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/static/css/signup.css" />
     <title>SignUp Page</title>
 </head>
 
 
-{% include "layout/header.html" %}
 <body>
-  {% include "layout/header.html" %}
+  
   <div class="container">
     <div class="logo">
-      <img src="/static/Assets/Digital Pathshala logo.jpg" alt="Blog Website Logo" style="width:130px; height:130px; object-fit:contain; display:block; margin:0 auto;" />
+      <img src="/static/Assets/Digital Pathshala logo.jpg" alt="Digital Pathshala Logo" />
     </div>
-    <h1>Welcome to BMS!</h1>
-    <div class="subtitle">Create your account to manage your blogs!!</div>
-      <form>
-        <div class="name-container">
-          <div class="input-group">
-            <label for="first-name">First Name</label>
-            <input type="text" id="first-name" name="first-name" placeholder="First Name" required>
-          </div>
-          <div class="input-group">
-            <label for="last-name">Last Name</label>
-            <input type="text" id="last-name" name="last-name" placeholder="Last Name" required>
-          </div>
-        </div>
-        
-        <div class="name-container">
-          <div class="input-group">
-            <label for="country">Country</label>
-            <select id="country" name="country" required>
-              <option value="" disabled selected>Select Country</option>
-              <option value="United States">United States</option>
-              <option value="Canada">Canada</option>
-              <option value="United Kingdom">United Kingdom</option>
-              <option value="Australia">Australia</option>
-              <option value="India">India</option>
-              <option value="Germany">Germany</option>
-              <option value="France">France</option>
-              <option value="Japan">Japan</option>
-              <option value="China">China</option>
-              <option value="Brazil">Brazil</option>
-              <!-- More country -->
-            </select>
-          </div>
-          <div class="input-group">
-            <label for="city">City</label>
-            <input type="text" id="city" name="city" placeholder="City" required>
-          </div>
+    <h2>Register user to Digital Pathshala</h2>
+    <p class="subtitle">Access your account and manage your blogs!</p>
+    <form>
+      <div class="name-container">
+        <div class="input-group">
+          <label for="first-name">First Name</label>
+          <input type="text" id="first-name" name="first-name" placeholder="First Name"/>
         </div>
         <div class="input-group">
-          <label for="phone">Phone Number</label>
-          <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+          <label for="last-name">Last Name</label>
+          <input type="text" id="last-name" name="last-name" placeholder="Last Name"/>
         </div>
+      </div>
+
+      <div class="input-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Username"/>
+      </div>
+
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Password"/>
+      </div>
+
+      <div class="input-group">
+        <label for="confirm-password">Confirm Password</label>
+        <input
+          type="password"
+          id="confirm-password"
+          name="confirm-password"
+          placeholder="Confirm your password"
+          required
+        />
+      </div>
+
+      <div class="name-container">
         <div class="input-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="you@email.com" required>
-        </div>
-        <div class="input-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" name="password" placeholder="Password" required>
-        </div>
-        <div class="input-group">
-          <label for="confirm-password">Confirm Password</label>
-          <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password" required>
-        </div>
-      <form>
-        <div class="name-container">
-          <div class="input-group">
-            <label for="first-name">First Name</label>
-            <input type="text" id="first-name" name="first-name" placeholder="First Name" required>
-          </div>
-          <div class="input-group">
-            <label for="last-name">Last Name</label>
-            <input type="text" id="last-name" name="last-name" placeholder="Last Name" required>
-          </div>
-        </div>
-        
-        <div class="name-container">
-          <div class="input-group">
-            <label for="country">Country</label>
-            <select id="country" name="country" required>
-              <option value="" disabled selected>Select Country</option>
-              <option value="Afghanistan">Afghanistan</option>
+          <label for="nationality">Nationality</label>
+          <select id="nationality" name="nationality" required>
+            <option value="Nepal" selected>Nepal</option>
+           <option value="Afghanistan">Afghanistan</option>
                 <option value="Åland Islands">Åland Islands</option>
                 <option value="Albania">Albania</option>
                 <option value="Algeria">Algeria</option>
@@ -329,35 +298,51 @@
                 <option value="Yemen">Yemen</option>
                 <option value="Zambia">Zambia</option>
                 <option value="Zimbabwe">Zimbabwe</option>
-              <!-- More country -->
-            </select>
-          </div>
-          <div class="input-group">
-            <label for="city">City</label>
-            <input type="text" id="city" name="city" placeholder="City" required>
-          </div>
+          </select>
         </div>
         <div class="input-group">
-          <label for="phone">Phone Number</label>
-          <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+          <label for="address">Address</label>
+          <input type="text" id="address" name="address" placeholder="Address"/>
+        </div>
+      </div>
+
+      <div class="name-container">
+        <div class="input-group">
+          <label for="dob">Date of Birth</label>
+          <input type="date" id="dob" name="dob"/>
         </div>
         <div class="input-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="you@email.com" required>
+          <label for="gender">Gender</label>
+          <select id="gender" name="gender" required>
+            <option value="Female" selected>Female</option>
+            <option value="Male">Male</option>
+            <option value="Other">Other</option>
+          </select>
         </div>
-        <div class="input-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" name="password" placeholder="Password" required>
-        </div>
-        <div class="input-group">
-          <label for="confirm-password">Confirm Password</label>
-          <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password" required>
-        </div>
-    <div class="link-row">
-      <a href="login.html">Already have an account? Login</a>
-    </div>
-    <div class="footer">
-      Need help? <a href="mailto:contact@bms.com">contact@bms.com</a>
+      </div>
+
+      <div class="input-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="Phone Number"/>
+      </div>
+
+      <div class="input-group">
+        <label for="profile-image">Profile Image</label>
+        <input type="file" id="profile-image" name="profile-image"/>
+      </div>
+
+      <button type="submit" class="signup-btn">Sign Up</button>
+    </form>
+
+    <div class="or-continue">Or continue with</div>
+
+    <button class="google-btn">
+      <img src="/static/assets/Google logo.png" alt="Google logo" />
+      Continue with Google
+    </button>
+
+    <div class="bottom-link">
+      Already have an account? <a href="/login">Login In</a>
     </div>
   </div>
 </body>

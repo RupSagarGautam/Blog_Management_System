@@ -1,0 +1,25 @@
+background: #faf9f6;
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      position: relative;
+      overflow-y: auto;
+    }
+=======
+body {
+  background: linear-gradient(135deg, #d9f0e6, #b7e4c7);
+  font-family: 'Montserrat', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  position: relative;
+  overflow-y: auto;
+  margin-top: 2%;
+}

@@ -3,33 +3,38 @@ from django.shortcuts import render
 
 # Client Side Views
 def aboutUS(request):
-    return render(request, 'aboutus.html')
+    return render(request, 'pages/aboutus.html')
 
 def addBlogUser(request):
-    return render(request,'add-blog.html')
+    return render(request,'pages/add-blog.html')
 
 def blog(request):
-    return render(request, 'blog.html')
+    return render(request, 'pages/blog.html')
 
 def home(request):
-    return render(request, 'home.html')
+    return render(request, 'pages/home.html')
 
 def landingPage(request):
     return render(request, 'pages/index.html')
 
 def loginPage(request):
-    return render(request, 'login.html')
+    return render(request, 'pages/login.html')
 
 def signupPage(request):
-    return render(request, 'signup.html')
+    return render(request, 'pages/signup.html')
 
+def profilePage(request):
+    return render(request, 'pages/profile.html')
+
+def contactUs(request):
+    return render(request, 'pages/contacts.html')
 # Admin Side Views
 def addBlogAdmin(request):
-    return render(request, 'Addblog.html')
+    return render(request, 'pages/Addblog.html')
 
 def updateBlogAdmin(request):
-    return render(request, 'updateblog.html')
+    return render(request, 'pages/updateblog.html')
 
 def blogListAdmin(request):
-    return render(request, 'bloglist.html')
+    return render(request, 'pages/bloglist.html')
 

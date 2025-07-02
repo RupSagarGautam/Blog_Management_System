@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,12 +12,12 @@
 <body>
     <div class="container">
         <div class="logo">
-            <img src="/static/Assets/Digital Pathshala logo.jpg" alt="Blog Website Logo" style="width:63px; height:63px; object-fit:contain; display:block; margin:0 auto;" />
+            <img src="/static/Assets/Digital Pathshala logo.jpg" alt="Blog Website Logo" style="width:100px; height:100px; object-fit:contain; display:block; margin:0 auto;" />
         </div>
         <h1>Sign in to BMS</h1>
         <div class="subtitle">Access your account and manage your blogs!</div>
         <form action="/auth/log-in" method="POST">
-            {% csrf_token %}
+          
             <div class="input-group">
                 <label for="email">Email</label>
                 <input type="text" id="email" name="email" placeholder="you@email.com" required />
@@ -27,7 +29,7 @@
             <button class="login-btn" type="submit">Sign in</button>
         </form>
         <div class="forgot-row" style="justify-content:center; margin: 0 0 18px 0;">
-            <a href="#">Forgot password?</a>
+            <a href="#" class="forgot-link">Forgot password?</a>
         </div>
         <div class="divider">
             <div class="divider-line"></div>
@@ -36,7 +38,7 @@
         </div>
         <button class="google-btn" type="button">
             <img src="/static/Assets/Google logo.png" alt="Google logo" class="google-icon" />
-            Continue with Google
+            Log in with Google
         </button>
         <div class="footer">
             Don't have an account?

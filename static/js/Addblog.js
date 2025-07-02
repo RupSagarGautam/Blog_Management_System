@@ -26,5 +26,5 @@ function saveBlog(blog) {
         blogs.push(blog); // Add new blog
     }
     localStorage.setItem('blogs', JSON.stringify(blogs));
-    window.location.href = 'bloglist.html';
+    window.location.href = 'view-blog-list/';
 } 

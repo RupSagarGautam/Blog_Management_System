@@ -30,8 +30,8 @@ window.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('.update-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 const idx = this.getAttribute('data-idx');
-                window.location.href = `UpdateBlog.html?idx=${idx}`;
+                window.location.href = `/update-blog-admin/?idx=${idx}`;
             });
         });
     }
-}); 
+});

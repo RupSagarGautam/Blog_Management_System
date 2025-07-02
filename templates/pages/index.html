@@ -1,0 +1,31 @@
+{% extends 'layouts/main.html' %}
+{% block content %}
+  <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="text-center">
+      <h1 class="text-4xl md:text-6xl font-bold text-green-800 mb-6 normal-case">Welcome to <span class="text-green-600">Digital Pathshala</span></h1>
+      <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto normal-case">Your journey to knowledge begins here. Explore, learn, and grow with our comprehensive educational platform.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/blogs" class="bg-green-600 text-white px-8 py-4 rounded-full hover:bg-green-700 transition-colors font-semibold shadow-lg hover:shadow-xl">Explore Blogs</a>
+        <a href="/about-us" class="border-2 border-green-600 text-green-600 px-8 py-4 rounded-full hover:bg-green-600 hover:text-white transition-colors font-semibold">Learn More</a>
+      </div>
+    </div>
+    <!-- Feature Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+      <div class="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-green-200 hover:shadow-lg transition-shadow">
+        <div class="w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center text-white font-bold text-xl mb-4">📚</div>
+        <h3 class="text-xl font-bold text-green-800 mb-3 normal-case">Quality Content</h3>
+        <p class="text-gray-600 normal-case">Access high-quality educational content curated by experts in various fields.</p>
+      </div>
+      <div class="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-green-200 hover:shadow-lg transition-shadow">
+        <div class="w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center text-white font-bold text-xl mb-4">✍️</div>
+        <h3 class="text-xl font-bold text-green-800 mb-3 normal-case">Share Knowledge</h3>
+        <p class="text-gray-600 normal-case">Contribute to the community by writing and sharing your own educational content.</p>
+      </div>
+      <div class="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-green-200 hover:shadow-lg transition-shadow">
+        <div class="w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center text-white font-bold text-xl mb-4">🌱</div>
+        <h3 class="text-xl font-bold text-green-800 mb-3 normal-case">Grow Together</h3>
+        <p class="text-gray-600 normal-case">Join a community of learners and educators working together towards growth.</p>
+      </div>
+    </div>
+  </main>
+{% endblock %}

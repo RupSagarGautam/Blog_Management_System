@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {% block title %}
+        Pathshala
+      {% endblock %}
+    </title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="font-sans text-gray-700 bg-gradient-to-br from-green-50 to-green-100 min-h-screen">
+    <!-- Messages -->
+    {% if messages %}
+      <div id="messages" class="fixed top-20 right-0 transform translate-x-full opacity-0 transition-transform transition-opacity duration-300 ease-out max-w-sm rounded-md p-4 z-50">
+        {% for message in messages %}
+          {% if message.tags == 'success' %}
+            <div class="px-12 py-3 rounded-xl shadow-lg bg-green-100 border-2 border-green-600 font-semibold text-md">{{ message }}</div>
+          {% elif message.tags == 'error' %}
+            <div class="px-12 py-3 rounded-xl shadow-lg bg-red-100 border-2 border-red-600 font-semibold text-md">{{ message }}</div>
+          {% elif message.tags == 'warning' %}
+            <div class="px-12 py-3 rounded-xl shadow-lg bg-yellow-100 border-2 border-yellow-600">{{ message }}</div>
+          {% else %}
+            <div class="px-12 py-3 rounded-xl shadow-lg bg-gray-100 border-2 border-gray-600 font-semibold text-md">{{ message }}</div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <!-- Navigation -->
+    <nav class="uppercase flex justify-between bg-white/90 backdrop-blur-md border-b-2 border-green-200 py-4 px-6 lg:px-12 lg:py:6 shadow-sm sticky top-0 z-40">
+      <a href="/" class="flex items-center group">
+        <div class="w-16 lg:w-18 h-16 lg:h-18 rounded-full border-2 border-green-600 flex items-center justify-center group-hover:scale-105 transition-transform">
+          <img src="/static/images/favicon.ico" alt="Digital Pathshala Logo" />
+        </div>
+        <div class="ml-2 lg:ml-4 text-xl lg:text-2xl font-semibold text-green-800 tracking-widest">Digital Pathshala</div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="my-auto hidden md:block">
+        <ul class="flex gap-6 lg:gap-8 text-sm font-bold items-center">
+          <li class="relative group pb-1">
+            <a href="/about-us" class="text-gray-700 hover:text-green-600 transition-colors p-1">About Us</a>
+            <div class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-green-600 transition-all duration-300 group-hover:w-full group-hover:left-0"></div>
+          </li>
+          <li class="text-gray-400">|</li>
+          <li class="relative group pb-1">
+            <a href="/blogs" class="text-gray-700 hover:text-green-600 transition-colors p-1">Blogs</a>
+            <div class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-green-600 transition-all duration-300 group-hover:w-full group-hover:left-0"></div>
+          </li>
+          <li class="text-gray-400">|</li>
+          <li class="relative group pb-1">
+            <a href="/add-blog" class="text-gray-700 hover:text-green-600 transition-colors p-1">Write</a>
+            <div class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-green-600 transition-all duration-300 group-hover:w-full group-hover:left-0"></div>
+          </li>
+          {% if not user.is_authenticated %}
+            <li class="text-gray-400">|</li>
+            <li class="relative group pb-1">
+              <a href="/auth/log-in" class="text-gray-700 hover:text-green-600 transition-colors p-1">Log-In</a>
+              <div class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-green-600 transition-all duration-300 group-hover:w-full group-hover:left-0"></div>
+            </li>
+          {% endif %}
+          <li class="text-gray-400">|</li>
+          <li class="hover:bg-green-600 hover:text-white px-4 py-2 transition-all duration-300 rounded-lg">
+            <a href="/auth/sign-up">Get Started</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <label class="md:hidden my-auto cursor-pointer flex flex-col gap-1">
+        <input type="checkbox" class="peer hidden" />
+        <span class="w-6 h-0.5 bg-gray-700 transition-all peer-checked:rotate-45 peer-checked:translate-y-1.5"></span>
+        <span class="w-6 h-0.5 bg-gray-700 transition-all peer-checked:opacity-0"></span>
+        <span class="w-6 h-0.5 bg-gray-700 transition-all peer-checked:-rotate-45 peer-checked:-translate-y-1.5"></span>
+
+        <!-- Mobile Menu -->
+        <div class="absolute top-full right-0 mt-2 w-64 bg-white shadow-2xl rounded-lg p-6 scale-0 peer-checked:scale-100 transition-transform origin-top-right">
+          <div class="flex items-center mb-4">
+            <div class="w-10 h-10 rounded-full border-2 border-green-600 flex items-center justify-center">
+              <img src="/static/images/favicon.ico" alt="Digital Pathshala Logo" />
+            </div>
+            <span class="ml-3 text-lg font-semibold text-green-800 tracking-wide">Pathshala</span>
+          </div>
+          <ul class="space-y-3">
+            <li>
+              <a href="/about-us" class="block text-gray-700 font-semibold py-2 hover:text-green-600 transition-colors">About Us</a>
+            </li>
+            <li>
+              <a href="/blogs" class="block text-gray-700 font-semibold py-2 hover:text-green-600 transition-colors">Blogs</a>
+            </li>
+            <li>
+              <a href="/add-blog" class="block text-gray-700 font-semibold py-2 hover:text-green-600 transition-colors">Write</a>
+            </li>
+            <li>
+              <a href="/auth/log-in" class="block text-gray-700 font-semibold py-2 hover:text-green-600 transition-colors">Log In</a>
+            </li>
+            <li class="pt-2">
+              <a href="/auth/sign-up" class="block bg-green-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-green-700 transition-colors text-center">Get Started</a>
+            </li>
+          </ul>
+        </div>
+      </label>
+    </nav>
+
+    <!-- Main Content Container -->
+    <div class="flex flex-col min-h-[80vh]">
+      {% block content %}
+
+      {% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-green-50 border-t-2 border-green-300 text-gray-800 text-sm">
+      <div class="max-w-7xl mx-auto p-4 grid grid-cols-1 md:grid-cols-4 gap-4">
+        <!-- Brand -->
+        <div>
+          <p class="font-medium text-gray-900">Digital Pathshala</p>
+          <p class="mt-2 leading-relaxed">Empowering education through accessible, quality learning for everyone.</p>
+        </div>
+
+        <!-- Navigation -->
+        <div>
+          <p class="mb-2 font-medium text-gray-900">Quick links</p>
+          <ul class="space-y-1">
+            <li>
+              <a href="/home" class="hover:underline">Home</a>
+            </li>
+            <li>
+              <a href="/courses" class="hover:underline">Courses</a>
+            </li>
+            <li>
+              <a href="/about" class="hover:underline">About us</a>
+            </li>
+            <li>
+              <a href="/contacts" class="hover:underline">Contact</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Resources -->
+        <div>
+          <p class="mb-2 font-medium text-gray-900">Resources</p>
+          <ul class="space-y-1">
+            <li>
+              <a href="/blogs" class="hover:underline">Blog</a>
+            </li>
+            <li>
+              <a href="/privacy" class="hover:underline">Privacy policy</a>
+            </li>
+            <li>
+              <a href="/terms" class="hover:underline">Terms of service</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <p class="mb-2 font-medium text-gray-900">Contact</p>
+          <p>
+            Email: <a href="mailto:support@digitalpathshala.com" class="hover:underline">support@digitalpathshala.com</a>
+          </p>
+          <p>
+            Phone: <a href="tel:+9779800000000" class="hover:underline">+977-9800000000</a>
+          </p>
+          <div class="flex space-x-4 mt-3">
+            <!-- Minimal icon placeholders -->
+            <a href="https://www.facebook.com/digitalpathshala999" aria-label="Facebook" class="hover:text-gray-900">Fb</a>
+            <a href="#" aria-label="Twitter" class="hover:text-gray-900">Tw</a>
+            <a href="#" aria-label="LinkedIn" class="hover:text-gray-900">In</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t-2 border-green-200 mt-2 p-4 text-center text-sm text-gray-500">&copy; 2024 Digital Pathshala. All rights reserved.</div>
+    </footer>
+
+    <script>
+      window.addEventListener('DOMContentLoaded', () => {
+        const msg = document.getElementById('messages')
+        if (!msg) return
+      
+        // Slide in and fade in
+        requestAnimationFrame(() => {
+          msg.classList.remove('translate-x-full', 'opacity-0')
+          msg.classList.add('translate-x-0', 'opacity-100')
+        })
+      
+        // Auto remove after 3 seconds
+        setTimeout(() => {
+          // Optional: add fade-out before removal
+          msg.classList.add('opacity-0', 'transition-opacity', 'duration-500')
+          setTimeout(() => msg.remove(), 500) // remove after fade-out
+        }, 3000)
+      })
+    </script>
+  </body>
+</html>

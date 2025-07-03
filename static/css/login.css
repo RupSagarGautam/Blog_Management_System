@@ -1,5 +1,5 @@
 body {
-  background: #faf9f6;
+  background: linear-gradient(135deg, #d9f0e6, #b7e4c7); 
   font-family: 'Montserrat', Arial, sans-serif;
   margin: 0;
   padding: 0;
@@ -10,31 +10,41 @@ body {
 }
 
 .container {
-  width: 600px;
-  background: #f0fff4;
+  width: 400px;
+  background: #e6f2e9;
   border-radius: 36px;
-  box-shadow: 0 6px 32px rgba(0, 0, 0, 0.09);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15); /* Deeper shadow */
   padding: 56px 38px 38px 38px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: solid 2px #111b15;
+  border: solid 2px #1a2a33; /* Deeper border color */
 }
 
 .logo {
   margin-bottom: 28px;
+  
+}
+
+.logo img {
+  border-radius: 50%; /* Make logo circular */
+  border: 2.5px solid #4caf50;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Soft logo shadow */
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
 }
 
 h1 {
   font-size: 1.7rem;
   font-weight: 700;
   margin: 0 0 10px 0;
-  color: #222;
+  color: #2e7d32;/* Changed from #222 to dark navy */
   text-align: center;
 }
 
 .subtitle {
-  color: #7a7a7a;
+  color: #4a4a4a;
   font-size: 1.08rem;
   margin-bottom: 32px;
   text-align: center;
@@ -55,7 +65,7 @@ h1 {
 .input-group input {
   width: 100%;
   padding: 19px;
-  border: 1px solid #111b15;
+  border: 2px solid #2e7d32;;
   border-radius: 16px;
   background: #f5f7f4;
   font-size: 1.08rem;
@@ -67,7 +77,7 @@ h1 {
   width: 100%;
   padding: 16px 0;
   background: #32e67e;
-  color: #222;
+  color: #faf9f6;
   font-weight: 700;
   font-size: 1.15rem;
   border-radius: 22px;
@@ -77,14 +87,16 @@ h1 {
   transition: background 0.2s;
   box-shadow: 0 2px 8px rgba(163, 177, 138, 0.10);
   border: solid 1px #6b8361;
+  transition: 0.3s ease;
 }
 
 .login-btn:hover {
   background: #faf9f6;
   transform: translateY(-2px);
-  border: solid 2px #111b15;
+  border: solid 1px #111b15;
   box-shadow: 2px 4px 12px #3a3a3a;
-  transition: 0.5s linear;
+  transition: 0.3s ease;
+  color: #32e67e;
 }
 
 .forgot-row {
@@ -131,7 +143,7 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #e9fbe1;
+  background: #ffffff;
   border: solid 1px #6b8361;
   border-radius: 16px;
   padding: 12px 0;
@@ -146,14 +158,14 @@ h1 {
 }
 
 .google-btn:hover {
-  background: #e0fbd4;
+  background: #ffffff;
 }
 
 .google-icon {
   width: 24px;
   height: 24px;
   margin-right: 10px;
-  background: #fff;
+  background: #ffffff;
   border-radius: 50%;
   padding: 2px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
@@ -165,7 +177,7 @@ h1 {
   margin-top: 18px;
   text-align: center;
   font-size: 1.01rem;
-  color: #0c0b0b;
+  color: #2e7d32;
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -174,7 +186,7 @@ h1 {
 
 .footer a,
 .signup-link {
-  color: #A3B18A;
+  color: #2e7d32;
   text-decoration: none;
   font-weight: 500;
 }

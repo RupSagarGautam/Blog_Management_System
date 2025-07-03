@@ -108,7 +108,7 @@ h2 {
 .signup-btn {
   width: 100%;
   padding: 14px 0;
-  background: #4caf50;
+  background: #32e67e;
   color: white;
   font-weight: 700;
   font-size: 1.1rem;
@@ -118,10 +118,13 @@ h2 {
   margin-bottom: 20px;
   cursor: pointer;
   transition: background 0.3s ease;
+  border: solid 1px #111b15;
 }
 
 .signup-btn:hover {
-  background: #388e3c;
+  border: solid 1px #111b15;
+  background: white;
+  color: #32e67e;
 }
 
 .or-continue {

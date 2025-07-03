@@ -41,12 +41,13 @@ urlpatterns = [
     path('sign-up/',views.signupPage),
     path('user-profile/',views.profilePage),
     path('contact-us/',views.contactUs),
+    path('blog-details', views.blogDetails),
     
     path('add-blog-admin/',views.addBlogAdmin),
     path('update-blog-admin/',views.updateBlogAdmin),
     path('view-blog-list/',views.blogListAdmin),
     path('auth/', include(auth_urlpatterns)),
-    path('user-profile/', views.profilePage)
+    path('user-profile/', views.profilePage),
 
 ]
 

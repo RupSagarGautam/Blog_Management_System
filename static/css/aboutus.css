@@ -152,6 +152,70 @@ body {
   position: relative;
 }
 
+.partnership-section {
+  margin: 5rem 0;
+  text-align: center;
+  background-color: var(--div-background);
+  padding: 4rem 2rem;
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+}
+
+.partnership-section h2 {
+  font-size: 2.2rem;
+  color: var(--sage-green-dark);
+  margin-bottom: 3rem;
+}
+
+.partnership-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.partnership-card {
+  background-color: var(--page-background);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.partnership-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.partnership-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border-radius: 10px;
+  border: 3px solid var(--sage-green-accent);
+  background-color: #fff;
+  padding: 0.5rem;
+}
+
+.partner-info {
+  text-align: left;
+}
+
+.partner-info h3 {
+  font-size: 1.4rem;
+  color: var(--sage-green);
+  margin-bottom: 0.5rem;
+}
+
+.partner-info p {
+  font-size: 1rem;
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+
 .quote-section::before {
   content: '"';
   position: absolute;

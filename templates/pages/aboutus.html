@@ -72,20 +72,20 @@
         <div class="partnership-section">
             <h2>Our Partners</h2>
                 <div class="partnership-cards">
-                    <div class="partnership-card">
-                        <img src="/static/assets/tech_bridge.jpeg" alt="Partner 1 Logo">
+                     {% for partner in partners %}
+                        <div class="partnership-card">
+                            <img src="{{ partner.logo.url }}" alt="{{ partner.name }} Logo">
                             <div class="partner-info">
-                                <h3>TechBridge Solutions</h3>
-                                <p>Collaborating with us on scalable architecture and cloud infrastructure to empower creators across the globe.</p>
-                            </div>
+                                <h3>{{ partner.name }}</h3>
+                                <p>{{ partner.description }}</p>
+                            {% if partner.website %}
+                                 <p><a href="{{ partner.website }}" target="_blank" rel="noopener noreferrer">Visit Website</a></p>
+                            {% endif %}
                         </div>
-                    <div class="partnership-card">
-                        <img src="/static/assets/Designify.png" alt="Partner 2 Logo">
-                            <div class="partner-info">
-                            <h3>Designify Studio</h3>
-                            <p>Helping us craft beautiful, intuitive interfaces that connect users with great stories and seamless navigation.</p>
                     </div>
-                </div>
+                    {% empty %}
+                <p>No partners added yet.</p>
+                {% endfor %}
             </div>
         </div>
 

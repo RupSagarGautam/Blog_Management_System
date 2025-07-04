@@ -33,7 +33,7 @@ urlpatterns = [
     
     path('',views.landingPage),
     path('admin/', admin.site.urls),
-    path('about-us/',views.aboutUS ),
+    # path('about-us/',views.aboutUS ),
     path('add-blog/', views.addBlogUser),
     path('blogs/', views.blog),
     path('home/', views.home),
@@ -42,15 +42,17 @@ urlpatterns = [
     path('user-profile/',views.profilePage),
     path('contact-us/',views.contactUs),
     path('blog-details', views.blogDetails),
-    
+    path('index/', views.landingPage),
     path('add-blog-admin/',views.addBlogAdmin),
     path('update-blog-admin/',views.updateBlogAdmin),
     path('view-blog-list/',views.blogListAdmin),
     path('auth/', include(auth_urlpatterns)),
     path('user-profile/', views.profilePage),
+    path('about/', include('about.urls')),
 
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])
+    

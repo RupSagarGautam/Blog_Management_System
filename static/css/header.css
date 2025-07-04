@@ -28,7 +28,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 5%;
-    background-color: #d3ffdf66;
+    background-color: #d3ffdf;
     box-shadow: 0 2px 10px var(--shadow-color);
     position: fixed;
     width: 100%;
@@ -43,8 +43,16 @@ body {
 }
 
 .logo img {
-    height: 70px;
-    width: auto;
+    width: 90px;
+    height: 90px;
+    border: 2.5px solid #4caf50;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    overflow: hidden;
+    background: white;
 }
 
 .leftsection .text {

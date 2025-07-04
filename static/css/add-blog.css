@@ -231,13 +231,23 @@ ul li a:hover:after {
     margin: 5px;
     border: none;
     transition: 0.3s linear;
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    list-style-type: style;
+    list-style-position: inside;
+    list-style-type: disc;
+    list-style-position: inside;
     
 }
+
 #editor:focus{
     outline: none;
-    margin: 10px;
-    font-style: italic;
-    transition: 0.5s;
+    border: 1px solid var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(50, 230, 126, 0.1);
+    list-style-type: style;
+    list-style-position: inside;
+    list-style-type: disc;
+    list-style-position: inside;
 }
 
 .ql-toolbar {
@@ -301,17 +311,84 @@ ul li a:hover:after {
 
 /* Rich Text Editor Styles */
 .editor-container {
+    padding: 0;
     border: 1px solid var(--border-color);
     border-radius: 8px;
-    overflow: hidden;
     background: var(--editor-bg);
     box-shadow: 0 2px 4px var(--shadow-color);
+    margin-bottom: 1rem;
 }
 
 .editor-container input:focus{
     outline: none;
 }
 
+/* Rich Text Editor Toolbar Styles */
+.editor-toolbar {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    background: var(--toolbar-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    margin-bottom: 0;
+}
+.editor-toolbar select,
+.editor-toolbar button {
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 0.3rem 0.7rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s, border 0.2s;
+}
+.editor-toolbar button {
+    font-weight: bold;
+    min-width: 32px;
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.editor-toolbar button:active,
+.editor-toolbar button:focus {
+    background: var(--primary-color);
+    color: #fff;
+    outline: none;
+}
+.editor-toolbar select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+/* Editor Content Styles for Headings and Paragraphs */
+#editor h1 {
+    font-size: 14px !important;
+    font-weight: bold !important;
+    margin: 0.5em 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#editor h2 {
+    font-size: 13px !important;
+    font-weight: bold !important;
+    margin: 0.5em 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#editor h3 {
+    font-size: 12px !important;
+    font-weight: bold !important; ;
+    margin: 0.5em 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#editor p {
+    font-size: 11px !important;
+    margin: 0.5em 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
 /* Hamburger Menu Styles */
 .hamburger {
@@ -648,6 +725,5 @@ ul li a:hover:after {
         font-size: 1.1rem;
     }
 }
-
 
 

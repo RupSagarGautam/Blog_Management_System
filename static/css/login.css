@@ -3,14 +3,15 @@ body {
   font-family: 'Montserrat', Arial, sans-serif;
   margin: 0;
   padding: 0;
-  display: flex;
+   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  
+  margin-top: 12%;
+
 }
 
 .container {
+
   width: 600px;
   background: #f0fff4;
   border-radius: 36px;
@@ -20,14 +21,15 @@ body {
   flex-direction: column;
   align-items: center;
   border: solid 2px #111b15;
-  margin-top: 12%;
+ 
+  min-height: 100vh;
 }
 
 .logo {
   margin-bottom: 28px;
 }
 
-h1 {
+.logo h1 {
   font-size: 1.7rem;
   font-weight: 700;
   margin: 0 0 10px 0;
@@ -186,12 +188,17 @@ h1 {
   color: #7D9465;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 1000px) and (min-width: 500px) {
   .container {
     width: 95vw;
     padding: 24px;
   }
 
+  .input-group input {
+    padding: 16px;
+    font-size: 1rem;
+    min-width: 400px;
+  }
   .logo img {
     width: 80px;
     height: 80px;

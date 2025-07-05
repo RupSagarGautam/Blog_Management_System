@@ -173,7 +173,10 @@ ul li a:hover:after {
 }
 
 .sidebar-header .logo img {
-    height: 25px;
+    height: 30px;
+    width: auto;
+    border: none;
+    border-radius: 0;
 }
 
 .close-btn {
@@ -235,7 +238,7 @@ ul li a:hover:after {
 
 
 /* Update existing media queries */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
     .hamburger {
         display: block;
     }
@@ -293,7 +296,8 @@ ul li a:hover:after {
     }
     
     .logo img {
-        height: 40px;
+        height: 60px;
+        width: 60px;
     }
     
     .leftsection .text {

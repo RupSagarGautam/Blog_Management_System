@@ -19,9 +19,5 @@ def loginUser(request):
                 messages.error(request, 'Invalid credentials. Please try again.')
                 return render(request, 'login.html')
         else:
-<<<<<<< HEAD
-            messages.error(request, 'User does not exist. Please sign up.')
-=======
             messages.error(request, 'User does not exist. Please sign up.')
             
->>>>>>> d4a4c5187dbb12f6856aea3678e98ce114aac07e

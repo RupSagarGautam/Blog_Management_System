@@ -19,7 +19,6 @@ from django.contrib import admin
 from django.urls import include, path
 from django.conf.urls.static import static
 from bms import views
-from bms import media
 
 # Serve static files during development
 auth_urlpatterns = [
@@ -33,7 +32,7 @@ urlpatterns = [
     
     path('',views.landingPage),
     path('admin/', admin.site.urls),
-    # path('about-us/',views.aboutUS ),
+    path('about-us/', include('about.urls')),
     path('add-blog/', views.addBlogUser),
     path('blogs/', views.blog),
     path('home/', views.home),
@@ -42,17 +41,16 @@ urlpatterns = [
     path('user-profile/',views.profilePage),
     path('contact-us/',views.contactUs),
     path('blog-details', views.blogDetails),
-    path('index/', views.landingPage),
+    path('about-us/', include('about.urls')),
     path('add-blog-admin/',views.addBlogAdmin),
     path('update-blog-admin/',views.updateBlogAdmin),
     path('view-blog-list/',views.blogListAdmin),
     path('auth/', include(auth_urlpatterns)),
     path('user-profile/', views.profilePage),
-    path('about/', include('about.urls')),
+    
 
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])
-    

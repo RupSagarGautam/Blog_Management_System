@@ -53,6 +53,7 @@ body {
     margin-bottom: 20px;
     overflow: hidden;
     background: white;
+    margin-top: 1%;
 }
 
 .leftsection .text {
@@ -62,6 +63,7 @@ body {
     letter-spacing: 1.5px;
     word-spacing: 2.5px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-top: -3%;
 }
 
 a {
@@ -252,7 +254,8 @@ ul li a:hover:after {
     }
     
     .logo img {
-        height: 50px;
+        height: 75px;
+        width: auto;
     }
     
     .leftsection .text {

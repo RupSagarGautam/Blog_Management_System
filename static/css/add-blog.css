@@ -144,6 +144,7 @@ ul li a:hover:after {
     transform: scale(1.1);
 }
 .addsection {
+    background:#e6f2e9;
     max-width: 800px;
     min-width: 800px;
     margin: 0 auto;
@@ -244,6 +245,7 @@ ul li a:hover:after {
     outline: none;
     border: 1px solid var(--primary-color);
     box-shadow: 0 0 0 2px rgba(50, 230, 126, 0.1);
+    font-size: 12px;
     list-style-type: style;
     list-style-position: inside;
     list-style-type: disc;
@@ -297,6 +299,7 @@ ul li a:hover:after {
     }
     
     .addsection {
+        background:#e6f2e9;
         padding: 1rem;
     }
     
@@ -326,14 +329,15 @@ ul li a:hover:after {
 /* Rich Text Editor Toolbar Styles */
 .editor-toolbar {
     display: flex;
-    gap: 0.5rem;
+    gap: 5px;
     align-items: center;
     background: var(--toolbar-bg);
     border-bottom: 1px solid var(--border-color);
-    padding: 0.5rem 0.5rem 0.5rem 1rem;
+    padding: 0.5rem;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     margin-bottom: 0;
+    background:#e6f2e9;
 }
 .editor-toolbar select,
 .editor-toolbar button {
@@ -611,6 +615,7 @@ ul li a:hover:after {
         padding: 3rem 6vw;
     }
     .addsection {
+        background:#e6f2e9;
         max-width: 900px;
         min-width: 600px;
         padding: 3rem 2.5rem;
@@ -633,6 +638,7 @@ ul li a:hover:after {
         padding: 4rem 12vw;
     }
     .addsection {
+        background:#e6f2e9;
         max-width: 1200px;
         min-width: 700px;
         padding: 4rem 3rem;
@@ -654,7 +660,9 @@ ul li a:hover:after {
         gap: 2rem;
         padding: 2rem 3vw;
     }
-    .addsection, .topaddsection {
+    .addsection, 
+    .topaddsection {
+        background:#e6f2e9;
         max-width: 100%;
         min-width: 500px;
         flex: unset;
@@ -678,6 +686,7 @@ ul li a:hover:after {
         font-size: 1rem;
     }
     .addsection {
+        background:#e6f2e9;
         padding: 1.2rem;
     }
 }
@@ -687,6 +696,7 @@ ul li a:hover:after {
         padding: 1rem 1vw;
     }
     .addsection {
+        background:#e6f2e9;
         padding: 1rem; 
         min-width: 500px;
     }
@@ -710,9 +720,11 @@ ul li a:hover:after {
         padding: 2.5rem 4vw;
     }
     .addsection {
+        background:#e6f2e9;
         max-width: 700px;
         min-width: 400px;
         padding: 2.2rem 1.5rem;
+        
     }
     .topaddsection img {
         max-width: 500px;

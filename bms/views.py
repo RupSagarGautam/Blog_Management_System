@@ -1,6 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
+from addBlogs import models
+
 # Client Side Views
 def aboutUS(request):
     return render(request, 'pages/aboutus.html')
@@ -9,7 +11,9 @@ def addBlogUser(request):
     return render(request,'pages/add-blog.html')
 
 def blog(request):
-    return render(request, 'pages/blog.html')
+    blogs = models.addBlog.objects.all()
+    print(blogs)
+    return render(request, 'pages/blog.html', {'blogs': blogs})
 
 def home(request):
     return render(request, 'pages/home.html')
@@ -40,4 +44,3 @@ def updateBlogAdmin(request):
 
 def blogListAdmin(request):
     return render(request, 'pages/bloglist.html')
-

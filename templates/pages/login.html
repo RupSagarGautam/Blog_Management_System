@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="/static/css/login.css" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
+{% include "layout/header.html" %}
 
 <body>
   <div class="container">
@@ -17,7 +18,8 @@
     <h1>Sign in to BMS</h1>
     <div class="subtitle">Access your account and manage your blogs!</div>
 
-    <form action="/auth/log-in" method="POST">
+    <form action="/auth/log-in/" method="POST">
+      {% csrf_token %}
       <div class="input-group">
         <label for="email">Email</label>
         <input type="text" id="email" name="email" placeholder="you@email.com" required />

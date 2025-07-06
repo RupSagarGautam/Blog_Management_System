@@ -14,6 +14,21 @@
 
 <body>
     {% include "layout/header.html" %}
+    {% if messages %}
+    <ul id="message-container" class="messages" style="list-style:none; padding:10px; margin-bottom:15px; position: fixed; top: 20px; right: 20px; width: auto; max-width: 300px; z-index: 1000;">
+      {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %} style="color: green; font-weight: bold; margin-bottom: 5px; background: #d4edda; border: 1px solid #c3e6cb; padding: 10px; border-radius: 5px;">{{ message }}</li>
+      {% endfor %}
+    </ul>
+    <script>
+      setTimeout(function() {
+        var msgContainer = document.getElementById('message-container');
+        if (msgContainer) {
+          msgContainer.style.display = 'none';
+        }
+      }, 4000);
+    </script>
+    {% endif %}
     <!-- Start Body -->
     <div class="body">
         <div class="firstsection">

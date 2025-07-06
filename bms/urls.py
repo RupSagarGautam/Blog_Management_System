@@ -22,17 +22,15 @@ from bms import views
 from bms import media
 
 # Serve static files during development
-auth_urlpatterns = [
-    path('log-in/', views.loginPage),
-    path('sign-up/', views.signupPage),
-    path('auth/log-in/', views.loginPage)
-]
 
 # Static files (CSS, JavaScript, Images)
 urlpatterns = [
     
     path('',views.landingPage),
+    
     path('admin/', admin.site.urls),
+    path('auth/', include('users.urls')),
+    
     path('about-us/',views.aboutUS ),
     path('add-blog/', views.addBlogUser),
     path('blogs/', views.blog),
@@ -45,7 +43,6 @@ urlpatterns = [
     path('add-blog-admin/',views.addBlogAdmin),
     path('update-blog-admin/',views.updateBlogAdmin),
     path('view-blog-list/',views.blogListAdmin),
-    path('auth/', include(auth_urlpatterns)),
     path('user-profile/', views.profilePage)
 
 ]

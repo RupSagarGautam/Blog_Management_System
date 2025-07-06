@@ -1,0 +1,49 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Blog Page</title>
+    <link rel="stylesheet" href="/static/css/updateblog.css" />
+</head>
+{% include 'layout/header.html' %}
+<body>
+    <div class="navbar">
+        <ul>
+            <li><a href="/add-blog-admin" >Add Blog</a></li>
+            <li><a href="/update-blog-admin" class="active" >Update Blog</a></li>
+            <li><a href="/view-blog-list">Blog List</a></li>
+        </ul>
+    </div>
+    <div class="update-blog-container">
+        <h1>Update Blog Post</h1>
+        <hr />
+        <form id="updateBlogForm" class="blog-form">
+            <div class="form-group">
+                <label for="blogTitle">Blog Title</label>
+                <input type="text" id="blogTitle" name="title" placeholder="Enter blog title" required />
+            </div>
+            <div class="form-group">
+                <label for="blogContent">Content</label>
+                <textarea id="blogContent" name="content" placeholder="Enter blog content" rows="6" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="blogTags">Tags</label>
+                <input type="text" id="blogTags" name="tags" placeholder="Enter tags separated by commas" required />
+            </div>
+            <div class="form-group">
+                <label for="imageInput">Featured Image</label>
+                <div class="image-upload-container">
+                    <input type="file" id="imageInput" name="image" accept="image/*" />
+                    <div class="image-preview" id="imagePreview"></div>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn-update">Update Blog</button>
+            </div>
+        </form>
+    </div>
+    <script src="/static/js/UpdateBlog.js"></script>
+</body>
+</html>

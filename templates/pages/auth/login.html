@@ -9,7 +9,15 @@
 </head>
 
 <body>
+  
   <div class="container">
+    {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
     <div class="logo">
       <img src="/static/Assets/Digital Pathshala logo.jpg" alt="Blog Website Logo"/>
     </div>
@@ -17,7 +25,8 @@
     <h1>Sign in to BMS</h1>
     <div class="subtitle">Access your account and manage your blogs!</div>
 
-    <form action="/auth/log-in" method="POST">
+    <form action="/auth/log-in/" method="POST">
+      {% csrf_token %}
       <div class="input-group">
         <label for="email">Email</label>
         <input type="text" id="email" name="email" placeholder="you@email.com" required />

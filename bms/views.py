@@ -13,7 +13,7 @@ def addBlogUser(request):
 def blog(request):
     blogs = models.addBlog.objects.all()
     print(blogs)
-    return render(request, 'pages/blog.html', {'blogs': blogs})
+    return render(request, 'pages/blog.html', { 'blogs': blogs })
 
 def home(request):
     return render(request, 'pages/home.html')

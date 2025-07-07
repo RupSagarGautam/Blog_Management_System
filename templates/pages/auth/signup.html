@@ -28,35 +28,35 @@
         <div class="name-container">
           <div class="input-group">
             <label for="first_name">First Name</label>
-            <input type="text" id="first_name" name="first_name" placeholder="First Name"/>
+            <input type="text" id="first_name" name="first_name" placeholder="First Name" value="{{ request.POST.first_name|default_if_none:'' }}"/>
             {% if errors.first_name %}
-            <span class="text-sm text-red-500">{{ errors.first_name }}</span>
+            <span class="text-sm text-red-500" style="color: red !important;">{{ errors.first_name }}</span>
             {% endif %}
           </div>
 
           <div class="input-group">
             <label for="last_name">Last Name</label>
-            <input type="text" id="last_name" name="last_name" placeholder="Last Name"/>
+            <input type="text" id="last_name" name="last_name" placeholder="Last Name" value="{{ request.POST.last_name|default_if_none:'' }}"/>
             {% if errors.last_name %}
-            <span class="text-sm text-red-500">{{ errors.last_name }}</span>
+            <span class="text-sm text-red-500" style="color: red !important;">{{ errors.last_name }}</span>
             {% endif %}
           </div>
         </div>
 
         <div class="input-group">
           <label for="username">Username</label>
-          <input type="text" id="username" name="username" placeholder="Username"/>
+          <input type="text" id="username" name="username" placeholder="Username" value="{{ request.POST.username|default_if_none:'' }}"/>
           {% if errors.username %}
-          <span class="text-sm text-red-500">{{ errors.username }}</span>
+          <span class="text-sm text-red-500" style="color: red !important;">{{ errors.username }}</span>
           {% endif %}
         </div>
 
          <div class="input-group">
           <label for="email">Email</label>
-          <input type="text" id="email" name="email" placeholder="Email"/>
+          <input type="text" id="email" name="email" placeholder="Email" value="{{ request.POST.email|default_if_none:'' }}"/>
           {% if errors.email %}
             {%for error in errors.email%}
-            <span class="text-sm text-red-500">{{ error }}</span>
+          <span class="text-sm text-red-500" style="color: red !important;">{{ error}}</span>
             {% endfor %}
           {% endif %}
         </div>
@@ -65,8 +65,8 @@
           <label for="password">Password</label>
           <input type="password" id="password" name="password" placeholder="Password"/>
           {% if errors.password %}
-          {%for error in errors.password%}
-          <span class="text-sm text-red-500">{{ error}}</span>
+          {% for error in errors.password %}
+          <span class="text-sm text-red-500" style="color: red !important;">{{ error }}</span>
           {% endfor %}
           {% endif %}
         </div>
@@ -75,7 +75,7 @@
           <label for="confirm_password">Confirm Password</label>
           <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password"/>
           {% if errors.confirm_password %}
-          <span class="text-sm text-red-500">{{ errors.confirm_password }}</span>
+          <span class="text-sm text-red-500" style="color: red !important;">{{ errors.confirm_password }}</span>
           {% endif %}
         </div>
 
@@ -330,7 +330,7 @@
                   <option value="Zimbabwe">Zimbabwe</option>
             </select>
             {% if errors.nationality %}
-            <span class="text-sm text-red-500">{{ errors.nationality }}</span>
+            <span class="text-sm text-red-500" style="color: red !important;">{{ errors.nationality }}</span>
             {% endif %}
             
           </div>
@@ -338,7 +338,7 @@
             <label for="address">Address</label>
             <input type="text" id="address" name="address" placeholder="Address"/>
           {% if errors.address %}
-          <span class="text-sm text-red-500">{{ errors.address }}</span>
+          <span class="text-sm text-red-500" style="color: red !important;">{{ errors.address }}</span>
           {% endif %}
           </div>
         </div>
@@ -348,7 +348,7 @@
             <label for="dob">Date of Birth</label>
             <input type="date" id="dob" name="dob"/>
             {% if errors.dob %}
-            <span class="text-sm text-red-500">{{ errors.dob }}</span>
+            <span class="text-sm text-red-500" style="color: red !important;">{{ errors.dob }}</span>
             {% endif %}
 
           </div>
@@ -360,7 +360,7 @@
               <option value="Other">Other</option>
             </select>
             {% if errors.gender %}
-            <span class="text-sm text-red-500">{{ errors.gender }}</span>
+            <span class="text-sm text-red-500" style="color: red !important;">{{ errors.gender }}</span>
             {% endif %}
           </div>
         </div>
@@ -369,7 +369,7 @@
           <label for="phone">Phone Number</label>
           <input type="tel" id="phone" name="phone" placeholder="Phone Number"/>
           {% if errors.phone %}
-          <span class="text-sm text-red-500">{{ errors.phone }}</span>
+          <span class="text-sm text-red-500" style="color: red !important;">{{ errors.phone }}</span>
           {% endif %}
         </div>
 
@@ -377,7 +377,7 @@
           <label for="profile_image">Profile Image</label>
           <input type="file" id="profile_image" name="profile_image"/>
           {% if errors.profile_image %}
-          <span class="text-sm text-red-500">{{ errors.profile_image }}</span>
+          <span class="text-sm text-red-500" style="color: red !important;">{{ errors.profile_image }}</span>
           {% endif %}
         </div>
 

@@ -62,6 +62,15 @@ def signupUser(request):
         if user_exists:
             errors['username']= "Username already exists."
             
+        if len(username) < 4:
+            errors['username'] = "Username should be at least 4 characters."
+            
+        if len(first_name) < 4:
+            errors['first_name'] = "First name should be at least 4 characters."
+            
+        if phone and not phone.isdigit():
+            errors['phone'] = "Phone number should contain only digits."
+            
         # if not phone:
         #     errors['phone'] = "Phone number is required."
         # elif phone_exists:
@@ -75,9 +84,6 @@ def signupUser(request):
             
         if password != confirm_password:
             errors['confirm_password'] = "Passwords do not match."
-            
-        if len(username) < 3:
-            errors['username'] = "Username should be at least 3 characters."
             
         try:
             validate_password(password)
@@ -100,10 +106,10 @@ def signupUser(request):
             except ValueError:
                 errors['dob'] = 'Invalid date format. Please use YYYY-MM-DD.'
                 # render form with errors...
-                return render(request, 'sign-up.html', {'errors': errors})
+                return render(request, 'pages/auth/signup.html', {'errors': errors})
         else:
             errors['dob'] = 'Date of birth is required.'
-            return render(request, 'signup.html', {'errors': errors})
+            return render(request, 'pages/auth/signup.html', {'errors': errors})
                 
         if errors:
             print(errors)

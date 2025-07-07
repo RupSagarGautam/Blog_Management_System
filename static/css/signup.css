@@ -198,3 +198,11 @@ h2 {
     gap: 12px;
   }
 }
+
+/* Error message styling */
+.text-red-500 {
+  color: red !important;
+  font-size: 0.875rem;
+  margin-top: 4px;
+  display: block;
+}

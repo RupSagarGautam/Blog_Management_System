@@ -18,6 +18,17 @@
       {% endfor %}
     </ul>
     {% endif %}
+
+    {% if errors %}
+    <ul class="error-messages">
+      {% if errors.email %}
+      <li class="error">{{ errors.email }}</li>
+      {% endif %}
+      {% if errors.password %}
+      <li class="error">{{ errors.password }}</li>
+      {% endif %}
+    </ul>
+    {% endif %}
     <div class="logo">
       <img src="/static/Assets/Digital Pathshala logo.jpg" alt="Blog Website Logo"/>
     </div>

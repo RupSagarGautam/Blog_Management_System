@@ -33,7 +33,8 @@ urlpatterns = [
     path('',views.landingPage),
     path('admin/', admin.site.urls),
     path('about-us/', include('about.urls')),
-    path('add-blog/', views.addBlogUser),
+    path('add-blog/', views.addBlogs, name='addBlog'),
+    path('add-blog/', views.addBlog),
     path('blogs/', views.blog),
     path('home/', views.home),
     path('log-in/',views.loginPage),
@@ -47,6 +48,7 @@ urlpatterns = [
     path('view-blog-list/',views.blogListAdmin),
     path('auth/', include(auth_urlpatterns)),
     path('user-profile/', views.profilePage),
+    
     
 
 ]

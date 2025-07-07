@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from addBlogs.models import addBlog
 
 from addBlogs import models
 
@@ -7,7 +8,22 @@ from addBlogs import models
 def aboutUS(request):
     return render(request, 'pages/aboutus.html')
 
-def addBlogUser(request):
+def addBlogs(request):
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        image = request.FILES.get('image')
+        print("Image Type: ", type(image))
+        content = request.POST.get('content')
+        author = request.POST.get('author')
+        print(title,content,author)
+
+        blog = addBlog(
+            title=title,
+            image=image,
+            content=content,
+            author=author
+        )
+        blog.save()
     return render(request,'pages/add-blog.html')
 
 def blog(request):

@@ -26,6 +26,7 @@ auth_urlpatterns = [
     path('log-in/', views.loginPage),
     path('sign-up/', views.signupPage),
     path('log-in', user_views.loginUser, name='login'),
+    path('logout/', user_views.logoutUser)
 ]
 
 # Static files (CSS, JavaScript, Images)

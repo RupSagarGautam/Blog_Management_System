@@ -12,15 +12,16 @@ def loginUser(request):
     errors = {}
     if request.method == "POST":
         email = request.POST.get("email")
+        username = request.POST.get("username")
         password = request.POST.get("password")
         
         # Check if user with given email exists
-        try:
-            user_obj = User.objects.get(email=email)
-            username = user_obj.username
-        except User.DoesNotExist:
-            user_obj = None
-            username = None
+        # try:
+        user_obj = User.objects.get(username=username) #fetches user object with given username
+        #     username = user_obj.username
+        # except User.DoesNotExist:
+        #     user_obj = None
+        #     username = None
         
         if user_obj:
             # Authenticate using username and password
@@ -35,9 +36,9 @@ def loginUser(request):
             errors['email'] = "User with this email does not exist."
         
         if errors:
-            return render(request, 'pages/auth/login.html', {'errors': errors}) # renders login.html with errors
+            return render(request, 'pages/login.html', {'errors': errors}) # renders login.html with errors
     else:
-        return render(request, 'pages/auth/login.html')
+        return render(request, 'pages/login.html')
         
 def signupUser(request):
     errors = {}
@@ -138,5 +139,3 @@ def signupUser(request):
         return redirect("/auth/log-in")
     else:
         return render(request, 'pages/auth/signup.html')
-            
-       

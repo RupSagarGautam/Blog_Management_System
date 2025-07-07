@@ -19,10 +19,5 @@ class Profile(models.Model):
     profile_image = models.ImageField(upload_to='generateImagePath', blank=True, null=True, default= "users/profpic.jpg")
     dob = models.DateField(blank=True, null=True)
     
-    def __str__(self):
+    def _str_(self):
         return f"{self.user}'s Profile"
-
-    
-    
-    
-

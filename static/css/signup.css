@@ -1,5 +1,5 @@
 body {
-  background: linear-gradient(135deg, #d9f0e6, #b7e4c7);
+  background: var(--background-color);
   font-family: 'Montserrat', Arial, sans-serif;
   margin: 0;
   padding: 0;
@@ -8,11 +8,10 @@ body {
   align-items: center;
   min-height: 100vh;
   overflow: auto;
-  margin-top: 2%;
 }
 
 .container {
-  width: 500px;
+  width: 600px;
   background: #e6f2e9;
   border-radius: 20px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
@@ -24,10 +23,10 @@ body {
   position: relative;
   z-index: 1;
   margin-bottom: 2%;
-  margin-top: 2%;
+  margin-top: 12%;
 }
 
-.logo {
+.logosignup {
   width: 90px;
   height: 90px;
   border: 2.5px solid #4caf50;
@@ -40,7 +39,7 @@ body {
   background: white;
 }
 
-.logo img {
+.logosignup img {
   width: 70%;
   height: 70%;
   object-fit: contain;
@@ -108,7 +107,7 @@ h2 {
 .signup-btn {
   width: 100%;
   padding: 14px 0;
-  background: #32e67e;
+  background: #4caf50;
   color: white;
   font-weight: 700;
   font-size: 1.1rem;
@@ -118,13 +117,10 @@ h2 {
   margin-bottom: 20px;
   cursor: pointer;
   transition: background 0.3s ease;
-  border: solid 1px #111b15;
 }
 
 .signup-btn:hover {
-  border: solid 1px #111b15;
-  background: white;
-  color: #32e67e;
+  background: #388e3c;
 }
 
 .or-continue {
@@ -197,12 +193,4 @@ h2 {
     flex-direction: column;
     gap: 12px;
   }
-}
-
-/* Error message styling */
-.text-red-500 {
-  color: red !important;
-  font-size: 0.875rem;
-  margin-top: 4px;
-  display: block;
 }

@@ -9,7 +9,7 @@ body {
   font-family: 'Segoe UI', sans-serif;
   background-color: #faf9f6; /* Page Background */
   color: #3a3a3a; /* Text Color */
-  margin-top: 160px;
+  margin-top: 12%;
 }
 
 /* Layout: Content + Sidebar */
@@ -19,8 +19,8 @@ body {
   align-items: flex-start;
 }
 
-/* ✅ Clean Sidebar */
-.sidebar {
+/* Clean Sidebar */
+.sidebardropdown {
   background-color: transparent;
   border: none;
   padding-left: 0;
@@ -50,7 +50,7 @@ body {
   text-align: center;
 }
 
-/* ✅ Animated Dropdown Menu */
+/* Animated Dropdown Menu */
 .dropdown-menu {
   opacity: 0;
   visibility: hidden;
@@ -195,7 +195,7 @@ body {
     flex-direction: column-reverse;
   }
 
-  .sidebar {
+  .sidebardropdown {
     width: 100%;
     justify-content: center;
   }

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login Page</title>
+  <link rel="stylesheet" href="/static/css/login.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+{% include "layout/header.html" %}
+
+<body>
+  <div class="container">
+    <div class="logo">
+      <img src="/static/Assets/Digital Pathshala logo.jpg" alt="Blog Website Logo" style="width:100px; height:100px; object-fit:contain; display:block; margin:0 auto;" />
+    </div>
+
+    <h1>Sign in to BMS</h1>
+    <div class="subtitle">Access your account and manage your blogs!</div>
+
+    <form action="/auth/log-in" method="post">
+      {% csrf_token %}
+      {{errors}}
+      <div class="input-group">
+        <label for="email">Username</label>
+        <input type="text" id="email" name="username" placeholder="Your UserName" required />
+      </div>
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Password" required />
+      </div>
+      <button class="login-btn" type="submit">Sign in</button>
+    </form>
+
+    <div class="forgot-row">
+      <a href="#" class="forgot-link">Forgot password?</a>
+    </div>
+
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-text">Or continue</div>
+      <div class="divider-line"></div>
+    </div>
+
+    <button class="google-btn" type="button">
+      <img src="/static/Assets/Google logo.png" alt="Google logo" class="google-icon" />
+      Log in with Google
+    </button>
+
+    <div class="footer">
+      Don't have an account?
+      <a href="/sign-up" class="signup-link">Sign Up</a>
+    </div>
+  </div>
+</body>
+</html>

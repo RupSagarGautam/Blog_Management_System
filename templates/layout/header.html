@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,12 +9,11 @@
     
 </head>
 <body>
-    
          <div class="header">
         <a href="/">   
         <div class="leftsection">
             <div class="logo">
-                <img src="/static/Assets/favicon.ico" alt="BMS Logo" />
+                <img src="/static/assets/favicon.ico" alt="BMS Logo" />
             </div>
             <div class="text">
                 Digital Pathshala
@@ -29,14 +29,10 @@
             <div class="nav">
                 <ul>
                     <li><a href="/about-us">About Us</a></li> |
-                    <li><a href="/blogs">Blogs</a></li> |
-                   <li><a href="/add-blog">Write</a></li> |
-                   {% if not user.is_authenticated %}
+                    <li><a href="/blogs/blogs">Blogs</a></li> |
+                   <li><a href="/blogs/add-blog">Write</a></li> |
                     <li><a href="/auth/log-in">Log-In</a></li> |
-                   {% endif %}
-                    <li>
-                      <a href="{% if user.is_authenticated %}/add-blog{% else %}/auth/sign-up{% endif %}" class="getstarted-btn">Get Started</a>
-                    </li>
+                    <li><a href="/auth/sign-up" class="getstarted-btn">Get Started</a></li>
                 </ul>
             </div>
         </div>
@@ -53,8 +49,8 @@
         </div>
         <ul class="sidebar-nav">
             <li><a href="/about-us">About Us</a></li>
-            <li><a href="/blogs">Blogs</a></li>
-            <li><a href="/add-blog">Write</a></li>
+            <li><a href="/blogs/blogs">Blogs</a></li>
+            <li><a href="/blogs/add-blog">Write</a></li>
             <li><a href="/log-in">Log In</a></li>
             <li><a href="/sign-up" class="getstarted-btn">Get Started</a></li>
         </ul>

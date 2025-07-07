@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from addBlogs import models
+from django.contrib import messages
 # Create your views here.
 
 def addBlogs(request):
@@ -18,6 +19,8 @@ def addBlogs(request):
             author=author
         )
         blog.save()
+        messages.success = "Blog added successfully"
+        
     return render(request,'pages/blogs/add-blog.html')
 
 def blog(request):

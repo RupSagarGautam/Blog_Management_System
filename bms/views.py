@@ -1,8 +1,11 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from addBlogs.models import addBlog
-
 from addBlogs import models
+from django.shortcuts import render
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
 
 # Client Side Views
 def aboutUS(request):
@@ -24,12 +27,12 @@ def addBlogs(request):
             author=author
         )
         blog.save()
-    return render(request,'pages/add-blog.html')
+    return render(request,'pages/blogs/add-blog.html')
 
 def blog(request):
     blogs = models.addBlog.objects.all()
     print(blogs)
-    return render(request, 'pages/blog.html', { 'blogs': blogs })
+    return render(request, 'pages/blogs/blog.html', { 'blogs': blogs })
 
 def home(request):
     return render(request, 'pages/home.html')
@@ -60,3 +63,5 @@ def updateBlogAdmin(request):
 
 def blogListAdmin(request):
     return render(request, 'pages/bloglist.html')
+
+            

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Header</title>
     <link rel="stylesheet" href="/static/css/header.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
 </head>
 <body>
@@ -32,12 +33,12 @@
                     {% if user.is_authenticated %}
                     <li><a href="/blogs/blogs">Blogs</a></li> |
                     {% else %}
-                    <li><a href="/auth/login">Blogs</a></li> |
+                    <li><a href="/auth/log-in">Blogs</a></li> |
                     {% endif %}
                     {% if user.is_authenticated %}
                    <li><a href="/blogs/add-blog">Write</a></li> |
                    {% else %}
-                   <li><a href="/auth/login">Write</a></li> |
+                   <li><a href="/auth/log-in">Write</a></li> |
                    {%endif%}
                    {% if not user.is_authenticated %}
                     <li><a href="/auth/log-in">Log-In</a></li> |
@@ -48,7 +49,37 @@
                     <li><a href="/auth/sign-up" class="getstarted-btn">Get Started</a></li>
                     {% endif %}
                     {% if user.is_authenticated %}
-                    <li><a href="/user-profile" class="profile"> Profile </a></li>
+                    <li class="profile-container">
+                <a href="javascript:void(0);" class="profile-link">
+                    <img src="/static/assets/Member-1.jpg" alt="Profile Image" class="profile-image" />
+                </a>
+                <div class="profile-dropdown" id="profileDropdown" style=" max-width= 11rem; margin-right:-55%;" >
+                    <button class="close-dropdown" id="closeDropdown">&times;</button>
+                    <ul style=" padding: 15px; margin: 10px; ">
+                        <li>
+                            <button class="dropdown-button-profile" onclick="window.location.href='/user-profile'">
+                                My Profile
+                                <i class="fas fa-user"></i> 
+                            </button>
+                        </li>
+                        <li>
+                            <button class="dropdown-button-profile" onclick="window.location.href='/blogs/blogs'">
+                                My Blogs
+                                <i class="fas fa-book"></i> 
+                            </button>
+                        </li>
+                        <li>
+                            <button id="logout-btn" class="dropdown-button-profile" onclick="window.location.href='/auth/logout/'">
+                                Logout
+                                <i class="fas fa-sign-out-alt"></i> 
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    
+                    </li>
                     {% endif %}
                 </ul>
             </div>
@@ -71,9 +102,21 @@
             <li><a href="/sign-up" class="getstarted-btn">Get Started</a></li>
         </ul>
     </div>
+{% if messages %}
+  <div class="profile-msg-container">
+    {% for message in messages %}
+      <div class="profile-alert alert-{{ message.tags }}">
+        {{ message }}
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
     <div class="overlay"></div>
+
     <!-- End for Header -->
 
+   
 <script>
     document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('.hamburger');
@@ -113,6 +156,32 @@
         }
     });
 }); 
+ document.addEventListener('DOMContentLoaded', function() {
+            const profileLink = document.querySelector('.profile-link');
+            const dropdownMenu = document.getElementById('profileDropdown');
+            const closeDropdown = document.getElementById('closeDropdown');
+
+            // Toggle dropdown on profile image click
+            profileLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                dropdownMenu.classList.toggle('active');
+            });
+
+            // Close dropdown when clicking on close button
+            closeDropdown.addEventListener('click', function() {
+                dropdownMenu.classList.remove('active');
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.profile-container')) {
+                    dropdownMenu.classList.remove('active');
+                }
+            });
+        });
+ setTimeout(() => {
+    document.querySelectorAll('.profile-alert').forEach(el => el.style.display = 'none');
+  }, 5000); // 5 seconds
 </script>
 </body>
 </html>

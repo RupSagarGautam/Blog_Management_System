@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .models import Profile #model exists in same folder
 from django.contrib.auth.password_validation import validate_password #password validation automatically done by django
 from django.core.validators import validate_email #email validation automatically done by django
 from datetime import datetime
+from django.contrib.auth.decorators import login_required
+
 
 
 def loginUser(request):
@@ -139,3 +141,10 @@ def signupUser(request):
         return redirect("/auth/log-in")
     else:
         return render(request, 'pages/auth/signup.html')
+    
+@login_required(login_url="/auth/log-in/")    
+def logoutUser(request):
+    logout(request)
+    messages.success(request, "You Have Successfully Log Out")
+    print("Logout Success")
+    return redirect("/auth/log-in")

@@ -3,7 +3,7 @@ from .models import Partner
 
 def about_us(request):
     partners = Partner.objects.all()
-    return render(request, 'pages/about_us.html', {'partners': partners})
+    return render(request, 'pages/aboutus.html', {'partners': partners})
 
 def add_partner(request):
     if request.method == "POST":
@@ -20,6 +20,6 @@ def add_partner(request):
             website=website,
             logo=logo
         )
-        return redirect('about_us')
+        return redirect('aboutus')
 
-    return render(request, 'pages/add_partner.html')
+    return render(request, 'pages/add-partner.html')

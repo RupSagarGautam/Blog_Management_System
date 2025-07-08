@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Partner</title>
+    <link rel="stylesheet" href="/static/css/add-partner.css"> <!-- adjust path as needed -->
+</head>
+<body>
+
+<div class="page-container">
+    <div class="left-illustration">
+        <img src="/static/assets/add-partner.svg" alt="Add Partner Illustration">
+    </div>
+
+    <div class="add-partner-form">
+        <h2>Add New Partner</h2>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="name">Partner Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter partner name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" rows="4" placeholder="Enter a short description" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="website">Website URL</label>
+                <input type="url" id="website" name="website" placeholder="https://example.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="location">Location</label>
+                <input type="text" id="location" name="location" placeholder="City, Country" required>
+            </div>
+
+            <div class="form-group">
+                <label for="logo">Upload Logo</label>
+                <input type="file" id="logo" name="logo" accept="image/*" required>
+            </div>
+
+            <button type="submit" class="submit-btn">Add Partner</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

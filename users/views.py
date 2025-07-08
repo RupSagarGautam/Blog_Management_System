@@ -109,14 +109,14 @@ def signupUser(request):
             except ValueError:
                 errors['dob'] = 'Invalid date format. Please use YYYY-MM-DD.'
                 # render form with errors...
-                return render(request, 'pages/auth/signup.html', {'errors': errors})
+                return render(request, 'pages/signup.html', {'errors': errors})
         else:
             errors['dob'] = 'Date of birth is required.'
-            return render(request, 'pages/auth/signup.html', {'errors': errors})
+            return render(request, 'pages/signup.html', {'errors': errors})
                 
         if errors:
             print(errors)
-            return render(request, 'pages/auth/signup.html', {'errors': errors})
+            return render(request, 'pages/signup.html', {'errors': errors})
         else:
             #creating new user in model
             user= User.objects.create_user(username=username, email=email, password=password, first_name=first_name, last_name=last_name)
@@ -140,7 +140,7 @@ def signupUser(request):
         messages.success(request, "You have successfully signed up")
         return redirect("/auth/log-in")
     else:
-        return render(request, 'pages/auth/signup.html')
+        return render(request, 'pages/signup.html')
     
 @login_required(login_url="/auth/log-in/")    
 def logoutUser(request):

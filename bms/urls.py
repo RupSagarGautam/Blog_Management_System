@@ -24,7 +24,7 @@ from users import views as user_views
 # Serve static files during development
 auth_urlpatterns = [
     path('log-in/', views.loginPage),
-    path('sign-up/', views.signupPage),
+    path('sign-up/', user_views.signupUser),
     path('log-in', user_views.loginUser, name='login'),
     path('logout/', user_views.logoutUser)
 ]

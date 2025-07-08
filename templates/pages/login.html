@@ -11,6 +11,14 @@
 
 <body>
   <div class="container">
+      {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+      <div class="error-message">{{ errors.username }}</div>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
     <div class="logo">
       <img src="/static/Assets/Digital Pathshala logo.jpg" alt="Blog Website Logo" style="width:100px; height:100px; object-fit:contain; display:block; margin:0 auto;" />
     </div>
@@ -20,11 +28,10 @@
 
     <form action="/auth/log-in" method="post">
       {% csrf_token %}
-      {{errors}}
-      <div class="input-group">
-        <label for="email">Username</label>
-        <input type="text" id="email" name="username" placeholder="Your UserName" required />
-      </div>
+        <div class="input-group">
+          <label for="email">Username</label>
+          <input type="text" id="email" name="username" placeholder="Your UserName" required />
+        </div>
       <div class="input-group">
         <label for="password">Password</label>
         <input type="password" id="password" name="password" placeholder="Password" required />

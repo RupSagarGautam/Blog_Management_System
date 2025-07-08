@@ -130,6 +130,180 @@ ul li a:hover:after {
     transform: scale(20px);
 }
 
+
+
+.navbar {  
+         background-color: #2c3e50;
+         padding: 15px 30px;
+         border-radius: 8px;
+         margin-bottom: 30px;
+        }
+
+        .nav-list {
+         display: flex;
+         list-style: none;
+         gap: 20px;
+         align-items: center;
+        }
+
+        .profile-container {
+         position: relative;
+         cursor: pointer;
+        }
+
+        .profile-image {
+         width: 50px;
+         height: 50px;
+         border-radius: 50%;
+         object-fit: cover;
+         border: 3px solid #1e691c;
+         transition: all 0.3s ease;
+        }
+
+        .profile-image:hover {
+         transform: scale(1.05);
+         box-shadow: 0 0 5px rgb(46, 46, 46);
+        }
+
+        /* Dropdown styles */
+        .profile-dropdown {
+         position: absolute;
+         right: 0;
+         top: 70px;
+         background-color: white;
+         border-radius: 8px;
+         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+         width: 200px;
+         opacity: 0;
+         visibility: hidden;
+         transform: translateY(-10px);
+         transition: all 0.3s ease;
+         z-index: 1000;
+        }
+
+        .profile-dropdown.active {
+         opacity: 1;
+         visibility: visible;
+         transform: translateY(0);
+        }
+
+        .profile-dropdown ul {
+         list-style: none;
+         display: flex;
+         flex-direction: column;
+         gap: none !important;
+         background-color: #eafdf2;
+        }
+
+
+        .profile-dropdown li {
+         padding: 10px 15px;
+         border-bottom: 1px solid #eee;
+         transition: all 0.2s ease;
+        }
+
+        .profile-dropdown li:last-child {
+         border-bottom: none;
+        }
+
+        
+
+        .dropdown-button-profile {
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            width: 100%;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            text-align: left;
+            transition: 0.5s;
+        }
+
+        .dropdown-button-profile:hover {
+            color: #26a32c;
+            transition: 0.3s;
+            transform: scale(1.05);
+        }
+
+        .dropdown-button-profile i {
+            font-size: 18px;
+        }
+
+        /* Close button for mobile */
+        .close-dropdown {
+            display: none;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        #logout-btn{
+            color: #e03b3b !important;
+            transition: 0.5s linear;
+            transform: none;
+            border-radius: 25px;
+        }
+
+        #logout-btn:hover{
+            background-color: #e03b3b;
+            color: #faf9f6 !important;
+            transition: 0.5s;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .profile-dropdown {
+                width: 100%;
+                left: 0;
+                right: auto;
+            }
+            
+            .close-dropdown {
+                display: block;
+            }
+        }
+/* Container fixed to profile image position */
+.profile-msg-container {
+  position: fixed;
+  top: 72px; /* Adjust based on header/profile height */
+  right: 18px; /* Align right, below profile icon */
+  z-index: 9999;
+  transform: translateY(+30px);
+}
+
+/* Message box style */
+.profile-alert {
+  background-color: #4CAF50; /* Green for success */
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  min-width: 220px;
+  animation: slideFade 0.7s ease-out;
+  transform: translateY(+30px);
+}
+
+/* Fade-in slide effect */
+@keyframes slideFade {
+  from {
+    opacity: 0;
+    transform: translateY(+10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(+30px);
+  }
+}
+
 /* Hamburger Menu Styles */
 .hamburger {
     display: none;

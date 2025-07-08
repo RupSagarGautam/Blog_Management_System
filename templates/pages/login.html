@@ -18,11 +18,12 @@
     <h1>Sign in to BMS</h1>
     <div class="subtitle">Access your account and manage your blogs!</div>
 
-    <form action="/auth/log-in/" method="POST">
+    <form action="/auth/log-in" method="post">
       {% csrf_token %}
+      {{errors}}
       <div class="input-group">
-        <label for="email">Email</label>
-        <input type="text" id="email" name="email" placeholder="you@email.com" required />
+        <label for="email">Username</label>
+        <input type="text" id="email" name="username" placeholder="Your UserName" required />
       </div>
       <div class="input-group">
         <label for="password">Password</label>

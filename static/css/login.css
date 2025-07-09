@@ -20,8 +20,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: solid 2px #111b15;
- 
+  border: solid 2px #4caf50;
+  margin-top: 4%;
+  margin-bottom: 3%;
   min-height: 100vh;
 }
 
@@ -55,7 +56,7 @@ body {
 .input-group input {
   width: 100%;
   padding: 19px;
-  border: 1px solid #111b15;
+  border: solid 1px #4caf50;
   border-radius: 16px;
   background: #f5f7f4;
   font-size: 1.08rem;
@@ -66,8 +67,8 @@ body {
 .login-btn {
   width: 100%;
   padding: 16px 0;
-  background: #32e67e;
-  color: #222;
+  background: #4caf50;
+  color: #ffffff;
   font-weight: 700;
   font-size: 1.15rem;
   border-radius: 22px;
@@ -76,15 +77,16 @@ body {
   cursor: pointer;
   transition: background 0.2s;
   box-shadow: 0 2px 8px rgba(163, 177, 138, 0.10);
-  border: solid 1px #6b8361;
+  border: solid 1px #000000;
 }
 
 .login-btn:hover {
   background: #faf9f6;
   transform: translateY(-2px);
-  border: solid 2px #111b15;
+  border: solid 1px #111b15;
   box-shadow: 2px 4px 12px #3a3a3a;
   transition: 0.5s linear;
+  color: #4caf50
 }
 
 .forgot-row {
@@ -102,7 +104,7 @@ body {
 }
 
 .forgot-link:hover {
-  color: #3B47F5;
+  color: #4caf50;
 }
 
 .divider {
@@ -131,7 +133,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #e9fbe1;
+  background: #f9f9f9;
   border: solid 1px #6b8361;
   border-radius: 16px;
   padding: 12px 0;
@@ -146,7 +148,7 @@ body {
 }
 
 .google-btn:hover {
-  background: #e0fbd4;
+  background: #fafafa;
 }
 
 .google-icon {
@@ -174,14 +176,14 @@ body {
 
 .footer a,
 .signup-link {
-  color: #A3B18A;
+  color: #4caf50;
   text-decoration: none;
   font-weight: 500;
 }
 
 .signup-link:hover {
   text-decoration: underline;
-  color: #7D9465;
+  color: #4caf50;
 }
 
 @media (max-width: 1000px) and (min-width: 500px) {

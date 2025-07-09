@@ -19,7 +19,7 @@ def addBlogs(request):
             author=author
         )
         blog.save()
-        messages.success = "Blog Added Successfully."
+        messages.success = "Blog added successfully"
         
     return render(request,'pages/blogs/add-blog.html')
 

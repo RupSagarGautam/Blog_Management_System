@@ -4,4 +4,4 @@ from .models import Partner
 
 @admin.register(Partner)
 class PartnerAdmin(admin.ModelAdmin):
-    list_display = ('name', 'website')
+    list_display = ['name', 'website', 'location']

@@ -72,22 +72,35 @@
         <div class="partnership-section">
             <h2>Our Partners</h2>
                 <div class="partnership-cards">
-                     {% for partner in partners %}
-                        <div class="partnership-card">
-                            <img src="{{ partner.logo.url }}" alt="{{ partner.name }} Logo">
-                            <div class="partner-info">
-                                <h3>{{ partner.name }}</h3>
-                                <p>{{ partner.description }}</p>
-                            {% if partner.website %}
-                                 <p><a href="{{ partner.website }}" target="_blank" rel="noopener noreferrer">Visit Website</a></p>
-                            {% endif %}
+                {% for partner in partners %}
+                <div class="partnership-card">
+                    {% if partner.website %}
+                        <a href="{{ partner.website }}" target="_blank" rel="noopener noreferrer">
+                        <img src="{{ partner.logo.url }}" alt="{{ partner.name }} Logo">
+                        </a>
+                    {% else %}
+                        <img src="{{ partner.logo.url }}" alt="{{ partner.name }} Logo">
+                    {% endif %}
+
+                <div class="partner-info">
+                    {% if partner.website %}
+                        <h3>
+                            <a href="{{ partner.website }}" target="_blank" rel="noopener noreferrer">
+                            {{ partner.name }}
+                            </a>
+                        </h3>
+                        {% else %}
+                            <h3>{{ partner.name }}</h3>
+                        {% endif %}
+                            <p>{{ partner.description }}</p>
                         </div>
                     </div>
-                    {% empty %}
+                {% empty %}
                 <p>No partners added yet.</p>
-                {% endfor %}
-            </div>
+            {% endfor %}
         </div>
+        </div>
+
 
 
         <div class="quote-section">

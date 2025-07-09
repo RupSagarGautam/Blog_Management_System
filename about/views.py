@@ -22,4 +22,4 @@ def add_partner(request):
         )
         return redirect('about_us')
 
-    return render(request, 'pages/add_partner.html')
+    return render(request, 'pages/add-partner.html')

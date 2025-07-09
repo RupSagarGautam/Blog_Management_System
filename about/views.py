@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
-from .models import Partner
+from about import models
 
 def about_us(request):
-    partners = Partner.objects.all()
+    partners = models.Partner.objects.all()
     return render(request, 'pages/aboutus.html', {'partners': partners})
 
 def add_partner(request):
@@ -13,7 +13,7 @@ def add_partner(request):
         website = request.POST.get("website")
         logo = request.FILES.get("logo")
 
-        Partner.objects.create(
+        models.Partner.objects.create(
             name=name,
             location=location,
             description=description,

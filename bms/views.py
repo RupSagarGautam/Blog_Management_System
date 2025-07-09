@@ -8,8 +8,6 @@ from django.contrib.auth import authenticate, login
 from django.contrib import messages
 
 # Client Side Views
-def aboutUS(request):
-    return render(request, 'pages/aboutus.html')
 
 def addBlogs(request):
     if request.method == 'POST':

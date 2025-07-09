@@ -162,6 +162,15 @@ body {
   box-shadow: var(--shadow);
 }
 
+.partner-info a {
+  text-decoration: none;
+  color: var(--sage-green-dark); /* Match your existing heading color */
+}
+
+.partner-info a:hover {
+  text-decoration: underline;
+}
+
 .partnership-section h2 {
   font-size: 2.2rem;
   color: var(--sage-green-dark);
@@ -180,10 +189,13 @@ body {
   border-radius: 12px;
   box-shadow: var(--shadow);
   display: flex;
-  align-items: center;
+  flex-direction: column;  /* Stack items vertically */
+  align-items: center;     /* Center horizontally */
+  text-align: center;      /* Center text */
   gap: 1.5rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 
 .partnership-card:hover {
   transform: translateY(-5px);
@@ -191,17 +203,23 @@ body {
 }
 
 .partnership-card img {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-  border-radius: 10px;
-  border: 3px solid var(--sage-green-accent);
-  background-color: #fff;
+  width: 150px;  /* Same size as member image */
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--sage-green-accent);
   padding: 0.5rem;
+  background-color: #fff;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.partnership-card:hover img {
+  transform: scale(1.05);
+  border-color: var(--sage-green);
 }
 
 .partner-info {
-  text-align: left;
+  text-align: center;
 }
 
 .partner-info h3 {
@@ -211,9 +229,11 @@ body {
 }
 
 .partner-info p {
-  font-size: 1rem;
+  font-size: 1.05rem;
   color: var(--text-color);
-  line-height: 1.6;
+  line-height: 1.8;
+  text-align: left;
+  letter-spacing: 0.2px;
 }
 
 

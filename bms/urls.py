@@ -21,12 +21,10 @@ from django.conf.urls.static import static
 from bms import views
 from users import views as user_views
 
-
 # Serve static files during development
 auth_urlpatterns = [
-    path('log-in/', views.loginPage),
-    path('sign-up/', views.signupPage),
-    path('log-in', user_views.loginUser, name='login'),
+    path('log-in/', user_views.loginUser, name='login'),
+    path('sign-up/', user_views.signupUser),
     path('logout/', user_views.logoutUser)
 ]
 
@@ -37,7 +35,6 @@ blog_urlpatterns = [
     path('blogs/', views.blog),
     path('blog-details/', views.blogDetails),  
 ] 
-
 
 urlpatterns = [
     
@@ -58,7 +55,7 @@ urlpatterns = [
     path('auth/', include(auth_urlpatterns)),
     path('blogs/', include(blog_urlpatterns)),
 
-    path('', include("about.urls")),
+    path('about-us/', include('about.urls')),
 ]
 
 if settings.DEBUG:

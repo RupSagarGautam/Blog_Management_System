@@ -20,6 +20,6 @@ def add_partner(request):
             website=website,
             logo=logo
         )
-        return redirect('aboutus')
+        return redirect('about_us')
 
     return render(request, 'pages/add-partner.html')

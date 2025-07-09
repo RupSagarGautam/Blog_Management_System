@@ -37,8 +37,6 @@
                     {% endif %}
                     {% if user.is_authenticated %}
                    <li><a href="/blogs/add-blog">Write</a></li> |
-                   {% else %}
-                   <li><a href="/auth/log-in">Write</a></li> |
                    {%endif%}
                    {% if not user.is_authenticated %}
                     <li><a href="/auth/log-in">Log-In</a></li> |

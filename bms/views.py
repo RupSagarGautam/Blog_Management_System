@@ -6,6 +6,11 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
+from about import models as about_model
+
+def about_us(request):
+    partners = about_model.Partner.objects.all()
+    return render(request, 'pages/aboutus.html', {'partners': partners})
 
 # Client Side Views
 def aboutUS(request):

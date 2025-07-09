@@ -26,7 +26,6 @@
       </div>
       <h2>Register user to Digital Pathshala</h2>
       <p class="subtitle">Access your account and manage your blogs!</p>
-      <form>
         <div class="name-container">
           <div class="input-group">
             <label for="first_name">First Name</label>
@@ -35,6 +34,7 @@
             <span class="text-sm text-red-500" style="color: red !important;">{{ errors.first_name }}</span>
             {% endif %}
           </div>
+          
           
           <div class="input-group">
           <label for="last_name">Last Name</label>
@@ -50,6 +50,14 @@
           <input type="text" id="username" name="username" placeholder="Username"/>
           {% if errors.username %}
           <span class="text-sm text-red-500" style="color: red !important;">{{ errors.username }}</span>
+          {% endif %}
+        </div>
+
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="text" id="email" name="email" placeholder="Email"/>
+          {% if errors.email %}
+          <span class="text-sm text-red-500" style="color: red !important;">{{ errors.email }}</span>
           {% endif %}
         </div>
 

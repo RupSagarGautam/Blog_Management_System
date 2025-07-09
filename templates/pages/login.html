@@ -14,7 +14,7 @@
       {% if messages %}
     <ul class="messages">
       {% for message in messages %}
-      <div class="error-message">{{ errors.username }}</div>
+      <li class="error-message">{{ message }}</li>
       {% endfor %}
     </ul>
     {% endif %}
@@ -26,7 +26,7 @@
     <h1>Sign in to BMS</h1>
     <div class="subtitle">Access your account and manage your blogs!</div>
 
-    <form action="/auth/log-in" method="post">
+    <form action="/auth/log-in/" method="post">
       {% csrf_token %}
         <div class="input-group">
           <label for="email">Username</label>

@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>All Blogs - Purnima's Blog</title>
-  <link rel="stylesheet" href="/static/css/blog.css" />
+  <link rel="stylesheet" href="{% static 'css/blog.css' %}" />
 </head>
 <body>
 
@@ -16,11 +16,11 @@
     <div class="content">
       <div class="page-wrapper">
         <h1>All Blogs</h1>
-        <div class="blog-list">
+        <div class="blog-list">  <!-- Changed from blog-lisa to blog-list -->
 
           <!-- Blog 1 -->
           <div class="blog-card">
-            <img src="/static/assets/blog1.png.jpeg" alt="AI in 2025" />
+            <img src="{% static 'assets/blog1.png.jpeg' %}" alt="AI in 2025" />
             <h2>Understanding AI in 2025</h2>
             <div class="author">By: Purnima Basnet</div>
             <a href="#" class="read-more">Read More</a>
@@ -28,31 +28,31 @@
 
           <!-- Blog 2 -->
           <div class="blog-card">
-            <img src="/static/assets/blog2.png.jpeg" alt="Nepal Mountains" />
+            <img src="{% static 'assets/blog2.png.jpeg' %}" alt="Nepal Mountains" />
             <h2>Exploring the Mountains of Nepal</h2>
             <div class="author">By: Purnima Basnet</div>
-            <a href="#" class="read-more">Read-More</a>
+            <a href="#" class="read-more">Read More</a>
           </div>
 
           <!-- Blog 3 -->
           <div class="blog-card">
-            <img src="/static/assets/blog3.png.jpeg" alt="HTML CSS Tips" />
+            <img src="{% static 'assets/blog3.png.jpeg' %}" alt="HTML CSS Tips" />
             <h2>Top HTML/CSS Tips for Beginners</h2>
             <div class="author">By: Purnima Basnet</div>
-            <a href="#" class="read-more">Read-More</a>
+            <a href="#" class="read-more">Read More</a>
           </div>
 
           <!-- Blog 4 -->
           <div class="blog-card">
-            <img src="/static/assets/blog4.png.jpeg" alt="Self-Care Writing" />
+            <img src="{% static 'assets/blog4.png.jpeg' %}" alt="Self-Care Writing" />
             <h2>Self-Care Through Writing</h2>
             <div class="author">By: Purnima Basnet</div>
-            <a href="#" class="read-more">Read-More</a>
+            <a href="#" class="read-more">Read More</a>
           </div>
 
           <!-- Blog 5 -->
           <div class="blog-card">
-            <img src="/static/assets/blog14.jpeg" alt="Digital Marketing" />
+            <img src="{% static 'assets/blog14.jpeg' %}" alt="Digital Marketing" />
             <h2>Basics of Digital Marketing</h2>
             <div class="author">By: Purnima Basnet</div>
             <a href="#" class="read-more">Read More</a>
@@ -60,7 +60,7 @@
 
           <!-- Blog 6 -->
           <div class="blog-card">
-            <img src="/static/assets/blog6.png" alt="Blogging Platforms" />
+            <img src="{% static 'assets/blog6.png' %}" alt="Blogging Platforms" />
             <h2>Best Platforms for Bloggers in 2025</h2>
             <div class="author">By: Purnima Basnet</div>
             <a href="#" class="read-more">Read More</a>
@@ -68,7 +68,7 @@
 
           <!-- Blog 7 -->
           <div class="blog-card">
-            <img src="/static/assets/blog7.jpeg" alt="Health and Routine" />
+            <img src="{% static 'assets/blog7.jpeg' %}" alt="Health and Routine" />
             <h2>Boost Your Health with Routines</h2>
             <div class="author">By: Purnima Basnet</div>
             <a href="#" class="read-more">Read More</a>
@@ -76,7 +76,7 @@
 
           <!-- Blog 8 -->
           <div class="blog-card">
-            <img src="/static/assets/blog8.jpeg" alt="Courses and Learning" />
+            <img src="{% static 'assets/blog8.jpeg' %}" alt="Courses and Learning" />
             <h2>Top Free Courses to Upskill in 2025</h2>
             <div class="author">By: Purnima Basnet</div>
             <a href="#" class="read-more">Read More</a>
@@ -84,7 +84,7 @@
 
           <!-- Blog 9 -->
           <div class="blog-card">
-            <img src="/static/assets/blog9.jpeg" alt="Tech Career Growth" />
+            <img src="{% static 'assets/blog9.jpeg' %}" alt="Tech Career Growth" />
             <h2>Essential Skills to Boost Your Tech Career in 2025</h2>
             <div class="author">By: Purnima Basnet</div>
             <a href="#" class="read-more">Read More</a>
@@ -92,7 +92,7 @@
 
           <!-- Blog 10 -->
           <div class="blog-card">
-            <img src="/static/assets/blog10.jpeg" alt="Remote Work Tips" />
+            <img src="{% static 'assets/blog10.jpeg' %}" alt="Remote Work Tips" />
             <h2>How to Stay Productive While Working Remotely</h2>
             <div class="author">By: Purnima Basnet</div>
             <a href="#" class="read-more">Read More</a>
@@ -100,7 +100,7 @@
 
           <!-- Blog 11 -->
           <div class="blog-card">
-            <img src="/static/assets/blog11.jpeg" alt="AI Tools in 2025" />
+            <img src="{% static 'assets/blog11.jpeg' %}" alt="AI Tools in 2025" />
             <h2>Top AI Tools You Should Be Using in 2025</h2>
             <div class="author">By: Purnima Basnet</div>
             <a href="#" class="read-more">Read More</a>
@@ -108,7 +108,7 @@
 
           <!-- Blog 12 -->
           <div class="blog-card">
-            <img src="/static/assets/blog14.jpeg" alt="Portfolio Building" />
+            <img src="{% static 'assets/blog14.jpeg' %}" alt="Portfolio Building" />
             <h2>How to Build a Standout Portfolio as a Developer</h2>
             <div class="author">By: Purnima Basnet</div>
             <a href="#" class="read-more">Read More</a>
@@ -118,15 +118,15 @@
       </div>
     </div>
 
-    <!--  Only Categories Button -->
-    <div class="sidebar">
+    <!--  Sidebar Categories Button -->
+    <div class="sidebardropdown">
       <div class="categories-dropdown">
         <button class="dropdown-button">Categories ▼</button>
         <ul class="dropdown-menu">
-          <li><a href="#">Technology</a></li>
-          <li><a href="#">Travel</a></li>
-          <li><a href="#">Education</a></li>
-          <li><a href="#">Health</a></li>
+          <li><a href="{% url 'blog_category' 'technology' %}">Technology</a></li>
+          <li><a href="{% url 'blog_category' 'travel' %}">Travel</a></li>
+          <li><a href="{% url 'blog_category' 'education' %}">Education</a></li>
+          <li><a href="{% url 'blog_category' 'health' %}">Health</a></li>
         </ul>
       </div>
     </div>

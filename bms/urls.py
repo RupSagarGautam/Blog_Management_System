@@ -20,11 +20,16 @@ from django.urls import include, path
 from django.conf.urls.static import static
 from bms import views
 from bms import media
+from users.views import *
+
 
 # Serve static files during development
 auth_urlpatterns = [
     path('log-in/', views.loginPage),
     path('sign-up/', views.signupPage),
+    path('signin-user',loginUser),
+    path('blogs/category/<str:category_name>/', views.blog_category, name='blog_category'),
+
 ]
 
 # Static files (CSS, JavaScript, Images)

@@ -7,8 +7,8 @@
 
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: #faf9f6; /* Page Background */
-  color: #3a3a3a; /* Text Color */
+  background-color: #faf9f6;
+  color: #3a3a3a;
   margin-top: 160px;
 }
 
@@ -17,79 +17,104 @@ body {
   display: flex;
   gap: 30px;
   align-items: flex-start;
+  position: relative;
 }
 
-/* ✅ Clean Sidebar */
-.sidebar {
-  background-color: transparent;
-  border: none;
-  padding-left: 0;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  width: auto;
+/* Sidebar */
+.sidebardropdown {
+  position: relative;
+  z-index: 1000;
+  width: 220px; /* fixed width for sidebar */
 }
 
 /* Dropdown inside Sidebar */
 .categories-dropdown {
-  position: sticky;
-  top: 30px;
+  position: relative;
   width: 100%;
 }
 
+/* Dropdown Button */
 .dropdown-button {
-  background-color: #32e67e; /* Button Background */
-  color: #faf9f6; /* Button Text Color */
-  padding: 12px 20px;
+  background-color: #32e67e;
+  color: #faf9f6;
+  padding: 14px 20px;
   border: none;
-  border-radius: 10px;
+  border-radius: 8px;
   font-size: 17px;
   cursor: pointer;
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   width: 100%;
   text-align: center;
+  position: relative;
+  z-index: 2;
+  transition: background-color 0.3s ease;
 }
 
-/* ✅ Animated Dropdown Menu */
+.dropdown-button:hover,
+.dropdown-button:focus {
+  background-color: #28b765;
+  outline: none;
+}
+
+/* Dropdown Menu */
 .dropdown-menu {
   opacity: 0;
   visibility: hidden;
   transform: translateY(-10px);
-  transition: all 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  
   position: absolute;
   top: 100%;
   left: 0;
   margin-top: 12px;
+
   background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  
   list-style: none;
   width: 100%;
-  padding: 10px 0;
+  max-height: 300px; /* limit height */
+  overflow-y: auto;  /* scroll if too long */
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* grid for categories */
+  gap: 8px 12px;
+  padding: 12px 15px;
   z-index: 10;
 }
 
-.categories-dropdown:hover .dropdown-menu {
+/* Show Dropdown on hover */
+.categories-dropdown:hover .dropdown-menu,
+.categories-dropdown:focus-within .dropdown-menu {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
 }
 
+/* Dropdown List Items */
 .dropdown-menu li {
-  padding: 14px 20px;
-  font-size: 16px;
+  padding: 10px 15px;
+  font-size: 15px;
   text-align: center;
-  transition: background-color 0.2s ease;
+  border-radius: 6px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  cursor: pointer;
+  white-space: nowrap; /* prevent wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .dropdown-menu li:hover {
-  background-color: #f0fff4;
+  background-color: #e0f9e8;
+  color: #27ae60;
 }
 
 .dropdown-menu li a {
   text-decoration: none;
-  color: #3a3a3a; /* Text Color */
+  color: #3a3a3a;
   display: block;
+  width: 100%;
 }
 
 /* Main Content */
@@ -112,9 +137,8 @@ body {
   gap: 30px;
 }
 
-/* Blog Card */
 .blog-card {
-  background-color: #f0fff4; /* Div background */
+  background-color: #f0fff4;
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
@@ -132,15 +156,15 @@ body {
 .blog-card img {
   width: 100%;
   height: auto;
-  aspect-ratio: 16 / 9; /* Rectangle (widescreen style) */
+  aspect-ratio: 16 / 9;
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 15px;
 }
 
 .blog-card h2 {
-  font-size: 15px;       /* Smaller */
-  font-weight: 500;      /* Less bold */
+  font-size: 15px;
+  font-weight: 500;
   color: #3a3a3a;
   margin-bottom: 10px;
 }
@@ -160,8 +184,8 @@ body {
 
 .read-more {
   display: inline-block;
-  background-color: #32e67e; /* Button background */
-  color: #faf9f6; /* Button text color */
+  background-color: #32e67e;
+  color: #faf9f6;
   padding: 8px 15px;
   border-radius: 6px;
   text-decoration: none;
@@ -195,13 +219,37 @@ body {
     flex-direction: column-reverse;
   }
 
-  .sidebar {
+  .sidebardropdown {
     width: 100%;
     justify-content: center;
+    margin-bottom: 25px;
   }
 
   .dropdown-button {
     width: auto;
+    min-width: 180px;
+  }
+
+  .dropdown-menu {
+    position: static;
+    max-height: none;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    grid-template-columns: 1fr !important;
+    margin-top: 10px;
+    box-shadow: none;
+    padding: 0;
+  }
+
+  .dropdown-menu li {
+    padding: 12px 0;
+    border-bottom: 1px solid #e6e6e6;
+  }
+
+  .dropdown-menu li:last-child {
+    border-bottom: none;
   }
 
   .blog-list {

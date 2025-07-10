@@ -20,6 +20,8 @@
         </div>
         <h1>Sign in to BMS</h1>
         <div class="subtitle">Access your account and manage your blogs!</div>
+        <form class="my-12 space-y-2" method="post" action="/auth/signin-user" >
+            {% csrf_token %}
         <form>
             <div class="input-group">
                 <label for="email">Email</label>

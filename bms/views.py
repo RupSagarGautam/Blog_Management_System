@@ -32,4 +32,7 @@ def updateBlogAdmin(request):
 
 def blogListAdmin(request):
     return render(request, 'bloglist.html')
+def blog_category(request, category_name):
+    return render(request, 'blog_category.html', {'category_name': category_name})
+
 

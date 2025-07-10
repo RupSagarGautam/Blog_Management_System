@@ -1,38 +1,65 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from addBlogs.models import addBlog
+from addBlogs import models
+from django.shortcuts import render
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
 
 # Client Side Views
 def aboutUS(request):
-    return render(request, 'aboutus.html')
+    return render(request, 'pages/aboutus.html')
 
-def addBlogUser(request):
-    return render(request,'add-blog.html')
+def addBlogs(request):
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        image = request.FILES.get('image')
+        print("Image Type: ", type(image))
+        content = request.POST.get('content')
+        author = request.POST.get('author')
+        print(title,content,author)
+
+        blog = addBlog(
+            title=title,
+            image=image,
+            content=content,
+            author=author
+        )
+        blog.save()
+    return render(request,'pages/blogs/add-blog.html')
 
 def blog(request):
-    return render(request, 'blog.html')
+    blogs = models.addBlog.objects.all()
+    print(blogs)
+    return render(request, 'pages/blogs/blog.html', { 'blogs': blogs })
 
 def home(request):
-    return render(request, 'home.html')
+    return render(request, 'pages/home.html')
 
 def landingPage(request):
     return render(request, 'pages/index.html')
 
 def loginPage(request):
-    return render(request, 'login.html')
+    return render(request, 'pages/login.html')
 
 def signupPage(request):
-    return render(request, 'signup.html')
+    return render(request, 'pages/signup.html')
 
+def profilePage(request):
+    return render(request, 'pages/profile.html')
+
+def contactUs(request):
+    return render(request, 'pages/contacts.html')
+
+def blogDetails(request):
+    return render(request, 'pages/blogdetails.html')
 # Admin Side Views
 def addBlogAdmin(request):
-    return render(request, 'Addblog.html')
+    return render(request, 'pages/Addblog.html')
 
 def updateBlogAdmin(request):
-    return render(request, 'updateblog.html')
+    return render(request, 'pages/updateblog.html')
 
 def blogListAdmin(request):
-    return render(request, 'bloglist.html')
-def blog_category(request, category_name):
-    return render(request, 'blog_category.html', {'category_name': category_name})
-
-
+    return render (request, 'pages/bloglist.html')

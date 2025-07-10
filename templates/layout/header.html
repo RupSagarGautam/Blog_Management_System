@@ -1,345 +1,12 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Header</title>
-    <style>
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Neo Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-
-:root {
-    --primary-color: #32e67e;
-    --secondary-color: #626161;
-    --text-color: #3a3a3a;
-    --background-color: #f0fff4;
-    --border-color: #e9ecef;
-    --shadow-color: rgba(0, 0, 0, 0.435);
-    --editor-bg: #ffffff;
-    --toolbar-bg: #f8f9fa;
-}
-
-body {
-    background-color: var(--background-color);
-    color: var(--text-color);
-    line-height: 1.6;
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 5%;
-    background-color: #d3ffdf66;
-    box-shadow: 0 2px 10px var(--shadow-color);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-}
-
-.leftsection {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.logo img {
-    height: 70px;
-    width: auto;
-}
-
-.leftsection .text {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #333;
-    letter-spacing: 1.5px;
-    word-spacing: 2.5px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
-a {
-    color: #fff;
-    text-transform: uppercase;
-    text-decoration: none;
-    letter-spacing: 0.15em;
-    display: inline-block;
-    padding: 15px 20px;
-    position: relative;
-}
-
-a:after {
-    background: none repeat scroll 0 0 transparent;
-    bottom: 0;
-    content: "";
-    display: block;
-    height: 2px;
-    left: 50%;
-    position: absolute;
-    background: #363636;
-    transition: width 0.3s ease 0s, left 0.3s ease 0s;
-    width: 0;
-}
-
-ul li a:hover:after {
-    width: 100%;
-    left: 0;
-}
-
-.rightsection .nav ul {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-    align-items: center;
-}
-
-.nav ul li a {
-    text-decoration: none;
-    color: #454545;
-    font-weight: bolder;
-    letter-spacing: 1.2px;
-    font-size: 12px;
-    transition: color 0.7s ease;
-    padding: 0.6rem 1rem;
-    border-radius: 4px;
-    transition: 0.7s;
-}
-
-.nav ul li a:hover {
-    transition: 0.3s;
-}
-
-.getstarted-btn {
-    padding: 0.5rem 1rem;
-    background-color: #626161;
-    color: white !important;
-    border-radius: 4px;
-}
-
-.getstarted-btn:hover {
-    background-color: #32e67e !important;
-    color: #3a3a3a !important;
-    transform: scale(20px);
-}
-
-/* Hamburger Menu Styles */
-.hamburger {
-    display: none;
-    cursor: pointer;
-    padding: 10px;
-    z-index: 1001;
-}
-
-.hamburger span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background-color: var(--text-color);
-    margin: 5px 0;
-    transition: all 0.3s ease;
-}
-
-/* Sidebar Styles */
-.sidebar {
-    position: fixed;
-    top: 0;
-    right: -300px;
-    width: 300px;
-    height: 100vh;
-    background-color: var(--background-color);
-    box-shadow: -2px 0 10px var(--shadow-color);
-    z-index: 1002;
-    transition: right 0.3s ease;
-    padding: 20px;
-}
-
-.sidebar.active {
-    right: 0;
-}
-
-.sidebar-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
-}
-
-.sidebar-header .logo img {
-    height: 25px;
-}
-
-.close-btn {
-    font-size: 30px;
-    cursor: pointer;
-    color: var(--text-color);
-}
-
-.sidebar-nav {
-    list-style: none;
-    padding: 0;
-}
-
-.sidebar-nav li {
-    margin: 15px 0;
-}
-
-.sidebar-nav a {
-    color: var(--text-color);
-    text-decoration: none;
-    font-size: 18px;
-    display: block;
-    padding: 10px 0;
-    transition: color 0.3s ease;
-}
-
-.sidebar-nav a:hover {
-    color: var(--primary-color);
-}
-
-.sidebar-nav .getstarted-btn {
-    background-color: var(--secondary-color);
-    color: white;
-    padding: 10px 20px;
-    border-radius: 4px;
-    text-align: center;
-}
-
-.sidebar-nav .getstarted-btn:hover {
-    background-color: var(--primary-color);
-    color: var(--text-color);
-}
-
-/* Overlay */
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1001;
-    display: none;
-}
-
-.overlay.active {
-    display: block;
-}
-
-
-/* Update existing media queries */
-@media screen and (max-width: 768px) {
-    .hamburger {
-        display: block;
-    }
-
-    .rightsection {
-        display: none;
-    }
-
-    .header {
-        padding: 0.8rem 2%;
-    }
-    
-    .logo img {
-        height: 50px;
-    }
-    
-    .leftsection .text {
-        font-size: 1.2rem;
-    }
-    
-    .textheading {
-        flex-direction: column;
-        text-align: center;
-        margin-top: 80px;
-    }
-    
-    .textheading h3 {
-        font-size: 3rem;
-        text-align: center;
-    }
-    
-    .secondsection {
-        flex-direction: column;
-        text-align: center;
-        gap: 2rem;
-    }
-    
-    .textparagraph p {
-        margin-top: 30px;
-        font-size: 20px;
-    }
-    
-    .secondimg img, .secondfirstimg img {
-        height: 200px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .sidebar {
-        width: 250px;
-    }
-
-    .header {
-        padding: 0.5rem 1%;
-    }
-    
-    .logo img {
-        height: 40px;
-    }
-    
-    .leftsection .text {
-        font-size: 1rem;
-    }
-    
-    .textheading {
-        margin-top: 60px;
-    }
-    
-    .textheading h3 {
-        font-size: 2rem;
-        line-height: 35px;
-    }
-    
-    .image img {
-        height: 180px;
-    }
-    
-    .search-btn input {
-        height: 5vh;
-        font-size: 16px;
-        background-size: 16px;
-    }
-    
-    ::placeholder {
-        font-size: 16px;
-    }
-    
-    .textparagraph p {
-        font-size: 18px;
-        margin-top: 20px;
-    }
-    
-    .secondimg img, .secondfirstimg img {
-        height: 150px;
-    }
-    
-    .getstarted-btn {
-        padding: 0.3rem 0.6rem;
-    }
-}
-
-@media screen and (max-height: 300px) {
-    ul {
-        margin-top: 40px;
-    }
-}
-    </style>
+    <link rel="stylesheet" href="/static/css/header.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
 </head>
 <body>
@@ -347,7 +14,7 @@ ul li a:hover:after {
         <a href="/">   
         <div class="leftsection">
             <div class="logo">
-                <img src="/static/Assets/favicon.ico" alt="BMS Logo" />
+                <img src="/static/assets/favicon.ico" alt="BMS Logo" />
             </div>
             <div class="text">
                 Digital Pathshala
@@ -363,16 +30,60 @@ ul li a:hover:after {
             <div class="nav">
                 <ul>
                     <li><a href="/about-us">About Us</a></li> |
-                    <li><a href="/blogs">Blogs</a></li> |
-                   <li><a href="/add-blog">Write</a></li> |
+                    {% if user.is_authenticated %}
+                    <li><a href="/blogs/blogs">Blogs</a></li> |
+                    {% else %}
+                    <li><a href="/auth/log-in">Blogs</a></li> |
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                   <li><a href="/blogs/add-blog">Write</a></li> |
+                   {%endif%}
+                   {% if not user.is_authenticated %}
                     <li><a href="/auth/log-in">Log-In</a></li> |
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                    <li><a href="/blogs/blogs" class="getstarted-btn">Get Started</a></li>
+                    {% else %}
                     <li><a href="/auth/sign-up" class="getstarted-btn">Get Started</a></li>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                    <li class="profile-container">
+                <a href="javascript:void(0);" class="profile-link">
+                    <img src=" {{ user.profile.profile_image.url|default:'/media/users/default_user.png' }}" alt="Profile Image" class="profile-image" />
+                </a>
+                <div class="profile-dropdown" id="profileDropdown" style=" max-width= 11rem; margin-right:-55%;" >
+                    <button class="close-dropdown" id="closeDropdown">&times;</button>
+                    <ul style=" padding: 15px; margin: 10px; ">
+                        <li>
+                            <button class="dropdown-button-profile" onclick="window.location.href='/user-profile'">
+                                My Profile
+                                <i class="fas fa-user"></i> 
+                            </button>
+                        </li>
+                        <li>
+                            <button class="dropdown-button-profile" onclick="window.location.href='/blogs/blogs'">
+                                My Blogs
+                                <i class="fas fa-book"></i> 
+                            </button>
+                        </li>
+                        <li>
+                            <button id="logout-btn" class="dropdown-button-profile" onclick="window.location.href='/auth/logout/'">
+                                Logout
+                                <i class="fas fa-sign-out-alt"></i> 
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    
+                    </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
-    
      </div>
-     
+    
     <!-- Sidebar Navigation -->
     <div class="sidebar">
         <div class="sidebar-header">
@@ -383,15 +94,27 @@ ul li a:hover:after {
         </div>
         <ul class="sidebar-nav">
             <li><a href="/about-us">About Us</a></li>
-            <li><a href="/blogs">Blogs</a></li>
-            <li><a href="/add-blog">Write</a></li>
-            <li><a href="/log-in">Log In</a></li>
+            <li><a href="/blogs/blogs">Blogs</a></li>
+            <li><a href="/blogs/add-blog">Write</a></li>
+            <li><a href="/auth/log-in">Log In</a></li>
             <li><a href="/sign-up" class="getstarted-btn">Get Started</a></li>
         </ul>
     </div>
+{% if messages %}
+  <div class="profile-msg-container">
+    {% for message in messages %}
+      <div class="profile-alert alert-{{ message.tags }}">
+        {{ message }}
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
     <div class="overlay"></div>
+
     <!-- End for Header -->
 
+   
 <script>
     document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('.hamburger');
@@ -431,6 +154,32 @@ ul li a:hover:after {
         }
     });
 }); 
+ document.addEventListener('DOMContentLoaded', function() {
+            const profileLink = document.querySelector('.profile-link');
+            const dropdownMenu = document.getElementById('profileDropdown');
+            const closeDropdown = document.getElementById('closeDropdown');
+
+            // Toggle dropdown on profile image click
+            profileLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                dropdownMenu.classList.toggle('active');
+            });
+
+            // Close dropdown when clicking on close button
+            closeDropdown.addEventListener('click', function() {
+                dropdownMenu.classList.remove('active');
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.profile-container')) {
+                    dropdownMenu.classList.remove('active');
+                }
+            });
+        });
+ setTimeout(() => {
+    document.querySelectorAll('.profile-alert').forEach(el => el.style.display = 'none');
+  }, 5000); // 5 seconds
 </script>
 </body>
 </html>

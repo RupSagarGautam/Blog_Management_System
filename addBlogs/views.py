@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from addBlogs import models
 from django.contrib import messages
+from django.shortcuts import get_object_or_404
 # Create your views here.
 
 def addBlogs(request):
@@ -27,3 +28,7 @@ def blog(request):
     blogs = models.addBlog.objects.all()
     print(blogs)
     return render(request, 'pages/blogs/blog.html', { 'blogs': blogs })
+
+def blogDetails(request, blog_id):
+    blog = get_object_or_404(models.addBlog, id=blog_id)
+    return render(request, 'pages/blogs/blogdetails.html', {'blog': blog})

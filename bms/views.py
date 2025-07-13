@@ -34,6 +34,13 @@ def blog(request):
     print(blogs)
     return render(request, 'pages/blogs/blog.html', { 'blogs': blogs })
 
+def blogDetails(request):
+    return render(request, 'pages/blogs/blogdetails.html')
+
+
+def blogListAdmin(request):
+    return render(request, 'pages/bloglist.html')
+
 def home(request):
     return render(request, 'pages/home.html')
 
@@ -52,8 +59,7 @@ def profilePage(request):
 def contactUs(request):
     return render(request, 'pages/contacts.html')
 
-def blogDetails(request):
-    return render(request, 'pages/blogdetails.html')
+
 # Admin Side Views
 def addBlogAdmin(request):
     return render(request, 'pages/Addblog.html')
@@ -61,7 +67,6 @@ def addBlogAdmin(request):
 def updateBlogAdmin(request):
     return render(request, 'pages/updateblog.html')
 
-def blogListAdmin(request):
-    return render(request, 'pages/bloglist.html')
+
 
             

@@ -72,6 +72,19 @@
                         <label for="blogTags">Tags</label>
                         <input type="text" id="blogTags" name="tags" placeholder="Enter tags separated by commas" />
                     </div>
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select for="category" >
+                            {% for category in categories %}
+                            <option value="category">{{category}}</option>
+                            {% endfor %}
+                            
+                            
+
+
+                        </select>
+                        
+                    </div>
     
                     <div class="form-actions">
                         <button type="submit" class="btn-primary">Publish Post</button>

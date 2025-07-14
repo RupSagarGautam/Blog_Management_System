@@ -38,6 +38,8 @@ def home(request):
     return render(request, 'pages/home.html')
 
 def landingPage(request):
+    if request.user.is_authenticated:
+        return render(request, 'pages/home.html')
     return render(request, 'pages/index.html')
 
 def loginPage(request):

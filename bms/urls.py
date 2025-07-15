@@ -19,6 +19,7 @@ from django.contrib import admin
 from django.urls import include, path
 from django.conf.urls.static import static
 from bms import views
+from addBlogs import views as blog_views
 from users import views as user_views
 
 # Serve static files during development
@@ -30,9 +31,8 @@ auth_urlpatterns = [
 
 # Static files (CSS, JavaScript, Images)
 blog_urlpatterns = [
-    path('add-blog/', views.addBlogs, name='addBlog'),
-    path('add-blog/', views.addBlog),
-    path('blogs/', views.blog),
+    path('add-blog/', blog_views.addBlogs, name='addBlog'),
+    path('blogs/', blog_views.blog),
     path('blog-details/', views.blogDetails),  
 ] 
 

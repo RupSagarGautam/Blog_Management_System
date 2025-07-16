@@ -30,11 +30,9 @@
             <div class="nav">
                 <ul>
                     <li><a href="/about-us">About Us</a></li> |
-                    {% if user.is_authenticated %}
+                   
                     <li><a href="/blogs/blogs">Blogs</a></li> |
-                    {% else %}
-                    <li><a href="/auth/log-in">Blogs</a></li> |
-                    {% endif %}
+                   
                     {% if user.is_authenticated %}
                    <li><a href="/blogs/add-blog">Write</a></li> |
                    {%endif%}
@@ -49,7 +47,7 @@
                     {% if user.is_authenticated %}
                     <li class="profile-container">
                 <a href="javascript:void(0);" class="profile-link">
-                    <img src=" {{ user.profile.profile_image.url }}" alt="Profile Image" class="profile-image" />
+                    <img src=" {{ user.profile.profile_image.url|default:'/media/users/default_user.png' }}" alt="Profile Image" class="profile-image" />
                 </a>
                 <div class="profile-dropdown" id="profileDropdown" style=" max-width= 11rem; margin-right:-55%;" >
                     <button class="close-dropdown" id="closeDropdown">&times;</button>

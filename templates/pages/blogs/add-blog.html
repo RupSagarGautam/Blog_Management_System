@@ -56,21 +56,27 @@
                             <button type="button" class="toolbar-btn" data-command="insertOrderedList" title="Numbered List">1.</button>
                             <button type="button" class="toolbar-btn" data-command="insertUnorderedList" title="Bulleted List">&#8226;</button>
                         </div>
+                        Write Your Content here...
                         <div id="editor" class="editor-content" contenteditable="true" style="border: 1px solid #ccc; min-height: 100px; padding: 10px;">
-                            Start writing here...
+                            
                         </div>
                         <!-- Hidden textarea to store content before submitting -->
                         <textarea name="content" id="content-input" hidden></textarea>
                     </div>
     
                     <div class="form-group">
-                        <label for="author">Author</label>
-                        <input type="text" id="author" name="author" value="{{ request.user.username }}" readonly />
-                    </div>
-    
-                    <div class="form-group">
                         <label for="blogTags">Tags</label>
                         <input type="text" id="blogTags" name="tags" placeholder="Enter tags separated by commas" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="blogTags">Category</label>
+                        <select type="text" id="category" name="category" />
+                        <option value="">SELECT</option>
+                        {%for category in categories %}
+                            <option value="{{category}}">{{category.name}}</option>
+                        {% endfor %}
+                        </select>
                     </div>
     
                     <div class="form-actions">

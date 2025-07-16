@@ -145,19 +145,21 @@ h2 {
 
 .google-btn {
   width: 100%;
-  padding: 10px 0;
-  border: 1.5px solid #c8c8c8;
-  border-radius: 10px;
-  background: white;
-  font-weight: 600;
-  font-size: 1rem;
-  color: #444;
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  transition: background 0.3s ease;
+  background: #f9f9f9;
+  border: solid 1px #6b8361;
+  border-radius: 16px;
+  padding: 12px 0;
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: #222;
+  cursor: pointer;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 8px rgba(163, 177, 138, 0.10);
+  gap: 8px;
+  transition: 0.2s ease-in-out;
 }
 
 .google-btn img {

@@ -27,9 +27,9 @@ def loginUser(request):
                 messages.success(request, "You have successfully logged in")
                 return redirect("/")
             else:
-                errors['password'] = "password doesnot match"
+                errors['password'] = "Invalid Password!"
         else:
-            errors['username'] = "username doesnot match"
+            errors['email'] = "User with this email does not exist."
 
         return render(request, 'pages/login.html', {'errors': errors})
     else:

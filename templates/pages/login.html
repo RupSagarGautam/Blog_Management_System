@@ -31,16 +31,10 @@
         <div class="input-group">
           <label for="email">Username</label>
           <input type="text" id="email" name="username" placeholder="Your UserName" required />
-          {% if errors.username %}
-          <div class="error-text">{{ errors.username }}</div>
-          {% endif %}
         </div>
       <div class="input-group">
         <label for="password">Password</label>
         <input type="password" id="password" name="password" placeholder="Password" required />
-        {% if errors.password %}
-        <div class="error-text">{{ errors.password }}</div>
-        {% endif %}
       </div>
       <button class="login-btn" type="submit">Sign in</button>
     </form>
@@ -55,10 +49,11 @@
       <div class="divider-line"></div>
     </div>
 
-    <button class="google-btn" type="button">
-      <img src="/static/Assets/Google logo.png" alt="Google logo" class="google-icon" />
+    {% load socialaccount %}
+    <a href="{% provider_login_url 'google' process='login' %}" class="google-btn" style="display: flex; align-items: center; text-decoration: none; color: #333; font-weight: bold; justify-content: center; margin-bottom: 20px;">
+      <img src="/static/Assets/Google logo.png" alt="Google logo" class="google-icon" style="width: 24px; height: 24px; margin-right: 8px;" />
       Log in with Google
-    </button>
+    </a>
 
     <div class="footer">
       Don't have an account?

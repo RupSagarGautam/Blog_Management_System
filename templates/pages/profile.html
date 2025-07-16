@@ -7,96 +7,103 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="\static\css\Profile.css">
+    <link rel="stylesheet" href="\static\css\profile.css">
 </head>
 {% include "layout/header.html" %}
-<body>
+<body style="margin-top:12%" >
+   
     <div class="profile-main-container">
-        <h1 class="profile-title">User Profile Overview</h1>
-        <div class="profile-flex">
-            <div class="profile-left">
-                <div class="profile-pic-summary">
-                    <label for="profile-pic-upload" class="profile-pic-label">
-                        <div class="profile-pic-wrapper">
-                            <img src="https://i.pravatar.cc/180?img=7" alt="User Picture" class="user-pic" id="profile-pic-preview">
-                            <span class="camera-icon">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="12" cy="13" r="3.2" stroke="#fff" stroke-width="2"/>
-                                    <rect x="2.5" y="6.5" width="19" height="13" rx="3.5" stroke="#fff" stroke-width="2"/>
-                                    <rect x="8" y="2" width="8" height="4" rx="2" fill="#fff"/>
-                                </svg>
-                            </span>
-                            <input type="file" id="profile-pic-upload" name="profile-pic-upload" accept="image/*" style="display:none;">
-                        </div>
-                    </label>
-                    <div class="profile-summary-details">
-                        <div class="profile-summary-name">Nabin Regmi</div>
-                        <div class="profile-summary-email">user@account.com</div>
-                        <div class="profile-summary-phone">+977-9804373219</div>
-                        <div class="profile-summary-address">Budhiganga-01, Biratnagar</div>
-                        <div class="profile-summary-country">Nepal</div>
-                    </div>
+        <div class="profile-card">
+            <div class="profile-pic-wrapper">
+                <img src="{% if profile and profile.profile_image %}{{ profile.profile_image.url }}{% else %}/media/users/default_user.png{% endif %}" alt="User Picture" class="user-pic" id="profile-pic-preview">
+                <input type="file" id="profile-pic-input" accept="image/*" style="display:block;margin-top:10px;">
+            </div>
+            <div class="profile-summary-name">{{ user.first_name }} {{ user.last_name }}</div>
+            <div class="profile-info-list">
+                <div class="profile-info-item">
+                    <span >
+                        <i class="fa fa-map-marker"></i>
+                    </span>
+                    {{ profile.address }}
+                </div>
+                <div class="profile-info-item">
+                    <span >
+                        <i class="fa fa-envelope"></i>
+                    </span>
+                    {{ user.email }}
+                </div>
+                <div class="profile-info-item">
+                    <span >
+                        <i class="far fa-address-book"></i>
+                    </span>
+                    {{ profile.phone }}
                 </div>
             </div>
-            <div class="profile-right">
-                <form class="user-form" enctype="multipart/form-data">
-                    <!-- Hidden checkbox to toggle edit mode -->
-                    <input type="checkbox" id="edit-toggle" class="edit-toggle-checkbox" style="display:none;">
-                    <div class="form-title">User Details Customization</div>
-                    <div class="user-info">
-                        <div class="info-group">
-                            <div class="info-group">
-                                <label class="label">Full Name</label>
-                                <input type="text" class="value-input" placeholder="Nabin Regmi" name="name">
-                            </div>
-                            <div class="info-group">
-                                <label class="label">Email Address</label>
-                                <input type="email" class="value-input" placeholder="reg332@gmail.com" name="email">
-                            </div>
-                            <div class="info-group">
-                                <label class="label">Phone Number</label>
-                                <input type="tel" class="value-input" placeholder="(977) 9804373219" name="phone">
-                            </div>
-                            <div class="info-group">
-                                <label class="label">Address</label>
-                                <input type="text" class="value-input" placeholder="Budhiganga- 01, Biratnagar" name="address1">
-                            </div>
-                            <div class="info-group">
-                                <label class="label">City</label>
-                                <input type="text" class="value-input" placeholder="Biratnagar" name="city">
-                            </div>
-                            <div class="info-group">
-                                <label class="label">State / Province / Region</label>
-                                <input type="text" class="value-input" placeholder="Province 1" name="state">
-                            </div>
-                            <div class="info-group">
-                                <label class="label">Zip / Postal Code</label>
-                                <input type="text" class="value-input" placeholder="57700" name="zip">
-                            </div>
-                            <div class="info-group">
-                                <label class="label">Country / Nationality</label>
-                                <input type="text" class="value-input" placeholder="Nepalese" name="country">
-                            </div>
-                        </div>
+        </div>
+        <div class="profile-right">
+            <form class="user-form" enctype="multipart/form-data">
+                <div class="form-title">User Details</div>
+                <div class="user-info">
+                    <div class="info-group">
+                        <label class="label">First Name</label>
+                        <input type="text" class="value-input" placeholder="First Name" name="first-name" value="{{ user.first_name }}" readonly>
                     </div>
-                    <label for="edit-toggle" class="update-btn view-mode">Update</label>
-                    <button type="submit" class="update-btn edit-mode">Save Changes</button>
-                </form>
-            </div>
+                    <div class="info-group">
+                        <label class="label">Last Name</label>
+                        <input type="text" class="value-input" placeholder="Last Name" name="last-name" value="{{ user.last_name }}" readonly>
+                    </div>
+                    <div class="info-group">
+                        <label class="label">Username</label>
+                        <input type="text" class="value-input" placeholder="Username" name="username" value="{{ user.username }}" readonly>
+                    </div>
+                    <div class="info-group">
+                        <label class="label">Email Address</label>
+                        <input type="email" class="value-input" placeholder="Email" name="email" value="{{ user.email }}" readonly>
+                    </div>
+                    <div class="info-group">
+                        <label class="label">Phone Number</label>
+                        <input type="tel" class="value-input" placeholder="Phone" name="phone" value="{{ profile.phone }}" readonly>
+                    </div>
+                    <div class="info-group">
+                        <label class="label">Address</label>
+                        <input type="text" class="value-input" placeholder="Address" name="address" value="{{ profile.address }}" readonly>
+                    </div>
+                    <div class="info-group">
+                        <label class="label">Nationality</label>
+                        <input type="text" class="value-input" value="{{ profile.nationality }}" readonly>
+                    </div>
+                    <div class="info-group">
+                        <label class="label">Date of Birth</label>
+                        <input type="text" class="value-input" value="{{ profile.dob }}" readonly>
+                    </div>
+                    <div class="info-group">
+                        <label class="label">Gender</label>
+                        <input type="text" class="value-input" value="{{ profile.gender }}" readonly>
+                    </div>
+                </div>
+                <div class="action-btns">
+                    <a href="/edit-user" class="update-btn">Edit</a>
+                    {% comment %} <a href="#" class="logout-btn">Logout</a> {% endcomment %}
+                </div>
+            </form>
         </div>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const editToggle = document.getElementById('edit-toggle');
-            const inputs = document.querySelectorAll('.user-form .value-input.edit-mode');
-
-            editToggle.addEventListener('change', function() {
-                const isEditMode = this.checked;
-                inputs.forEach(input => {
-                    input.readOnly = !isEditMode;
-                });
-            });
-        });
-    </script>
 </body>
-</html>
+<script>
+// Profile picture preview functionality for user-details.html
+const picInput = document.getElementById('profile-pic-input');
+const picPreview = document.getElementById('profile-pic-preview');
+if (picInput && picPreview) {
+    picInput.addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                picPreview.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+}
+</script>
+</html> 

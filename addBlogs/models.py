@@ -22,7 +22,9 @@ class addBlog(models.Model):
     
     class StatusOptions(models.TextChoices):
         ACTIVE = "Active", "Active"
-        INACTIVE = "Inactive", "Inactive"
+        INACTIVE = "Rejected", "Rejected"
+        PENDING = "Pending", "Pending"
+        
     
     title = models.CharField(max_length=100)
     image = models.ImageField(upload_to=generateImagePath, default='static/assets/blog1.png')
@@ -30,7 +32,7 @@ class addBlog(models.Model):
     content = models.TextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blog_posts')
     tags = TaggableManager(blank=True)
-    status = models.CharField(max_length=8, choices=StatusOptions, default=StatusOptions.INACTIVE)
+    status = models.CharField(max_length=8, choices=StatusOptions, default=StatusOptions.PENDING)
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(default=timezone.now)
     category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.SET_NULL)

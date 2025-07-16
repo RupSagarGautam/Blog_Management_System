@@ -51,6 +51,7 @@ urlpatterns = [
     path('view-blog-list/',views.blogListAdmin),
     
     path('user-profile/', views.profilePage),
+     path("edit-user", views.editUserProfile),
     
     path('auth/', include(auth_urlpatterns)),
     path('blogs/', include(blog_urlpatterns)),

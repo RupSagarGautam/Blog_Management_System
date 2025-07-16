@@ -19,8 +19,16 @@ def aboutUS(request):
 
 def blog(request):
     blogs = models.addBlog.objects.all()
-    print(blogs)
     return render(request, 'pages/blogs/blog.html', { 'blogs': blogs })
+
+def blogDetails(request,id):
+    blogs = addBlog.objects.get(id=id)
+    blog = addBlog.objects.order_by('-created_at')[:4]
+    return render(request, 'pages/blogs/blogdetails.html', {"blogs": blogs, "blog": blog} )
+
+
+def blogListAdmin(request):
+    return render(request, 'pages/bloglist.html')
 
 def home(request):
     return render(request, 'pages/home.html')
@@ -85,8 +93,7 @@ def editUserProfile(request):
 def contactUs(request):
     return render(request, 'pages/contacts.html')
 
-def blogDetails(request):
-    return render(request, 'pages/blogdetails.html')
+
 # Admin Side Views
 def addBlogAdmin(request):
     return render(request, 'pages/Addblog.html')

@@ -33,7 +33,7 @@ auth_urlpatterns = [
 blog_urlpatterns = [
     path('add-blog/', blog_views.addBlogs, name='addBlog'),
     path('blogs/', blog_views.blog),
-    path('blog-details/', views.blogDetails),  
+    path('<int:id>', views.blogDetails),  
 ] 
 
 urlpatterns = [
@@ -41,21 +41,17 @@ urlpatterns = [
     path('',views.landingPage),
     path('admin/', admin.site.urls),
     path('home/', views.home),
-    
     path('sign-up/',views.signupPage),
     path('user-profile/',views.profilePage),
     path('contact-us/',views.contactUs),
-    path('blog-details', views.blogDetails),
     path('add-blog-admin/',views.addBlogAdmin),
     path('update-blog-admin/',views.updateBlogAdmin),
     path('view-blog-list/',views.blogListAdmin),
-    
     path('user-profile/', views.profilePage),
      path("edit-user", views.editUserProfile),
     
     path('auth/', include(auth_urlpatterns)),
     path('blogs/', include(blog_urlpatterns)),
-
     path('about-us/', include('about.urls')),
 ]
 

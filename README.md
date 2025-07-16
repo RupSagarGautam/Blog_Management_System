@@ -5,4 +5,5 @@
 #### Admin Can Add Organization's partners dynamically using form.
 #### Signup Functionality Completed
 #### When User Create a Blog, it remains private until approved via admin and when admin creates it remains public.
+#### Profile Page View and Update Profile Functionality Completed
 [More About Project](https://github.com/Digital-Pathshala/Blog_Management_System.git)

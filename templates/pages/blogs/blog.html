@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>All Blogs - Purnima's Blog</title>
+  <link rel="stylesheet" href="/static/css/blog.css" />
+</head>
+<body>
+
+  {% include "layout/header.html" %}
+  <div class="layout">
+
+    <!-- Main Blog Content -->
+    <div class="content">
+      <div class="page-wrapper">
+        <h1>All Blogs</h1>
+        <div class="blog-list">
+
+          <!-- Dynamic Blogs Loading Section -->
+          {% for blog in blogs %}
+            <div class="blog-card">
+              <img src="{{ blog.image.url }}" alt="{{ blog.title }}" />
+              <h2>{{ blog.title }}</h2>
+              <div class="author">By: {{ blog.author }}</div>
+              <a href="#" class="read-more">Read More</a>
+            </div>
+          {% empty %}
+            <div class="blog-card">
+              <p>No recent blogs available.</p>
+            </div>
+          {% endfor %}
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Only Categories Button -->
+    <div class="sidebardropdown">
+      <div class="categories-dropdown">
+        <button class="dropdown-button">Categories ▼</button>
+        <ul class="dropdown-menu">
+          <li><a href="#">Technology</a></li>
+          <li><a href="#">Travel</a></li>
+          <li><a href="#">Education</a></li>
+          <li><a href="#">Health</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

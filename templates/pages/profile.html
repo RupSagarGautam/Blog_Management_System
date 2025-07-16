@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile Overview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="\static\css\profile.css">
+</head>
+{% include "layout/header.html" %}
+<body style="margin-top:12%" >
+   
+    <div class="profile-main-container">
+        <div class="profile-card">
+            <div class="profile-pic-wrapper">
+                <img src="{% if profile and profile.profile_image %}{{ profile.profile_image.url }}{% else %}/media/users/default_user.png{% endif %}" alt="User Picture" class="user-pic" id="profile-pic-preview">
+                <input type="file" id="profile-pic-input" accept="image/*" style="display:block;margin-top:10px;">
+            </div>
+            <div class="profile-summary-name">{{ user.first_name }} {{ user.last_name }}</div>
+            <div class="profile-info-list">
+                <div class="profile-info-item">
+                    <span >
+                        <i class="fa fa-map-marker"></i>
+                    </span>
+                    {{ profile.address }}
+                </div>
+                <div class="profile-info-item">
+                    <span >
+                        <i class="fa fa-envelope"></i>
+                    </span>
+                    {{ user.email }}
+                </div>
+                <div class="profile-info-item">
+                    <span >
+                        <i class="far fa-address-book"></i>
+                    </span>
+                    {{ profile.phone }}
+                </div>
+            </div>
+        </div>
+        <div class="profile-right">
+            <form class="user-form" enctype="multipart/form-data">
+                <div class="form-title">User Details</div>
+                <div class="user-info">
+                    <div class="info-group">
+                        <label class="label">First Name</label>
+                        <input type="text" class="value-input" placeholder="First Name" name="first-name" value="{{ user.first_name }}" readonly>
+                    </div>
+                    <div class="info-group">
+                        <label class="label">Last Name</label>
+                        <input type="text" class="value-input" placeholder="Last Name" name="last-name" value="{{ user.last_name }}" readonly>
+                    </div>
+                    <div class="info-group">
+                        <label class="label">Username</label>
+                        <input type="text" class="value-input" placeholder="Username" name="username" value="{{ user.username }}" readonly>
+                    </div>
+                    <div class="info-group">
+                        <label class="label">Email Address</label>
+                        <input type="email" class="value-input" placeholder="Email" name="email" value="{{ user.email }}" readonly>
+                    </div>
+                    <div class="info-group">
+                        <label class="label">Phone Number</label>
+                        <input type="tel" class="value-input" placeholder="Phone" name="phone" value="{{ profile.phone }}" readonly>
+                    </div>
+                    <div class="info-group">
+                        <label class="label">Address</label>
+                        <input type="text" class="value-input" placeholder="Address" name="address" value="{{ profile.address }}" readonly>
+                    </div>
+                    <div class="info-group">
+                        <label class="label">Nationality</label>
+                        <input type="text" class="value-input" value="{{ profile.nationality }}" readonly>
+                    </div>
+                    <div class="info-group">
+                        <label class="label">Date of Birth</label>
+                        <input type="text" class="value-input" value="{{ profile.dob }}" readonly>
+                    </div>
+                    <div class="info-group">
+                        <label class="label">Gender</label>
+                        <input type="text" class="value-input" value="{{ profile.gender }}" readonly>
+                    </div>
+                </div>
+                <div class="action-btns">
+                    <a href="/edit-user" class="update-btn">Edit</a>
+                    {% comment %} <a href="#" class="logout-btn">Logout</a> {% endcomment %}
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+<script>
+// Profile picture preview functionality for user-details.html
+const picInput = document.getElementById('profile-pic-input');
+const picPreview = document.getElementById('profile-pic-preview');
+if (picInput && picPreview) {
+    picInput.addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                picPreview.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+}
+</script>
+</html> 

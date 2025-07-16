@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog List</title>
+    <link rel="stylesheet" href="/static/css/bloglist.css" />
+</head>
+
+{% include 'layout/header.html' %}
+<body>
+    <div class="navbar">
+        <ul>
+           <li><a href="/add-blog-admin">Add Blog</a></li>
+            <li><a href="/update-blog-admin">Update Blog</a></li>
+            <li><a href="/view-blog-list" class="active" >Blog List</a></li>
+        </ul>
+    </div>
+    <div class="blog-list-container">
+        <h1>Blog List</h1>
+        <hr />
+        <div id="blogList"></div>
+    </div>
+    <script src="/static/js/bloglist.js"></script>
+</body>
+</html>

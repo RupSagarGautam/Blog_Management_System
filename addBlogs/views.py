@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from addBlogs import models
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required, user_passes_test
 # Create your views here.
 
 def validate_blog(data):
@@ -55,6 +56,12 @@ def addBlogs(request):
         if errors:
             return render(request, "pages/blogs/add-blog.html", {"errors": errors})
         category = models.Category.objects.get( name= data['category'])
+        
+        if request.user.is_staff:
+            status = models.addBlog.StatusOptions.ACTIVE
+        else:
+            status = models.addBlog.StatusOptions.PENDING
+            
         blog = models.addBlog.objects.create(
             title=data["title"],
             content=data["content"],
@@ -62,6 +69,7 @@ def addBlogs(request):
             attachment=data["attachment"],
             author = request.user,
             category = category,
+            status = status,
         )
         
         blog.tags.add(*[tag.strip() for tag in data['tags'].split(',')])
@@ -72,6 +80,7 @@ def addBlogs(request):
     return render(request,'pages/blogs/add-blog.html', {"categories": categories})
 
 def blog(request):
-    blogs = models.addBlog.objects.all()
-    print(blogs)
+    blogs = models.addBlog.objects.filter(status=models.addBlog.StatusOptions.ACTIVE)
     return render(request, 'pages/blogs/blog.html', { 'blogs': blogs })
+
+

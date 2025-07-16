@@ -1,8 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from addBlogs import models
 from django.contrib import messages
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required, user_passes_test
-from django.shortcuts import get_object_or_404
+
 # Create your views here.
 
 def validate_blog(data):
@@ -80,6 +81,98 @@ def addBlogs(request):
     categories = models.Category.objects.all()
     return render(request,'pages/blogs/add-blog.html', {"categories": categories})
 
+def editBlogPage(request, id):
+    blog = models.addBlog.objects.get(id=id)
+    categories = models.Category.objects.all()
+    tags = ",".join(tag.name for tag in blog.tags.all())
+    return render(request, 'pages/blogs/edit-blog.html', {'blog':blog, "categories": categories, "tags":tags})
+
+def editBlog(request, id):
+    blog = get_object_or_404(models.addBlog, id=id)
+
+    if request.method == "POST":
+        try:
+            data = request.POST.copy()
+            data['image'] = request.FILES.get('image')
+            data['attachment'] = request.FILES.get('attachment')
+
+            errors = validate_blog(data)
+
+            if errors:
+                categories = models.Category.objects.all()
+                tags = data['tags']
+                context = {
+                    "errors": errors,
+                    "blog": blog,
+                    "categories": categories,
+                    "tags": tags,
+                }
+                return render(request, 'pages/blogs/edit-blog.html', context)
+
+            # NO ERRORS — Proceed to update
+            blog.title = data["title"]
+            blog.content = data["content"]
+
+            if data.get('image'):
+                blog.image = data["image"]
+            if data.get('attachment'):
+                blog.attachment = data["attachment"]
+
+            # tags
+            blog.tags.set([tag.strip() for tag in data['tags'].split(',') if tag.strip()])
+
+            # category
+            try:
+                category = models.Category.objects.get(name=data['category'])
+                blog.category = category
+            except models.Category.DoesNotExist:
+                messages.error(request, "Selected category does not exist.")
+                return redirect(request.path)
+
+            blog.save()
+            messages.success(request, "Blog Updated Successfully!")
+            return redirect(f"/blogs/{id}")
+
+        except Exception as e:
+            print("⚠️ EXCEPTION:", e)
+            messages.error(request, "An error occurred during blog update.")
+            return redirect(request.path)  # fallback
+
+    # GET Request — Load the form
+    categories = models.Category.objects.all()
+    tags = ",".join(tag.name for tag in blog.tags.all())
+    return render(request, 'pages/blogs/edit-blog.html', {
+        "blog": blog,
+        "categories": categories,
+        "tags": tags,
+    })
+    
+    # blog = models.addBlog.objects.get(id=id)
+    # if request == "POST":
+    #     data = request.POST.copy()
+    #     data['image']= request.FILES.get('image')
+    #     data['attachment']= request.FILES.get('attachment')
+    #     errors = validate_blog(data)
+    #     if errors:
+    #         categories = models.Category.objects.all()
+    #         tags = data['tags']
+    #         context = {"errors": errors, "blog":data, "categories": categories, "tags": tags}
+    #         return render(request, 'pages/blogs/edit-blog.html', context)
+    #     else:
+    #         blog.title = data["title"]
+    #         blog.content = data["content"]
+    #         if data['imgage']:
+    #             blog.image = data["image"]
+    #         if data['attachment']:
+    #             blog.attachment = data["attachment"]
+    #         blog.tags.set([tag.strip() for tag in data['tags'].split(',')])
+    #         category = models.Category.objects.get(name=data['category'])
+    #         blog.category = category
+
+    #         blog.save()
+    #         messages.success(request, "Blog Updated Successfully!")
+    #         return redirect("/blogs/{{id}}")
+
 def blog(request):
     blogs = models.addBlog.objects.filter(status=models.addBlog.StatusOptions.ACTIVE)
     return render(request, 'pages/blogs/blog.html', { 'blogs': blogs })
@@ -88,3 +181,8 @@ def blog(request):
 def blogDetails(request, blog_id):
     blog = get_object_or_404(models.addBlog, id=blog_id)
     return render(request, 'pages/blogs/blogdetails.html', {'blog': blog})
+
+@login_required
+def my_blogs(request):
+    blogs = models.addBlog.objects.filter(author=request.user)
+    return render(request, 'pages/blogs/blog.html', {'blogs': blogs})

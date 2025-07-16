@@ -65,10 +65,17 @@
                             {% endfor %}
                         </p>
                         
+                        
                     </div>
+                    {% if blogs.author == user %}
+                    <a href="{% url 'edit_blogPage' blogs.id %}" class="edit-link">
+                     <i class="fas fa-edit" style="color:#333;" >Edit</i>
+                    </a>
                     <div>
                     {{blogs.content|safe}}
                     </div>
+                    
+              {%endif%}
                     {% comment %} <!-- Tags Section -->
                     <div class="tags-section">
                         <h3 class="tags-title">

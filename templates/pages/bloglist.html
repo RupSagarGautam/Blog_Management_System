@@ -21,16 +21,7 @@
         <h1>Blog List</h1>
         <hr />
         <div id="blogList">
-
-    {% for blog in pending_blogs %}
-            <li>
-                <strong>{{ blog.title }}</strong> by {{ blog.author.username }}
-                <a href="{% url 'approveBlog' blog.id %}">Approve</a>
-            </li>
-        {% empty %}
-            <li>No pending blogs.</li>
-    {% endfor %}
-
+            
         </div>
     </div>
     <script src="/static/js/bloglist.js"></script>

@@ -89,8 +89,8 @@ def editBlogPage(request, id):
 
 def editBlog(request, id):
     blog = get_object_or_404(models.addBlog, id=id)
-
     if request.method == "POST":
+
         try:
             data = request.POST.copy()
             data['image'] = request.FILES.get('image')
@@ -108,10 +108,15 @@ def editBlog(request, id):
                     "tags": tags,
                 }
                 return render(request, 'pages/blogs/edit-blog.html', context)
-
-            # NO ERRORS — Proceed to update
+            if request.user.is_staff:
+                status = models.addBlog.StatusOptions.ACTIVE
+            else:
+                status = models.addBlog.StatusOptions.PENDING
+            
+            
             blog.title = data["title"]
             blog.content = data["content"]
+            blog.status = status
 
             if data.get('image'):
                 blog.image = data["image"]
@@ -147,31 +152,6 @@ def editBlog(request, id):
         "tags": tags,
     })
     
-    # blog = models.addBlog.objects.get(id=id)
-    # if request == "POST":
-    #     data = request.POST.copy()
-    #     data['image']= request.FILES.get('image')
-    #     data['attachment']= request.FILES.get('attachment')
-    #     errors = validate_blog(data)
-    #     if errors:
-    #         categories = models.Category.objects.all()
-    #         tags = data['tags']
-    #         context = {"errors": errors, "blog":data, "categories": categories, "tags": tags}
-    #         return render(request, 'pages/blogs/edit-blog.html', context)
-    #     else:
-    #         blog.title = data["title"]
-    #         blog.content = data["content"]
-    #         if data['imgage']:
-    #             blog.image = data["image"]
-    #         if data['attachment']:
-    #             blog.attachment = data["attachment"]
-    #         blog.tags.set([tag.strip() for tag in data['tags'].split(',')])
-    #         category = models.Category.objects.get(name=data['category'])
-    #         blog.category = category
-
-    #         blog.save()
-    #         messages.success(request, "Blog Updated Successfully!")
-    #         return redirect("/blogs/{{id}}")
 
 def blog(request):
     blogs = models.addBlog.objects.filter(status=models.addBlog.StatusOptions.ACTIVE)
@@ -180,6 +160,9 @@ def blog(request):
 
 def blogDetails(request, blog_id):
     blog = get_object_or_404(models.addBlog, id=blog_id)
+    blog = blog.filter(status=models.addBlog.StatusOptions.ACTIVE)
+    if models.addBlog.status == models.addBlog.StatusOptions.INACTIVE or models.addBlog.status == models.addBlog.StatusOptions.PENDING:
+        return redirect('/blogs/blogs')
     return render(request, 'pages/blogs/blogdetails.html', {'blog': blog})
 
 @login_required

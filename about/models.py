@@ -10,3 +10,13 @@ class Partner(models.Model):
 
     def __str__(self):
         return self.name
+
+class TeamMember(models.Model):
+    name = models.CharField(max_length = 100)
+    description = models.CharField(max_length=300)
+    image = models.ImageField(upload_to='team_member_images/')
+    
+    
+    def __str__(self):
+        return self.name
+

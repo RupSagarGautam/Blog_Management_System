@@ -1,9 +1,12 @@
 from django.shortcuts import render, redirect
 from about import models
+from .models import TeamMember
+
 
 def about_us(request):
     partners = models.Partner.objects.all()
-    return render(request, 'pages/aboutus.html', {'partners': partners})
+    team = TeamMember.objects.all()
+    return render(request, 'pages/aboutus.html', {'partners': partners, 'team': team})
 
 def add_partner(request):
     if request.method == "POST":

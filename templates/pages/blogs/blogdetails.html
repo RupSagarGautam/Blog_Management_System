@@ -1,0 +1,123 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Digital Pathshala | Educational Articles & Insights</title>
+    <link rel="stylesheet" href="/static/css/blogdetails.css">
+</head>
+<body>
+
+    {% include 'layout/header.html' %}
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <div class="content-wrapper">
+            <!-- Blog Article Section -->
+            <main class="blog-article">
+                <!-- Breadcrumb Navigation -->
+                <!-- Removed breadcrumb navigation as per request -->
+
+                <!-- Article Header -->
+                <header class="article-header">
+                    <div class="article-category">
+                        <i class="fas fa-tag"></i>
+                        {{blogs.category}}
+                    </div>
+                    <h1 class="article-title" style="color: black;">
+                        {{blogs.title}}
+                    </h1>
+                    
+                    <div class="article-meta">
+                        <div class="author-section">
+                            <div class="author-avatar">
+                                <img src="{{ blog.author.profile.profile_image.url|default:'/media/users/default_user.png'}}" alt="User Profile" class="featured-image">
+                            </div>
+                            <div class="author-details">
+                                <span class="author-name">By: {{ blogs.author.username }}</span>
+                                <span class="publish-date">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    {{ blogs.created_at|date:'M d, Y' }}
+                                </span>
+                            </div>
+                </header>
+
+                <!-- Featured Image -->
+                <div class="featured-image-container">
+                    <img src="{{blogs.image.url}}" alt="Understanding AI in 2025" class="featured-image">
+                    <div class="image-overlay">
+                        <div class="image-caption">
+                            {{blog.title}}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article Content -->
+                <div class="article-content">
+                    <div class="content-intro">
+                         
+                        <p class="lead-paragraph">
+                            Tags:
+                            {% for tag in blogs.tags.all %}
+                           
+                            {{ tag }},
+                            {% endfor %}
+                        </p>
+                        
+                    </div>
+                    <div>
+                    {{blogs.content|safe}}
+                    </div>
+                    {% comment %} <!-- Tags Section -->
+                    <div class="tags-section">
+                        <h3 class="tags-title">
+                            <i class="fas fa-tags"></i>
+                            Related Tags
+                        </h3>
+                        <div class="tags-container">
+                            <span class="tag">AI</span>
+                            <span class="tag">Technology</span>
+                            <span class="tag">Education</span>
+                            <span class="tag">Future</span>
+                            <span class="tag">Innovation</span>
+                            <span class="tag">Machine Learning</span>
+                        </div>
+                    </div>
+                </div> {% endcomment %}
+            </main>
+
+            <!-- Related Blogs Sidebar -->
+            <!-- Related Blogs Sidebar -->
+<aside class="related-blogs-sidebar">
+    <div class="sidebar-header">
+        <h2 class="sidebar-title">Recent Blogs</h2>
+    </div>
+
+    <div class="related-blogs-grid">
+        {% for blog in blog %}
+        <article class="blog-card">
+            <div class="blog-image">
+                <img src="{{ blog.image.url }}" alt="{{ blog.title }}" class="blog-img">
+            </div>
+            <div class="blog-content">
+                <h3 class="blog-title">{{ blog.title }}</h3>
+                <p class="blog-author">By: {{ blog.author.username }}</p>
+                <button class="read-more-btn" onclick="window.location.href='/blogs/{{ blog.id }}'">Read More</button>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+
+    <!-- View All Blogs Button -->
+    <div class="view-all-section">
+        <a href="/blogs/blogs" class="view-all-button">
+            <i class="fas fa-th-large"></i>
+            View All Blogs
+        </a>
+    </div>
+</aside>
+        </div>
+    </div>
+</body>
+</html>

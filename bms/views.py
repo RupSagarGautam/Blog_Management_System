@@ -19,8 +19,17 @@ def aboutUS(request):
 
 def blog(request):
     blogs = models.addBlog.objects.all()
-    print(blogs)
     return render(request, 'pages/blogs/blog.html', { 'blogs': blogs })
+
+def blogDetails(request,id):
+    blogs = addBlog.objects.get(id=id)
+    blog = addBlog.objects.order_by('-created_at')[:4]
+    return render(request, 'pages/blogs/blogdetails.html', {"blogs": blogs, "blog": blog} )
+
+
+def blogListAdmin(request):
+    pending_blogs = addBlog.objects.all().order_by('-created_at')
+    return render(request, 'pages/bloglist.html', {'pending_blogs': pending_blogs})
 
 def home(request):
     return render(request, 'pages/home.html')
@@ -30,8 +39,33 @@ def landingPage(request):
         return render(request, 'pages/home.html')
     return render(request, 'pages/index.html')
 
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
+from django.contrib import messages
+
 def loginPage(request):
-    return render(request, 'pages/login.html')
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        # Check if user exists
+        if not User.objects.filter(username=username).exists():
+            return render(request, 'pages/login.html', {
+                'username_error': 'User with this username does not exist',
+                'username_value': username
+            })
+
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('home')  # Redirect to home or dashboard
+        else:
+            return render(request, 'pages/login.html', {
+                'password_error': 'Invalid password',
+                'username_value': username
+            })
+    else:
+        return render(request, 'pages/login.html')
 
 def signupPage(request):
     return render(request, 'pages/signup.html')
@@ -85,8 +119,7 @@ def editUserProfile(request):
 def contactUs(request):
     return render(request, 'pages/contacts.html')
 
-def blogDetails(request):
-    return render(request, 'pages/blogdetails.html')
+
 # Admin Side Views
 def addBlogAdmin(request):
     return render(request, 'pages/Addblog.html')
@@ -95,4 +128,5 @@ def updateBlogAdmin(request):
     return render(request, 'pages/updateblog.html')
 
 def blogListAdmin(request):
-    return render(request, 'pages/bloglist.html')
+    pending_blogs = addBlog.objects.all().order_by('-created_at')
+    return render(request, 'pages/bloglist.html', {'pending_blogs': pending_blogs})

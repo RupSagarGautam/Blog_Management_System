@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from addBlogs import models
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.shortcuts import get_object_or_404
 # Create your views here.
 
 def validate_blog(data):
@@ -84,3 +85,6 @@ def blog(request):
     return render(request, 'pages/blogs/blog.html', { 'blogs': blogs })
 
 
+def blogDetails(request, blog_id):
+    blog = get_object_or_404(models.addBlog, id=blog_id)
+    return render(request, 'pages/blogs/blogdetails.html', {'blog': blog})

@@ -24,7 +24,7 @@ from users import views as user_views
 
 # Serve static files during development
 auth_urlpatterns = [
-    path('log-in/', user_views.loginUser, name='login'),
+    path('log-in/', views.loginPage, name='login'),
     path('sign-up/', user_views.signupUser),
     path('logout/', user_views.logoutUser)
 ]
@@ -33,29 +33,25 @@ auth_urlpatterns = [
 blog_urlpatterns = [
     path('add-blog/', blog_views.addBlogs, name='addBlog'),
     path('blogs/', blog_views.blog),
-    path('blog-details/', views.blogDetails),  
+    path('<int:id>', views.blogDetails),  
 ] 
 
 urlpatterns = [
     
     path('',views.landingPage),
     path('admin/', admin.site.urls),
-    path('home/', views.home),
-    
+    path('home/', views.home, name='home'),
     path('sign-up/',views.signupPage),
     path('user-profile/',views.profilePage),
     path('contact-us/',views.contactUs),
-    path('blog-details', views.blogDetails),
     path('add-blog-admin/',views.addBlogAdmin),
     path('update-blog-admin/',views.updateBlogAdmin),
     path('view-blog-list/',views.blogListAdmin),
-    
     path('user-profile/', views.profilePage),
      path("edit-user", views.editUserProfile),
     
     path('auth/', include(auth_urlpatterns)),
     path('blogs/', include(blog_urlpatterns)),
-
     path('about-us/', include('about.urls')),
 
     # django-allauth urls

@@ -86,7 +86,7 @@ body {
   border: solid 1px #111b15;
   box-shadow: 2px 4px 12px #3a3a3a;
   transition: 0.5s linear;
-  color: #4caf50
+  color: #4caf50;
 }
 
 .forgot-row {
@@ -201,4 +201,11 @@ body {
     width: 80px;
     height: 80px;
   }
+}
+
+.error-text {
+  color: #ff0000 !important;
+  font-size: 1em !important;
+  margin-top: 6px !important;
+  font-weight: 600 !important;
 }

@@ -23,7 +23,7 @@
                         {{ blog.category.name|default:"Uncategorized" }}
                     </div>
                     {% if user and blog.author.username == user.username %}
-                        <a href="/blogs/editBlog/{{ blog.id }}" class="edit-btn">Edit</a>
+                        <a href="/blogs/edit-Blog/{{ blog.id }}" class="edit-btn">Edit</a>
                     {% endif %}
                 </div>
                 <h1 class="article-title">{{ blog.title }}</h1>
@@ -51,7 +51,7 @@
                     <p class="lead-paragraph">{{ blog.content|safe }}</p>
                 </div>
                 <div class="tags-section">
-                    <h3 class="tags-title">Related Tags</h3>
+                    <h3 class="tags-title">Tags</h3>
                     <div class="tags-container">
                         {% for tag in blog.tags.all %}
                             <span class="tag">{{ tag }}</span>
@@ -64,3 +64,4 @@
         </main>
     </div>
 </div>
+

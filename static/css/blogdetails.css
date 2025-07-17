@@ -35,9 +35,9 @@ body {
 
 .blog-article {
     background: #ffffff;
-    border-radius: 32px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border: 2px solid #000000;
+    border-radius: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+    border: 1px solid #000000;
     overflow: hidden;
     max-width: 1600px;
     margin: 0 auto;
@@ -148,9 +148,11 @@ body {
 
 .featured-image {
     width: 100%;
-    height: 320px;
-    object-fit: cover;
-    border-radius: 18px;
+    height: auto;
+    object-fit: contain; /* Show full image without cropping */
+    border-radius: 16px;
+    display: block;
+    margin: 0 auto;
 }
 
 .image-overlay {
@@ -171,7 +173,11 @@ body {
 
 /* Article Content */
 .article-content {
+    background: #f8f8f8;
+    border-radius: 10px;
     padding: 2rem;
+    margin-top: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
 .content-intro {
@@ -179,14 +185,17 @@ body {
 }
 
 .lead-paragraph {
-    font-size: 1.25rem;
-    line-height: 1.8;
-    color: #4a5568;
-    font-weight: 400;
+    font-size: 1.1rem;
+    color: #222;
+    white-space: pre-line;
+    word-break: break-word;
     padding: 1.5rem;
     background: linear-gradient(135deg, #f0fff4, #e6fffa);
     border-radius: 16px;
     border-left: 4px solid #00d084;
+    font-weight: 400;
+    line-height: 1.8;
+    margin-top: 1.5rem;
 }
 
 .content-sections {
@@ -263,7 +272,7 @@ body {
 
 .edit-btn {
     padding: 8px 20px;
-    background: #16c784;
+    background: #9c4341;
     color: #fff;
     border-radius: 8px;
     font-weight: bold;
@@ -271,6 +280,6 @@ body {
     transition: background 0.2s;
 }
 .edit-btn:hover {
-    background: #119e67;
+    background: #df1f1f;
 }
 

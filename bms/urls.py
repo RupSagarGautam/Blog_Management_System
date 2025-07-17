@@ -34,7 +34,7 @@ blog_urlpatterns = [
     path('add-blog/', blog_views.addBlogs, name='addBlog'),
     path('blogs/', blog_views.blog),
     path('blog-details/<int:id>/', views.blogDetails, name='blogDetails'),  
-    path('edit-Blog//<int:id>', views.editBlogPage),
+    path('edit-Blog/<int:id>', views.editBlogPage, name='editBlog'),
 ] 
 
 urlpatterns = [

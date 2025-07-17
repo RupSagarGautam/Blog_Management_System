@@ -6,34 +6,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Blog Page</title>
-    <link rel="stylesheet" href="/static/css/add-blog.css" />
+    <title>Edit Blog Post</title>
+    <link rel="stylesheet" href="{% static 'css/editBlog.css' %}">
     <link rel="shortcut icon" href="/static/assets/favicon.ico" type="image/x-icon">
 </head>
  {% include "layout/header.html" %}
  
 <body>
-    <div class="body">
-        <div class="topaddsection">
-            <img src="/static/assets/working_boy.png" alt="Hello World"/>
-        </div>
     
         <form method="POST" enctype="multipart/form-data" id="blogForm">
             {% csrf_token %}
             <div class="addsection">
                 <div class="innersection">
-                    <h1>Create New Blog Post</h1>
+                    <h1>EDIT BLOG POST</h1>
     
                     <div class="form-group">
                         <label for="blogTitle">Title</label>
-                        <input type="text" id="blogTitle" name="title" placeholder="Enter your blog title" required />
+                        <input type="text" id="blogTitle" name="title" placeholder="Enter your blog title" value="{{ blog.title }}" required />
                     </div>
     
                     <div class="form-group">
                         <label for="imageInput">Featured Image</label>
                         <div class="image-upload-container">
-                            <input type="file" id="imageInput" name="image" accept="image/*" />
-                            <div class="image-preview" id="imagePreview"></div>
+                            <input type="file" id="imageInput" name="image" accept="image/*" style="display:none;" />
+                            <button type="button" onclick="document.getElementById('imageInput').click();">Choose another</button>
+                            <div class="image-preview" id="imagePreview">
+                                {% if blog.image %}
+                                    <img src="{{ blog.image.url }}" alt="Current Image" style="max-width: 100%;" />
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
     
@@ -58,29 +59,29 @@
                         </div>
                         Write Your Content here...
                         <div id="editor" class="editor-content" contenteditable="true" style="border: 1px solid #ccc; min-height: 100px; padding: 10px;">
-                            
+                            {{ blog.content|safe }}
                         </div>
                         <!-- Hidden textarea to store content before submitting -->
-                        <textarea name="content" id="content-input" hidden></textarea>
+                        <textarea name="content" id="content-input" hidden>{{ blog.content }}</textarea>
                     </div>
     
                     <div class="form-group">
                         <label for="blogTags">Tags</label>
-                        <input type="text" id="blogTags" name="tags" placeholder="Enter tags separated by commas" />
+                        <input type="text" id="blogTags" name="tags" placeholder="Enter tags separated by commas" value="{{ tags }}" />
                     </div>
 
                     <div class="form-group">
                         <label for="blogTags">Category</label>
-                        <select type="text" id="category" name="category" />
-                        <option value="">SELECT</option>
-                        {%for category in categories %}
-                            <option value="{{category}}">{{category.name}}</option>
-                        {% endfor %}
+                        <select id="category" name="category">
+                            <option value="">SELECT</option>
+                            {% for category in categories %}
+                                <option value="{{ category.id }}" {% if blog.category.id == category.id %}selected{% endif %}>{{ category.name }}</option>
+                            {% endfor %}
                         </select>
                     </div>
     
                     <div class="form-actions">
-                        <button type="submit" class="btn-primary">Publish Post</button>
+                        <button type="submit" class="btn-primary">Edit Post</button>
                     </div>
                 </div>
             </div>

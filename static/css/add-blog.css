@@ -195,6 +195,25 @@ ul li a:hover:after {
     transition: border-color 0.3s ease;
 }
 
+.form-group select[type="text"] {
+    padding: 10px;
+    border: 1px solid #33333347;
+    border-radius: 5px;
+    font-weight: 500;
+}
+.form-group select[type="text"]:focus{
+    border: 1px solid springgreen;
+    color: #333;
+    background-color: #f0feef ;
+}
+
+.form-group option{
+    padding: 10px;
+    font-weight: 500;
+    background-color: #f0feef;
+    color: #13a920;
+}
+
 .form-group input[type="text"]:focus {
     outline: none;
     border-color: var(--primary-color);
@@ -226,6 +245,7 @@ ul li a:hover:after {
 
 #editor {
     height: 300px;
+    font-size: 12px;
     margin-bottom: 1rem;
     border-radius: 8px;
     overflow: hidden;
@@ -238,6 +258,7 @@ ul li a:hover:after {
     list-style-position: inside;
     list-style-type: disc;
     list-style-position: inside;
+
     
 }
 
@@ -250,6 +271,7 @@ ul li a:hover:after {
     list-style-position: inside;
     list-style-type: disc;
     list-style-position: inside;
+    border: 2px solid rgb(0, 255, 8);
 }
 
 .ql-toolbar {

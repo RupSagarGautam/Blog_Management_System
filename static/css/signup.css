@@ -22,8 +22,8 @@ body {
   border: 1.5px solid #4caf50;
   position: relative;
   z-index: 1;
-  margin-bottom: 2%;
-  margin-top: 12%;
+  margin-bottom: 4%;
+  margin-top: 35%;
 }
 
 .logosignup {
@@ -101,7 +101,7 @@ h2 {
 .input-group input:focus,
 .input-group select:focus {
   background: #e0f2e9;
-  border-color: #388e3c;
+  border-color: #4caf50;
 }
 
 .signup-btn {
@@ -117,10 +117,14 @@ h2 {
   margin-bottom: 20px;
   cursor: pointer;
   transition: background 0.3s ease;
+  border: solid 1px #000000;
 }
 
 .signup-btn:hover {
-  background: #388e3c;
+  background: #ffffff;
+  color: #4caf50;
+  border: solid 1px #000000;
+
 }
 
 .or-continue {

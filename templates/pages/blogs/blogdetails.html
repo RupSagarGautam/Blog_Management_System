@@ -4,148 +4,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - Digital Pathshala | Educational Articles & Insights</title>
+    <title>Blog Details - Digital Pathshala</title>
     <link rel="stylesheet" href="/static/css/blogdetails.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-    {% include 'layout/header.html' %}
+{% include 'layout/header.html' %}
 
-    <!-- Main Container -->
-    <div class="main-container">
-        <div class="content-wrapper">
-            <!-- Blog Article Section -->
-            <main class="blog-article">
-                <!-- Breadcrumb Navigation -->
-                <!-- Removed breadcrumb navigation as per request -->
-
-                <!-- Article Header -->
-                <header class="article-header">
+<div class="main-container">
+    <div class="content-wrapper">
+        <main class="blog-article">
+            <header class="article-header">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start;">
                     <div class="article-category">
                         <i class="fas fa-tag"></i>
-                        Technology
+                        {{ blog.category.name|default:"Uncategorized" }}
                     </div>
-                    <h1 class="article-title" style="color: black;">Understanding AI in 2025: The Future of Technology</h1>
-                    
-                    <div class="article-meta">
-                        <div class="author-section">
-                            <div class="author-avatar">
-                                <img src="{{blog.author.profile.prifile_image}}" alt="User Profile" class="featured-image">
-                            </div>
-                            <div class="author-details">
-                                <span class="author-name">By: Purnima Basnet</span>
-                                <span class="publish-date">
-                                    <i class="fas fa-calendar-alt"></i>
-                                    January 15, 2025
-                                </span>
-                            </div>
-                </header>
-
-                <!-- Featured Image -->
-                <div class="featured-image-container">
-                    <img src="/static/assets/Digital innovation.jpg" alt="Understanding AI in 2025" class="featured-image">
-                    <div class="image-overlay">
-                        <div class="image-caption">AI Technology Visualization</div>
+                    {% if user and blog.author.username == user.username %}
+                        <a href="/blogs/editBlog/{{ blog.id }}" class="edit-btn">Edit</a>
+                    {% endif %}
+                </div>
+                <h1 class="article-title">{{ blog.title }}</h1>
+                <div class="author-section">
+                    <div class="author-avatar">
+                        <img src="{{ blog.author.profile.profile_image.url }}" alt="{{ blog.author.username }}" style="width: 56px; height: 56px; border-radius: 50%; object-fit: cover; border: 2px solid #16c784;" />
+                    </div>
+                    <div class="author-details">
+                        <span class="author-name">{{ blog.author.username }}</span>
+                        <span class="publish-date">
+                            <i class="fas fa-calendar-alt"></i>
+                            {{ blog.created_at|date:"F d, Y" }}
+                        </span>
                     </div>
                 </div>
-
-                <!-- Article Content -->
-                <div class="article-content">
-                    <div class="content-intro">
-                        <p class="lead-paragraph">
-                            Artificial Intelligence has evolved dramatically over the past few years, and 2025 promises to be a pivotal year for AI technology. From machine learning breakthroughs to practical applications in everyday life, AI is reshaping how we work, learn, and interact with technology.
-                        </p>
-                    </div>
-
-                    <div class="content-sections">
-                        <section class="content-section">
-                            <h2 class="section-heading">
-                                <i class="fas fa-chart-line"></i>
-                                The Current State of AI
-                            </h2>
-                            <p>
-                                In 2025, AI has become more accessible and integrated into various sectors including education, healthcare, finance, and entertainment. The technology has moved beyond simple automation to complex problem-solving and creative tasks.
-                            </p>
-                        </section>
-
-                        <section class="content-section">
-                            <h2 class="section-heading">
-                                <i class="fas fa-rocket"></i>
-                                Key Developments in AI
-                            </h2>
-                            <p>
-                                Recent advancements in natural language processing, computer vision, and neural networks have opened new possibilities for AI applications. These developments are particularly relevant for educational platforms like Digital Pathshala, where AI can personalize learning experiences.
-                            </p>
-                        </section>
-
-                        <section class="content-section">
-                            <h2 class="section-heading">
-                                <i class="fas fa-graduation-cap"></i>
-                                Impact on Education
-                            </h2>
-                            <p>
-                                AI-powered educational tools are revolutionizing how students learn and teachers teach. From intelligent tutoring systems to automated grading, AI is making education more efficient and personalized.
-                            </p>
-                        </section>
-
-                        <section class="content-section">
-                            <h2 class="section-heading">
-                                <i class="fas fa-crystal-ball"></i>
-                                Looking Forward
-                            </h2>
-                            <p>
-                                As we progress through 2025, we can expect to see even more innovative applications of AI technology. The key is to embrace these changes while ensuring ethical and responsible implementation.
-                            </p>
-                        </section>
-                    </div>
-
-                    <!-- Tags Section -->
-                    <div class="tags-section">
-                        <h3 class="tags-title">
-                            <i class="fas fa-tags"></i>
-                            Related Tags
-                        </h3>
-                        <div class="tags-container">
-                            <span class="tag">AI</span>
-                            <span class="tag">Technology</span>
-                            <span class="tag">Education</span>
-                            <span class="tag">Future</span>
-                            <span class="tag">Innovation</span>
-                            <span class="tag">Machine Learning</span>
-                        </div>
+            </header>
+            <div class="featured-image-wrapper">
+                <img src="{{ blog.image.url }}" alt="{{ blog.title }}" class="featured-image">
+                <div class="image-overlay">
+                    <div class="image-caption">{{ blog.title }}</div>
+                </div>
+            </div>
+            <div class="article-content">
+                <div class="content-intro">
+                    <p class="lead-paragraph">{{ blog.content|safe }}</p>
+                </div>
+                <div class="tags-section">
+                    <h3 class="tags-title">Related Tags</h3>
+                    <div class="tags-container">
+                        {% for tag in blog.tags.all %}
+                            <span class="tag">{{ tag }}</span>
+                        {% empty %}
+                            <span class="tag">No tags</span>
+                        {% endfor %}
                     </div>
                 </div>
-            </main>
-
-            <!-- Related Blogs Sidebar -->
-            <aside class="related-blogs-sidebar">
-                <div class="sidebar-header">
-                    <h2 class="sidebar-title">Related Blogs</h2>
-                </div>
-
-                <div class="related-blogs-grid">
-                    <!-- Related Blog 1 -->
-                    <article class="blog-card">
-                        <div class="blog-image">
-                             <img src="/static/assets/Technology.jpg" alt="Digital Literacy" class="blog-img">
-                        </div>
-                        <div class="blog-content">
-                            <h3 class="blog-title">Building Digital Literacy in Rural Communities</h3>
-                            <p class="blog-author">By: RupSagar gautam</p>
-                            <button class="read-more-btn">Read More</button>
-                        </div>
-                    </article>
-                </div>
-
-                <!-- View All Blogs Button -->
-                <div class="view-all-section">
-                    <a href="blog.html" class="view-all-button">
-                        <i class="fas fa-th-large"></i>
-                        View All Blogs
-                    </a>
-                </div>
-            </aside>
-        </div>
+            </div>
+        </main>
     </div>
-</body>
-</html>
+</div>

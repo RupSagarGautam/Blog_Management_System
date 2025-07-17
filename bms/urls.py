@@ -19,22 +19,22 @@ from django.contrib import admin
 from django.urls import include, path
 from django.conf.urls.static import static
 from bms import views
+from addBlogs import views as blog_views
 from users import views as user_views
 
 # Serve static files during development
 auth_urlpatterns = [
-    path('log-in/', views.loginPage),
-    path('sign-up/', views.signupPage),
-    path('log-in', user_views.loginUser, name='login'),
+    path('log-in/', user_views.loginUser, name='login'),
+    path('sign-up/', user_views.signupUser),
     path('logout/', user_views.logoutUser)
 ]
 
 # Static files (CSS, JavaScript, Images)
 blog_urlpatterns = [
-    path('add-blog/', views.addBlogs, name='addBlog'),
-    path('add-blog/', views.addBlog),
-    path('blogs/', views.blog),
-    path('blog-details/', views.blogDetails),  
+    path('add-blog/', blog_views.addBlogs, name='addBlog'),
+    path('blogs/', blog_views.blog),
+    path('blog-details/<int:id>/', views.blogDetails, name='blogDetails'),  
+    path('edit-Blog//<int:id>', views.editBlogPage),
 ] 
 
 urlpatterns = [
@@ -42,15 +42,19 @@ urlpatterns = [
     path('',views.landingPage),
     path('admin/', admin.site.urls),
     path('home/', views.home),
+    
     path('sign-up/',views.signupPage),
     path('user-profile/',views.profilePage),
     path('contact-us/',views.contactUs),
     path('add-blog-admin/',views.addBlogAdmin),
     path('update-blog-admin/',views.updateBlogAdmin),
     path('view-blog-list/',views.blogListAdmin),
+    
     path('user-profile/', views.profilePage),
+    
     path('auth/', include(auth_urlpatterns)),
     path('blogs/', include(blog_urlpatterns)),
+
     path('about-us/', include('about.urls')),
 ]
 

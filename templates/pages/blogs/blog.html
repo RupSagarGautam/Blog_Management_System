@@ -24,7 +24,9 @@
               <img src="{{ blog.image.url }}" alt="{{ blog.title }}" />
               <h2>{{ blog.title }}</h2>
               <div class="author">By: {{ blog.author }}</div>
-              <a href="#" class="read-more">Read More</a>
+
+              <a href="/blogs/{{blog.id}}" class="read-more">Read More</a>
+             
             </div>
           {% empty %}
             <div class="blog-card">
@@ -52,4 +54,5 @@
   </div>
 
 </body>
+{% include "layout/footer.html" %}
 </html>

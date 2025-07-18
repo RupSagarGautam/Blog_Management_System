@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'users',
     'about',
     'addBlogs',
+    'taggit',
 ]
 
 MIDDLEWARE = [
@@ -113,6 +114,8 @@ LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'Asia/Kathmandu'
 
 USE_I18N = True
+
+TAGGIT_CASE_INSENSITIVE = True
 
 USE_TZ = True
 

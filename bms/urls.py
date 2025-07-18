@@ -43,8 +43,9 @@ blog_urlpatterns = [
 urlpatterns = [
     
     path('',views.landingPage),
+    path('',blog_views.home, name='home'),
     path('admin/', admin.site.urls),
-    path('home/', views.home),
+    path('home/', blog_views.home, name='home'),
     path('sign-up/',views.signupPage),
     path('user-profile/',views.profilePage),
     path('contact-us/',views.contactUs),

@@ -41,12 +41,30 @@ def blogDetails(request, id):
 def blogListAdmin(request):
     return render(request, 'pages/bloglist.html')
 
-def home(request):
-    return render(request, 'pages/home.html')
 
 def landingPage(request):
     if request.user.is_authenticated:
-        return render(request, 'pages/home.html')
+        query = request.GET.get('q')
+
+        featured_blogs = addBlog.objects.filter(
+            status=addBlog.StatusOptions.ACTIVE,
+            featured=True
+        ).order_by('-created_at')
+
+        recent_blogs = addBlog.objects.filter(
+            status=addBlog.StatusOptions.ACTIVE
+        ).order_by('-created_at')
+
+        if query:
+            featured_blogs = featured_blogs.filter(title__icontains=query)
+            recent_blogs = recent_blogs.filter(title__icontains=query)
+
+        context = {
+            "featured_blogs": featured_blogs,
+            "recent_blogs": recent_blogs
+        }
+
+        return render(request, 'pages/home.html', context)  
     return render(request, 'pages/index.html')
 
 def loginPage(request):

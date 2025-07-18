@@ -5,79 +5,110 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sandhya's Blog</title>
-  <link rel="stylesheet" href="/static/css/home.css" />
+  <link rel="stylesheet" href="{% static 'css/home.css' %}" />
 </head>
 <body>
   {% include "layout/header.html" %}
+
   <div class="container">
-    <!-- sidebarbody -->
+    <!-- Sidebar -->
     <aside class="sidebarbody">
       <div class="dropdown">
         <button class="dropdown-button">Categories ▼</button>
         <ul class="dropdown-menu">
-          <li><a href="#">Technology</a></li>
-          <li><a href="#">Travel</a></li>
-          <li><a href="#">Education</a></li>
-          <li><a href="#">Health</a></li>
+          {% comment %} <li><a href="{% url 'blogs_by_type' 'Technology' %}">Technology</a></li>
+          <li><a href="{% url 'blogs_by_type' 'Travel' %}">Travel</a></li>
+          <li><a href="{% url 'blogs_by_type' 'Education' %}">Education</a></li>
+          <li><a href="{% url 'blogs_by_type' 'Health' %}">Health</a></li> {% endcomment %}
         </ul>
       </div>
     </aside>
 
     <!-- Main Content -->
     <main class="content">
-      <h1>Welcome, {{user.username}}</h1>
+      <h1>Welcome, {{ request.user.get_full_name|default:request.user.username }}</h1>
 
-      <!-- Top Blogs -->
+
+
+<!-- Search Form -->
+<div class="search-container">
+  <form method="GET" action="" class="search-form">
+    <input type="text" name="q" placeholder="Search blog by title..." value="{{ request.GET.q }}">
+    <button type="submit">Search</button>
+    {% if request.GET.q %}
+      <a href="{% url 'home' %}" class="reset-link">Reset</a>
+    {% endif %}
+  </form>
+
+  {% if request.GET.q and not featured_blogs and not recent_blogs %}
+    <p class="no-results">No blog found with title containing "{{ request.GET.q }}"</p>
+  {% endif %}
+</div>
+
+
+
+
+
+
+
+
+
+      <!-- Top Blogs (Static for now) -->
       <div class="section-wrapper">
         <h2>Top Blogs</h2>
         <div class="blog-row-scroll">
           <div class="blog-card">
-            <img src="/static/Assets/blog1.png" alt="Top Blog 1" />
+            <img src="{% static 'Assets/blog1.png' %}" alt="Top Blog 1" />
             <h3>Top Blog 1</h3>
             <p>Explore the latest trends in AI and web development.</p>
           </div>
           <div class="blog-card">
-            <img src="/static/Assets/blog2.png" alt="Top Blog 2" />
+            <img src="{% static 'Assets/blog2.png' %}" alt="Top Blog 2" />
             <h3>Top Blog 2</h3>
             <p>How to build a blogging site using HTML and CSS.</p>
           </div>
           <div class="blog-card">
-            <img src="/static/Assets/blog3.png" alt="Top Blog 3" />
+            <img src="{% static 'Assets/blog3.png' %}" alt="Top Blog 3" />
             <h3>Top Blog 3</h3>
             <p>Tips for maintaining consistency and creativity in writing.</p>
           </div>
           <div class="blog-card">
-            <img src="/static/Assets/blog4.png" alt="Top Blog 4" />
+            <img src="{% static 'Assets/blog4.png' %}" alt="Top Blog 4" />
             <h3>Top Blog 4</h3>
             <p>The tools every blogger should know about in 2025.</p>
           </div>
         </div>
       </div>
 
-      <!-- Recent Blogs -->
+      <!-- Featured Blogs (Only if featured=True) -->
+      <div class="section-wrapper">
+        <h2>Featured Blogs</h2>
+        <div class="blog-row-scroll">
+          {% for blog in featured_blogs %}
+            <div class="blog-card">
+              <img src="{{ blog.image.url }}" alt="{{ blog.title }}" />
+              <h3>{{ blog.title }}</h3>
+              <p>{{ blog.content|truncatewords:15 }}</p>
+            </div>
+          {% empty %}
+            <p>No featured blogs available.</p>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Recent Blogs (Only if featured=False) -->
       <div class="section-wrapper">
         <h2>Recent Blogs</h2>
         <div class="blog-row-scroll">
-          <div class="blog-card">
-            <img src="/static/Assets/recent1.png" alt="Recent Blog 1" />
-            <h3>Recent Blog 1</h3>
-            <p>My personal journey into frontend development.</p>
-          </div>
-          <div class="blog-card">
-            <img src="/static/Assets/recent2.png" alt="Recent Blog 2" />
-            <h3>Recent Blog 2</h3>
-            <p>Best platforms for beginner bloggers in 2025.</p>
-          </div>
-          <div class="blog-card">
-            <img src="/static/Assets/recent3.png" alt="Recent Blog 3" />
-            <h3>Recent Blog 3</h3>
-            <p>Exploring Nepal: A blog from the mountains.</p>
-          </div>
-          <div class="blog-card">
-            <img src="/static/Assets/recent4.png" alt="Recent Blog 4" />
-            <h3>Recent Blog 4</h3>
-            <p>Writing for self-growth and emotional clarity.</p>
-          </div>
+          {% for blog in recent_blogs %}
+            <div class="blog-card">
+              <img src="{{ blog.image.url }}" alt="{{ blog.title }}" />
+              <h3>{{ blog.title }}</h3>
+              <p>{{ blog.content|truncatewords:15 }}</p>
+            </div>
+          {% empty %}
+            <p>No recent blogs available.</p>
+          {% endfor %}
         </div>
       </div>
 
@@ -87,17 +118,17 @@
           <h2>Our Vision</h2>
           <div class="vision-cards">
             <div class="vision-card">
-              <img src="/static/Assets/person1.png" alt="Person 1" />
+              <img src="{% static 'Assets/person1.png' %}" alt="Person 1" />
               <h3>Sandhya Timsina</h3>
               <p>“I envision a platform where creativity meets technology, making learning enjoyable and accessible for everyone.”</p>
             </div>
             <div class="vision-card">
-              <img src="/static/Assets/person2.png" alt="Person 2" />
+              <img src="{% static 'Assets/person2.png' %}" alt="Person 2" />
               <h3>Purnima Basnet</h3>
               <p>“We aim to empower individuals to express their thoughts and stories freely through simple, beautiful blogging tools.”</p>
             </div>
             <div class="vision-card">
-              <img src="/static/Assets/image.png" alt="Person 3" />
+              <img src="{% static 'Assets/image.png' %}" alt="Person 3" />
               <h3>Sandhya Shrestha</h3>
               <p>“Our mission is to build a positive online community that fosters growth, connection, and lifelong learning.”</p>
             </div>
@@ -111,21 +142,21 @@
           <h2>About Company</h2>
           <div class="about-cards">
             <div class="about-card">
-              <img src="/static/Assets/offers.png" alt="Offers" />
+              <img src="{% static 'Assets/offers.png' %}" alt="Offers" />
               <span class="number">1</span>
               <h3>Offers</h3>
               <p>Check out the latest discounts, special combos, and limited-time promotions we provide.</p>
               <a href="#" class="read-more-btn">Read More</a>
             </div>
             <div class="about-card">
-              <img src="/static/Assets/topcourse.png" alt="Top Course" />
+              <img src="{% static 'Assets/topcourse.png' %}" alt="Top Course" />
               <span class="number">2</span>
               <h3>Top Course</h3>
               <p>Explore our most popular course, trusted by hundreds of students and professionals worldwide.</p>
               <a href="#" class="read-more-btn">Read More</a>
             </div>
             <div class="about-card">
-              <img src="/static/Assets/aboutcourse.png" alt="About Course" />
+              <img src="{% static 'Assets/aboutcourse.png' %}" alt="About Course" />
               <span class="number">3</span>
               <h3>About Course</h3>
               <p>Learn more about the structure, topics, and purpose of our educational course bundles.</p>
@@ -136,6 +167,7 @@
       </section>
     </main>
   </div>
+
 </body>
-{% include "layout/footer.html" %}
+{% include 'layout/footer.html' %}
 </html>

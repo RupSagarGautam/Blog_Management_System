@@ -10,6 +10,48 @@ body {
   color: #3a3a3a; /* Text color */
 }
 
+/*  Search Form */
+.search-form {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  gap: 10px;
+}
+
+.search-form input {
+  padding: 10px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* Unified Button Style */
+.search-form button,
+.reset-link {
+  padding: 10px 16px;
+  background-color: #38a169;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  text-transform: none; 
+  cursor: pointer;
+  text-align: center;
+  line-height: normal;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.search-form button:hover,
+.reset-link:hover {
+  background-color: #bbb;
+  color: black;
+}
+
+
+
 /* Layout */
 .container {
   display: flex;

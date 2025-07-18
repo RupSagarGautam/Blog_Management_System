@@ -209,28 +209,33 @@ ul li a:hover:after {
         
 
         .dropdown-button-profile {
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            color: #2c3e50;
-            font-weight: 500;
-            width: 100%;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 10px;
-            text-align: left;
-            transition: 0.5s;
+            display: flex;
+            align-items: center !important ;
+            gap: 10px !important;
+            text-decoration: none !important;
+            color: #2c3e50 !important ;
+            font-weight: 500 !important ;
+            width: 100% !important ;
+            background: none !important;
+            border: none !important;
+            cursor: pointer !important;
+            padding: 10px !important;
+            text-align: left !important;
+            transition: 0.5s !important;
+            white-space: nowrap !important;
+            max-width: 220px;
         }
 
         .dropdown-button-profile:hover {
-            color: #26a32c;
+            color: #26a32c !important ;
             transition: 0.3s;
             transform: scale(1.05);
+            background: none !important;
         }
 
         .dropdown-button-profile i {
             font-size: 18px;
+            color: #333;
         }
 
         /* Close button for mobile */
@@ -253,7 +258,7 @@ ul li a:hover:after {
         }
 
         #logout-btn:hover{
-            background-color: #e03b3b;
+            background-color: #e03b3b !important;
             color: #faf9f6 !important;
             transition: 0.5s;
             border-radius: 10px;

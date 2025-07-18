@@ -20,7 +20,25 @@
     <div class="blog-list-container">
         <h1>Blog List</h1>
         <hr />
-        <div id="blogList"></div>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search blogs..." />
+            <button id="searchButton" aria-label="Search">&#128269;</button>
+        </div>
+        <div id="blogList">
+
+    {% for blog in pending_blogs %}
+            <div class="blog-card" data-id="{{ blog.id }}" data-title="{{ blog.title|lower }}" data-author="{{ blog.author.username|lower }}" data-created="{{ blog.created_at }}">
+                <h2><strong>{{ blog.title }}</strong></h2>
+                <p>Created By: {{ blog.author.username }}</p>
+                <p>Created at: {{ blog.created_at }}</p>
+                <button class="update-btn" onclick="window.location.href='/update-blog-admin/{{ blog.id }}'">UPDATE</button>
+                <button class="delete-btn" onclick="deleteBlog(this)">DELETE</button>
+            </div>
+        {% empty %}
+            <p style="text-align:center;color:#888;font-size:1.1rem;">No blog posts created yet.</p>
+    {% endfor %}
+
+        </div>
     </div>
     <script src="/static/js/bloglist.js"></script>
 </body>

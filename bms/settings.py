@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-m#cfrgrk5mfk*%&vk(70x%@@a&hw1c(bi6#fca#89%^c(ah$fy
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1' ]
 
 
 # Application definition
@@ -43,7 +43,51 @@ INSTALLED_APPS = [
     'users',
     'about',
     'addBlogs',
+    'taggit',
+
+    # django-allauth apps
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 ]
+
+# # Add site ID for django-allauth
+SITE_ID = 1
+
+# Authentication backends for django-allauth
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+# django-allauth settings
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/templates/login'
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
+ACCOUNT_EMAIL_VERIFICATION = 'optional'
+
+# Google OAuth2 credentials placeholders (replace with actual credentials)
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        },
+        'APP': {
+            'client_id': '1751426665-sv3lo266j05m6bua7ket4v1734bn2593.apps.googleusercontent.com',
+            'secret': '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',
+            'key': ''
+        }
+    }
+}
+
+SOCIALACCOUNT_LOGIN_ON_GET = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -53,6 +97,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # django-allauth middleware
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'bms.urls'
@@ -114,6 +161,8 @@ TIME_ZONE = 'Asia/Kathmandu'
 
 USE_I18N = True
 
+TAGGIT_CASE_INSENSITIVE = True
+
 USE_TZ = True
 
 
@@ -129,7 +178,7 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_DIRS = [
-    BASE_DIR, 'static',
+    BASE_DIR / 'static',
 ]
 
 MEDIA_URL = '/media/'

@@ -16,7 +16,7 @@ class Profile(models.Model):
     phone = models.CharField(blank= True, null= True, max_length=10)
     nationality = models.CharField(blank= True, null= True, max_length=15, default ='Nepal')
     gender = models.CharField(choices=GenderOptions.choices, default=GenderOptions.Male, max_length=6)
-    profile_image = models.ImageField(upload_to= generateImagePath, blank=True, null=True, default= "users/default_user.png")
+    profile_image = models.ImageField(upload_to=generateImagePath, blank=True, null=True, default= "users/default_user.png")
     dob = models.DateField(blank=True, null=True)
     
     def __str__(self):

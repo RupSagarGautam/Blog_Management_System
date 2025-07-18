@@ -1,3 +1,4 @@
+{%load socialaccount %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -391,11 +392,12 @@
       </form>
 
       <div class="or-continue">Or continue with</div>
+ 
+{% load socialaccount %} 
 
-      <button class="google-btn">
-        <img src="/static/assets/Google logo.png" alt="Google logo" />
+      <a href="{% provider_login_url 'google' process='signup' %}" style="text-decoration: none; color: blue; font-weight: bold;">
         Continue with Google
-      </button>
+      </a>
 
 <div class="bottom-link">
   Already have an account? <a href="/auth/log-in">Login In</a>

@@ -1,37 +1,50 @@
 window.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('searchInput');
+    const searchButton = document.getElementById('searchButton');
     const blogListDiv = document.getElementById('blogList');
-    renderBlogList();
+    let blogCards = Array.from(blogListDiv.getElementsByClassName('blog-card'));
 
-    function renderBlogList() {
-        let blogs = JSON.parse(localStorage.getItem('blogs') || '[]');
-        if (blogs.length === 0) {
-            blogListDiv.innerHTML = '<p style="text-align:center;color:#888;font-size:1.1rem;">No blog posts created yet.</p>';
-            return;
+    // Retrieve deleted blog IDs from localStorage
+    let deletedBlogIds = JSON.parse(localStorage.getItem('deletedBlogIds') || '[]');
+
+    // Remove blogs from UI that are in deletedBlogIds
+    blogCards.forEach(card => {
+        const blogId = card.getAttribute('data-id');
+        if (deletedBlogIds.includes(blogId)) {
+            card.remove();
         }
-        blogListDiv.innerHTML = blogs.map((blog, idx) => `
-            <div class="blog-card">
-                <h2>${blog.title}</h2>
-                ${blog.image ? `<img src="${blog.image}" alt="Featured Image" class="blog-image" />` : ''}
-                <div class="blog-content">${blog.content}</div>
-                <div class="blog-tags"><strong>Tags:</strong> ${blog.tags}</div>
-                <button class="update-btn" data-idx="${idx}">Update</button>
-                <button class="delete-btn" data-idx="${idx}">Delete</button>
-            </div>
-        `).join('');
-        document.querySelectorAll('.delete-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const idx = this.getAttribute('data-idx');
-                let blogs = JSON.parse(localStorage.getItem('blogs') || '[]');
-                blogs.splice(idx, 1);
-                localStorage.setItem('blogs', JSON.stringify(blogs));
-                renderBlogList();
-            });
-        });
-        document.querySelectorAll('.update-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const idx = this.getAttribute('data-idx');
-                window.location.href = `UpdateBlog.html?idx=${idx}`;
-            });
+    });
+
+    function filterBlogs() {
+        const query = searchInput.value.toLowerCase();
+        blogCards.forEach(card => {
+            const title = card.getAttribute('data-title');
+            const author = card.getAttribute('data-author');
+            const created = card.getAttribute('data-created');
+            if (title.includes(query) || author.includes(query) || created.includes(query)) {
+                card.style.display = '';
+            } else {
+                card.style.display = 'none';
+            }
         });
     }
-}); 
+
+    searchInput.addEventListener('input', filterBlogs);
+    searchButton.addEventListener('click', filterBlogs);
+
+    window.deleteBlog = function(button) {
+        console.log('deleteBlog called');
+        const blogCard = button.closest('.blog-card');
+        if (blogCard) {
+            const blogId = blogCard.getAttribute('data-id');
+            // Add blogId to deletedBlogIds and save to localStorage
+            if (!deletedBlogIds.includes(blogId)) {
+                deletedBlogIds.push(blogId);
+                localStorage.setItem('deletedBlogIds', JSON.stringify(deletedBlogIds));
+            }
+            blogCard.remove();
+            // Update blogCards array after removal
+            blogCards = Array.from(blogListDiv.getElementsByClassName('blog-card'));
+        }
+    };
+});

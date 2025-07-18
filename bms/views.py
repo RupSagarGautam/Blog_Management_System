@@ -40,8 +40,6 @@ def blogListAdmin(request):
 
 def landingPage(request):
     if request.user.is_authenticated:
-        query = request.GET.get('q')
-
         featured_blogs = addBlog.objects.filter(
             status=addBlog.StatusOptions.ACTIVE,
             featured=True
@@ -51,16 +49,13 @@ def landingPage(request):
             status=addBlog.StatusOptions.ACTIVE
         ).order_by('-created_at')
 
-        if query:
-            featured_blogs = featured_blogs.filter(title__icontains=query)
-            recent_blogs = recent_blogs.filter(title__icontains=query)
-
         context = {
             "featured_blogs": featured_blogs,
             "recent_blogs": recent_blogs
         }
 
         return render(request, 'pages/home.html', context)  
+    
     return render(request, 'pages/index.html')
 
 

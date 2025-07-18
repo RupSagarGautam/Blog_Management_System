@@ -10,6 +10,10 @@ body {
   color: #3a3a3a; /* Text color */
 }
 
+.body{
+  margin-bottom: 15%;
+}
+
 /*  Search Form */
 .search-form {
   display: flex;

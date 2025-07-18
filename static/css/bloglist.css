@@ -37,8 +37,8 @@ body {
 }
 .navbar a.active,
 .navbar a:hover {
-    color: #27ef6b;
-    border-bottom: 2px solid #27ef6b;
+    color:  #32e67e;
+    border-bottom: 2px solid  #32e67e;;
     background: none;
 }
 @media (max-width: 600px) {
@@ -93,7 +93,7 @@ body {
     margin-top: 0;
     margin-bottom: 12px;
     font-size: 1.4rem;
-    color: #1976d2;
+    color: #32e67e;
 }
 .blog-image {
     max-width: 120px;
@@ -119,8 +119,51 @@ body {
     }
 }
 
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+    gap: 8px;
+}
+
+#searchInput {
+    width: 300px;
+    max-width: 80vw;
+    padding: 10px 16px;
+    border-radius: 24px;
+    border: 2px solid  #32e67e;
+    font-size: 1rem;
+    outline: none;
+    transition: box-shadow 0.3s ease;
+}
+
+#searchInput:focus {
+    box-shadow: 0 0 8px  #32e67e;
+    border-color:  #32e67e;
+}
+
+#searchButton {
+    background-color:  #32e67e;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    color: white;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(39,239,107,0.6);
+    transition: background-color 0.3s ease;
+}
+
+#searchButton:hover {
+    background-color: #1ed760;
+}
+
 .delete-btn {
-    background: #27ef6b;
+    background: #e53935;
     color: #fff;
     border: none;
     border-radius: 6px;
@@ -129,18 +172,18 @@ body {
     font-weight: 500;
     cursor: pointer;
     transition: background 0.2s;
-    box-shadow: 0 1px 4px rgba(39,239,107,0.08);
+    box-shadow: 0 1px 4px rgba(229,57,53,0.8);
     position: absolute;
     top: 24px;
     right: 24px;
     margin-top: 0;
 }
 .delete-btn:hover {
-    background: #1ed760;
+    background: #b71c1c;
 }
 
 .update-btn {
-    background: #2196f3;
+    background: #43a047;
     color: #fff;
     border: none;
     border-radius: 6px;
@@ -149,12 +192,37 @@ body {
     font-weight: 500;
     cursor: pointer;
     transition: background 0.2s;
-    box-shadow: 0 1px 4px rgba(33,150,243,0.8);
+    box-shadow: 0 1px 4px rgba(67,160,71,0.8);
     position: absolute;
     top: 24px;
     right: 120px;
     margin-top: 0;
 }
 .update-btn:hover {
-    background: #1769aa;
+    background: #2e7d32;
+}
+
+.blog-card {
+    position: relative;
+    padding-right: 160px; /* space for buttons */
+}
+
+.update-btn {
+    background:  #32e67e;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+    box-shadow: 0 1px 4px #32e67e;
+    position: absolute;
+    top: 24px;
+    right: 120px;
+    margin-top: 0;
+}
+.update-btn:hover {
+    background:  #32e67e;
 }

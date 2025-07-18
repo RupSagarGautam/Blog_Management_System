@@ -24,7 +24,7 @@ from users import views as user_views
 
 # Serve static files during development
 auth_urlpatterns = [
-    path('log-in/', user_views.loginUser, name='login'),
+    path('log-in/', views.loginPage, name='login'),
     path('sign-up/', user_views.signupUser),
     path('logout/', user_views.logoutUser)
 ]
@@ -58,6 +58,9 @@ urlpatterns = [
     path('auth/', include(auth_urlpatterns)),
     path('blogs/', include(blog_urlpatterns)),
     path('about-us/', include('about.urls')),
+
+    # django-allauth urls
+    path('accounts/', include('allauth.urls')),
 ]
 
 if settings.DEBUG:

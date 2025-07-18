@@ -18,7 +18,7 @@
 }
 
 body {
-    background-color: var(--background-color);
+    background-color: var(--background-color) !important;
     color: var(--text-color);
     line-height: 1.6;
 }

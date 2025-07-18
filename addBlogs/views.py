@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 from addBlogs import models
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -8,80 +8,92 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 
 def validate_blog(data):
     errors = {}
-    title = data.get("title")
-    content = data.get("content")
-    tags = data.get("tags")
+    title = data.get("title", "").strip()
+    content = data.get("content", "").strip()
+    tags = data.get("tags", "").strip()
     image = data.get("image")
     attachment = data.get("attachment")
 
-    if len(title) < 3 or len(title) > 50:
-        errors["title"] = (
-            "The title should be minimum 3 and maximum 50 characters long."
-        )
+    # Title
+    if not title or len(title) < 3 or len(title) > 50:
+        errors["title"] = "The title should be between 3 and 50 characters long."
 
-    if len(content) < 10:
-        errors["content"] = "The content must be minimum 10 characters long."
+    # Content
+    if not content or len(content) < 10:
+        errors["content"] = "The content must be at least 10 characters long."
 
-    if tags == "":
-        errors["tags"] = "At least one tag in required"
+    # Tags
+    if not tags:
+        errors["tags"] = "At least one tag is required."
     else:
-        splitted_tags = tags.split(",")
+        splitted_tags = [tag.strip() for tag in tags.split(",") if tag.strip()]
+        if len(splitted_tags) > 5:
+            errors["tags"] = "Tags must not be more than 5."
         for tag in splitted_tags:
-            if len(tag.strip()) < 2 or len(tag.strip()) > 15:
-                errors["tags"] = "Tag must be at least 3 and maximum 15 character long."
-            if len(splitted_tags) > 5:
-                errors["tags"] = "Tag must not be more than 5. "
+            if len(tag) < 2 or len(tag) > 15:
+                errors["tags"] = "Each tag must be between 2 and 15 characters long."
+                break
 
+    # Image
     if image:
-        allowed_extensions = ["jpg", "png", "jpeg"]
+        allowed_extensions = ["jpg", "jpeg", "png"]
+        image_extension = image.name.split(".")[-1].lower()
         if image.size > 5 * 1024 * 1024:
             errors["image"] = "Image size should be less than 5MB."
+        elif image_extension not in allowed_extensions:
+            errors["image"] = f"Invalid file type '{image_extension}'. Allowed: jpg, jpeg, png."
+    else:
+        errors["image"] = "Image is required."
 
-        image_extension = image.name.split(".")[-1]  # splits the data by '.' and gets the last part
-
-        if image_extension.lower() not in allowed_extensions:
-            errors["image"] = (
-                f"{image_extension} is not allowed, allowed extensions are .jpg, .png, .jpeg"
-            )
-
+    # Attachment (optional)
     if attachment and attachment.size > 10 * 1024 * 1024:
-        errors["attachment"] = "Attachment size should not be greater than 10 MB."
+        errors["attachment"] = "Attachment size should not exceed 10MB."
 
     return errors
 
+
 def addBlogs(request):
+    categories = models.Category.objects.all()  # define early to avoid UnboundLocalError
+
     if request.method == "POST":
         data = request.POST.copy()
         data["image"] = request.FILES.get("image")
         data["attachment"] = request.FILES.get("attachment")
+
         errors = validate_blog(data)
+
+        # Category validation
+        try:
+            category = models.Category.objects.get(name=data.get("category"))
+        except models.Category.DoesNotExist:
+            errors["category"] = "Selected category does not exist."
+
         if errors:
-            return render(request, "pages/blogs/add-blog.html", {"errors": errors})
-        category = models.Category.objects.get( name= data['category'])
-        
-        if request.user.is_staff:
-            status = models.addBlog.StatusOptions.ACTIVE
-        else:
-            status = models.addBlog.StatusOptions.PENDING
-            
-        is_featured = request.POST.get("featured") =="on"
+            return render(request, "pages/blogs/add-blog.html", {
+                "errors": errors,
+                "categories": categories,
+                "data": data  # to repopulate form inputs if needed
+            })
+
+        status = models.addBlog.StatusOptions.ACTIVE if request.user.is_staff else models.addBlog.StatusOptions.PENDING
+        is_featured = request.POST.get("featured") == "on"
+
         blog = models.addBlog.objects.create(
             title=data["title"],
             content=data["content"],
             image=data["image"],
             attachment=data["attachment"],
-            author = request.user,
-            category = category,
-            status = status,
-            featured = is_featured
+            author=request.user,
+            category=category,
+            status=status,
+            featured=is_featured
         )
-        
-        blog.tags.add(*[tag.strip() for tag in data['tags'].split(',')])
+
+        blog.tags.add(*[tag.strip() for tag in data["tags"].split(",") if tag.strip()])
         messages.success(request, "Blog Created Successfully!")
         return redirect("/blogs/blogs")
-    
-    categories = models.Category.objects.all()
-    return render(request,'pages/blogs/add-blog.html', {"categories": categories})
+
+    return render(request, 'pages/blogs/add-blog.html', {"categories": categories, "errors": {}})
 
 def editBlogPage(request, id):
     blog = models.addBlog.objects.get(id=id)
@@ -91,68 +103,60 @@ def editBlogPage(request, id):
 
 def editBlog(request, id):
     blog = get_object_or_404(models.addBlog, id=id)
-    if request.method == "POST":
-
-        try:
-            data = request.POST.copy()
-            data['image'] = request.FILES.get('image')
-            data['attachment'] = request.FILES.get('attachment')
-
-            errors = validate_blog(data)
-
-            if errors:
-                categories = models.Category.objects.all()
-                tags = data['tags']
-                context = {
-                    "errors": errors,
-                    "blog": blog,
-                    "categories": categories,
-                    "tags": tags,
-                }
-                return render(request, 'pages/blogs/edit-blog.html', context)
-            if request.user.is_staff:
-                status = models.addBlog.StatusOptions.ACTIVE
-            else:
-                status = models.addBlog.StatusOptions.PENDING
-            
-            
-            blog.title = data["title"]
-            blog.content = data["content"]
-            blog.status = status
-
-            if data.get('image'):
-                blog.image = data["image"]
-            if data.get('attachment'):
-                blog.attachment = data["attachment"]
-
-            # tags
-            blog.tags.set([tag.strip() for tag in data['tags'].split(',') if tag.strip()])
-
-            # category
-            try:
-                category = models.Category.objects.get(name=data['category'])
-                blog.category = category
-            except models.Category.DoesNotExist:
-                messages.error(request, "Selected category does not exist.")
-                return redirect(request.path)
-
-            blog.save()
-            messages.success(request, "Blog Updated Successfully!")
-            return redirect(f"/blogs/{id}")
-
-        except Exception as e:
-            messages.error(request, "An error occurred during blog update.")
-            return redirect(request.path)  # fallback
-
-    # GET Request — Load the form
     categories = models.Category.objects.all()
     tags = ",".join(tag.name for tag in blog.tags.all())
+    errors = {}
+
+    # Access Control Check
+    if not (blog.author == request.user or request.user.is_staff):
+        messages.error(request, "You are not authorized to edit this blog.")
+        return redirect("/blogs/blogs")
+
+    if request.method == "POST":
+        data = request.POST.copy()
+        data['image'] = request.FILES.get('image')
+        data['attachment'] = request.FILES.get('attachment')
+
+        errors = validate_blog(data)
+
+        # Category existence validation
+        try:
+            category = models.Category.objects.get(name=data['category'])
+        except models.Category.DoesNotExist:
+            errors["category"] = "Selected category does not exist."
+
+        if errors:
+            return render(request, 'pages/blogs/edit-blog.html', {
+                "errors": errors,
+                "blog": blog,
+                "categories": categories,
+                "tags": data['tags'],
+            })
+
+        # Update blog fields
+        blog.title = data["title"]
+        blog.content = data["content"]
+        blog.category = category
+        blog.status = models.addBlog.StatusOptions.ACTIVE if request.user.is_staff else models.addBlog.StatusOptions.PENDING
+
+        if data.get("image"):
+            blog.image = data["image"]
+        if data.get("attachment"):
+            blog.attachment = data["attachment"]
+
+        blog.tags.set([tag.strip() for tag in data['tags'].split(',') if tag.strip()])
+        blog.save()
+
+        messages.success(request, "Blog Updated Successfully!")
+        return redirect(f"/blogs/{id}")
+
+    # GET Request
     return render(request, 'pages/blogs/edit-blog.html', {
         "blog": blog,
         "categories": categories,
         "tags": tags,
+        "errors": errors,
     })
-    
 
 def blog(request):
     blogs = models.addBlog.objects.filter(status=models.addBlog.StatusOptions.ACTIVE)

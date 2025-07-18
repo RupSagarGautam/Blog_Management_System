@@ -9,7 +9,7 @@
 </head>
 <body>
   {% include "layout/header.html" %}
-
+<div class="body">
   <div class="container">
     <!-- Sidebar -->
     <aside class="sidebarbody">
@@ -104,7 +104,9 @@
             <div class="blog-card">
               <img src="{{ blog.image.url }}" alt="{{ blog.title }}" />
               <h3>{{ blog.title }}</h3>
-              <p>{{ blog.content|truncatewords:15 }}</p>
+             <div>
+             <p> {{ blog.content|truncatewords:5|safe }} </p>
+             </div>
             </div>
           {% empty %}
             <p>No recent blogs available.</p>
@@ -167,7 +169,7 @@
       </section>
     </main>
   </div>
-
-</body>
+</div>
 {% include 'layout/footer.html' %}
+</body>
 </html>

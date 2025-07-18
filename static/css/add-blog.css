@@ -134,6 +134,13 @@ ul li a:hover:after {
     justify-content: center;
     gap: 4rem;
 }
+
+.form-error {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
 .topaddsection{
     flex: 40%;
 }

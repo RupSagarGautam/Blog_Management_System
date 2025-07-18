@@ -27,6 +27,9 @@
                     <div class="form-group">
                         <label for="blogTitle">Title</label>
                         <input type="text" id="blogTitle" name="title" placeholder="Enter your blog title" required />
+                        {% if errors.title %}
+                            <p class="form-error">{{ errors.title }}</p>
+                        {% endif %}
                     </div>
     
                     <div class="form-group">
@@ -35,6 +38,9 @@
                             <input type="file" id="imageInput" name="image" accept="image/*" />
                             <div class="image-preview" id="imagePreview"></div>
                         </div>
+                            {% if errors.image %}
+                                <p class="form-error">{{ errors.image }}</p>
+                            {% endif %}
                     </div>
     
                     <div class="form-group">
@@ -62,21 +68,30 @@
                         </div>
                         <!-- Hidden textarea to store content before submitting -->
                         <textarea name="content" id="content-input" hidden></textarea>
+                        {% if errors.content %}
+                            <p class="form-error">{{ errors.content }}</p>
+                        {% endif %}
                     </div>
     
                     <div class="form-group">
                         <label for="blogTags">Tags</label>
                         <input type="text" id="blogTags" name="tags" placeholder="Enter tags separated by commas" />
+                        {% if errors.tags %}
+                            <p class="form-error">{{ errors.tags }}</p>
+                        {% endif %}                   
                     </div>
 
                     <div class="form-group">
                         <label for="blogTags">Category</label>
                         <select type="text" id="category" name="category" />
-                        <option value="">SELECT</option>
+                    <option value="">SELECT</option>
                         {%for category in categories %}
                             <option value="{{category}}">{{category.name}}</option>
                         {% endfor %}
-                        </select>
+                    </select>
+                    {% if errors.category %}
+                        <p class="form-error">{{ errors.category }}</p>
+                    {% endif %}
                     </div>
     
                     <div class="form-actions">

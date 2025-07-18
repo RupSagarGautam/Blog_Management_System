@@ -58,13 +58,14 @@ body {
 
 .team-intro::before,
 .team-intro::after {
-  content: '';
-  position: absolute;
-  width: 60px;
-  height: 2px;
-  background: linear-gradient(to right, transparent, var(--sage-green-light), transparent);
-  left: 50%;
-  transform: translateX(-50%);
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(to right, transparent, var(--sage-green-light), transparent);
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 10px;
 }
 
 .team-intro::before {
@@ -144,13 +145,14 @@ body {
 }
 
 .quote-section {
-  background: linear-gradient(135deg, var(--sage-green) 0%, var(--sage-green-dark) 100%);
-  padding: 3rem;
-  margin: 5rem 0;
-  border-radius: 15px;
-  text-align: center;
-  color: white;
-  position: relative;
+    background: linear-gradient(135deg, #e9fed9 0%, #dafde2 100%);
+    padding: 3rem;
+    margin: 5rem 0;
+    border-radius: 15px;
+    text-align: center;
+    color: #3e3e3e;
+    position: relative;
+    box-shadow: 2px 2px 119px #33333347;
 }
 
 .partnership-section {

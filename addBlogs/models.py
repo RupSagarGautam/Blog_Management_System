@@ -36,6 +36,7 @@ class addBlog(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(default=timezone.now)
     category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.SET_NULL)
+    featured = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.title} by {self.author}"

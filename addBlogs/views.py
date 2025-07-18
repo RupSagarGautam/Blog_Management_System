@@ -64,6 +64,7 @@ def addBlogs(request):
         else:
             status = models.addBlog.StatusOptions.PENDING
             
+        is_featured = request.POST.get("featured") =="on"
         blog = models.addBlog.objects.create(
             title=data["title"],
             content=data["content"],
@@ -72,6 +73,7 @@ def addBlogs(request):
             author = request.user,
             category = category,
             status = status,
+            featured = is_featured
         )
         
         blog.tags.add(*[tag.strip() for tag in data['tags'].split(',')])
@@ -139,7 +141,6 @@ def editBlog(request, id):
             return redirect(f"/blogs/{id}")
 
         except Exception as e:
-            print("⚠️ EXCEPTION:", e)
             messages.error(request, "An error occurred during blog update.")
             return redirect(request.path)  # fallback
 
@@ -169,3 +170,26 @@ def blogDetails(request, blog_id):
 def my_blogs(request):
     blogs = models.addBlog.objects.filter(author=request.user)
     return render(request, 'pages/blogs/blog.html', {'blogs': blogs})
+
+def home(request):
+    query = request.GET.get('q')
+
+    featured_blogs = models.addBlog.objects.filter(
+        status=models.addBlog.StatusOptions.ACTIVE,
+        featured=True
+    ).order_by('-created_at')
+
+    recent_blogs = models.addBlog.objects.filter(
+        status=models.addBlog.StatusOptions.ACTIVE
+    ).order_by('-created_at')
+
+    if query:
+        featured_blogs = featured_blogs.filter(title__icontains=query)
+        recent_blogs = recent_blogs.filter(title__icontains=query)
+
+    context = {
+        "featured_blogs": featured_blogs,
+        "recent_blogs": recent_blogs
+    }
+
+    return render(request, 'pages/home.html', context)  

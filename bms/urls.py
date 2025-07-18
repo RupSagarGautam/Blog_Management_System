@@ -32,8 +32,12 @@ auth_urlpatterns = [
 # Static files (CSS, JavaScript, Images)
 blog_urlpatterns = [
     path('add-blog/', blog_views.addBlogs, name='addBlog'),
+    path('view-blogs/', blog_views.my_blogs, name='viewBlogs'),
     path('blogs/', blog_views.blog),
     path('<int:id>', views.blogDetails),  
+    path('<int:id>/edit-blog/', blog_views.editBlogPage, name='edit_blogPage'),
+    path('<int:id>/edit/', blog_views.editBlog, name='edit_blog'),
+    
 ] 
 
 urlpatterns = [

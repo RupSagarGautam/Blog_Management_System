@@ -27,9 +27,9 @@ def loginUser(request):
                 messages.success(request, "You have successfully logged in")
                 return redirect("/")
             else:
-                errors['password'] = "password doesnot match"
+                errors['password'] = "Password does not match"
         else:
-            errors['username'] = "username doesnot match"
+            errors['username'] = "Username does not match"
 
         return render(request, 'pages/login.html', {'errors': errors})
     else:
@@ -67,8 +67,13 @@ def signupUser(request):
         if len(first_name) < 4:
             errors['first_name'] = "First name should be at least 4 characters."
 
-        if phone and not phone.isdigit():
-            errors['phone'] = "Phone number should contain only digits."
+        if phone:
+            if not phone.isdigit():
+                errors['phone'] = "Phone number should contain only digits."
+            elif len(phone) != 10:
+                errors['phone'] = "Phone number should be 10 digits."
+        else:
+            errors['phone'] = "Phone number is required."
 
         if password != confirm_password:
             errors['confirm_password'] = "Passwords do not match."
@@ -76,14 +81,14 @@ def signupUser(request):
         try:
             validate_password(password)
         except Exception as e:
-            errors['password'] = e
+            errors['password'] = str(e)
 
         try:
             if email_exists:
-                errors['email'] = ["Email already exists."]
+                errors['email'] = "Email already exists."
             validate_email(email)
         except Exception as e:
-            errors['email'] = e
+            errors['email'] = str(e)
 
         # DOB parsing and validation
         if dob_raw:
@@ -116,7 +121,7 @@ def signupUser(request):
                 gender=gender,
                 dob=dob_parsed,
                 nationality=nationality,
-                profile_image=profile_image if profile_image else "default.jpg"
+                profile_image=profile_image if profile_image else "users/default_user.png"
             )
             profile.save()
 

@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from addBlogs.models import addBlog
 from addBlogs import models
 from django.shortcuts import render
@@ -12,6 +12,7 @@ from users.views import *
 from users.models import Profile
 from django.shortcuts import redirect
 
+
 # Client Side Views
 def aboutUS(request):
     return render(request, 'pages/aboutus.html')
@@ -21,12 +22,22 @@ def blog(request):
     blogs = models.addBlog.objects.all()
     return render(request, 'pages/blogs/blog.html', { 'blogs': blogs })
 
-def blogDetails(request,id):
-    blogs = addBlog.objects.get(id=id)
-    blog = addBlog.objects.order_by('-created_at')[:4]
-    return render(request, 'pages/blogs/blogdetails.html', {"blogs": blogs, "blog": blog} )
+def blogDetails(request, id):
+    blog = get_object_or_404(addBlog, id=id)
 
+    if blog.status in [addBlog.StatusOptions.INACTIVE, addBlog.StatusOptions.PENDING, addBlog.StatusOptions.INACTIVE]:
+        if blog.author != request.user and not request.user.is_staff:
+            return redirect('/blogs/blogs')
 
+    recent_blog = addBlog.objects.filter(
+        status=addBlog.StatusOptions.ACTIVE
+    ).exclude(id=id).order_by('-created_at')[:4]
+
+    return render(request, 'pages/blogs/blogdetails.html', {
+        "blog": blog,
+        "blogs": blog,  # for template compatibility
+        "recent_blog": recent_blog,
+    })
 def blogListAdmin(request):
     pending_blogs = addBlog.objects.all().order_by('-created_at')
     return render(request, 'pages/bloglist.html', {'pending_blogs': pending_blogs})

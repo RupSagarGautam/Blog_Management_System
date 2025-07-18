@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Blog Page</title>
+    <title>Edit Blog Page</title>
     <link rel="stylesheet" href="/static/css/add-blog.css" />
     <link rel="shortcut icon" href="/static/assets/favicon.ico" type="image/x-icon">
 </head>
@@ -18,15 +18,18 @@
             <img src="/static/assets/working_boy.png" alt="Hello World"/>
         </div>
     
-        <form method="POST" action="/blogs/add-blog/" enctype="multipart/form-data" id="blogForm">
+        <form method="POST" action="/blogs/{{blog.id}}/edit/" enctype="multipart/form-data" id="blogForm">
             {% csrf_token %}
             <div class="addsection">
                 <div class="innersection">
-                    <h1>Create New Blog Post</h1>
+                    <h1>Edit Blog Post</h1>
     
                     <div class="form-group">
                         <label for="blogTitle">Title</label>
-                        <input type="text" id="blogTitle" name="title" placeholder="Enter your blog title" required />
+                        <input value="{{blog.title}}" type="text" id="blogTitle" name="title" placeholder="Enter your blog title" required />
+                        {% if errors.title %}
+                          <span class="text-sm text-red-500">{{ errors.title }}</span>
+                        {% endif %}
                     </div>
     
                     <div class="form-group">
@@ -58,21 +61,24 @@
                         </div>
                         Write Your Content here...
                         <div id="editor" class="editor-content" contenteditable="true" style="border: 1px solid #ccc; min-height: 100px; padding: 10px;">
-                            
+                            {{ blog.content|safe}}
                         </div>
                         <!-- Hidden textarea to store content before submitting -->
                         <textarea name="content" id="content-input" hidden></textarea>
+                        {% if errors.content %}
+                          <span class="text-sm text-red-500">{{ errors.content }}</span>
+                        {% endif %}
                     </div>
     
                     <div class="form-group">
                         <label for="blogTags">Tags</label>
-                        <input type="text" id="blogTags" name="tags" placeholder="Enter tags separated by commas" />
+                        <input value="{{tags}}" type="text" id="blogTags" name="tags" placeholder="Enter tags separated by commas" />
                     </div>
 
                     <div class="form-group">
                         <label for="blogTags">Category</label>
                         <select type="text" id="category" name="category" />
-                        <option value="">SELECT</option>
+                        <option value="{{blog.category}}">{{blog.category}}</option>
                         {%for category in categories %}
                             <option value="{{category}}">{{category.name}}</option>
                         {% endfor %}
@@ -80,7 +86,7 @@
                     </div>
     
                     <div class="form-actions">
-                        <button type="submit" class="btn-primary">Publish Post</button>
+                        <button type="submit" class="btn-primary">Edit Post</button>
                     </div>
                 </div>
             </div>
@@ -130,6 +136,4 @@
             });
         });
     </script>
-
-    {% include "layout/footer.html" %}
     

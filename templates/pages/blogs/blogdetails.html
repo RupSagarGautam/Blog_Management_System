@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog - Digital Pathshala | Educational Articles & Insights</title>
     <link rel="stylesheet" href="/static/css/blogdetails.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
+
 <body>
 
     {% include 'layout/header.html' %}
@@ -65,10 +67,18 @@
                             {% endfor %}
                         </p>
                         
+                        
                     </div>
+                    {% if blogs.author == user %}
+                    <a href="{% url 'edit_blogPage' blogs.id %}" class="edit-link">
+                     <i class="fas fa-edit" style="color:#333;" >Edit</i>
+                    </a>
+                    {%endif%}
                     <div>
                     {{blogs.content|safe}}
                     </div>
+                    
+              
                     {% comment %} <!-- Tags Section -->
                     <div class="tags-section">
                         <h3 class="tags-title">
@@ -95,7 +105,7 @@
     </div>
 
     <div class="related-blogs-grid">
-        {% for blog in blog %}
+        {% for blog in recent_blog %}
         <article class="blog-card">
             <div class="blog-image">
                 <img src="{{ blog.image.url }}" alt="{{ blog.title }}" class="blog-img">
@@ -120,4 +130,5 @@
         </div>
     </div>
 </body>
+
 </html>

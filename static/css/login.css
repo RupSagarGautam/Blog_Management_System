@@ -186,6 +186,12 @@ body {
   color: #4caf50;
 }
 
+.error-text {
+  color: #ff0000;
+  font-size: 0.9em;
+  margin-top: 4px;
+}
+
 @media (max-width: 1000px) and (min-width: 500px) {
   .container {
     width: 95vw;

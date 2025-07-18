@@ -27,9 +27,9 @@ def loginUser(request):
                 messages.success(request, "You have successfully logged in")
                 return redirect("/")
             else:
-                errors['password'] = "Invalid Password!"
+                errors['password'] = "password doesnot match"
         else:
-            errors['email'] = "User with this email does not exist."
+            errors['username'] = "username doesnot match"
 
         return render(request, 'pages/login.html', {'errors': errors})
     else:
@@ -136,7 +136,7 @@ def signupUser(request):
 @login_required(login_url="/auth/log-in")
 def logoutUser(request):
     logout(request)
-    messages.success(request, "You Have Successfully Logged Out")
+    messages.success(request, "You have successfully logged out")
     print("Logout Success")
     return redirect("/auth/log-in")
 

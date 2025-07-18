@@ -17,11 +17,6 @@ from django.shortcuts import redirect
 def aboutUS(request):
     return render(request, 'pages/aboutus.html')
 
-
-def blog(request):
-    blogs = models.addBlog.objects.all()
-    return render(request, 'pages/blogs/blog.html', { 'blogs': blogs })
-
 def blogDetails(request, id):
     blog = get_object_or_404(addBlog, id=id)
 
@@ -68,9 +63,7 @@ def landingPage(request):
         return render(request, 'pages/home.html', context)  
     return render(request, 'pages/index.html')
 
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.models import User
-from django.contrib import messages
+
 
 def loginPage(request):
     if request.method == 'POST':

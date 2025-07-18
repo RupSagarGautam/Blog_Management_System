@@ -158,9 +158,31 @@ def editBlog(request, id):
         "errors": errors,
     })
 
-def blog(request):
-    blogs = models.addBlog.objects.filter(status=models.addBlog.StatusOptions.ACTIVE)
-    return render(request, 'pages/blogs/blog.html', { 'blogs': blogs })
+def blogs(request):
+    categories = models.Category.objects.all()
+
+    blogs = models.addBlog.objects.filter(
+        status=models.addBlog.StatusOptions.ACTIVE
+    ).order_by('-created_at')
+
+    category_id = request.GET.get('category')
+    query = request.GET.get('q')  # for search
+    current_category = None
+
+    if category_id:
+        blogs = blogs.filter(category__id=category_id)
+        current_category = categories.filter(id=category_id).first()
+
+    if query:
+        blogs = blogs.filter(title__icontains=query)
+
+    context = {
+        'categories': categories,
+        'blogs': blogs,
+        'current_category': current_category,
+        'query': query or '',  # so it keeps input value in the form
+    }
+    return render(request, 'pages/blogs/blog.html', context)
 
 
 def blogDetails(request, blog_id):
@@ -175,9 +197,11 @@ def my_blogs(request):
     blogs = models.addBlog.objects.filter(author=request.user)
     return render(request, 'pages/blogs/blog.html', {'blogs': blogs})
 
-def home(request):
+def home(request, category_id=None):
+    categories = models.Category.objects.all()
     query = request.GET.get('q')
 
+    # Start with all active blogs
     featured_blogs = models.addBlog.objects.filter(
         status=models.addBlog.StatusOptions.ACTIVE,
         featured=True
@@ -187,13 +211,49 @@ def home(request):
         status=models.addBlog.StatusOptions.ACTIVE
     ).order_by('-created_at')
 
+    # Filter by query if present
     if query:
         featured_blogs = featured_blogs.filter(title__icontains=query)
         recent_blogs = recent_blogs.filter(title__icontains=query)
 
+    # Filter by category if category_id is present
+    if category_id:
+        featured_blogs = featured_blogs.filter(category__id=category_id)
+        recent_blogs = recent_blogs.filter(category__id=category_id)
+
     context = {
+        'categories': categories,
         "featured_blogs": featured_blogs,
         "recent_blogs": recent_blogs
     }
 
-    return render(request, 'pages/home.html', context)  
+    return render(request, 'pages/home.html', context)
+
+def blogs_by_category(request, category_id=None):
+    categories = models.Category.objects.all()
+    blogs = models.addBlog.objects.filter(
+        status=models.addBlog.StatusOptions.ACTIVE
+    ).order_by('-created_at')
+
+    current_category = None
+    if category_id:
+        blogs = blogs.filter(category__id=category_id)
+        # Get category object for displaying name
+        current_category = categories.filter(id=category_id).first()
+
+    context = {
+        'categories': categories,
+        'blogs': blogs,
+        'current_category': current_category,
+    }
+    return render(request, 'blogs/blogs.html', context)
+
+def blog_list(request):
+    query = request.GET.get('q')
+    if query:
+        blogs = models.addBlog.objects.filter(title__icontains=query, status='APPROVED')  # adjust status filter as needed
+    else:
+        blogs = models.addBlog.objects.filter(status='APPROVED')
+
+    context = {'blogs': blogs}
+    return render(request, 'pages/blogs/blog.html', context)

@@ -38,7 +38,7 @@ body {
 }
 
 .dropdown-button {
-  background-color: #32e67e; /* Button Background */
+  background-color: #3dc363; /* Button Background */
   color: #faf9f6; /* Button Text Color */
   padding: 12px 20px;
   border: none;
@@ -48,7 +48,53 @@ body {
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
   width: 100%;
   text-align: center;
+  margin-right: 150px;
+  transition: 700ms;
 }
+
+.dropdown-button:hover{
+  color: #3dc363; /* Button Background */
+  background-color: #d2e9d2 ;
+  transition: 300ms;
+  box-shadow: 0px 0px 9px #3333339d;
+}
+
+.search-form {
+    margin: 20px 0;
+    display: flex;
+    gap: 10px;
+  }
+
+  .search-input {
+    flex: 1;
+    padding: 8px;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+        max-width: 50vh;
+    margin-left: 33%;
+    margin-bottom: 2%;
+  }
+
+  .search-button {
+    padding: 8px 16px;
+    font-size: 1rem;
+    background-color: #3dc363;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+        height: 40px;
+        transition: 700ms;
+  }
+
+  .search-button:hover {
+    background-color: #d2e9d2;
+    color:#3dc363;
+    transition: 300ms;
+    box-shadow: 0px 0px 15px #33333391;
+    border-radius: 6px;
+  }
 
 /* Animated Dropdown Menu */
 .dropdown-menu {

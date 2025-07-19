@@ -41,6 +41,9 @@
                     <li><a href="/auth/log-in">Log-In</a></li> |
                     {% endif %}
                     {% if user.is_authenticated %}
+                    {% if user.is_staff %}
+                    <li><a href="/admin" class="getstarted-btn">Dashboard</a></li>
+                    {% endif %}
                     <li><a href="/blogs/blogs" class="getstarted-btn">Get Started</a></li>
                     {% else %}
                     <li><a href="/auth/sign-up" class="getstarted-btn">Get Started</a></li>

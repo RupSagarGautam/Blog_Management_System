@@ -45,11 +45,11 @@ def landingPage(request):
         featured_blogs = addBlog.objects.filter(
             status=addBlog.StatusOptions.ACTIVE,
             featured=True
-        ).order_by('-created_at')
+        ).order_by('-created_at')[:3]
 
         recent_blogs = addBlog.objects.filter(
             status=addBlog.StatusOptions.ACTIVE
-        ).order_by('-created_at')
+        ).order_by('-created_at')[:3]
 
         context = {
             "featured_blogs": featured_blogs,
@@ -63,31 +63,38 @@ def landingPage(request):
 
 
 def loginPage(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-
-        # Check if user exists
-        if not User.objects.filter(username=username).exists():
-            return render(request, 'pages/login.html', {
-                'username_error': 'User with this username does not exist',
-                'username_value': username
-            })
-
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('home')  # Redirect to home or dashboard
-        else:
-            return render(request, 'pages/login.html', {
-                'password_error': 'Invalid password',
-                'username_value': username
-            })
+    if request.user.is_authenticated:
+        return redirect('home')
     else:
-        return render(request, 'pages/login.html')
+
+        if request.method == 'POST':
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+    
+            # Check if user exists
+            if not User.objects.filter(username=username).exists():
+                return render(request, 'pages/login.html', {
+                    'username_error': 'User with this username does not exist',
+                    'username_value': username
+                })
+    
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('home')  # Redirect to home or dashboard
+            else:
+                return render(request, 'pages/login.html', {
+                    'password_error': 'Invalid password',
+                    'username_value': username
+                })
+        else:
+            return render(request, 'pages/login.html')
 
 def signupPage(request):
-    return render(request, 'pages/signup.html')
+    if request.user.is_authenticated:
+        return redirect('home')
+    else:
+        return render(request, 'pages/signup.html')
 
 def profilePage(request):
     if not request.user.is_authenticated:

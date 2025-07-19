@@ -27,6 +27,16 @@
                         <i class="fas fa-tag"></i>
                         {{blogs.category}}
                     </div>
+                    <div>
+                        {% if request.user == blog.author or request.user.is_superuser %}
+                            <form method="POST" action="{% url 'delete_blog' blog.id %}" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" style="background:none; border:none; color:red; cursor:pointer;" onclick="return confirm('Are you sure you want to delete this blog?')" title="Delete Blog">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </form>
+                        {% endif %}
+                    </div>
                     <h1 class="article-title" style="color: black;">
                         {{blogs.title}}
                     </h1>
@@ -76,6 +86,13 @@
                     {%endif%}
                     <div>
                     {{blogs.content|safe}}
+                    </div>
+                    <div class="edit-link"  >
+                        {% if blogs.attachment %}
+                            <a href="{{ blogs.attachment.url }}" target="_blank" style="color:#333;" >Download/View Attachment</a>
+                        {% else %}
+                            <p style="color:#333;" >No attachment available.</p>
+                        {% endif %}
                     </div>
             </main>
 

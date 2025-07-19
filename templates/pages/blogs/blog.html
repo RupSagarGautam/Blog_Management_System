@@ -49,7 +49,7 @@
           <!-- Dynamic Blogs Loading Section -->
           {% for blog in blogs %}
             <div class="blog-card">
-              <img src="{{ blog.image.url }}" alt="{{ blog.title }}" />
+              <img src="{{ blog.image.url|default:'static/assets/blog1.png' }}" alt="{{ blog.title }}" />
               <h2>{{ blog.title }}</h2>
               <div class="author">By: {{ blog.author }}</div>
 

@@ -7,7 +7,6 @@ class addBlogAdmin(admin.ModelAdmin):
     list_display = (
         'title',
         'author',
-        'content',
         'status',
         'created_at',
         'updated_at',
@@ -29,7 +28,7 @@ class addBlogAdmin(admin.ModelAdmin):
     def delete_link(self, obj):
         url = reverse('admin:addBlogs_addblog_delete', args=[obj.pk])  # Admin delete URL
         return format_html(
-            '<a style="color: red;" href="{}">Delete</a>',
+            '<a style="color: red !important; background:none !important;" href="{}">Delete</a>',
             url
         )
     delete_link.short_description = 'Delete Blog'

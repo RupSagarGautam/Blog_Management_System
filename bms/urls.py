@@ -43,6 +43,7 @@ blog_urlpatterns = [
     path('<int:id>/edit/', blog_views.editBlog, name='edit_blog'),
     path('category/<int:category_id>/', blog_views.home, name='category_filter'),
     path('blogs/category/<int:category_id>/', blog_views.blogs_by_category, name='blogs_by_category'),
+    path('delete/<int:blog_id>/', blog_views.deleteblog, name='delete_blog'),
 ] 
 
 urlpatterns = [

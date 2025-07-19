@@ -1,0 +1,12 @@
+.main-footer .float-right {
+    display: none !important;
+}
+
+/* Or replace the text (injecting after hiding the original) */
+.main-footer::after {
+    content: "Digital Pathshala";
+    float: right;
+    color: #6c757d;
+    font-size: 0.875rem;
+    margin-right: 10px;
+}

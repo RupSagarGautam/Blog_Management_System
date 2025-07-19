@@ -11,6 +11,8 @@ from django.contrib import messages
 from users.views import *
 from users.models import Profile
 from django.shortcuts import redirect
+from django.contrib.auth.views import PasswordResetView as BasePasswordResetView
+from django.contrib import messages
 
 
 # Client Side Views
@@ -147,3 +149,41 @@ def updateBlogAdmin(request):
 def blogListAdmin(request):
     pending_blogs = addBlog.objects.all().order_by('-created_at')
     return render(request, 'pages/bloglist.html', {'pending_blogs': pending_blogs})
+
+class CustomPasswordResetView(BasePasswordResetView):
+    template_name = 'pages/password_reset.html'
+    
+    def form_valid(self, form):
+        print("=== PASSWORD RESET DEBUG ===")
+        print(f"Email submitted: {form.cleaned_data.get('email')}")
+        print("About to send password reset email...")
+        
+        # Call the parent method to actually send the email
+        response = super().form_valid(form)
+        
+        print("Password reset email sent successfully!")
+        print("Redirecting to:", self.get_success_url())
+        
+        # Force print the email content
+        from django.core.mail import get_connection
+        connection = get_connection()
+        if hasattr(connection, 'outbox') and connection.outbox:
+            print("\n=== EMAIL CONTENT ===")
+            for email in connection.outbox:
+                print(f"To: {email.to}")
+                print(f"Subject: {email.subject}")
+                print(f"Body: {email.body}")
+                print("=" * 50)
+        
+        return response
+    
+    def form_invalid(self, form):
+        print("=== PASSWORD RESET FORM INVALID ===")
+        print(f"Form errors: {form.errors}")
+        return super().form_invalid(form)
+    
+    def get_email_context(self, user):
+        context = super().get_email_context(user)
+        context['domain'] = '127.0.0.1:8000'  # ✅ Replace with your actual IP or domain
+        context['protocol'] = 'http'          # ✅ Use 'https' if you’re deployed with SSL
+        return context

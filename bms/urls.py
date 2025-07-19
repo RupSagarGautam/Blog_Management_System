@@ -21,6 +21,8 @@ from django.conf.urls.static import static
 from bms import views
 from addBlogs import views as blog_views
 from users import views as user_views
+from django.contrib.auth import views as auth_views
+
 
 # Serve static files during development
 auth_urlpatterns = [
@@ -53,7 +55,7 @@ urlpatterns = [
     path('update-blog-admin/',views.updateBlogAdmin),
     path('view-blog-list/',views.blogListAdmin),
     path('user-profile/', views.profilePage),
-     path("edit-user", views.editUserProfile),
+    path("edit-user", views.editUserProfile),
     
     path('auth/', include(auth_urlpatterns)),
     path('blogs/', include(blog_urlpatterns)),
@@ -61,8 +63,21 @@ urlpatterns = [
 
     # django-allauth urls
     path('accounts/', include('allauth.urls')),
+     path('password-reset/', views.CustomPasswordResetView.as_view(), name='password_reset'),
+    path('password-reset/done/', auth_views.PasswordResetDoneView.as_view(
+        template_name='pages/password_reset_done.html'
+    ), name='password_reset_done'),
+    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(
+        template_name='pages/password_reset_confirm.html'
+    ), name='password_reset_confirm'),
+    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(
+        template_name='pages/password_reset_complete.html'
+    ), name='password_reset_complete'),
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])
+
+    
+    

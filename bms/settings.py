@@ -54,7 +54,7 @@ INSTALLED_APPS = [
 ]
 
 # # Add site ID for django-allauth
-SITE_ID = 1
+SITE_ID = 2
 
 # Authentication backends for django-allauth
 AUTHENTICATION_BACKENDS = [
@@ -183,3 +183,38 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Email Configuration
+# For testing - emails will be printed to console
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Add more verbose logging
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django.core.mail': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
+        'django.request': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
+    },
+}
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'dangalrejina0@gmail.com'
+EMAIL_HOST_PASSWORD = 'ogfubakswvxdjcmn'
+DEFAULT_FROM_EMAIL = 'dangalrejina0@gmail.com'
+
+

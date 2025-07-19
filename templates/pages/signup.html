@@ -393,11 +393,12 @@
 
       <div class="or-continue">Or continue with</div>
  
-{% load socialaccount %} 
+      {% load socialaccount %} 
 
-      <a href="{% provider_login_url 'google' process='signup' %}" style="text-decoration: none; color: blue; font-weight: bold;">
+      <a href="{% provider_login_url 'google' process='signup' %}" class="google-btn" style="display: flex; align-items: center; text-decoration: none; color: #333; font-weight: bold; justify-content: center; margin-bottom: 20px;">
+        <img src="/static/Assets/Google logo.png" alt="Google logo" class="google-icon" style="width: 24px; height: 24px; margin-right: 8px;" />
         Continue with Google
-      </a>
+      </a>
 
 <div class="bottom-link">
   Already have an account? <a href="/auth/log-in">Login In</a>

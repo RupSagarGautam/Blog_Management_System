@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Pathshala Footer</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Set all Font Awesome icons to off-white color */
+        .fa, .fas, .far, .fal, .fab {
+            color: #faf9f6;
+            /* Ensure icons are properly centered */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            
+        }
+        
+        .footer {
+            background-color: #e8e8e8;
+            padding: 30px 20px 20px;
+            border-top: 1px solid #ddd;
+            margin-top:20%;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        
+        .footer-section h3 {
+            color: #333;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .footer-section p, .footer-section a {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+            text-decoration: none;
+            margin-bottom: 5px;
+            display: block;
+        }
+        
+        .footer-section a:hover {
+            color: #4CAF50;
+        }
+        
+        .company-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .company-logo {
+            width: 40px;
+            height: 40px;
+            background-color: #4CAF50;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        /* Override icon color in specific containers if needed */
+        .company-logo i, .esewa-icon i, .bank-icon i {
+            color: #faf9f6;
+        }
+        
+        .company-name {
+            color: #4CAF50;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .payment-methods {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .esewa-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: white;
+        }
+        
+        .esewa-icon {
+            width: 30px;
+            height: 30px;
+            background-color: #4CAF50;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        
+        .bank-icon {
+            width: 30px;
+            height: 30px;
+            background-color: #333;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 10px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .social-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            /* Ensure proper icon positioning */
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Ensure social icons have the right color and positioning */
+        .social-icon i {
+            color: #faf9f6;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 16px;
+        }
+        
+        .facebook { background-color: #3b5998; }
+        .instagram { background-color: #e4405f; }
+        .youtube { background-color: #ff0000; }
+        .linkedin { background-color: #0077b5; }
+        
+        .footer-bottom {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 12px;
+        }
+        
+        .footer-links a:hover {
+            color: #4CAF50;
+        }
+        
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Company Information -->
+            <div class="footer-section">
+                <div class="company-info">
+                    <div class="company-logo"><i class="fas fa-book"></i></div>
+                    <div class="company-name">डिजिटल पाठशाला</div>
+                </div>
+                <p>Pan no : 143009342</p>
+                <p>9816366094</p>
+                <p>Itahari, Sunsari, Koshi Province</p>
+                
+                <p style="margin-top: 10px; font-weight: bold;">We are on</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon youtube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <a href="https://www.digitalpathshalanepal.com">www.digitalpathshalanepal.com</a>
+            </div>
+            
+            <!-- Quick Links -->
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#">Home</a>
+                <a href="#">About Us</a>
+                <a href="#">Gallery</a>
+                <a href="#">Apply for Internship</a>
+                <a href="#">Student Portal</a>
+            </div>
+            
+            <!-- Payment Methods -->
+            <div class="footer-section">
+                <h3>We Accept</h3>
+                <div class="payment-methods">
+                    <div class="esewa-logo">
+                        <div class="esewa-icon"><i class="fas fa-wallet"></i></div>
+                        <span>eSewa</span>
+                        <div style="border-left: 1px solid #ddd; padding-left: 10px; margin-left: 5px;">
+                            <div class="bank-icon"><i class="fas fa-university"></i></div>
+                        </div>
+                        <span style="font-size: 12px;">Bank</span>
+                    </div>
+                </div>
+                <div style="margin-top: 15px;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div style="width: 40px; height: 40px; background-color: #4CAF50; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px;"><i class="fas fa-credit-card"></i></div>
+                        <span style="color: #666; font-size: 14px;">Bank Transfer</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Support Information -->
+            <div class="footer-section">
+                <h3>Digital Pathshala Support</h3>
+                <p style="font-weight: bold; margin-bottom: 10px;">Chat Support</p>
+                <p><span style="display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; background-color: #25D366; border-radius: 50%; margin-right: 5px;"><i class="fab fa-whatsapp" style="color: #faf9f6;"></i></span> Whatsapp : 9816366094</p>
+                <p><span style="display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; background-color: #0088cc; border-radius: 50%; margin-right: 5px;"><i class="fab fa-telegram" style="color: #faf9f6;"></i></span> Telegram : 9816366094</p>
+                <p><span style="display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; background-color: #D44638; border-radius: 50%; margin-right: 5px;"><i class="fas fa-envelope" style="color: #faf9f6;"></i></span> Email : digitalpathshalanp@gmail.com</p>
+                
+                <p style="font-weight: bold; margin-top: 15px; margin-bottom: 10px;">Sales & Marketing</p>
+                <p><span style="display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; background-color: #25D366; border-radius: 50%; margin-right: 5px;"><i class="fab fa-whatsapp" style="color: #faf9f6;"></i></span> Sales Whatsapp : 9824345939</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div>
+                <p>Copyright © 2025 Digital Pathshala.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

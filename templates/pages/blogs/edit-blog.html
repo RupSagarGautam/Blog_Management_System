@@ -1,0 +1,149 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Blog Page</title>
+    <link rel="stylesheet" href="/static/css/add-blog.css" />
+    <link rel="shortcut icon" href="/static/assets/favicon.ico" type="image/x-icon">
+
+</head>
+ {% include "layout/header.html" %}
+ 
+<body>
+    <div class="body">
+        <div class="topaddsection">
+            <img src="/static/assets/working_boy.png" alt="Hello World"/>
+        </div>
+    
+        <form method="POST" action="/blogs/{{blog.id}}/edit/" enctype="multipart/form-data" id="blogForm">
+            {% csrf_token %}
+            <div class="addsection">
+                <div class="innersection">
+                    <h1>Edit Blog Post</h1>
+    
+                    <div class="form-group">
+                        <label for="blogTitle">Title</label>
+                        <input value="{{blog.title}}" type="text" id="blogTitle" name="title" placeholder="Enter your blog title" required />
+                        {% if errors.title %}
+                          <span class="form-error">{{ errors.title }}</span>
+                        {% endif %}
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="imageInput">Featured Image</label>
+                        <div class="image-upload-container">
+                            <input type="file" id="imageInput" name="image" accept="image/*" />
+                            <div class="image-preview" id="imagePreview"></div>
+                        </div>
+                        {% if errors.image %}
+                        <span class="form-error">{{ errors.image }}</span>
+                        {% endif %}
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="editor">Content</label>
+                        <div class="editor-toolbar">
+                            <select id="formatBlock" class="toolbar-btn">
+                                <option value="P">Paragraph</option>
+                                <option value="H1">Heading 1</option>
+                                <option value="H2">Heading 2</option>
+                                <option value="H3">Heading 3</option>
+                            </select>
+                            <button type="button" class="toolbar-btn" data-command="bold" title="Bold"><b>B</b></button>
+                            <button type="button" class="toolbar-btn" data-command="italic" title="Italic"><i>I</i></button>
+                            <button type="button" class="toolbar-btn" data-command="underline" title="Underline"><u>U</u></button>
+                            <button type="button" class="toolbar-btn" data-command="justifyLeft" title="Align Left">&#8676;</button>
+                            <button type="button" class="toolbar-btn" data-command="justifyCenter" title="Align Center">&#8596;</button>
+                            <button type="button" class="toolbar-btn" data-command="justifyRight" title="Align Right">&#8677;</button>
+                            <button type="button" class="toolbar-btn" data-command="justifyFull" title="Justify">&#8597;</button>
+                            <button type="button" class="toolbar-btn" data-command="insertOrderedList" title="Numbered List">1.</button>
+                            <button type="button" class="toolbar-btn" data-command="insertUnorderedList" title="Bulleted List">&#8226;</button>
+                        </div>
+                        Write Your Content here...
+                        <div id="editor" class="editor-content" contenteditable="true" style="border: 1px solid #ccc; min-height: 100px; padding: 10px;">
+                            {{ blog.content|safe}}
+                        </div>
+                        <!-- Hidden textarea to store content before submitting -->
+                        <textarea name="content" id="content-input" hidden></textarea>
+                        {% if errors.content %}
+                          <span class="form-error">{{ errors.content }}</span>
+                        {% endif %}
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="blogTags">Tags</label>
+                        <input value="{{tags}}" type="text" id="blogTags" name="tags" placeholder="Enter tags separated by commas" />
+                    {% if errors.tags %}
+                      <span class="form-error">{{ errors.tags }}</span>
+                    {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="blogTags">Category</label>
+                        <select type="text" id="category" name="category" />
+                        <option value="{{blog.category}}">{{blog.category}}</option>
+                        {%for category in categories %}
+                            <option value="{{category}}">{{category.name}}</option>
+                        {% endfor %}
+                        </select>
+                        {% if errors.category %}
+                          <span class="form-error">{{ errors.category }}</span>
+                        {% endif %}
+                    </div>
+    
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Edit Post</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+
+
+    <script>
+        // Copy editor content into hidden textarea before submitting
+        const form = document.getElementById('blogForm');
+        const editor = document.getElementById('editor');
+        const contentInput = document.getElementById('content-input');
+    
+        form.addEventListener('submit', function (e) {
+            contentInput.value = editor.innerHTML.trim();
+        });
+    
+        // Image preview
+        document.getElementById('imageInput').addEventListener('change', function(e) {
+            const preview = document.getElementById('imagePreview');
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.innerHTML = `<img src="${e.target.result}" alt="Preview" style="max-width: 100%;"/>`;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    
+        // Toolbar functionality
+        const toolbarButtons = document.querySelectorAll('.toolbar-btn');
+        const formatBlock = document.getElementById('formatBlock');
+    
+        formatBlock.addEventListener('change', function () {
+            document.execCommand('formatBlock', false, this.value);
+            editor.focus();
+        });
+    
+        toolbarButtons.forEach(button => {
+            if (button.tagName === 'SELECT') return;
+            button.addEventListener('click', function () {
+                const command = this.dataset.command;
+                document.execCommand(command, false, null);
+                editor.focus();
+            });
+        });
+    </script>
+    

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit User Details</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #eafbe7;
+            color: #222;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            margin-top:12%;
+        }
+
+        /* Main Container */
+        .profile-main-container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* Form Section */
+        .profile-right {
+            width: 90%;
+            background: #faf9f6;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            margin: 0 auto;
+        }
+
+        .user-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #4b5e2e;
+            text-align: center;
+        }
+
+        .user-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .info-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .label {
+            font-size: 0.98rem;
+            font-weight: 500;
+            color: #3a4a2b;
+        }
+
+        .value-input {
+            padding: 10px;
+            border: 1.5px solid #d6eac5;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            width: 100%;
+            color: #222;
+            background: #fff;
+            transition: border-color 0.2s;
+        }
+
+        .value-input:focus {
+            outline: none;
+            border-color: #4b5e2e;
+            box-shadow: 0 0 5px rgba(75, 94, 46, 0.15);
+        }
+
+        .value-input[required]:invalid {
+            border-color: #ef4444;
+        }
+
+        /* Profile Picture Input */
+        .profile-pic-wrapper {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .user-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #d6eac5;
+            margin-bottom: 10px;
+        }
+
+        #profile-pic-input {
+            display: block;
+            margin: 0 auto;
+            padding: 8px;
+            background: #fff;
+            border: 1px solid #d6eac5;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Buttons */
+        .edit-btns {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .save-btn, .cancel-btn {
+            padding: 12px 36px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .save-btn {
+            background-color: #d6f5c9;
+            color: #222;
+        }
+
+        .save-btn:hover {
+            background-color: #b8e6a1;
+        }
+
+        .cancel-btn {
+            background-color: #ff4d4f;
+            color: #fff;
+        }
+
+        .cancel-btn:hover {
+            background-color: #d9363e;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .profile-right {
+                width: 100%;
+            }
+
+            .user-info {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-right {
+                padding: 15px;
+            }
+
+            .form-title {
+                font-size: 1.1rem;
+            }
+
+            .user-pic {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+{% include "layout/header.html" %}
+<body>
+    <div class="profile-main-container">
+        <div class="profile-right">
+            <form class="user-form" id="edit-form" enctype="multipart/form-data" method="POST" action="">
+                {% csrf_token %}
+                <div class="profile-pic-wrapper">
+                    <img src="{% if profile and profile.profile_image %}{{ profile.profile_image.url }}{% else %}/media/users/default_user.png{% endif %}" alt="User Picture" class="user-pic" id="profile-pic-preview">
+                    <input type="file" id="profile-pic-input" name="profile_image" accept="image/*" aria-label="Upload profile picture">
+                </div>
+                <div class="form-title">Edit User Details</div>
+                {% if messages %}
+                    {% for message in messages %}
+                        <div style="color: green; text-align: center;">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+                <div class="user-info">
+                    <div class="info-group">
+                        <label class="label" for="first-name">First Name</label>
+                        <input type="text" class="value-input" id="first-name" name="first-name" value="{{ user.first_name }}" required>
+                    </div>
+                    <div class="info-group">
+                        <label class="label" for="last-name">Last Name</label>
+                        <input type="text" class="value-input" id="last-name" name="last-name" value="{{ user.last_name }}" required>
+                    </div>
+                    <div class="info-group">
+                        <label class="label" for="username">Username</label>
+                        <input type="text" class="value-input" id="username" name="username" value="{{ user.username }}" required>
+                    </div>
+                    <div class="info-group">
+                        <label class="label" for="email">Email Address</label>
+                        <input type="email" class="value-input" id="email" name="email" value="{{ user.email }}" required>
+                    </div>
+                    <div class="info-group">
+                        <label class="label" for="phone">Phone Number</label>
+                        <input type="tel" class="value-input" id="phone" name="phone" value="{{ profile.phone }}" required>
+                    </div>
+                    <div class="info-group">
+                        <label class="label" for="address">Address</label>
+                        <input type="text" class="value-input" id="address" name="address" value="{{ profile.address }}" required>
+                    </div>
+                    <div class="info-group">
+                        <label class="label" for="nationality">Nationality</label>
+                        <select class="value-input" id="nationality" name="nationality" required>
+                            <option value="Nepal" {% if profile.nationality == 'Nepal' %}selected{% endif %}>Nepal</option>
+                            <option value="India" {% if profile.nationality == 'India' %}selected{% endif %}>India</option>
+                            <option value="USA" {% if profile.nationality == 'USA' %}selected{% endif %}>USA</option>
+                        </select>
+                    </div>
+                    <div class="info-group">
+                        <label class="label" for="dob">Date of Birth</label>
+                        <input type="date" class="value-input" id="dob" name="dob" value="{{ profile.dob|date:'Y-m-d' }}" required>
+                    </div>
+                    <div class="info-group">
+                        <label class="label" for="gender">Gender</label>
+                        <select class="value-input" id="gender" name="gender" required>
+                            <option value="Male" {% if profile.gender == 'Male' %}selected{% endif %}>Male</option>
+                            <option value="Female" {% if profile.gender == 'Female' %}selected{% endif %}>Female</option>
+                            <option value="Other" {% if profile.gender == 'Other' %}selected{% endif %}>Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="edit-btns">
+                    <button type="submit" class="save-btn">Save</button>
+                    <a href="/user-profile/" class="cancel-btn">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        // Profile picture preview functionality
+        const picInput = document.getElementById('profile-pic-input');
+        const picPreview = document.getElementById('profile-pic-preview');
+        if (picInput && picPreview) {
+            picInput.addEventListener('change', function(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        picPreview.src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

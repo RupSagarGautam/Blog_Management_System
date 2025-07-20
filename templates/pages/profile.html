@@ -24,7 +24,11 @@
                     <span >
                         <i class="fa fa-map-marker"></i>
                     </span>
+                    {% if profile.address %}
                     {{ profile.address }}
+                    {%else%}
+                    <p>Address not Set</p>
+                    {%endif%}
                 </div>
                 <div class="profile-info-item">
                     <span >
@@ -36,7 +40,11 @@
                     <span >
                         <i class="far fa-address-book"></i>
                     </span>
+                    {%if profile.phone %}
                     {{ profile.phone }}
+                    {%else%}
+                    <p>Phone Number not Set</p>
+                    {%endif%}
                 </div>
             </div>
         </div>

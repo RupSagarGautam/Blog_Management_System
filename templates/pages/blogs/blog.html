@@ -4,8 +4,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>All Blogs - Purnima's Blog</title>
+  <title>Blogs | Digital Pathshala</title>
   <link rel="stylesheet" href="/static/css/blog.css" />
+  <link rel="shortcut icon" href="/static/Assets/favicon.ico" type="image/x-icon">
 </head>
 <body>
 
@@ -16,7 +17,34 @@
     <div class="content">
       <div class="page-wrapper">
         <h1>All Blogs</h1>
+  <h3 style="margin:15px;" >
+  {% if current_category %}
+    Blogs in "{{ current_category.name }}"
+  {% else %}
+    All Blogs
+  {% endif %}
+</h3>
+
+<!-- Search Form -->
+<form method="get" action="{% url 'blogs' %}" class="search-form">
+  <input
+    type="text"
+    name="q"
+    placeholder="Search blogs..."
+    value="{{ query }}"
+    class="search-input"
+  />
+  
+  {% if current_category %}
+    <!-- Preserve category filter in search -->
+    <input type="hidden" name="category" value="{{ current_category.id }}" />
+  {% endif %}
+
+  <button type="submit" class="search-button">Search</button>
+</form>
+
         <div class="blog-list">
+
 
           <!-- Dynamic Blogs Loading Section -->
           {% for blog in blogs %}
@@ -42,17 +70,18 @@
     <div class="sidebardropdown">
       <div class="categories-dropdown">
         <button class="dropdown-button">Categories ▼</button>
-        <ul class="dropdown-menu">
-          <li><a href="#">Technology</a></li>
-          <li><a href="#">Travel</a></li>
-          <li><a href="#">Education</a></li>
-          <li><a href="#">Health</a></li>
-        </ul>
+<ul class="dropdown-menu">
+  {% for category in categories %}
+    <li><a href="{% url 'blogs' %}?category={{ category.id }}">{{ category.name }}</a></li>
+  {% endfor %}
+  <li><a href="{% url 'blogs' %}">All</a></li>
+</ul>
       </div>
     </div>
 
   </div>
+  
 
 </body>
-{% include "layout/footer.html" %}
 </html>
+{% include "layout/footer.html" %}

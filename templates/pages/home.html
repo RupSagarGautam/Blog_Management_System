@@ -4,25 +4,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sandhya's Blog</title>
+  <title>Home | Digital Pathshala</title>
   <link rel="stylesheet" href="{% static 'css/home.css' %}" />
 </head>
 <body>
   {% include "layout/header.html" %}
-
+<div class="body">
   <div class="container">
     <!-- Sidebar -->
-    <aside class="sidebarbody">
-      <div class="dropdown">
-        <button class="dropdown-button">Categories ▼</button>
-        <ul class="dropdown-menu">
-          {% comment %} <li><a href="{% url 'blogs_by_type' 'Technology' %}">Technology</a></li>
-          <li><a href="{% url 'blogs_by_type' 'Travel' %}">Travel</a></li>
-          <li><a href="{% url 'blogs_by_type' 'Education' %}">Education</a></li>
-          <li><a href="{% url 'blogs_by_type' 'Health' %}">Health</a></li> {% endcomment %}
-        </ul>
-      </div>
-    </aside>
+<aside class="sidebarbody">
+  <div class="dropdown">
+    <button class="dropdown-button">Categories ▼</button>
+<ul class="dropdown-menu">
+  {% for category in categories %}
+    <li><a href="{% url 'blogs_by_category' category.id %}">{{ category.name }}</a></li>
+  {% endfor %}
+  <li><a href="{% url 'all_blogs' %}">All</a></li>
+</ul>
+  </div>
+</aside>
 
     <!-- Main Content -->
     <main class="content">
@@ -32,13 +32,10 @@
 
 <!-- Search Form -->
 <div class="search-container">
-  <form method="GET" action="" class="search-form">
-    <input type="text" name="q" placeholder="Search blog by title..." value="{{ request.GET.q }}">
+  <form action="{% url 'blogs' %}" method="get" class="search-form">
+    <input type="text" name="q" placeholder="Search blogs...">
     <button type="submit">Search</button>
-    {% if request.GET.q %}
-      <a href="{% url 'home' %}" class="reset-link">Reset</a>
-    {% endif %}
-  </form>
+</form>
 
   {% if request.GET.q and not featured_blogs and not recent_blogs %}
     <p class="no-results">No blog found with title containing "{{ request.GET.q }}"</p>
@@ -104,7 +101,9 @@
             <div class="blog-card">
               <img src="{{ blog.image.url }}" alt="{{ blog.title }}" />
               <h3>{{ blog.title }}</h3>
-              <p>{{ blog.content|truncatewords:15 }}</p>
+             <div>
+             <p> {{ blog.content|truncatewords:5|safe }} </p>
+             </div>
             </div>
           {% empty %}
             <p>No recent blogs available.</p>
@@ -167,7 +166,7 @@
       </section>
     </main>
   </div>
-
-</body>
+</div>
 {% include 'layout/footer.html' %}
+</body>
 </html>

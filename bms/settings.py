@@ -15,6 +15,7 @@ import os
 
 from django.conf import settings
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -28,23 +29,101 @@ SECRET_KEY = 'django-insecure-m#cfrgrk5mfk*%&vk(70x%@@a&hw1c(bi6#fca#89%^c(ah$fy
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '192.168.254.108' ]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_extensions',
     'users',
     'about',
     'addBlogs',
+    'taggit',
+
+    # django-allauth apps
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+
 ]
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+
+JAZZMIN_SETTINGS = {
+    "site_title": " Blog Management System Admin Dashboard",
+     "site_logo": "assets/Digital Pathshala logo.jpg",
+     "site_logo_classes": "img-fluid rounded-circle",
+    "site_header": "Admin Dashboard",
+    "site_brand": "Digital Pathshala",
+    "welcome_sign": "Welcome to Admin Dashboard",
+    "copyright": "Digital Pathshala",
+    "show_sidebar": True,
+    "navigation_expanded": True,
+    "hide_apps": [],
+    "order_with_respect_to": ["auth", "myapp"],
+    "icons": {
+        "auth": "fas fa-users-cog",
+        "auth.user": "fas fa-user",
+        "auth.Group": "fas fa-users",
+    },
+    
+    "show_ui_builder": False,  # hides the UI builder button (optional)
+    "custom_css": "css/custom_admin.css"
+
+}
+
+JAZZMIN_UI_TWEAKS = {
+    "css": "css/customAdmin.css",
+}
+# # Add site ID for django-allauth
+SITE_ID = 1
+
+# Authentication backends for django-allauth
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+# django-allauth settings
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/templates/login'
+ACCOUNT_LOGIN_METHODS = {'username', 'email'}
+ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
+ACCOUNT_EMAIL_VERIFICATION = 'optional'
+
+# Google OAuth2 credentials placeholders (replace with actual credentials)
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        },
+        'APP': {
+            'client_id': '1751426665-sv3lo266j05m6bua7ket4v1734bn2593.apps.googleusercontent.com',
+            'secret': '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',
+            'key': ''
+        }
+    }
+}
+
+SOCIALACCOUNT_LOGIN_ON_GET = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -54,6 +133,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # django-allauth middleware
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'bms.urls'
@@ -115,13 +197,15 @@ TIME_ZONE = 'Asia/Kathmandu'
 
 USE_I18N = True
 
+TAGGIT_CASE_INSENSITIVE = True
+
 USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = '/static/'
+
 
 
 # Default primary key field type
@@ -129,9 +213,43 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATICFILES_DIRS = [
-    BASE_DIR, 'static',
-]
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Email Configuration
+# For testing - emails will be printed to console
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Add more verbose logging
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django.core.mail': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
+        'django.request': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
+    },
+}
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_FAIL_SILENTLY = False
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'rupsagautam@gmail.com'
+EMAIL_HOST_PASSWORD = 'zoqfnelypoicdmdi'  # App password with no spaces
+DEFAULT_FROM_EMAIL = 'rupsagautam@gmail.com'
+
+

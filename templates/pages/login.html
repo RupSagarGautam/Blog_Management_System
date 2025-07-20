@@ -1,3 +1,4 @@
+{% load socialaccount%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +12,14 @@
 
 <body>
   <div class="container">
+      {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+      <li class="error-message">{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
     <div class="logo">
       <img src="/static/Assets/Digital Pathshala logo.jpg" alt="Blog Website Logo" style="width:100px; height:100px; object-fit:contain; display:block; margin:0 auto;" />
     </div>
@@ -18,22 +27,27 @@
     <h1>Sign in to BMS</h1>
     <div class="subtitle">Access your account and manage your blogs!</div>
 
-    <form action="/auth/log-in" method="post">
+    <form action="/auth/log-in/" method="post">
       {% csrf_token %}
-      {{errors}}
       <div class="input-group">
-        <label for="email">Username</label>
-        <input type="text" id="email" name="username" placeholder="Your UserName" required />
-      </div>
+          <label for="email">Username</label>
+          <input type="text" id="email" name="username" placeholder="Your UserName" value="{{ username_value|default:'' }}" required />
+          {% if username_error %}
+          <p class="error-text">{{ username_error }}</p>
+          {% endif %}
+        </div>
       <div class="input-group">
         <label for="password">Password</label>
         <input type="password" id="password" name="password" placeholder="Password" required />
+        {% if password_error %}
+        <p class="error-text">{{ password_error }}</p>
+        {% endif %}
       </div>
       <button class="login-btn" type="submit">Sign in</button>
     </form>
 
     <div class="forgot-row">
-      <a href="#" class="forgot-link">Forgot password?</a>
+      <a href="{% url 'password_reset' %}" class="forgot-link">Forgot password?</a>
     </div>
 
     <div class="divider">
@@ -42,10 +56,11 @@
       <div class="divider-line"></div>
     </div>
 
-    <button class="google-btn" type="button">
-      <img src="/static/Assets/Google logo.png" alt="Google logo" class="google-icon" />
+   {% load socialaccount %}
+    <a href="{% provider_login_url 'google' process='login' %}" class="google-btn" style="display: flex; align-items: center; text-decoration: none; color: #333; font-weight: bold; justify-content: center; margin-bottom: 20px;">
+      <img src="/static/Assets/Google logo.png" alt="Google logo" class="google-icon" style="width: 24px; height: 24px; margin-right: 8px;" />
       Log in with Google
-    </button>
+    </a>
 
     <div class="footer">
       Don't have an account?

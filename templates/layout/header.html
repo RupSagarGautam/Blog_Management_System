@@ -7,6 +7,7 @@
     <title>Header</title>
     <link rel="stylesheet" href="/static/css/header.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="shortcut icon" href="/static/assets/favicon.ico" type="image/x-icon">
     
 </head>
 <body>
@@ -30,26 +31,26 @@
             <div class="nav">
                 <ul>
                     <li><a href="/about-us">About Us</a></li> |
-                    {% if user.is_authenticated %}
+                   
                     <li><a href="/blogs/blogs">Blogs</a></li> |
-                    {% else %}
-                    <li><a href="/auth/log-in">Blogs</a></li> |
-                    {% endif %}
+                   
                     {% if user.is_authenticated %}
                    <li><a href="/blogs/add-blog">Write</a></li> |
                    {%endif%}
                    {% if not user.is_authenticated %}
                     <li><a href="/auth/log-in">Log-In</a></li> |
                     {% endif %}
-                    {% if user.is_authenticated %}
-                    <li><a href="/blogs/blogs" class="getstarted-btn">Get Started</a></li>
-                    {% else %}
+                    
+                    {% if user.is_staff %}
+                    <li><a href="/admin" class="getstarted-btn">Dashboard</a></li>
+                    {% endif %}
+                    {% if user.is_authenticated == False %}
                     <li><a href="/auth/sign-up" class="getstarted-btn">Get Started</a></li>
                     {% endif %}
                     {% if user.is_authenticated %}
                     <li class="profile-container">
                 <a href="javascript:void(0);" class="profile-link">
-                    <img src="/static/assets/Member-1.jpg" alt="Profile Image" class="profile-image" />
+                    <img src=" {{ user.profile.profile_image.url|default:'/media/users/default_user.png' }}" alt="Profile Image" class="profile-image" />
                 </a>
                 <div class="profile-dropdown" id="profileDropdown" style=" max-width= 11rem; margin-right:-55%;" >
                     <button class="close-dropdown" id="closeDropdown">&times;</button>
@@ -61,7 +62,7 @@
                             </button>
                         </li>
                         <li>
-                            <button class="dropdown-button-profile" onclick="window.location.href='/blogs/blogs'">
+                            <button class="dropdown-button-profile" onclick="window.location.href='/blogs/view-blogs'">
                                 My Blogs
                                 <i class="fas fa-book"></i> 
                             </button>
@@ -96,25 +97,19 @@
             <li><a href="/about-us">About Us</a></li>
             <li><a href="/blogs/blogs">Blogs</a></li>
             <li><a href="/blogs/add-blog">Write</a></li>
-            <li><a href="/log-in">Log In</a></li>
+            <li><a href="/auth/log-in">Log In</a></li>
             <li><a href="/sign-up" class="getstarted-btn">Get Started</a></li>
         </ul>
     </div>
-{% if messages %}
-  <div class="profile-msg-container">
-    {% for message in messages %}
-      <div class="profile-alert alert-{{ message.tags }}">
-        {{ message }}
-      </div>
-    {% endfor %}
-  </div>
-{% endif %}
+
 
     <div class="overlay"></div>
 
     <!-- End for Header -->
 
-   
+{% block content %}
+
+{% endblock %}
 <script>
     document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('.hamburger');
@@ -180,6 +175,23 @@
  setTimeout(() => {
     document.querySelectorAll('.profile-alert').forEach(el => el.style.display = 'none');
   }, 5000); // 5 seconds
+  
 </script>
+
+{% if messages %}
+<div class="profile-msg-container">
+  {% for message in messages %}
+    <div class="profile-alert" style="background-color:
+         {% if message.tags == 'success' %}#4CAF50
+         {% elif message.tags == 'error' %}#f44336
+         {% elif message.tags == 'info' %}#2196F3
+         {% elif message.tags == 'warning' %}#ff9800
+         {% else %}#4CAF50{% endif %};
+    ">
+      {{ message }}
+    </div>
+  {% endfor %}
+</div>
+{% endif %}
 </body>
 </html>

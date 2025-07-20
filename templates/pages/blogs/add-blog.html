@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Blog Page</title>
+    <title>Write Blog | Digital Pathshala</title>
     <link rel="stylesheet" href="/static/css/add-blog.css" />
     <link rel="shortcut icon" href="/static/assets/favicon.ico" type="image/x-icon">
 </head>
@@ -18,7 +18,7 @@
             <img src="/static/assets/working_boy.png" alt="Hello World"/>
         </div>
     
-        <form method="POST" enctype="multipart/form-data" id="blogForm">
+        <form method="POST" action="/blogs/add-blog/" enctype="multipart/form-data" id="blogForm">
             {% csrf_token %}
             <div class="addsection">
                 <div class="innersection">
@@ -27,6 +27,9 @@
                     <div class="form-group">
                         <label for="blogTitle">Title</label>
                         <input type="text" id="blogTitle" name="title" placeholder="Enter your blog title" required />
+                        {% if errors.title %}
+                            <p class="form-error">{{ errors.title }}</p>
+                        {% endif %}
                     </div>
     
                     <div class="form-group">
@@ -35,6 +38,9 @@
                             <input type="file" id="imageInput" name="image" accept="image/*" />
                             <div class="image-preview" id="imagePreview"></div>
                         </div>
+                            {% if errors.image %}
+                                <p class="form-error">{{ errors.image }}</p>
+                            {% endif %}
                     </div>
     
                     <div class="form-group">
@@ -42,9 +48,9 @@
                         <div class="editor-toolbar">
                             <select id="formatBlock" class="toolbar-btn">
                                 <option value="P">Paragraph</option>
-                                <option value="H1">Heading 1</option>
-                                <option value="H2">Heading 2</option>
-                                <option value="H3">Heading 3</option>
+                                <option value="H3">Heading 1</option>
+                                <option value="H4">Heading 2</option>
+                                <option value="H5">Heading 3</option>
                             </select>
                             <button type="button" class="toolbar-btn" data-command="bold" title="Bold"><b>B</b></button>
                             <button type="button" class="toolbar-btn" data-command="italic" title="Italic"><i>I</i></button>
@@ -56,21 +62,36 @@
                             <button type="button" class="toolbar-btn" data-command="insertOrderedList" title="Numbered List">1.</button>
                             <button type="button" class="toolbar-btn" data-command="insertUnorderedList" title="Bulleted List">&#8226;</button>
                         </div>
+                        Write Your Content here...
                         <div id="editor" class="editor-content" contenteditable="true" style="border: 1px solid #ccc; min-height: 100px; padding: 10px;">
-                            Start writing here...
+                            
                         </div>
                         <!-- Hidden textarea to store content before submitting -->
                         <textarea name="content" id="content-input" hidden></textarea>
-                    </div>
-    
-                    <div class="form-group">
-                        <label for="author">Author</label>
-                        <input type="text" id="author" name="author" value="{{ request.user.username }}" readonly />
+                        {% if errors.content %}
+                            <p class="form-error">{{ errors.content }}</p>
+                        {% endif %}
                     </div>
     
                     <div class="form-group">
                         <label for="blogTags">Tags</label>
                         <input type="text" id="blogTags" name="tags" placeholder="Enter tags separated by commas" />
+                        {% if errors.tags %}
+                            <p class="form-error">{{ errors.tags }}</p>
+                        {% endif %}                   
+                    </div>
+
+                    <div class="form-group">
+                        <label for="blogTags">Category</label>
+                        <select type="text" id="category" name="category" />
+                    <option value="">SELECT</option>
+                        {%for category in categories %}
+                            <option value="{{category}}">{{category.name}}</option>
+                        {% endfor %}
+                    </select>
+                    {% if errors.category %}
+                        <p class="form-error">{{ errors.category }}</p>
+                    {% endif %}
                     </div>
     
                     <div class="form-actions">
@@ -124,4 +145,6 @@
             });
         });
     </script>
+
+    {% include "layout/footer.html" %}
     

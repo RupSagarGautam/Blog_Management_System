@@ -146,7 +146,11 @@ body {
     align-items: center;
     gap: 0.5rem;
 }
-
+.edit-delete{
+    display: flex;
+    align-items: center;
+    justify-items: flex-start;
+}
 /* Featured Image */
 .featured-image-container {
     position: relative;

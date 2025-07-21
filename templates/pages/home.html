@@ -55,7 +55,7 @@
             <span class="card-date">22 Dec 2023</span>
           </div>
           <h3 class="card-title">{{ blog.title }}</h3>
-          <p class="card-description">{{ blog.content|truncatewords:15 }}</p>
+          <p class="card-description">{{ blog.content|truncatewords:15|safe }}</p>
           <a href="/blogs/{{blog.id}}" class="read-more">Read Article <span class="arrow">→</span></a>
         </div>
         <div class="card-image">

@@ -68,7 +68,7 @@ JAZZMIN_SETTINGS = {
      "site_logo": "assets/Digital Pathshala logo.jpg",
      "site_logo_classes": "img-fluid rounded-circle",
     "site_header": "Admin Dashboard",
-    "site_brand": "Digital Pathshala",
+    "site_brand": "CLMS",
     "welcome_sign": "Welcome to Admin Dashboard",
     "copyright": "Digital Pathshala",
     "show_sidebar": True,
@@ -83,7 +83,6 @@ JAZZMIN_SETTINGS = {
     
     "show_ui_builder": False,  # hides the UI builder button (optional)
     "custom_css": "css/custom_admin.css"
-
 }
 
 JAZZMIN_UI_TWEAKS = {

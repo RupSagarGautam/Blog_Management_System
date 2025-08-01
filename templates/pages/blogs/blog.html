@@ -48,13 +48,21 @@
 
           <!-- Dynamic Blogs Loading Section -->
           {% for blog in blogs %}
-            <div class="blog-card">
-              <img src="{{ blog.image.url }}" alt="{{ blog.title }}" />
-              <h2>{{ blog.title }}</h2>
+            <div class="blog-card" style="position: relative;">
+              <img src="{{ blog.image.url|default:'static/assets/blog1.png' }}" alt="{{ blog.title }}" />
+              <div class="blog-title-row">
+                <h2>{{ blog.title }}</h2>
+                {% if blog.is_edited %}
+                  <span class="edited-indicator">edited</span>
+                {% endif %}
+              </div>
               <div class="author">By: {{ blog.author }}</div>
-
+              {% if blog.is_edited %}
+                <div class="edited-info" style="margin-left:0; color:#718096; font-style: italic; font-size: 13px;">
+                  Edited by: {{ blog.last_edited_by.username }}
+                </div>
+              {% endif %}
               <a href="/blogs/{{blog.id}}" class="read-more">Read More</a>
-             
             </div>
           {% empty %}
             <div class="blog-card">

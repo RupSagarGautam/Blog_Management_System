@@ -39,6 +39,9 @@
                             <input type="file" id="imageInput" name="image" accept="image/*" />
                             <div class="image-preview" id="imagePreview"></div>
                         </div>
+                        {% if errors.image %}
+                        <span class="form-error">{{ errors.image }}</span>
+                        {% endif %}
                     </div>
     
                     <div class="form-group">

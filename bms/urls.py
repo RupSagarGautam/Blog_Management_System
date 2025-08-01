@@ -22,6 +22,7 @@ from bms import views
 from addBlogs import views as blog_views
 from users import views as user_views
 from django.contrib.auth import views as auth_views
+from .views import CustomPasswordResetView
 
 
 # Serve static files during development
@@ -42,6 +43,7 @@ blog_urlpatterns = [
     path('<int:id>/edit/', blog_views.editBlog, name='edit_blog'),
     path('category/<int:category_id>/', blog_views.home, name='category_filter'),
     path('blogs/category/<int:category_id>/', blog_views.blogs_by_category, name='blogs_by_category'),
+    path('delete/<int:blog_id>/', blog_views.deleteblog, name='delete_blog'),
 ] 
 
 urlpatterns = [
@@ -65,7 +67,7 @@ urlpatterns = [
 
     # django-allauth urls
     path('accounts/', include('allauth.urls')),
-     path('password-reset/', views.CustomPasswordResetView.as_view(), name='password_reset'),
+     path('password-reset/', CustomPasswordResetView.as_view(), name='password_reset'),
     path('password-reset/done/', auth_views.PasswordResetDoneView.as_view(
         template_name='pages/password_reset_done.html'
     ), name='password_reset_done'),

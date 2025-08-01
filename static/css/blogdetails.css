@@ -146,7 +146,11 @@ body {
     align-items: center;
     gap: 0.5rem;
 }
-
+.edit-delete{
+    display: flex;
+    align-items: center;
+    justify-items: flex-start;
+}
 /* Featured Image */
 .featured-image-container {
     position: relative;
@@ -337,6 +341,7 @@ body {
     margin: 0;
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp:var(--accent-color) ;
     -webkit-box-orient: vertical;
     overflow: hidden;
     /* Removed hover color change */
@@ -361,6 +366,14 @@ body {
     margin-top: 0.5rem;
     /* Removed hover effects and animations */
 }
+
+.edited-info {
+    color: #718096;
+    font-size: 13px;
+    margin-bottom: 12px;
+    font-style: italic;
+
+} 
 
 /* View All Blogs Section */
 .view-all-section {

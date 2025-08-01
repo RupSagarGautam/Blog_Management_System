@@ -27,7 +27,7 @@ class addBlog(models.Model):
         
     
     title = models.CharField(max_length=100)
-    image = models.ImageField(upload_to=generateImagePath, default='static/assets/blog1.png')
+    image = models.ImageField(blank=True, null=True, upload_to=generateImagePath, default='static/assets/blog1.png')
     attachment = models.FileField(blank=True, null=True, upload_to=generateAttachmentPath)
     content = models.TextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blog_posts')
@@ -37,6 +37,8 @@ class addBlog(models.Model):
     updated_at = models.DateTimeField(default=timezone.now)
     category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.SET_NULL)
     featured = models.BooleanField(default=False)
+    last_edited_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='edited_blogs')
+    is_edited = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.title} by {self.author}"

@@ -1,0 +1,212 @@
+/* General page background */
+body {
+    background: #eafbe7;
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    margin-top: 12%;
+}
+
+.profile-main-container {
+    max-width: 1200px;
+    margin: 60px auto 0 auto;
+    display: flex;
+    gap: 0;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.profile-card {
+    background: #d6f5c9;
+    color: #222;
+    border-radius: 24px 0 0 24px;
+    width: 400px;
+    min-width: 320px;
+    padding: 48px 40px 40px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.profile-pic-wrapper {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 18px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    background: #fff;
+}
+
+.user-pic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.profile-summary-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 4px;
+    text-align: center;
+}
+
+.profile-summary-dob {
+    font-size: 1.05rem;
+    color: #4b5e2e;
+    margin-bottom: 18px;
+    text-align: center;
+}
+
+.profile-info-list {
+    width: 100%;
+    margin-top: 12px;
+    margin-bottom: 18px;
+}
+
+.profile-info-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+.profile-info-item strong {
+    color: #222;
+    font-weight: 500;
+    margin-right: 4px;
+}
+
+.profile-info-icon {
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-right {
+    flex: 1;
+    background: #faf9f6;
+    border-radius: 0 24px 24px 0;
+    box-shadow: 0 2px 8px rgba(60,72,88,0.06);
+    padding: 56px 56px 48px 56px;
+    min-width: 0;
+}
+
+.form-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 18px;
+    color: #4f46e5;
+    text-align: center;
+}
+
+.user-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 32px;
+}
+
+.info-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    font-size: 0.98rem;
+    color: #3a4a2b;
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+.value-input {
+    background: #fff;
+    border: 1.5px solid #d6eac5;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 1rem;
+    color: #444;
+    font-family: inherit;
+    margin-bottom: 2px;
+    pointer-events: none;
+}
+
+.action-btns, .edit-btns {
+    display: flex;
+    gap: 24px;
+    margin: 48px 0 0 0;
+    justify-content: flex-end;
+}
+
+.update-btn, .logout-btn, .save-btn, .cancel-btn {
+    padding: 16px 44px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(99,102,241,0.10);
+    transition: background 0.2s;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.update-btn, .save-btn {
+    background: #d6f5c9;
+    color: #222;
+}
+.update-btn:hover, .save-btn:hover {
+    background: #b8e6a1;
+    color: #222;
+}
+
+.logout-btn, .cancel-btn {
+    background: #ff4d4f;
+    color: #fff;
+}
+.logout-btn:hover, .cancel-btn:hover {
+    background: #d9363e;
+}
+
+@media (max-width: 900px) {
+    .profile-main-container {
+        flex-direction: column;
+        max-width: 98vw;
+    }
+    .profile-card {
+        border-radius: 24px 24px 0 0;
+        width: 100%;
+        min-width: 0;
+        padding: 32px 12px 24px 12px;
+    }
+    .profile-right {
+        border-radius: 0 0 24px 24px;
+        padding: 24px 8px 24px 8px;
+    }
+    .edit-form-container {
+        max-width: 98vw;
+        padding: 18px 4px 18px 4px;
+    }
+    .user-info {
+        grid-template-columns: 1fr;
+        gap: 14px 0;
+    }
+}
+
+/* Edit page form container */
+.edit-form-container {
+    max-width: 900px;
+    margin: 60px auto 0 auto;
+    background: #faf9f6;
+    border-radius: 24px;
+    box-shadow: 0 4px 24px rgba(60,72,88,0.10);
+    padding: 56px 56px 48px 56px;
+} 

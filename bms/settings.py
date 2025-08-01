@@ -15,6 +15,7 @@ import os
 
 from django.conf import settings
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -28,12 +29,13 @@ SECRET_KEY = 'django-insecure-m#cfrgrk5mfk*%&vk(70x%@@a&hw1c(bi6#fca#89%^c(ah$fy
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1' ]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '192.168.254.108', '192.168.1.142' ]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -51,10 +53,44 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+
 ]
 
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+
+JAZZMIN_SETTINGS = {
+    "site_title": " Blog Management System Admin Dashboard",
+     "site_logo": "assets/Digital Pathshala logo.jpg",
+     "site_logo_classes": "img-fluid rounded-circle",
+    "site_header": "Admin Dashboard",
+    "site_brand": "Digital Pathshala",
+    "welcome_sign": "Welcome to Admin Dashboard",
+    "copyright": "Digital Pathshala",
+    "show_sidebar": True,
+    "navigation_expanded": True,
+    "hide_apps": [],
+    "order_with_respect_to": ["auth", "myapp"],
+    "icons": {
+        "auth": "fas fa-users-cog",
+        "auth.user": "fas fa-user",
+        "auth.Group": "fas fa-users",
+    },
+    
+    "show_ui_builder": False,  # hides the UI builder button (optional)
+    "custom_css": "css/custom_admin.css"
+
+}
+
+JAZZMIN_UI_TWEAKS = {
+    "css": "css/customAdmin.css",
+}
 # # Add site ID for django-allauth
-SITE_ID = 2
+SITE_ID = 1
 
 # Authentication backends for django-allauth
 AUTHENTICATION_BACKENDS = [
@@ -64,7 +100,6 @@ AUTHENTICATION_BACKENDS = [
 
 # django-allauth settings
 LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/templates/login'
 ACCOUNT_LOGIN_METHODS = {'username', 'email'}
 ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
 ACCOUNT_EMAIL_VERIFICATION = 'optional'
@@ -127,8 +162,12 @@ WSGI_APPLICATION = 'bms.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.getenv('DB_NAME','Blog_Management_System'),
+        'USER': os.getenv('DB_USER','admin'),
+        'PASSWORD': os.getenv('DB_PASSWORD','admin'),
+        'HOST': os.getenv('DB_HOST','localhost'),
+        'PORT': os.getenv('DB_PORT','5432'),
     }
 }
 
@@ -169,7 +208,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = '/static/'
+
 
 
 # Default primary key field type
@@ -177,9 +216,7 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATICFILES_DIRS = [
-    BASE_DIR / 'static',
-]
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -210,11 +247,12 @@ LOGGING = {
 }
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_FAIL_SILENTLY = False
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'dangalrejina0@gmail.com'
-EMAIL_HOST_PASSWORD = 'ogfubakswvxdjcmn'
-DEFAULT_FROM_EMAIL = 'dangalrejina0@gmail.com'
+EMAIL_HOST_USER = 'rupsagautam@gmail.com'
+EMAIL_HOST_PASSWORD = 'zoqfnelypoicdmdi'  # App password with no spaces
+DEFAULT_FROM_EMAIL = 'rupsagautam@gmail.com'
 
 

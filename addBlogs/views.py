@@ -43,7 +43,9 @@ def validate_blog(data):
         elif image_extension not in allowed_extensions:
             errors["image"] = f"Invalid file type '{image_extension}'. Allowed: jpg, jpeg, png."
     else:
-        errors["image"] = "Image is required."
+        addBlogs.image = image
+        if image == None:
+            errors["image"] = "An Image is required"
 
     # Attachment (optional)
     if attachment and attachment.size > 10 * 1024 * 1024:
@@ -114,9 +116,9 @@ def editBlog(request, id):
 
     if request.method == "POST":
         data = request.POST.copy()
-        data['image'] = request.FILES.get('image')
+        if data['image']:
+            data['image'] = request.FILES.get('image')
         data['attachment'] = request.FILES.get('attachment')
-
         errors = validate_blog(data)
 
         # Category existence validation
@@ -132,23 +134,25 @@ def editBlog(request, id):
                 "categories": categories,
                 "tags": data['tags'],
             })
+        else:
+            # Update blog fields
+            blog.title = data["title"]
+            blog.content = data["content"]
+            blog.category = category
+            blog.status = models.addBlog.StatusOptions.ACTIVE if request.user.is_staff else models.addBlog.StatusOptions.PENDING
 
-        # Update blog fields
-        blog.title = data["title"]
-        blog.content = data["content"]
-        blog.category = category
-        blog.status = models.addBlog.StatusOptions.ACTIVE if request.user.is_staff else models.addBlog.StatusOptions.PENDING
+            if data.get("image"):
+                blog.image = data["image"]
+            if data.get("attachment"):
+                blog.attachment = data["attachment"]
 
-        if data.get("image"):
-            blog.image = data["image"]
-        if data.get("attachment"):
-            blog.attachment = data["attachment"]
+            blog.tags.set([tag.strip() for tag in data['tags'].split(',') if tag.strip()])
+            blog.last_edited_by = request.user
+            blog.is_edited = True
+            blog.save()
 
-        blog.tags.set([tag.strip() for tag in data['tags'].split(',') if tag.strip()])
-        blog.save()
-
-        messages.success(request, "Blog Updated Successfully!")
-        return redirect(f"/blogs/{id}")
+            messages.success(request, "Blog Updated Successfully!")
+            return redirect(f"/blogs/{id}")
 
     # GET Request
     return render(request, 'pages/blogs/edit-blog.html', {
@@ -257,3 +261,18 @@ def blog_list(request):
 
     context = {'blogs': blogs}
     return render(request, 'pages/blogs/blog.html', context)
+
+def deleteblog(request, blog_id):
+    if request.method == "POST":
+        blog = get_object_or_404(models.addBlog, id=blog_id)
+
+        # Optional: Check if request.user is the author/admin
+        if request.user == blog.author or request.user.is_superuser:
+            blog.delete()
+            messages.success(request, "Blog deleted successfully.")
+        else:
+            messages.error(request, "You are not authorized to delete this blog.")
+        return redirect('/blogs/blogs')
+    else:
+        messages.error(request, "Invalid request method.")
+        return redirect('/blogs/blogs')

@@ -1,6 +1,7 @@
 {%load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,17 +28,24 @@
                         <i class="fas fa-tag"></i>
                         {{blogs.category}}
                     </div>
+
                     <h1 class="article-title" style="color: black;">
                         {{blogs.title}}
                     </h1>
-                    
+
                     <div class="article-meta">
                         <div class="author-section">
                             <div class="author-avatar">
-                                <img src="{{ blog.author.profile.profile_image.url|default:'/media/users/default_user.png'}}" alt="User Profile" class="featured-image">
+                                <img src="{{ blog.author.profile.profile_image.url|default:'/media/users/default_user.png'}}"
+                                    alt="User Profile" class="featured-image">
                             </div>
                             <div class="author-details">
                                 <span class="author-name">By: {{ blogs.author.username }}</span>
+                                {% if blogs.is_edited %}
+                                <div class="edited-info" style="color:#718096; font-size: 13px; margin-bottom: 12px; font-style: italic;">
+                                  Edited (by {{ blogs.last_edited_by.username }})
+                                </div>
+                                {% endif %}
                                 <span class="publish-date">
                                     <i class="fas fa-calendar-alt"></i>
                                     {{ blogs.created_at|date:'M d, Y' }}
@@ -58,57 +66,82 @@
                 <!-- Article Content -->
                 <div class="article-content">
                     <div class="content-intro">
-                         
+
                         <p class="lead-paragraph">
                             Tags:
                             {% for tag in blogs.tags.all %}
-                           
+
                             {{ tag }},
                             {% endfor %}
                         </p>
-                        
-                        
+
                     </div>
-                    {% if blogs.author == user or request.user.is_staff %}
-                    <a href="{% url 'edit_blogPage' blogs.id %}" class="edit-link">
-                     <i class="fas fa-edit" style="color:#333;" >Edit</i>
-                    </a>
-                    {%endif%}
-                    <div>
-                    {{blogs.content|safe}}
+                    <div class='edit-delete'>
+                        {% if blogs.author == user or request.user.is_staff %}
+                        <a href="{% url 'edit_blogPage' blogs.id %}" class="edit-link">
+                            <i class="fas fa-edit" style="color:#333;"></i>
+                        </a>
+                        {%endif%}
+                        <div>
+                            <div>
+                                {% if request.user == blog.author or request.user.is_superuser %}
+                                <form method="POST" action="{% url 'delete_blog' blog.id %}" style="display:inline;">
+                                    {% csrf_token %}
+                                    <button type="submit"
+                                        style="background:none; border:none; color:red; cursor:pointer;"
+                                        onclick="return confirm('Are you sure you want to delete this blog?')"
+                                        title="Delete Blog">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </form>
+                                {% endif %}
+                            </div>
+                        </div>
                     </div>
+                        <div>
+                            {{blogs.content|safe}}
+                        </div>
+                        <div class="edit-link">
+                            {% if blogs.attachment %}
+                            <a href="{{ blogs.attachment.url }}" target="_blank" style="color:#333;">Download/View
+                                Attachment</a>
+                            {% else %}
+                            <p style="color:#333;">No attachment available.</p>
+                            {% endif %}
+                        </div>
             </main>
 
             <!-- Related Blogs Sidebar -->
             <!-- Related Blogs Sidebar -->
-<aside class="related-blogs-sidebar">
-    <div class="sidebar-header">
-        <h2 class="sidebar-title">Recent Blogs</h2>
-    </div>
+            <aside class="related-blogs-sidebar">
+                <div class="sidebar-header">
+                    <h2 class="sidebar-title">Recent Blogs</h2>
+                </div>
 
-    <div class="related-blogs-grid">
-        {% for blog in recent_blog %}
-        <article class="blog-card">
-            <div class="blog-image">
-                <img src="{{ blog.image.url }}" alt="{{ blog.title }}" class="blog-img">
-            </div>
-            <div class="blog-content">
-                <h3 class="blog-title">{{ blog.title }}</h3>
-                <p class="blog-author">By: {{ blog.author.username }}</p>
-                <button class="read-more-btn" onclick="window.location.href='/blogs/{{ blog.id }}'">Read More</button>
-            </div>
-        </article>
-        {% endfor %}
-    </div>
+                <div class="related-blogs-grid">
+                    {% for blog in recent_blog %}
+                    <article class="blog-card">
+                        <div class="blog-image">
+                            <img src="{{ blog.image.url }}" alt="{{ blog.title }}" class="blog-img">
+                        </div>
+                        <div class="blog-content">
+                            <h3 class="blog-title">{{ blog.title }}</h3>
+                            <p class="blog-author">By: {{ blog.author.username }}</p>
+                            <button class="read-more-btn" onclick="window.location.href='/blogs/{{ blog.id }}'">Read
+                                More</button>
+                        </div>
+                    </article>
+                    {% endfor %}
+                </div>
 
-    <!-- View All Blogs Button -->
-    <div class="view-all-section">
-        <a href="/blogs/blogs" class="view-all-button">
-            <i class="fas fa-th-large"></i>
-            View All Blogs
-        </a>
-    </div>
-</aside>
+                <!-- View All Blogs Button -->
+                <div class="view-all-section">
+                    <a href="/blogs/blogs" class="view-all-button">
+                        <i class="fas fa-th-large"></i>
+                        View All Blogs
+                    </a>
+                </div>
+            </aside>
         </div>
     </div>
 </body>

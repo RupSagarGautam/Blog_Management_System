@@ -1,0 +1,55 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+    <h1 class="mb-4">Admin Dashboard</h1>
+    
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card bg-primary text-white p-3">
+                <h4>Total Users</h4>
+                <p style="font-size: 24px;">{{ total_users }}</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-success text-white p-3">
+                <h4>Total Blogs</h4>
+                <p style="font-size: 24px;">{{ total_blogs }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card p-4">
+        <h5>Monthly Blogs</h5>
+        <canvas id="blogChart"></canvas>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+const ctx = document.getElementById('blogChart').getContext('2d');
+const data = {
+    labels: [
+        {% for item in monthly_counts %}
+            "{{ item.month|date:'F Y' }}",
+        {% endfor %}
+    ],
+    datasets: [{
+        label: 'Blogs per Month',
+        data: [
+            {% for item in monthly_counts %}
+                {{ item.count }},
+            {% endfor %}
+        ],
+        backgroundColor: 'rgba(54, 162, 235, 0.6)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1
+    }]
+};
+
+new Chart(ctx, {
+    type: 'bar',
+    data: data,
+});
+</script>
+{% endblock %}

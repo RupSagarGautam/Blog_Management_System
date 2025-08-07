@@ -1,0 +1,111 @@
+.main-footer .float-right {
+    display: none !important;
+}
+
+/* Or replace the text (injecting after hiding the original) */
+.main-footer::after {
+    content: "Digital Pathshala";
+    float: right;
+    font-size: 0.875rem;
+    margin-right: 10px;
+    color:#31882e;
+}
+.brand-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+.brand-link .brand-image {
+    height: 100% !important;
+    width: auto !important;
+    margin-bottom: 0.3rem;
+}
+
+.brand-link span.brand-text {
+    display: block;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #fff;  /* Or your brand color */
+}
+
+
+.btn-primary {
+    background-color: #28a745 !important; /* Green */
+    border-color: #28a745 !important;
+    color: white !important;
+}
+
+/* Optional: Change hover color */
+.btn-primary:hover {
+    background-color: #218838 !important;
+    border-color: #1e7e34 !important;
+    color: white !important;
+}
+
+/* If you're using the default Jazzmin search input group */
+.input-group .btn {
+    background-color: #28a745 !important;
+    border-color: #28a745 !important;
+    color: white !important;
+}
+
+.shorting a{
+    color: #fff;
+}
+
+.btn-info {
+    background-color: #28a745 !important;
+    border-color: #28a745 !important;
+    color: white !important;
+}
+
+.btn-info:hover {
+    background-color: #218838 !important;
+    border-color: #1e7e34 !important;
+    color: white !important;
+}
+
+.btn-outline-info {
+    background-color: #28a745 !important;
+    border-color: #28a745 !important;
+    color: white !important;
+}
+
+body::before {
+    content: "Digital Pathshala Admin Panel";
+    display: block;
+    padding: 10px;
+    background-color: rgb(182, 255, 188);
+    color:#333;
+    font-weight: bold;
+}
+
+.text a{
+    color: #1f8136 !important;
+}
+
+* a{
+    color: #000;
+}
+
+tbody a{
+
+    color: #22a03f   !important;
+    background-color: None !important;
+}
+
+td i{
+    color: #22a03f   !important;
+}
+
+.btn-group float-right a{
+    background-color: #fff !important;
+}
+
+td a{
+    background-color: #fff !important;
+}

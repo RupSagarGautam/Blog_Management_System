@@ -27,6 +27,16 @@
                         <i class="fas fa-tag"></i>
                         {{blogs.category}}
                     </div>
+                    <div>
+                        {% if request.user == blog.author or request.user.is_superuser %}
+                            <form method="POST" action="{% url 'delete_blog' blog.id %}" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" style="background:none; border:none; color:red; cursor:pointer;" onclick="return confirm('Are you sure you want to delete this blog?')" title="Delete Blog">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </form>
+                        {% endif %}
+                    </div>
                     <h1 class="article-title" style="color: black;">
                         {{blogs.title}}
                     </h1>
@@ -69,7 +79,7 @@
                         
                         
                     </div>
-                    {% if blogs.author == user %}
+                    {% if blogs.author == user or request.user.is_staff %}
                     <a href="{% url 'edit_blogPage' blogs.id %}" class="edit-link">
                      <i class="fas fa-edit" style="color:#333;" >Edit</i>
                     </a>
@@ -77,24 +87,13 @@
                     <div>
                     {{blogs.content|safe}}
                     </div>
-                    
-              
-                    {% comment %} <!-- Tags Section -->
-                    <div class="tags-section">
-                        <h3 class="tags-title">
-                            <i class="fas fa-tags"></i>
-                            Related Tags
-                        </h3>
-                        <div class="tags-container">
-                            <span class="tag">AI</span>
-                            <span class="tag">Technology</span>
-                            <span class="tag">Education</span>
-                            <span class="tag">Future</span>
-                            <span class="tag">Innovation</span>
-                            <span class="tag">Machine Learning</span>
-                        </div>
+                    <div class="edit-link"  >
+                        {% if blogs.attachment %}
+                            <a href="{{ blogs.attachment.url }}" target="_blank" style="color:#333;" >Download/View Attachment</a>
+                        {% else %}
+                            <p style="color:#333;" >No attachment available.</p>
+                        {% endif %}
                     </div>
-                </div> {% endcomment %}
             </main>
 
             <!-- Related Blogs Sidebar -->

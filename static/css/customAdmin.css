@@ -1,0 +1,46 @@
+.brand-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+.brand-link .brand-image {
+    width: 80% !important;
+    height: auto !important;
+    margin-bottom: 0.3rem;
+}
+
+.brand-link span.brand-text {
+    display: block;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #fff;  /* Or your brand color */
+}
+
+
+.btn-primary {
+    background-color: #28a745 !important; /* Green */
+    border-color: #28a745 !important;
+    color: white !important;
+}
+
+/* Optional: Change hover color */
+.btn-primary:hover {
+    background-color: #218838 !important;
+    border-color: #1e7e34 !important;
+    color: white !important;
+}
+
+/* If you're using the default Jazzmin search input group */
+.input-group .btn {
+    background-color: #28a745 !important;
+    border-color: #28a745 !important;
+    color: white !important;
+}
+
+.shorting a{
+    color: #fff;
+}

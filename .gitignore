@@ -1,1 +1,8 @@
+.env
 .venv/
+*.sqlite3
+*.pyc
+__pycache__/
+*.log
+data.json
+*.pgdata

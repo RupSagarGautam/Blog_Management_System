@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-m#cfrgrk5mfk*%&vk(70x%@@a&hw1c(bi6#fca#89%^c(ah$fy
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '192.168.254.108' ]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '192.168.254.108', '192.168.1.142' ]
 
 
 # Application definition
@@ -68,7 +68,7 @@ JAZZMIN_SETTINGS = {
      "site_logo": "assets/Digital Pathshala logo.jpg",
      "site_logo_classes": "img-fluid rounded-circle",
     "site_header": "Admin Dashboard",
-    "site_brand": "Digital Pathshala",
+    "site_brand": "CLMS",
     "welcome_sign": "Welcome to Admin Dashboard",
     "copyright": "Digital Pathshala",
     "show_sidebar": True,
@@ -83,7 +83,6 @@ JAZZMIN_SETTINGS = {
     
     "show_ui_builder": False,  # hides the UI builder button (optional)
     "custom_css": "css/custom_admin.css"
-
 }
 
 JAZZMIN_UI_TWEAKS = {
@@ -100,7 +99,6 @@ AUTHENTICATION_BACKENDS = [
 
 # django-allauth settings
 LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/templates/login'
 ACCOUNT_LOGIN_METHODS = {'username', 'email'}
 ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
 ACCOUNT_EMAIL_VERIFICATION = 'optional'
@@ -163,8 +161,12 @@ WSGI_APPLICATION = 'bms.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.getenv('DB_NAME','Blog_Management_System'),
+        'USER': os.getenv('DB_USER','admin'),
+        'PASSWORD': os.getenv('DB_PASSWORD','admin'),
+        'HOST': os.getenv('DB_HOST','localhost'),
+        'PORT': os.getenv('DB_PORT','5432'),
     }
 }
 
